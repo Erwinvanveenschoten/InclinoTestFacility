@@ -1,0 +1,372 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "mem.c"
+  16              	 .section .text.mem_init,"ax",%progbits
+  17              	 .align 1
+  18              	 .global mem_init
+  19              	 .thumb
+  20              	 .thumb_func
+  22              	mem_init:
+  23              	 
+  24              	 
+  25              	 
+  26 0000 0B4B     	 ldr r3,.L2
+  27 0002 0C4A     	 ldr r2,.L2+4
+  28 0004 23F00303 	 bic r3,r3,#3
+  29 0008 0021     	 movs r1,#0
+  30 000a 1360     	 str r3,[r2]
+  31 000c 5980     	 strh r1,[r3,#2]
+  32 000e 4FF4C862 	 mov r2,#1600
+  33 0012 1971     	 strb r1,[r3,#4]
+  34 0014 0849     	 ldr r1,.L2+8
+  35 0016 1A80     	 strh r2,[r3]
+  36 0018 9818     	 adds r0,r3,r2
+  37 001a A3F84026 	 strh r2,[r3,#1600]
+  38 001e A3F84226 	 strh r2,[r3,#1602]
+  39 0022 064A     	 ldr r2,.L2+12
+  40 0024 0860     	 str r0,[r1]
+  41 0026 0121     	 movs r1,#1
+  42 0028 83F84416 	 strb r1,[r3,#1604]
+  43 002c 1360     	 str r3,[r2]
+  44 002e 7047     	 bx lr
+  45              	.L3:
+  46              	 .align 2
+  47              	.L2:
+  48 0030 03000000 	 .word ram_heap+3
+  49 0034 00000000 	 .word .LANCHOR0
+  50 0038 00000000 	 .word .LANCHOR1
+  51 003c 00000000 	 .word .LANCHOR2
+  53              	 .section .text.mem_free,"ax",%progbits
+  54              	 .align 1
+  55              	 .global mem_free
+  56              	 .thumb
+  57              	 .thumb_func
+  59              	mem_free:
+  60              	 
+  61              	 
+  62 0000 F0B5     	 push {r4,r5,r6,r7,lr}
+  63 0002 0028     	 cmp r0,#0
+  64 0004 3AD0     	 beq .L4
+  65 0006 1E4B     	 ldr r3,.L13
+  66 0008 1B68     	 ldr r3,[r3]
+  67 000a 9842     	 cmp r0,r3
+  68 000c 36D3     	 bcc .L4
+  69 000e 1D4A     	 ldr r2,.L13+4
+  70 0010 1668     	 ldr r6,[r2]
+  71 0012 B042     	 cmp r0,r6
+  72 0014 32D2     	 bcs .L4
+  73 0016 0021     	 movs r1,#0
+  74 0018 00F8041C 	 strb r1,[r0,#-4]
+  75 001c 1A49     	 ldr r1,.L13+8
+  76 001e 30F8085C 	 ldrh r5,[r0,#-8]
+  77 0022 0C68     	 ldr r4,[r1]
+  78 0024 A0F10802 	 sub r2,r0,#8
+  79 0028 A242     	 cmp r2,r4
+  80 002a 03EB0504 	 add r4,r3,r5
+  81 002e 38BF     	 it cc
+  82 0030 0A60     	 strcc r2,[r1]
+  83 0032 A242     	 cmp r2,r4
+  84 0034 0FD0     	 beq .L9
+  85 0036 2779     	 ldrb r7,[r4,#4]
+  86 0038 6FB9     	 cbnz r7,.L9
+  87 003a B442     	 cmp r4,r6
+  88 003c 0BD0     	 beq .L9
+  89 003e 0E68     	 ldr r6,[r1]
+  90 0040 A642     	 cmp r6,r4
+  91 0042 04BF     	 itt eq
+  92 0044 104C     	 ldreq r4,.L13+8
+  93 0046 2260     	 streq r2,[r4]
+  94 0048 5C5B     	 ldrh r4,[r3,r5]
+  95 004a 20F8084C 	 strh r4,[r0,#-8]
+  96 004e 5C5B     	 ldrh r4,[r3,r5]
+  97 0050 1C44     	 add r4,r4,r3
+  98 0052 D51A     	 subs r5,r2,r3
+  99 0054 6580     	 strh r5,[r4,#2]
+ 100              	.L9:
+ 101 0056 30F8064C 	 ldrh r4,[r0,#-6]
+ 102 005a 1D19     	 adds r5,r3,r4
+ 103 005c 9542     	 cmp r5,r2
+ 104 005e 0DD0     	 beq .L4
+ 105 0060 2E79     	 ldrb r6,[r5,#4]
+ 106 0062 5EB9     	 cbnz r6,.L4
+ 107 0064 0968     	 ldr r1,[r1]
+ 108 0066 9142     	 cmp r1,r2
+ 109 0068 04BF     	 itt eq
+ 110 006a 074A     	 ldreq r2,.L13+8
+ 111 006c 1560     	 streq r5,[r2]
+ 112 006e 30F8082C 	 ldrh r2,[r0,#-8]
+ 113 0072 1A53     	 strh r2,[r3,r4]
+ 114 0074 30F8082C 	 ldrh r2,[r0,#-8]
+ 115 0078 1344     	 add r3,r3,r2
+ 116 007a 5C80     	 strh r4,[r3,#2]
+ 117              	.L4:
+ 118 007c F0BD     	 pop {r4,r5,r6,r7,pc}
+ 119              	.L14:
+ 120 007e 00BF     	 .align 2
+ 121              	.L13:
+ 122 0080 00000000 	 .word .LANCHOR0
+ 123 0084 00000000 	 .word .LANCHOR1
+ 124 0088 00000000 	 .word .LANCHOR2
+ 126              	 .section .text.mem_trim,"ax",%progbits
+ 127              	 .align 1
+ 128              	 .global mem_trim
+ 129              	 .thumb
+ 130              	 .thumb_func
+ 132              	mem_trim:
+ 133              	 
+ 134              	 
+ 135 0000 0331     	 adds r1,r1,#3
+ 136 0002 4FF6FC72 	 movw r2,#65532
+ 137 0006 0A40     	 ands r2,r2,r1
+ 138 0008 0B2A     	 cmp r2,#11
+ 139 000a F0B5     	 push {r4,r5,r6,r7,lr}
+ 140 000c 03D9     	 bls .L23
+ 141 000e B2F5C86F 	 cmp r2,#1600
+ 142 0012 01D9     	 bls .L16
+ 143 0014 43E0     	 b .L25
+ 144              	.L23:
+ 145 0016 0C22     	 movs r2,#12
+ 146              	.L16:
+ 147 0018 224B     	 ldr r3,.L35
+ 148 001a 1B68     	 ldr r3,[r3]
+ 149 001c 9842     	 cmp r0,r3
+ 150 001e 3FD3     	 bcc .L17
+ 151 0020 2149     	 ldr r1,.L35+4
+ 152 0022 0968     	 ldr r1,[r1]
+ 153 0024 8842     	 cmp r0,r1
+ 154 0026 3BD2     	 bcs .L17
+ 155 0028 A0F10804 	 sub r4,r0,#8
+ 156 002c 30F8085C 	 ldrh r5,[r0,#-8]
+ 157 0030 E41A     	 subs r4,r4,r3
+ 158 0032 A4B2     	 uxth r4,r4
+ 159 0034 A5F10801 	 sub r1,r5,#8
+ 160 0038 091B     	 subs r1,r1,r4
+ 161 003a 89B2     	 uxth r1,r1
+ 162 003c 8A42     	 cmp r2,r1
+ 163 003e 2ED8     	 bhi .L25
+ 164 0040 2ED0     	 beq .L17
+ 165 0042 5E19     	 adds r6,r3,r5
+ 166 0044 3779     	 ldrb r7,[r6,#4]
+ 167 0046 7FB9     	 cbnz r7,.L20
+ 168 0048 5F5B     	 ldrh r7,[r3,r5]
+ 169 004a 184D     	 ldr r5,.L35+8
+ 170 004c 04F10801 	 add r1,r4,#8
+ 171 0050 0A44     	 add r2,r2,r1
+ 172 0052 2968     	 ldr r1,[r5]
+ 173 0054 92B2     	 uxth r2,r2
+ 174 0056 B142     	 cmp r1,r6
+ 175 0058 03EB0201 	 add r1,r3,r2
+ 176 005c 08BF     	 it eq
+ 177 005e 2960     	 streq r1,[r5]
+ 178 0060 0025     	 movs r5,#0
+ 179 0062 0D71     	 strb r5,[r1,#4]
+ 180 0064 9F52     	 strh r7,[r3,r2]
+ 181 0066 10E0     	 b .L34
+ 182              	.L20:
+ 183 0068 02F11406 	 add r6,r2,#20
+ 184 006c 8E42     	 cmp r6,r1
+ 185 006e 17D8     	 bhi .L17
+ 186 0070 0E4E     	 ldr r6,.L35+8
+ 187 0072 04F10801 	 add r1,r4,#8
+ 188 0076 0A44     	 add r2,r2,r1
+ 189 0078 3768     	 ldr r7,[r6]
+ 190 007a 92B2     	 uxth r2,r2
+ 191 007c 9918     	 adds r1,r3,r2
+ 192 007e B942     	 cmp r1,r7
+ 193 0080 38BF     	 it cc
+ 194 0082 3160     	 strcc r1,[r6]
+ 195 0084 0026     	 movs r6,#0
+ 196 0086 0E71     	 strb r6,[r1,#4]
+ 197 0088 9D52     	 strh r5,[r3,r2]
+ 198              	.L34:
+ 199 008a 4C80     	 strh r4,[r1,#2]
+ 200 008c 20F8082C 	 strh r2,[r0,#-8]
+ 201 0090 995A     	 ldrh r1,[r3,r2]
+ 202 0092 B1F5C86F 	 cmp r1,#1600
+ 203 0096 03D0     	 beq .L17
+ 204 0098 0B44     	 add r3,r3,r1
+ 205 009a 5A80     	 strh r2,[r3,#2]
+ 206 009c F0BD     	 pop {r4,r5,r6,r7,pc}
+ 207              	.L25:
+ 208 009e 0020     	 movs r0,#0
+ 209              	.L17:
+ 210 00a0 F0BD     	 pop {r4,r5,r6,r7,pc}
+ 211              	.L36:
+ 212 00a2 00BF     	 .align 2
+ 213              	.L35:
+ 214 00a4 00000000 	 .word .LANCHOR0
+ 215 00a8 00000000 	 .word .LANCHOR1
+ 216 00ac 00000000 	 .word .LANCHOR2
+ 218              	 .section .text.mem_malloc,"ax",%progbits
+ 219              	 .align 1
+ 220              	 .global mem_malloc
+ 221              	 .thumb
+ 222              	 .thumb_func
+ 224              	mem_malloc:
+ 225              	 
+ 226              	 
+ 227 0000 2DE9F041 	 push {r4,r5,r6,r7,r8,lr}
+ 228 0004 0028     	 cmp r0,#0
+ 229 0006 4ED0     	 beq .L38
+ 230 0008 0330     	 adds r0,r0,#3
+ 231 000a 4FF6FC73 	 movw r3,#65532
+ 232 000e 0340     	 ands r3,r3,r0
+ 233 0010 0B2B     	 cmp r3,#11
+ 234 0012 03D9     	 bls .L50
+ 235 0014 B3F5C86F 	 cmp r3,#1600
+ 236 0018 01D9     	 bls .L39
+ 237 001a 43E0     	 b .L51
+ 238              	.L50:
+ 239 001c 0C23     	 movs r3,#12
+ 240              	.L39:
+ 241 001e 234C     	 ldr r4,.L58
+ 242 0020 234D     	 ldr r5,.L58+4
+ 243 0022 2768     	 ldr r7,[r4]
+ 244 0024 2968     	 ldr r1,[r5]
+ 245 0026 7A1A     	 subs r2,r7,r1
+ 246 0028 92B2     	 uxth r2,r2
+ 247              	.L40:
+ 248 002a C3F5C860 	 rsb r0,r3,#1600
+ 249 002e 8242     	 cmp r2,r0
+ 250 0030 38D2     	 bcs .L51
+ 251 0032 8818     	 adds r0,r1,r2
+ 252 0034 31F802E0 	 ldrh lr,[r1,r2]
+ 253 0038 90F804C0 	 ldrb ip,[r0,#4]
+ 254 003c BCF1000F 	 cmp ip,#0
+ 255 0040 2ED1     	 bne .L41
+ 256 0042 AEF10806 	 sub r6,lr,#8
+ 257 0046 B61A     	 subs r6,r6,r2
+ 258 0048 9E42     	 cmp r6,r3
+ 259 004a 29D3     	 bcc .L41
+ 260 004c 03F11408 	 add r8,r3,#20
+ 261 0050 4645     	 cmp r6,r8
+ 262 0052 12D3     	 bcc .L42
+ 263 0054 0833     	 adds r3,r3,#8
+ 264 0056 1344     	 add r3,r3,r2
+ 265 0058 9BB2     	 uxth r3,r3
+ 266 005a CE18     	 adds r6,r1,r3
+ 267 005c 86F804C0 	 strb ip,[r6,#4]
+ 268 0060 21F803E0 	 strh lr,[r1,r3]
+ 269 0064 7280     	 strh r2,[r6,#2]
+ 270 0066 0122     	 movs r2,#1
+ 271 0068 0380     	 strh r3,[r0]
+ 272 006a 0271     	 strb r2,[r0,#4]
+ 273 006c CA5A     	 ldrh r2,[r1,r3]
+ 274 006e B2F5C86F 	 cmp r2,#1600
+ 275 0072 04D0     	 beq .L43
+ 276 0074 1144     	 add r1,r1,r2
+ 277 0076 4B80     	 strh r3,[r1,#2]
+ 278 0078 01E0     	 b .L43
+ 279              	.L42:
+ 280 007a 0123     	 movs r3,#1
+ 281 007c 0371     	 strb r3,[r0,#4]
+ 282              	.L43:
+ 283 007e B842     	 cmp r0,r7
+ 284 0080 0BD1     	 bne .L44
+ 285 0082 0C4B     	 ldr r3,.L58+8
+ 286 0084 2968     	 ldr r1,[r5]
+ 287 0086 1A68     	 ldr r2,[r3]
+ 288 0088 0346     	 mov r3,r0
+ 289              	.L45:
+ 290 008a 1D79     	 ldrb r5,[r3,#4]
+ 291 008c 25B1     	 cbz r5,.L46
+ 292 008e 9342     	 cmp r3,r2
+ 293 0090 02D0     	 beq .L46
+ 294 0092 1B88     	 ldrh r3,[r3]
+ 295 0094 0B44     	 add r3,r3,r1
+ 296 0096 F8E7     	 b .L45
+ 297              	.L46:
+ 298 0098 2360     	 str r3,[r4]
+ 299              	.L44:
+ 300 009a 0830     	 adds r0,r0,#8
+ 301 009c BDE8F081 	 pop {r4,r5,r6,r7,r8,pc}
+ 302              	.L41:
+ 303 00a0 7246     	 mov r2,lr
+ 304 00a2 C2E7     	 b .L40
+ 305              	.L51:
+ 306 00a4 0020     	 movs r0,#0
+ 307              	.L38:
+ 308 00a6 BDE8F081 	 pop {r4,r5,r6,r7,r8,pc}
+ 309              	.L59:
+ 310 00aa 00BF     	 .align 2
+ 311              	.L58:
+ 312 00ac 00000000 	 .word .LANCHOR2
+ 313 00b0 00000000 	 .word .LANCHOR0
+ 314 00b4 00000000 	 .word .LANCHOR1
+ 316              	 .section .text.mem_calloc,"ax",%progbits
+ 317              	 .align 1
+ 318              	 .global mem_calloc
+ 319              	 .thumb
+ 320              	 .thumb_func
+ 322              	mem_calloc:
+ 323              	 
+ 324              	 
+ 325 0000 70B5     	 push {r4,r5,r6,lr}
+ 326 0002 0446     	 mov r4,r0
+ 327 0004 10FB01F0 	 smulbb r0,r0,r1
+ 328 0008 80B2     	 uxth r0,r0
+ 329 000a 0D46     	 mov r5,r1
+ 330 000c FFF7FEFF 	 bl mem_malloc
+ 331 0010 0646     	 mov r6,r0
+ 332 0012 20B1     	 cbz r0,.L61
+ 333 0014 0021     	 movs r1,#0
+ 334 0016 05FB04F2 	 mul r2,r5,r4
+ 335 001a FFF7FEFF 	 bl memset
+ 336              	.L61:
+ 337 001e 3046     	 mov r0,r6
+ 338 0020 70BD     	 pop {r4,r5,r6,pc}
+ 340              	 .comm ram_heap,1619,1
+ 341              	 .section .bss.lfree,"aw",%nobits
+ 342              	 .align 2
+ 343              	 .set .LANCHOR2,.+0
+ 346              	lfree:
+ 347 0000 00000000 	 .space 4
+ 348              	 .section .bss.ram_end,"aw",%nobits
+ 349              	 .align 2
+ 350              	 .set .LANCHOR1,.+0
+ 353              	ram_end:
+ 354 0000 00000000 	 .space 4
+ 355              	 .section .bss.ram,"aw",%nobits
+ 356              	 .align 2
+ 357              	 .set .LANCHOR0,.+0
+ 360              	ram:
+ 361 0000 00000000 	 .space 4
+ 362              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 mem.c
+    {standard input}:17     .text.mem_init:00000000 $t
+    {standard input}:22     .text.mem_init:00000000 mem_init
+    {standard input}:48     .text.mem_init:00000030 $d
+                            *COM*:00000653 ram_heap
+    {standard input}:54     .text.mem_free:00000000 $t
+    {standard input}:59     .text.mem_free:00000000 mem_free
+    {standard input}:122    .text.mem_free:00000080 $d
+    {standard input}:127    .text.mem_trim:00000000 $t
+    {standard input}:132    .text.mem_trim:00000000 mem_trim
+    {standard input}:214    .text.mem_trim:000000a4 $d
+    {standard input}:219    .text.mem_malloc:00000000 $t
+    {standard input}:224    .text.mem_malloc:00000000 mem_malloc
+    {standard input}:312    .text.mem_malloc:000000ac $d
+    {standard input}:317    .text.mem_calloc:00000000 $t
+    {standard input}:322    .text.mem_calloc:00000000 mem_calloc
+    {standard input}:342    .bss.lfree:00000000 $d
+    {standard input}:346    .bss.lfree:00000000 lfree
+    {standard input}:349    .bss.ram_end:00000000 $d
+    {standard input}:353    .bss.ram_end:00000000 ram_end
+    {standard input}:356    .bss.ram:00000000 $d
+    {standard input}:360    .bss.ram:00000000 ram
+
+UNDEFINED SYMBOLS
+memset

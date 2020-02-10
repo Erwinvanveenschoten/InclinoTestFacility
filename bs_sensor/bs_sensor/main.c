@@ -1,45 +1,61 @@
-/*
- * main.c
- *
- *  Created on: 2019 Dec 19 09:12:10
- *  Author: Arthur
- */
-
-
-
 
 #include <DAVE.h>                 //Declarations from DAVE Code Generation (includes SFR declaration)
+#include "Headers/GyroAcc.h"
+#include "Headers/UDP.h"
+#include "Headers/tools.h"
 
-/**
+uint8_t* master_rec_data = 0;
+uint8_t acceleration_register[4];
+uint8_t gyro_register[4];
 
- * @brief main() - Application entry point
- *
- * <b>Details of function</b><br>
- * This routine is the application entry point. It is invoked by the device startup code. It is responsible for
- * invoking the APP initialization dispatcher routine - DAVE_Init() and hosting the place-holder for user application
- * code.
- */
+#define ONEUSDELAY 145
+
+static struct netif server_netif;
+struct netif *echo_netif;
 
 int main(void)
 {
+
+
   DAVE_STATUS_t status;
 
+  cycledelay((uint32_t)(ONEUSDELAY * 2));
+
   status = DAVE_Init();           /* Initialization of DAVE APPs  */
+  bmi055_start();
+
+  udp_initialize();
+
+  pakketje test;
+  test.packetA = 'H';
+  test.packetB = 'A';
+  test.packetC = 'L';
+  test.packetD = 'L';
+  test.packetE = 'O';
+  test.packetF = '!';
+  test.packetG = '!';
+  test.packetH = '!';
 
   if(status != DAVE_STATUS_SUCCESS)
   {
-    /* Placeholder for error handler code. The while loop below can be replaced with an user error handler. */
     XMC_DEBUG("DAVE APPs initialization failed\n");
-
     while(1U)
     {
-
     }
   }
 
-  /* Placeholder for user application code. The while loop below can be replaced with user application code. */
+  //uint8_t gyro = readGyro(0x00);
+  //uint8_t acc = readAcc(0x00);
+
   while(1U)
   {
-
+	  err_t error;
+	  cycledelay((uint32_t)(ONEUSDELAY * 50000));
+	  error = udp_printStruct(&test);
   }
 }
+
+
+
+
+

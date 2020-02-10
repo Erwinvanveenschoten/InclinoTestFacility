@@ -1,0 +1,49 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "tools.c"
+  16              	 .section .text.cycledelay,"ax",%progbits
+  17              	 .align 1
+  18              	 .global cycledelay
+  19              	 .thumb
+  20              	 .thumb_func
+  22              	cycledelay:
+  23              	 
+  24              	 
+  25              	 
+  26 0000 82B0     	 sub sp,sp,#8
+  27 0002 0023     	 movs r3,#0
+  28              	.L4:
+  29 0004 0193     	 str r3,[sp,#4]
+  30 0006 019B     	 ldr r3,[sp,#4]
+  31 0008 8342     	 cmp r3,r0
+  32 000a 03D2     	 bcs .L6
+  33              	
+  34 000c 00BF     	 NOP
+  35              	
+  36              	 .thumb
+  37 000e 019B     	 ldr r3,[sp,#4]
+  38 0010 0133     	 adds r3,r3,#1
+  39 0012 F7E7     	 b .L4
+  40              	.L6:
+  41 0014 02B0     	 add sp,sp,#8
+  42              	 
+  43 0016 7047     	 bx lr
+  45              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 tools.c
+    {standard input}:17     .text.cycledelay:00000000 $t
+    {standard input}:22     .text.cycledelay:00000000 cycledelay
+
+NO UNDEFINED SYMBOLS

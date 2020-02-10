@@ -1,0 +1,166 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "ethernet.c"
+  16              	 .section .text.ethernet_input,"ax",%progbits
+  17              	 .align 1
+  18              	 .global ethernet_input
+  19              	 .thumb
+  20              	 .thumb_func
+  22              	ethernet_input:
+  23              	 
+  24              	 
+  25 0000 4389     	 ldrh r3,[r0,#10]
+  26 0002 102B     	 cmp r3,#16
+  27 0004 70B5     	 push {r4,r5,r6,lr}
+  28 0006 0446     	 mov r4,r0
+  29 0008 0D46     	 mov r5,r1
+  30 000a 3DD9     	 bls .L5
+  31 000c 4068     	 ldr r0,[r0,#4]
+  32 000e 8378     	 ldrb r3,[r0,#2]
+  33 0010 C689     	 ldrh r6,[r0,#14]
+  34 0012 D907     	 lsls r1,r3,#31
+  35 0014 14D5     	 bpl .L3
+  36 0016 012B     	 cmp r3,#1
+  37 0018 08D1     	 bne .L4
+  38 001a C378     	 ldrb r3,[r0,#3]
+  39 001c 83B9     	 cbnz r3,.L3
+  40 001e 0379     	 ldrb r3,[r0,#4]
+  41 0020 5E2B     	 cmp r3,#94
+  42 0022 0DD1     	 bne .L3
+  43 0024 637B     	 ldrb r3,[r4,#13]
+  44 0026 43F01003 	 orr r3,r3,#16
+  45 002a 08E0     	 b .L18
+  46              	.L4:
+  47 002c 0230     	 adds r0,r0,#2
+  48 002e 1949     	 ldr r1,.L20
+  49 0030 0622     	 movs r2,#6
+  50 0032 FFF7FEFF 	 bl memcmp
+  51 0036 18B9     	 cbnz r0,.L3
+  52 0038 637B     	 ldrb r3,[r4,#13]
+  53 003a 43F00803 	 orr r3,r3,#8
+  54              	.L18:
+  55 003e 6373     	 strb r3,[r4,#13]
+  56              	.L3:
+  57 0040 082E     	 cmp r6,#8
+  58 0042 03D0     	 beq .L6
+  59 0044 B6F5C16F 	 cmp r6,#1544
+  60 0048 0FD0     	 beq .L7
+  61 004a 1DE0     	 b .L5
+  62              	.L6:
+  63 004c 95F83330 	 ldrb r3,[r5,#51]
+  64 0050 1A07     	 lsls r2,r3,#28
+  65 0052 19D5     	 bpl .L5
+  66 0054 2046     	 mov r0,r4
+  67 0056 6FF00F01 	 mvn r1,#15
+  68 005a FFF7FEFF 	 bl pbuf_header
+  69 005e 98B9     	 cbnz r0,.L5
+  70 0060 2046     	 mov r0,r4
+  71 0062 2946     	 mov r1,r5
+  72 0064 FFF7FEFF 	 bl ip4_input
+  73 0068 11E0     	 b .L8
+  74              	.L7:
+  75 006a 95F83330 	 ldrb r3,[r5,#51]
+  76 006e 1B07     	 lsls r3,r3,#28
+  77 0070 0AD5     	 bpl .L5
+  78 0072 2046     	 mov r0,r4
+  79 0074 6FF00F01 	 mvn r1,#15
+  80 0078 FFF7FEFF 	 bl pbuf_header
+  81 007c 20B9     	 cbnz r0,.L5
+  82 007e 2046     	 mov r0,r4
+  83 0080 2946     	 mov r1,r5
+  84 0082 FFF7FEFF 	 bl etharp_input
+  85 0086 02E0     	 b .L8
+  86              	.L5:
+  87 0088 2046     	 mov r0,r4
+  88 008a FFF7FEFF 	 bl pbuf_free
+  89              	.L8:
+  90 008e 0020     	 movs r0,#0
+  91 0090 70BD     	 pop {r4,r5,r6,pc}
+  92              	.L21:
+  93 0092 00BF     	 .align 2
+  94              	.L20:
+  95 0094 00000000 	 .word .LANCHOR0
+  97              	 .section .text.ethernet_output,"ax",%progbits
+  98              	 .align 1
+  99              	 .global ethernet_output
+ 100              	 .thumb
+ 101              	 .thumb_func
+ 103              	ethernet_output:
+ 104              	 
+ 105              	 
+ 106 0000 2DE9F041 	 push {r4,r5,r6,r7,r8,lr}
+ 107 0004 0546     	 mov r5,r0
+ 108 0006 BDF81800 	 ldrh r0,[sp,#24]
+ 109 000a 0C46     	 mov r4,r1
+ 110 000c 1646     	 mov r6,r2
+ 111 000e 1F46     	 mov r7,r3
+ 112 0010 FFF7FEFF 	 bl lwip_htons
+ 113 0014 1021     	 movs r1,#16
+ 114 0016 8046     	 mov r8,r0
+ 115 0018 2046     	 mov r0,r4
+ 116 001a FFF7FEFF 	 bl pbuf_header
+ 117 001e 88B9     	 cbnz r0,.L23
+ 118 0020 6168     	 ldr r1,[r4,#4]
+ 119 0022 A1F80E80 	 strh r8,[r1,#14]
+ 120 0026 3B68     	 ldr r3,[r7]
+ 121 0028 C1F80230 	 str r3,[r1,#2]
+ 122 002c BB88     	 ldrh r3,[r7,#4]
+ 123 002e CB80     	 strh r3,[r1,#6]
+ 124 0030 3368     	 ldr r3,[r6]
+ 125 0032 8B60     	 str r3,[r1,#8]
+ 126 0034 B388     	 ldrh r3,[r6,#4]
+ 127 0036 8B81     	 strh r3,[r1,#12]
+ 128 0038 AB69     	 ldr r3,[r5,#24]
+ 129 003a 2846     	 mov r0,r5
+ 130 003c 2146     	 mov r1,r4
+ 131 003e BDE8F041 	 pop {r4,r5,r6,r7,r8,lr}
+ 132 0042 1847     	 bx r3
+ 133              	.L23:
+ 134 0044 6FF00100 	 mvn r0,#1
+ 135 0048 BDE8F081 	 pop {r4,r5,r6,r7,r8,pc}
+ 137              	 .global ethzero
+ 138              	 .global ethbroadcast
+ 139              	 .section .rodata.ethbroadcast,"a",%progbits
+ 140              	 .set .LANCHOR0,.+0
+ 143              	ethbroadcast:
+ 144 0000 FF       	 .byte -1
+ 145 0001 FF       	 .byte -1
+ 146 0002 FF       	 .byte -1
+ 147 0003 FF       	 .byte -1
+ 148 0004 FF       	 .byte -1
+ 149 0005 FF       	 .byte -1
+ 150              	 .section .rodata.ethzero,"a",%progbits
+ 153              	ethzero:
+ 154 0000 00000000 	 .space 6
+ 154      0000
+ 155              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 ethernet.c
+    {standard input}:17     .text.ethernet_input:00000000 $t
+    {standard input}:22     .text.ethernet_input:00000000 ethernet_input
+    {standard input}:95     .text.ethernet_input:00000094 $d
+    {standard input}:98     .text.ethernet_output:00000000 $t
+    {standard input}:103    .text.ethernet_output:00000000 ethernet_output
+    {standard input}:153    .rodata.ethzero:00000000 ethzero
+    {standard input}:143    .rodata.ethbroadcast:00000000 ethbroadcast
+    {standard input}:154    .rodata.ethzero:00000000 $d
+
+UNDEFINED SYMBOLS
+memcmp
+pbuf_header
+ip4_input
+etharp_input
+pbuf_free
+lwip_htons
