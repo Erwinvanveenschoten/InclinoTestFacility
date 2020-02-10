@@ -1,0 +1,380 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "ip4_addr.c"
+  16              	 .section .text.ip4_addr_isbroadcast_u32,"ax",%progbits
+  17              	 .align 1
+  18              	 .global ip4_addr_isbroadcast_u32
+  19              	 .thumb
+  20              	 .thumb_func
+  22              	ip4_addr_isbroadcast_u32:
+  23              	 
+  24              	 
+  25              	 
+  26 0000 431E     	 subs r3,r0,#1
+  27 0002 0333     	 adds r3,r3,#3
+  28 0004 0246     	 mov r2,r0
+  29 0006 14D8     	 bhi .L3
+  30 0008 91F83330 	 ldrb r3,[r1,#51]
+  31 000c 03F00203 	 and r3,r3,#2
+  32 0010 03F0FF00 	 and r0,r3,#255
+  33 0014 83B1     	 cbz r3,.L2
+  34 0016 4868     	 ldr r0,[r1,#4]
+  35 0018 8242     	 cmp r2,r0
+  36 001a 0CD0     	 beq .L5
+  37 001c 8B68     	 ldr r3,[r1,#8]
+  38 001e 5040     	 eors r0,r0,r2
+  39 0020 1842     	 tst r0,r3
+  40 0022 08D1     	 bne .L5
+  41 0024 DB43     	 mvns r3,r3
+  42 0026 02EA0300 	 and r0,r2,r3
+  43 002a C31A     	 subs r3,r0,r3
+  44 002c 5842     	 rsbs r0,r3,#0
+  45 002e 5841     	 adcs r0,r0,r3
+  46 0030 7047     	 bx lr
+  47              	.L3:
+  48 0032 0120     	 movs r0,#1
+  49 0034 7047     	 bx lr
+  50              	.L5:
+  51 0036 0020     	 movs r0,#0
+  52              	.L2:
+  53 0038 7047     	 bx lr
+  55              	 .section .text.ip4_addr_netmask_valid,"ax",%progbits
+  56              	 .align 1
+  57              	 .global ip4_addr_netmask_valid
+  58              	 .thumb
+  59              	 .thumb_func
+  61              	ip4_addr_netmask_valid:
+  62              	 
+  63              	 
+  64 0000 08B5     	 push {r3,lr}
+  65 0002 FFF7FEFF 	 bl lwip_htonl
+  66 0006 2022     	 movs r2,#32
+  67 0008 4FF00043 	 mov r3,#-2147483648
+  68              	.L13:
+  69 000c 0342     	 tst r3,r0
+  70 000e 08D0     	 beq .L12
+  71 0010 013A     	 subs r2,r2,#1
+  72 0012 4FEA5303 	 lsr r3,r3,#1
+  73 0016 F9D1     	 bne .L13
+  74 0018 1346     	 mov r3,r2
+  75 001a 02E0     	 b .L12
+  76              	.L16:
+  77 001c 0342     	 tst r3,r0
+  78 001e 04D1     	 bne .L17
+  79 0020 5B08     	 lsrs r3,r3,#1
+  80              	.L12:
+  81 0022 002B     	 cmp r3,#0
+  82 0024 FAD1     	 bne .L16
+  83 0026 0120     	 movs r0,#1
+  84 0028 08BD     	 pop {r3,pc}
+  85              	.L17:
+  86 002a 0020     	 movs r0,#0
+  87 002c 08BD     	 pop {r3,pc}
+  89              	 .section .text.ip4addr_aton,"ax",%progbits
+  90              	 .align 1
+  91              	 .global ip4addr_aton
+  92              	 .thumb
+  93              	 .thumb_func
+  95              	ip4addr_aton:
+  96              	 
+  97              	 
+  98 0000 F0B5     	 push {r4,r5,r6,r7,lr}
+  99 0002 85B0     	 sub sp,sp,#20
+ 100 0004 0278     	 ldrb r2,[r0]
+ 101 0006 0C46     	 mov r4,r1
+ 102 0008 6B46     	 mov r3,sp
+ 103 000a 6F46     	 mov r7,sp
+ 104              	.L29:
+ 105 000c A2F13001 	 sub r1,r2,#48
+ 106 0010 0929     	 cmp r1,#9
+ 107 0012 7BD8     	 bhi .L51
+ 108 0014 302A     	 cmp r2,#48
+ 109 0016 0BD1     	 bne .L37
+ 110 0018 4278     	 ldrb r2,[r0,#1]
+ 111 001a 02F0DF01 	 and r1,r2,#223
+ 112 001e 5829     	 cmp r1,#88
+ 113 0020 0DBF     	 iteet eq
+ 114 0022 8278     	 ldrbeq r2,[r0,#2]
+ 115 0024 0130     	 addne r0,r0,#1
+ 116 0026 0826     	 movne r6,#8
+ 117 0028 0230     	 addeq r0,r0,#2
+ 118 002a 08BF     	 it eq
+ 119 002c 1026     	 moveq r6,#16
+ 120 002e 00E0     	 b .L21
+ 121              	.L37:
+ 122 0030 0A26     	 movs r6,#10
+ 123              	.L21:
+ 124 0032 451C     	 adds r5,r0,#1
+ 125 0034 0020     	 movs r0,#0
+ 126              	.L23:
+ 127 0036 A2F13001 	 sub r1,r2,#48
+ 128 003a 0929     	 cmp r1,#9
+ 129 003c 05F1FF3C 	 add ip,r5,#-1
+ 130 0040 03D8     	 bhi .L24
+ 131 0042 06FB0020 	 mla r0,r6,r0,r2
+ 132 0046 3038     	 subs r0,r0,#48
+ 133 0048 15E0     	 b .L56
+ 134              	.L24:
+ 135 004a 102E     	 cmp r6,#16
+ 136 004c 16D1     	 bne .L26
+ 137 004e 22F02001 	 bic r1,r2,#32
+ 138 0052 4139     	 subs r1,r1,#65
+ 139 0054 C9B2     	 uxtb r1,r1
+ 140 0056 A2F1610E 	 sub lr,r2,#97
+ 141 005a 0529     	 cmp r1,#5
+ 142 005c 5FFA8EFE 	 uxtb lr,lr
+ 143 0060 0CD8     	 bhi .L26
+ 144 0062 BEF11A0F 	 cmp lr,#26
+ 145 0066 02F10A02 	 add r2,r2,#10
+ 146 006a 34BF     	 ite cc
+ 147 006c 6121     	 movcc r1,#97
+ 148 006e 4121     	 movcs r1,#65
+ 149 0070 521A     	 subs r2,r2,r1
+ 150 0072 42EA0010 	 orr r0,r2,r0,lsl#4
+ 151              	.L56:
+ 152 0076 2A78     	 ldrb r2,[r5]
+ 153 0078 0135     	 adds r5,r5,#1
+ 154 007a DCE7     	 b .L23
+ 155              	.L26:
+ 156 007c 2E2A     	 cmp r2,#46
+ 157 007e 09D1     	 bne .L28
+ 158 0080 03AA     	 add r2,sp,#12
+ 159 0082 9342     	 cmp r3,r2
+ 160 0084 42D0     	 beq .L51
+ 161 0086 43F8040B 	 str r0,[r3],#4
+ 162 008a 9CF80120 	 ldrb r2,[ip,#1]
+ 163 008e 0CF10100 	 add r0,ip,#1
+ 164 0092 BBE7     	 b .L29
+ 165              	.L28:
+ 166 0094 12F0DF0F 	 tst r2,#223
+ 167 0098 02D0     	 beq .L30
+ 168 009a 093A     	 subs r2,r2,#9
+ 169 009c 042A     	 cmp r2,#4
+ 170 009e 35D8     	 bhi .L51
+ 171              	.L30:
+ 172 00a0 DB1B     	 subs r3,r3,r7
+ 173 00a2 9B10     	 asrs r3,r3,#2
+ 174 00a4 0133     	 adds r3,r3,#1
+ 175 00a6 042B     	 cmp r3,#4
+ 176 00a8 2BD8     	 bhi .L31
+ 177 00aa DFE803F0 	 tbb [pc,r3]
+ 178              	.L32:
+ 179 00ae 32       	 .byte (.L20-.L32)/2
+ 180 00af 2A       	 .byte (.L31-.L32)/2
+ 181 00b0 03       	 .byte (.L33-.L32)/2
+ 182 00b1 0C       	 .byte (.L34-.L32)/2
+ 183 00b2 19       	 .byte (.L35-.L32)/2
+ 184 00b3 00       	 .p2align 1
+ 185              	.L33:
+ 186 00b4 B0F1807F 	 cmp r0,#16777216
+ 187 00b8 28D2     	 bcs .L51
+ 188 00ba 009B     	 ldr r3,[sp]
+ 189 00bc FF2B     	 cmp r3,#255
+ 190 00be 25D8     	 bhi .L51
+ 191 00c0 40EA0360 	 orr r0,r0,r3,lsl#24
+ 192 00c4 1DE0     	 b .L31
+ 193              	.L34:
+ 194 00c6 B0F5803F 	 cmp r0,#65536
+ 195 00ca 1FD2     	 bcs .L51
+ 196 00cc 009B     	 ldr r3,[sp]
+ 197 00ce FF2B     	 cmp r3,#255
+ 198 00d0 1CD8     	 bhi .L51
+ 199 00d2 019A     	 ldr r2,[sp,#4]
+ 200 00d4 FF2A     	 cmp r2,#255
+ 201 00d6 19D8     	 bhi .L51
+ 202 00d8 1B06     	 lsls r3,r3,#24
+ 203 00da 43EA0243 	 orr r3,r3,r2,lsl#16
+ 204 00de 0FE0     	 b .L57
+ 205              	.L35:
+ 206 00e0 FF28     	 cmp r0,#255
+ 207 00e2 13D8     	 bhi .L51
+ 208 00e4 009B     	 ldr r3,[sp]
+ 209 00e6 FF2B     	 cmp r3,#255
+ 210 00e8 10D8     	 bhi .L51
+ 211 00ea 019D     	 ldr r5,[sp,#4]
+ 212 00ec FF2D     	 cmp r5,#255
+ 213 00ee 0DD8     	 bhi .L51
+ 214 00f0 0299     	 ldr r1,[sp,#8]
+ 215 00f2 FF29     	 cmp r1,#255
+ 216 00f4 0AD8     	 bhi .L51
+ 217 00f6 1A06     	 lsls r2,r3,#24
+ 218 00f8 42EA0543 	 orr r3,r2,r5,lsl#16
+ 219 00fc 43EA0123 	 orr r3,r3,r1,lsl#8
+ 220              	.L57:
+ 221 0100 1843     	 orrs r0,r0,r3
+ 222              	.L31:
+ 223 0102 2CB1     	 cbz r4,.L52
+ 224 0104 FFF7FEFF 	 bl lwip_htonl
+ 225 0108 2060     	 str r0,[r4]
+ 226 010a 01E0     	 b .L52
+ 227              	.L51:
+ 228 010c 0023     	 movs r3,#0
+ 229 010e 00E0     	 b .L20
+ 230              	.L52:
+ 231 0110 0123     	 movs r3,#1
+ 232              	.L20:
+ 233 0112 1846     	 mov r0,r3
+ 234 0114 05B0     	 add sp,sp,#20
+ 235              	 
+ 236 0116 F0BD     	 pop {r4,r5,r6,r7,pc}
+ 238              	 .section .text.ipaddr_addr,"ax",%progbits
+ 239              	 .align 1
+ 240              	 .global ipaddr_addr
+ 241              	 .thumb
+ 242              	 .thumb_func
+ 244              	ipaddr_addr:
+ 245              	 
+ 246              	 
+ 247 0000 07B5     	 push {r0,r1,r2,lr}
+ 248 0002 01A9     	 add r1,sp,#4
+ 249 0004 FFF7FEFF 	 bl ip4addr_aton
+ 250 0008 08B1     	 cbz r0,.L60
+ 251 000a 0198     	 ldr r0,[sp,#4]
+ 252 000c 01E0     	 b .L59
+ 253              	.L60:
+ 254 000e 4FF0FF30 	 mov r0,#-1
+ 255              	.L59:
+ 256 0012 03B0     	 add sp,sp,#12
+ 257              	 
+ 258 0014 5DF804FB 	 ldr pc,[sp],#4
+ 260              	 .section .text.ip4addr_ntoa_r,"ax",%progbits
+ 261              	 .align 1
+ 262              	 .global ip4addr_ntoa_r
+ 263              	 .thumb
+ 264              	 .thumb_func
+ 266              	ip4addr_ntoa_r:
+ 267              	 
+ 268              	 
+ 269 0000 2DE9F341 	 push {r0,r1,r4,r5,r6,r7,r8,lr}
+ 270 0004 0368     	 ldr r3,[r0]
+ 271 0006 0193     	 str r3,[sp,#4]
+ 272 0008 0DF10305 	 add r5,sp,#3
+ 273 000c 0DF10707 	 add r7,sp,#7
+ 274 0010 0C46     	 mov r4,r1
+ 275 0012 0026     	 movs r6,#0
+ 276              	.L66:
+ 277 0014 15F801EF 	 ldrb lr,[r5,#1]!
+ 278 0018 0023     	 movs r3,#0
+ 279              	.L62:
+ 280 001a 0A20     	 movs r0,#10
+ 281 001c 0DF10808 	 add r8,sp,#8
+ 282 0020 BEFBF0FC 	 udiv ip,lr,r0
+ 283 0024 00FB1CE0 	 mls r0,r0,ip,lr
+ 284 0028 03F1010E 	 add lr,r3,#1
+ 285 002c 4344     	 add r3,r3,r8
+ 286 002e 3030     	 adds r0,r0,#48
+ 287 0030 03F8080C 	 strb r0,[r3,#-8]
+ 288 0034 5FFA8EF3 	 uxtb r3,lr
+ 289 0038 1CF0FF0E 	 ands lr,ip,#255
+ 290 003c EDD1     	 bne .L62
+ 291 003e 013B     	 subs r3,r3,#1
+ 292 0040 85F800E0 	 strb lr,[r5]
+ 293 0044 DBB2     	 uxtb r3,r3
+ 294 0046 2046     	 mov r0,r4
+ 295              	.L63:
+ 296 0048 C4EB060E 	 rsb lr,r4,r6
+ 297 004c FF2B     	 cmp r3,#255
+ 298 004e 8644     	 add lr,lr,r0
+ 299 0050 0ED0     	 beq .L72
+ 300 0052 03F1FF3C 	 add ip,r3,#-1
+ 301 0056 9645     	 cmp lr,r2
+ 302 0058 5FFA8CFC 	 uxtb ip,ip
+ 303 005c 17DA     	 bge .L68
+ 304 005e 0DF1080E 	 add lr,sp,#8
+ 305 0062 7344     	 add r3,r3,lr
+ 306 0064 13F8083C 	 ldrb r3,[r3,#-8]
+ 307 0068 00F8013B 	 strb r3,[r0],#1
+ 308 006c 6346     	 mov r3,ip
+ 309 006e EBE7     	 b .L63
+ 310              	.L72:
+ 311 0070 9645     	 cmp lr,r2
+ 312 0072 0EF10106 	 add r6,lr,#1
+ 313 0076 0ADA     	 bge .L68
+ 314 0078 2E23     	 movs r3,#46
+ 315 007a BD42     	 cmp r5,r7
+ 316 007c 00F10104 	 add r4,r0,#1
+ 317 0080 0370     	 strb r3,[r0]
+ 318 0082 C7D1     	 bne .L66
+ 319 0084 0023     	 movs r3,#0
+ 320 0086 04F8013C 	 strb r3,[r4,#-1]
+ 321 008a 0846     	 mov r0,r1
+ 322 008c 00E0     	 b .L64
+ 323              	.L68:
+ 324 008e 0020     	 movs r0,#0
+ 325              	.L64:
+ 326 0090 02B0     	 add sp,sp,#8
+ 327              	 
+ 328 0092 BDE8F081 	 pop {r4,r5,r6,r7,r8,pc}
+ 330              	 .section .text.ip4addr_ntoa,"ax",%progbits
+ 331              	 .align 1
+ 332              	 .global ip4addr_ntoa
+ 333              	 .thumb
+ 334              	 .thumb_func
+ 336              	ip4addr_ntoa:
+ 337              	 
+ 338              	 
+ 339              	 
+ 340 0000 0149     	 ldr r1,.L74
+ 341 0002 1022     	 movs r2,#16
+ 342 0004 FFF7FEBF 	 b ip4addr_ntoa_r
+ 343              	.L75:
+ 344              	 .align 2
+ 345              	.L74:
+ 346 0008 00000000 	 .word .LANCHOR0
+ 348              	 .global ip_addr_broadcast
+ 349              	 .global ip_addr_any
+ 350              	 .section .bss.str.7643,"aw",%nobits
+ 351              	 .set .LANCHOR0,.+0
+ 354              	str.7643:
+ 355 0000 00000000 	 .space 16
+ 355      00000000 
+ 355      00000000 
+ 355      00000000 
+ 356              	 .section .rodata.ip_addr_broadcast,"a",%progbits
+ 357              	 .align 2
+ 360              	ip_addr_broadcast:
+ 361 0000 FFFFFFFF 	 .word -1
+ 362              	 .section .rodata.ip_addr_any,"a",%progbits
+ 363              	 .align 2
+ 366              	ip_addr_any:
+ 367 0000 00000000 	 .space 4
+ 368              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 ip4_addr.c
+    {standard input}:17     .text.ip4_addr_isbroadcast_u32:00000000 $t
+    {standard input}:22     .text.ip4_addr_isbroadcast_u32:00000000 ip4_addr_isbroadcast_u32
+    {standard input}:56     .text.ip4_addr_netmask_valid:00000000 $t
+    {standard input}:61     .text.ip4_addr_netmask_valid:00000000 ip4_addr_netmask_valid
+    {standard input}:90     .text.ip4addr_aton:00000000 $t
+    {standard input}:95     .text.ip4addr_aton:00000000 ip4addr_aton
+    {standard input}:179    .text.ip4addr_aton:000000ae $d
+    {standard input}:239    .text.ipaddr_addr:00000000 $t
+    {standard input}:244    .text.ipaddr_addr:00000000 ipaddr_addr
+    {standard input}:261    .text.ip4addr_ntoa_r:00000000 $t
+    {standard input}:266    .text.ip4addr_ntoa_r:00000000 ip4addr_ntoa_r
+    {standard input}:331    .text.ip4addr_ntoa:00000000 $t
+    {standard input}:336    .text.ip4addr_ntoa:00000000 ip4addr_ntoa
+    {standard input}:346    .text.ip4addr_ntoa:00000008 $d
+    {standard input}:360    .rodata.ip_addr_broadcast:00000000 ip_addr_broadcast
+    {standard input}:366    .rodata.ip_addr_any:00000000 ip_addr_any
+    {standard input}:354    .bss.str.7643:00000000 str.7643
+    {standard input}:355    .bss.str.7643:00000000 $d
+    {standard input}:357    .rodata.ip_addr_broadcast:00000000 $d
+    {standard input}:363    .rodata.ip_addr_any:00000000 $d
+    {standard input}:184    .text.ip4addr_aton:000000b3 $d
+    {standard input}:184    .text.ip4addr_aton:000000b4 $t
+
+UNDEFINED SYMBOLS
+lwip_htonl

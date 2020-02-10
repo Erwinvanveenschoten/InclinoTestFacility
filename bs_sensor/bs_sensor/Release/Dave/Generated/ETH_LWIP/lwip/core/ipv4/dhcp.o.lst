@@ -1,0 +1,2155 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "dhcp.c"
+  16              	 .section .text.dhcp_set_state,"ax",%progbits
+  17              	 .align 1
+  18              	 .thumb
+  19              	 .thumb_func
+  21              	dhcp_set_state:
+  22              	 
+  23              	 
+  24              	 
+  25 0000 437A     	 ldrb r3,[r0,#9]
+  26 0002 8B42     	 cmp r3,r1
+  27 0004 1FBF     	 itttt ne
+  28 0006 0023     	 movne r3,#0
+  29 0008 4172     	 strbne r1,[r0,#9]
+  30 000a 8372     	 strbne r3,[r0,#10]
+  31 000c C382     	 strhne r3,[r0,#22]
+  32 000e 7047     	 bx lr
+  34              	 .section .text.dhcp_option,"ax",%progbits
+  35              	 .align 1
+  36              	 .thumb
+  37              	 .thumb_func
+  39              	dhcp_option:
+  40              	 
+  41              	 
+  42 0000 838A     	 ldrh r3,[r0,#20]
+  43 0002 30B5     	 push {r4,r5,lr}
+  44 0004 0469     	 ldr r4,[r0,#16]
+  45 0006 5D1C     	 adds r5,r3,#1
+  46 0008 2344     	 add r3,r3,r4
+  47 000a 8582     	 strh r5,[r0,#20]
+  48 000c 83F8F010 	 strb r1,[r3,#240]
+  49 0010 838A     	 ldrh r3,[r0,#20]
+  50 0012 0169     	 ldr r1,[r0,#16]
+  51 0014 5C1C     	 adds r4,r3,#1
+  52 0016 0B44     	 add r3,r3,r1
+  53 0018 8482     	 strh r4,[r0,#20]
+  54 001a 83F8F020 	 strb r2,[r3,#240]
+  55 001e 30BD     	 pop {r4,r5,pc}
+  57              	 .section .text.dhcp_option_short,"ax",%progbits
+  58              	 .align 1
+  59              	 .thumb
+  60              	 .thumb_func
+  62              	dhcp_option_short:
+  63              	 
+  64              	 
+  65 0000 838A     	 ldrh r3,[r0,#20]
+  66 0002 0269     	 ldr r2,[r0,#16]
+  67 0004 10B5     	 push {r4,lr}
+  68 0006 5C1C     	 adds r4,r3,#1
+  69 0008 1344     	 add r3,r3,r2
+  70 000a 0A0A     	 lsrs r2,r1,#8
+  71 000c 8482     	 strh r4,[r0,#20]
+  72 000e 83F8F020 	 strb r2,[r3,#240]
+  73 0012 838A     	 ldrh r3,[r0,#20]
+  74 0014 0269     	 ldr r2,[r0,#16]
+  75 0016 5C1C     	 adds r4,r3,#1
+  76 0018 1344     	 add r3,r3,r2
+  77 001a 8482     	 strh r4,[r0,#20]
+  78 001c 83F8F010 	 strb r1,[r3,#240]
+  79 0020 10BD     	 pop {r4,pc}
+  81              	 .section .text.dhcp_option_long,"ax",%progbits
+  82              	 .align 1
+  83              	 .thumb
+  84              	 .thumb_func
+  86              	dhcp_option_long:
+  87              	 
+  88              	 
+  89 0000 838A     	 ldrh r3,[r0,#20]
+  90 0002 0269     	 ldr r2,[r0,#16]
+  91 0004 10B5     	 push {r4,lr}
+  92 0006 5C1C     	 adds r4,r3,#1
+  93 0008 1344     	 add r3,r3,r2
+  94 000a 0A0E     	 lsrs r2,r1,#24
+  95 000c 8482     	 strh r4,[r0,#20]
+  96 000e 83F8F020 	 strb r2,[r3,#240]
+  97 0012 838A     	 ldrh r3,[r0,#20]
+  98 0014 0269     	 ldr r2,[r0,#16]
+  99 0016 5C1C     	 adds r4,r3,#1
+ 100 0018 1344     	 add r3,r3,r2
+ 101 001a C1F30742 	 ubfx r2,r1,#16,#8
+ 102 001e 8482     	 strh r4,[r0,#20]
+ 103 0020 83F8F020 	 strb r2,[r3,#240]
+ 104 0024 838A     	 ldrh r3,[r0,#20]
+ 105 0026 0269     	 ldr r2,[r0,#16]
+ 106 0028 5C1C     	 adds r4,r3,#1
+ 107 002a 1344     	 add r3,r3,r2
+ 108 002c C1F30722 	 ubfx r2,r1,#8,#8
+ 109 0030 8482     	 strh r4,[r0,#20]
+ 110 0032 83F8F020 	 strb r2,[r3,#240]
+ 111 0036 838A     	 ldrh r3,[r0,#20]
+ 112 0038 0269     	 ldr r2,[r0,#16]
+ 113 003a 5C1C     	 adds r4,r3,#1
+ 114 003c 1344     	 add r3,r3,r2
+ 115 003e 8482     	 strh r4,[r0,#20]
+ 116 0040 83F8F010 	 strb r1,[r3,#240]
+ 117 0044 10BD     	 pop {r4,pc}
+ 119              	 .section .text.dhcp_create_msg,"ax",%progbits
+ 120              	 .align 1
+ 121              	 .thumb
+ 122              	 .thumb_func
+ 124              	dhcp_create_msg:
+ 125              	 
+ 126              	 
+ 127 0000 2DE9F041 	 push {r4,r5,r6,r7,r8,lr}
+ 128 0004 0C46     	 mov r4,r1
+ 129 0006 1646     	 mov r6,r2
+ 130 0008 0746     	 mov r7,r0
+ 131 000a 0028     	 cmp r0,#0
+ 132 000c 00F09880 	 beq .L18
+ 133 0010 0029     	 cmp r1,#0
+ 134 0012 00F09780 	 beq .L19
+ 135 0016 0020     	 movs r0,#0
+ 136 0018 4FF49A71 	 mov r1,#308
+ 137 001c 0246     	 mov r2,r0
+ 138 001e FFF7FEFF 	 bl pbuf_alloc
+ 139 0022 E060     	 str r0,[r4,#12]
+ 140 0024 0028     	 cmp r0,#0
+ 141 0026 00F08F80 	 beq .L20
+ 142 002a 032E     	 cmp r6,#3
+ 143 002c 02D1     	 bne .L8
+ 144 002e 637A     	 ldrb r3,[r4,#9]
+ 145 0030 032B     	 cmp r3,#3
+ 146 0032 07D1     	 bne .L9
+ 147              	.L8:
+ 148 0034 A37A     	 ldrb r3,[r4,#10]
+ 149 0036 464D     	 ldr r5,.L31
+ 150 0038 13B9     	 cbnz r3,.L10
+ 151 003a FFF7FEFF 	 bl rand
+ 152 003e 2860     	 str r0,[r5]
+ 153              	.L10:
+ 154 0040 2B68     	 ldr r3,[r5]
+ 155 0042 2360     	 str r3,[r4]
+ 156              	.L9:
+ 157 0044 E368     	 ldr r3,[r4,#12]
+ 158 0046 5A68     	 ldr r2,[r3,#4]
+ 159 0048 2261     	 str r2,[r4,#16]
+ 160 004a 0123     	 movs r3,#1
+ 161 004c 1370     	 strb r3,[r2]
+ 162 004e 2269     	 ldr r2,[r4,#16]
+ 163 0050 5370     	 strb r3,[r2,#1]
+ 164 0052 2369     	 ldr r3,[r4,#16]
+ 165 0054 97F82C20 	 ldrb r2,[r7,#44]
+ 166 0058 9A70     	 strb r2,[r3,#2]
+ 167 005a 2369     	 ldr r3,[r4,#16]
+ 168 005c 0025     	 movs r5,#0
+ 169 005e DD70     	 strb r5,[r3,#3]
+ 170 0060 2068     	 ldr r0,[r4]
+ 171 0062 D4F81080 	 ldr r8,[r4,#16]
+ 172 0066 FFF7FEFF 	 bl lwip_htonl
+ 173 006a 2369     	 ldr r3,[r4,#16]
+ 174 006c C8F80400 	 str r0,[r8,#4]
+ 175 0070 042E     	 cmp r6,#4
+ 176 0072 1D72     	 strb r5,[r3,#8]
+ 177 0074 5D72     	 strb r5,[r3,#9]
+ 178 0076 9D72     	 strb r5,[r3,#10]
+ 179 0078 DD72     	 strb r5,[r3,#11]
+ 180 007a 1D73     	 strb r5,[r3,#12]
+ 181 007c 5D73     	 strb r5,[r3,#13]
+ 182 007e 9D73     	 strb r5,[r3,#14]
+ 183 0080 DD73     	 strb r5,[r3,#15]
+ 184 0082 08D0     	 beq .L11
+ 185 0084 F21F     	 subs r2,r6,#7
+ 186 0086 012A     	 cmp r2,#1
+ 187 0088 05D9     	 bls .L11
+ 188 008a 032E     	 cmp r6,#3
+ 189 008c 05D1     	 bne .L12
+ 190 008e 627A     	 ldrb r2,[r4,#9]
+ 191 0090 043A     	 subs r2,r2,#4
+ 192 0092 012A     	 cmp r2,#1
+ 193 0094 01D8     	 bhi .L12
+ 194              	.L11:
+ 195 0096 7A68     	 ldr r2,[r7,#4]
+ 196 0098 DA60     	 str r2,[r3,#12]
+ 197              	.L12:
+ 198 009a 0022     	 movs r2,#0
+ 199 009c 1A74     	 strb r2,[r3,#16]
+ 200 009e 5A74     	 strb r2,[r3,#17]
+ 201 00a0 9A74     	 strb r2,[r3,#18]
+ 202 00a2 DA74     	 strb r2,[r3,#19]
+ 203 00a4 1A75     	 strb r2,[r3,#20]
+ 204 00a6 5A75     	 strb r2,[r3,#21]
+ 205 00a8 9A75     	 strb r2,[r3,#22]
+ 206 00aa DA75     	 strb r2,[r3,#23]
+ 207 00ac 1A76     	 strb r2,[r3,#24]
+ 208 00ae 5A76     	 strb r2,[r3,#25]
+ 209 00b0 9A76     	 strb r2,[r3,#26]
+ 210 00b2 DA76     	 strb r2,[r3,#27]
+ 211              	.L14:
+ 212 00b4 97F82C00 	 ldrb r0,[r7,#44]
+ 213 00b8 2369     	 ldr r3,[r4,#16]
+ 214 00ba 91B2     	 uxth r1,r2
+ 215 00bc 8842     	 cmp r0,r1
+ 216 00be 05D9     	 bls .L22
+ 217 00c0 0529     	 cmp r1,#5
+ 218 00c2 03D8     	 bhi .L22
+ 219 00c4 B918     	 adds r1,r7,r2
+ 220 00c6 91F82D10 	 ldrb r1,[r1,#45]
+ 221 00ca 00E0     	 b .L13
+ 222              	.L22:
+ 223 00cc 0021     	 movs r1,#0
+ 224              	.L13:
+ 225 00ce 1344     	 add r3,r3,r2
+ 226 00d0 0132     	 adds r2,r2,#1
+ 227 00d2 102A     	 cmp r2,#16
+ 228 00d4 1977     	 strb r1,[r3,#28]
+ 229 00d6 EDD1     	 bne .L14
+ 230 00d8 0023     	 movs r3,#0
+ 231              	.L15:
+ 232 00da 2269     	 ldr r2,[r4,#16]
+ 233 00dc D118     	 adds r1,r2,r3
+ 234 00de 0133     	 adds r3,r3,#1
+ 235 00e0 0022     	 movs r2,#0
+ 236 00e2 402B     	 cmp r3,#64
+ 237 00e4 81F82C20 	 strb r2,[r1,#44]
+ 238 00e8 F7D1     	 bne .L15
+ 239              	.L16:
+ 240 00ea 2369     	 ldr r3,[r4,#16]
+ 241 00ec 9918     	 adds r1,r3,r2
+ 242 00ee 0132     	 adds r2,r2,#1
+ 243 00f0 0023     	 movs r3,#0
+ 244 00f2 802A     	 cmp r2,#128
+ 245 00f4 81F86C30 	 strb r3,[r1,#108]
+ 246 00f8 F7D1     	 bne .L16
+ 247 00fa 2269     	 ldr r2,[r4,#16]
+ 248 00fc 6FF07D00 	 mvn r0,#125
+ 249 0100 6321     	 movs r1,#99
+ 250 0102 82F8ED00 	 strb r0,[r2,#237]
+ 251 0106 5320     	 movs r0,#83
+ 252 0108 82F8EC10 	 strb r1,[r2,#236]
+ 253 010c 82F8EE00 	 strb r0,[r2,#238]
+ 254 0110 82F8EF10 	 strb r1,[r2,#239]
+ 255 0114 A382     	 strh r3,[r4,#20]
+ 256              	.L17:
+ 257 0116 2269     	 ldr r2,[r4,#16]
+ 258 0118 1A44     	 add r2,r2,r3
+ 259 011a 82F8F030 	 strb r3,[r2,#240]
+ 260 011e 0133     	 adds r3,r3,#1
+ 261 0120 442B     	 cmp r3,#68
+ 262 0122 F8D1     	 bne .L17
+ 263 0124 2046     	 mov r0,r4
+ 264 0126 3521     	 movs r1,#53
+ 265 0128 0122     	 movs r2,#1
+ 266 012a FFF7FEFF 	 bl dhcp_option
+ 267 012e A38A     	 ldrh r3,[r4,#20]
+ 268 0130 2269     	 ldr r2,[r4,#16]
+ 269 0132 591C     	 adds r1,r3,#1
+ 270 0134 1344     	 add r3,r3,r2
+ 271 0136 A182     	 strh r1,[r4,#20]
+ 272 0138 0020     	 movs r0,#0
+ 273 013a 83F8F060 	 strb r6,[r3,#240]
+ 274 013e 04E0     	 b .L7
+ 275              	.L18:
+ 276 0140 F020     	 movs r0,#240
+ 277 0142 02E0     	 b .L7
+ 278              	.L19:
+ 279 0144 FA20     	 movs r0,#250
+ 280 0146 00E0     	 b .L7
+ 281              	.L20:
+ 282 0148 FF20     	 movs r0,#255
+ 283              	.L7:
+ 284 014a 40B2     	 sxtb r0,r0
+ 285 014c BDE8F081 	 pop {r4,r5,r6,r7,r8,pc}
+ 286              	.L32:
+ 287              	 .align 2
+ 288              	.L31:
+ 289 0150 00000000 	 .word .LANCHOR0
+ 291              	 .section .text.dhcp_delete_msg,"ax",%progbits
+ 292              	 .align 1
+ 293              	 .thumb
+ 294              	 .thumb_func
+ 296              	dhcp_delete_msg:
+ 297              	 
+ 298              	 
+ 299 0000 10B5     	 push {r4,lr}
+ 300 0002 0446     	 mov r4,r0
+ 301 0004 30B1     	 cbz r0,.L33
+ 302 0006 C068     	 ldr r0,[r0,#12]
+ 303 0008 08B1     	 cbz r0,.L35
+ 304 000a FFF7FEFF 	 bl pbuf_free
+ 305              	.L35:
+ 306 000e 0023     	 movs r3,#0
+ 307 0010 E360     	 str r3,[r4,#12]
+ 308 0012 2361     	 str r3,[r4,#16]
+ 309              	.L33:
+ 310 0014 10BD     	 pop {r4,pc}
+ 312              	 .section .text.dhcp_check,"ax",%progbits
+ 313              	 .align 1
+ 314              	 .thumb
+ 315              	 .thumb_func
+ 317              	dhcp_check:
+ 318              	 
+ 319              	 
+ 320 0000 38B5     	 push {r3,r4,r5,lr}
+ 321 0002 446A     	 ldr r4,[r0,#36]
+ 322 0004 0546     	 mov r5,r0
+ 323 0006 0821     	 movs r1,#8
+ 324 0008 2046     	 mov r0,r4
+ 325 000a FFF7FEFF 	 bl dhcp_set_state
+ 326 000e 2846     	 mov r0,r5
+ 327 0010 04F12801 	 add r1,r4,#40
+ 328 0014 0022     	 movs r2,#0
+ 329 0016 FFF7FEFF 	 bl etharp_query
+ 330 001a A37A     	 ldrb r3,[r4,#10]
+ 331 001c FF2B     	 cmp r3,#255
+ 332 001e 1CBF     	 itt ne
+ 333 0020 0133     	 addne r3,r3,#1
+ 334 0022 A372     	 strbne r3,[r4,#10]
+ 335 0024 0123     	 movs r3,#1
+ 336 0026 E382     	 strh r3,[r4,#22]
+ 337 0028 38BD     	 pop {r3,r4,r5,pc}
+ 339              	 .section .text.dhcp_bind,"ax",%progbits
+ 340              	 .align 1
+ 341              	 .thumb
+ 342              	 .thumb_func
+ 344              	dhcp_bind:
+ 345              	 
+ 346              	 
+ 347 0000 37B5     	 push {r0,r1,r2,r4,r5,lr}
+ 348 0002 0546     	 mov r5,r0
+ 349 0004 0028     	 cmp r0,#0
+ 350 0006 61D0     	 beq .L47
+ 351 0008 446A     	 ldr r4,[r0,#36]
+ 352 000a 002C     	 cmp r4,#0
+ 353 000c 5ED0     	 beq .L47
+ 354 000e 0023     	 movs r3,#0
+ 355 0010 2384     	 strh r3,[r4,#32]
+ 356 0012 636B     	 ldr r3,[r4,#52]
+ 357 0014 5A1C     	 adds r2,r3,#1
+ 358 0016 0BD0     	 beq .L50
+ 359 0018 3C22     	 movs r2,#60
+ 360 001a 1E33     	 adds r3,r3,#30
+ 361 001c B3FBF2F3 	 udiv r3,r3,r2
+ 362 0020 4FF6FF72 	 movw r2,#65535
+ 363 0024 9342     	 cmp r3,r2
+ 364 0026 28BF     	 it cs
+ 365 0028 1346     	 movcs r3,r2
+ 366 002a 03B9     	 cbnz r3,.L81
+ 367 002c 0123     	 movs r3,#1
+ 368              	.L81:
+ 369 002e 6384     	 strh r3,[r4,#34]
+ 370              	.L50:
+ 371 0030 A36B     	 ldr r3,[r4,#56]
+ 372 0032 581C     	 adds r0,r3,#1
+ 373 0034 0DD0     	 beq .L53
+ 374 0036 3C22     	 movs r2,#60
+ 375 0038 1E33     	 adds r3,r3,#30
+ 376 003a B3FBF2F3 	 udiv r3,r3,r2
+ 377 003e 4FF6FF72 	 movw r2,#65535
+ 378 0042 9342     	 cmp r3,r2
+ 379 0044 28BF     	 it cs
+ 380 0046 1346     	 movcs r3,r2
+ 381 0048 03B9     	 cbnz r3,.L82
+ 382 004a 0123     	 movs r3,#1
+ 383              	.L82:
+ 384 004c 2383     	 strh r3,[r4,#24]
+ 385 004e 238B     	 ldrh r3,[r4,#24]
+ 386 0050 A383     	 strh r3,[r4,#28]
+ 387              	.L53:
+ 388 0052 E36B     	 ldr r3,[r4,#60]
+ 389 0054 591C     	 adds r1,r3,#1
+ 390 0056 0DD0     	 beq .L56
+ 391 0058 3C22     	 movs r2,#60
+ 392 005a 1E33     	 adds r3,r3,#30
+ 393 005c B3FBF2F3 	 udiv r3,r3,r2
+ 394 0060 4FF6FF72 	 movw r2,#65535
+ 395 0064 9342     	 cmp r3,r2
+ 396 0066 28BF     	 it cs
+ 397 0068 1346     	 movcs r3,r2
+ 398 006a 03B9     	 cbnz r3,.L83
+ 399 006c 0123     	 movs r3,#1
+ 400              	.L83:
+ 401 006e 6383     	 strh r3,[r4,#26]
+ 402 0070 638B     	 ldrh r3,[r4,#26]
+ 403 0072 E383     	 strh r3,[r4,#30]
+ 404              	.L56:
+ 405 0074 638B     	 ldrh r3,[r4,#26]
+ 406 0076 228B     	 ldrh r2,[r4,#24]
+ 407 0078 9A42     	 cmp r2,r3
+ 408 007a 02D3     	 bcc .L59
+ 409 007c 0BB1     	 cbz r3,.L59
+ 410 007e 0023     	 movs r3,#0
+ 411 0080 2383     	 strh r3,[r4,#24]
+ 412              	.L59:
+ 413 0082 E37A     	 ldrb r3,[r4,#11]
+ 414 0084 0BB1     	 cbz r3,.L60
+ 415 0086 E36A     	 ldr r3,[r4,#44]
+ 416 0088 0BE0     	 b .L84
+ 417              	.L60:
+ 418 008a 94F82830 	 ldrb r3,[r4,#40]
+ 419 008e 1A06     	 lsls r2,r3,#24
+ 420 0090 01D4     	 bmi .L62
+ 421 0092 FF23     	 movs r3,#255
+ 422 0094 05E0     	 b .L84
+ 423              	.L62:
+ 424 0096 BF2B     	 cmp r3,#191
+ 425 0098 8CBF     	 ite hi
+ 426 009a 6FF07F43 	 mvnhi r3,#-16777216
+ 427 009e 4FF6FF73 	 movwls r3,#65535
+ 428              	.L84:
+ 429 00a2 0093     	 str r3,[sp]
+ 430 00a4 236B     	 ldr r3,[r4,#48]
+ 431 00a6 0193     	 str r3,[sp,#4]
+ 432 00a8 2BB9     	 cbnz r3,.L64
+ 433 00aa A36A     	 ldr r3,[r4,#40]
+ 434 00ac 009A     	 ldr r2,[sp]
+ 435 00ae 1340     	 ands r3,r3,r2
+ 436 00b0 43F08073 	 orr r3,r3,#16777216
+ 437 00b4 0193     	 str r3,[sp,#4]
+ 438              	.L64:
+ 439 00b6 2046     	 mov r0,r4
+ 440 00b8 0A21     	 movs r1,#10
+ 441 00ba FFF7FEFF 	 bl dhcp_set_state
+ 442 00be 2846     	 mov r0,r5
+ 443 00c0 04F12801 	 add r1,r4,#40
+ 444 00c4 6A46     	 mov r2,sp
+ 445 00c6 01AB     	 add r3,sp,#4
+ 446 00c8 FFF7FEFF 	 bl netif_set_addr
+ 447              	.L47:
+ 448 00cc 03B0     	 add sp,sp,#12
+ 449              	 
+ 450 00ce 30BD     	 pop {r4,r5,pc}
+ 452              	 .section .text.dhcp_inc_pcb_refcount,"ax",%progbits
+ 453              	 .align 1
+ 454              	 .thumb
+ 455              	 .thumb_func
+ 457              	dhcp_inc_pcb_refcount:
+ 458              	 
+ 459              	 
+ 460 0000 70B5     	 push {r4,r5,r6,lr}
+ 461 0002 114C     	 ldr r4,.L89
+ 462 0004 2678     	 ldrb r6,[r4]
+ 463 0006 B6B9     	 cbnz r6,.L86
+ 464 0008 FFF7FEFF 	 bl udp_new
+ 465 000c 0F4D     	 ldr r5,.L89+4
+ 466 000e 2860     	 str r0,[r5]
+ 467 0010 B0B1     	 cbz r0,.L88
+ 468 0012 027A     	 ldrb r2,[r0,#8]
+ 469 0014 0E49     	 ldr r1,.L89+8
+ 470 0016 42F02002 	 orr r2,r2,#32
+ 471 001a 0272     	 strb r2,[r0,#8]
+ 472 001c 4422     	 movs r2,#68
+ 473 001e FFF7FEFF 	 bl udp_bind
+ 474 0022 0B49     	 ldr r1,.L89+8
+ 475 0024 2868     	 ldr r0,[r5]
+ 476 0026 4322     	 movs r2,#67
+ 477 0028 FFF7FEFF 	 bl udp_connect
+ 478 002c 2868     	 ldr r0,[r5]
+ 479 002e 0949     	 ldr r1,.L89+12
+ 480 0030 3246     	 mov r2,r6
+ 481 0032 FFF7FEFF 	 bl udp_recv
+ 482              	.L86:
+ 483 0036 2378     	 ldrb r3,[r4]
+ 484 0038 0133     	 adds r3,r3,#1
+ 485 003a 2370     	 strb r3,[r4]
+ 486 003c 0020     	 movs r0,#0
+ 487 003e 00E0     	 b .L87
+ 488              	.L88:
+ 489 0040 FF20     	 movs r0,#255
+ 490              	.L87:
+ 491 0042 40B2     	 sxtb r0,r0
+ 492 0044 70BD     	 pop {r4,r5,r6,pc}
+ 493              	.L90:
+ 494 0046 00BF     	 .align 2
+ 495              	.L89:
+ 496 0048 00000000 	 .word .LANCHOR1
+ 497 004c 00000000 	 .word .LANCHOR2
+ 498 0050 00000000 	 .word ip_addr_any
+ 499 0054 00000000 	 .word dhcp_recv
+ 501              	 .section .text.dhcp_option_trailer,"ax",%progbits
+ 502              	 .align 1
+ 503              	 .thumb
+ 504              	 .thumb_func
+ 506              	dhcp_option_trailer:
+ 507              	 
+ 508              	 
+ 509              	 
+ 510 0000 80B1     	 cbz r0,.L91
+ 511 0002 838A     	 ldrh r3,[r0,#20]
+ 512 0004 0269     	 ldr r2,[r0,#16]
+ 513 0006 591C     	 adds r1,r3,#1
+ 514 0008 8182     	 strh r1,[r0,#20]
+ 515 000a 1344     	 add r3,r3,r2
+ 516 000c FF22     	 movs r2,#255
+ 517              	.L96:
+ 518 000e 83F8F020 	 strb r2,[r3,#240]
+ 519 0012 838A     	 ldrh r3,[r0,#20]
+ 520 0014 432B     	 cmp r3,#67
+ 521 0016 05D8     	 bhi .L91
+ 522 0018 0269     	 ldr r2,[r0,#16]
+ 523 001a 591C     	 adds r1,r3,#1
+ 524 001c 8182     	 strh r1,[r0,#20]
+ 525 001e 1344     	 add r3,r3,r2
+ 526 0020 0022     	 movs r2,#0
+ 527 0022 F4E7     	 b .L96
+ 528              	.L91:
+ 529 0024 7047     	 bx lr
+ 531              	 .section .text.unlikely.dhcp_handle_ack.isra.1,"ax",%progbits
+ 532              	 .align 1
+ 533              	 .thumb
+ 534              	 .thumb_func
+ 536              	dhcp_handle_ack.isra.1:
+ 537              	 
+ 538              	 
+ 539 0000 38B5     	 push {r3,r4,r5,lr}
+ 540 0002 184D     	 ldr r5,.L114
+ 541 0004 0023     	 movs r3,#0
+ 542 0006 C362     	 str r3,[r0,#44]
+ 543 0008 0363     	 str r3,[r0,#48]
+ 544 000a EB78     	 ldrb r3,[r5,#3]
+ 545 000c 0446     	 mov r4,r0
+ 546 000e 13B1     	 cbz r3,.L98
+ 547 0010 154B     	 ldr r3,.L114+4
+ 548 0012 DB68     	 ldr r3,[r3,#12]
+ 549 0014 4363     	 str r3,[r0,#52]
+ 550              	.L98:
+ 551 0016 2B79     	 ldrb r3,[r5,#4]
+ 552 0018 13B1     	 cbz r3,.L99
+ 553 001a 134B     	 ldr r3,.L114+4
+ 554 001c 1B69     	 ldr r3,[r3,#16]
+ 555 001e 01E0     	 b .L112
+ 556              	.L99:
+ 557 0020 636B     	 ldr r3,[r4,#52]
+ 558 0022 5B08     	 lsrs r3,r3,#1
+ 559              	.L112:
+ 560 0024 A363     	 str r3,[r4,#56]
+ 561 0026 6B79     	 ldrb r3,[r5,#5]
+ 562 0028 13B1     	 cbz r3,.L101
+ 563 002a 0F4B     	 ldr r3,.L114+4
+ 564 002c 5B69     	 ldr r3,[r3,#20]
+ 565 002e 03E0     	 b .L113
+ 566              	.L101:
+ 567 0030 636B     	 ldr r3,[r4,#52]
+ 568 0032 C3EBC303 	 rsb r3,r3,r3,lsl#3
+ 569 0036 DB08     	 lsrs r3,r3,#3
+ 570              	.L113:
+ 571 0038 E363     	 str r3,[r4,#60]
+ 572 003a 6368     	 ldr r3,[r4,#4]
+ 573 003c 1B69     	 ldr r3,[r3,#16]
+ 574 003e A362     	 str r3,[r4,#40]
+ 575 0040 AB79     	 ldrb r3,[r5,#6]
+ 576 0042 2BB1     	 cbz r3,.L103
+ 577 0044 084B     	 ldr r3,.L114+4
+ 578 0046 9869     	 ldr r0,[r3,#24]
+ 579 0048 FFF7FEFF 	 bl lwip_htonl
+ 580 004c 0123     	 movs r3,#1
+ 581 004e E062     	 str r0,[r4,#44]
+ 582              	.L103:
+ 583 0050 E372     	 strb r3,[r4,#11]
+ 584 0052 EB79     	 ldrb r3,[r5,#7]
+ 585 0054 23B1     	 cbz r3,.L97
+ 586 0056 044B     	 ldr r3,.L114+4
+ 587 0058 D869     	 ldr r0,[r3,#28]
+ 588 005a FFF7FEFF 	 bl lwip_htonl
+ 589 005e 2063     	 str r0,[r4,#48]
+ 590              	.L97:
+ 591 0060 38BD     	 pop {r3,r4,r5,pc}
+ 592              	.L115:
+ 593 0062 00BF     	 .align 2
+ 594              	.L114:
+ 595 0064 00000000 	 .word dhcp_rx_options_given
+ 596 0068 00000000 	 .word dhcp_rx_options_val
+ 598              	 .section .text.dhcp_dec_pcb_refcount,"ax",%progbits
+ 599              	 .align 1
+ 600              	 .thumb
+ 601              	 .thumb_func
+ 603              	dhcp_dec_pcb_refcount:
+ 604              	 
+ 605              	 
+ 606 0000 38B5     	 push {r3,r4,r5,lr}
+ 607 0002 064B     	 ldr r3,.L118
+ 608 0004 1C78     	 ldrb r4,[r3]
+ 609 0006 013C     	 subs r4,r4,#1
+ 610 0008 E4B2     	 uxtb r4,r4
+ 611 000a 1C70     	 strb r4,[r3]
+ 612 000c 24B9     	 cbnz r4,.L116
+ 613 000e 044D     	 ldr r5,.L118+4
+ 614 0010 2868     	 ldr r0,[r5]
+ 615 0012 FFF7FEFF 	 bl udp_remove
+ 616 0016 2C60     	 str r4,[r5]
+ 617              	.L116:
+ 618 0018 38BD     	 pop {r3,r4,r5,pc}
+ 619              	.L119:
+ 620 001a 00BF     	 .align 2
+ 621              	.L118:
+ 622 001c 00000000 	 .word .LANCHOR1
+ 623 0020 00000000 	 .word .LANCHOR2
+ 625              	 .section .text.dhcp_discover,"ax",%progbits
+ 626              	 .align 1
+ 627              	 .thumb
+ 628              	 .thumb_func
+ 630              	dhcp_discover:
+ 631              	 
+ 632              	 
+ 633 0000 73B5     	 push {r0,r1,r4,r5,r6,lr}
+ 634 0002 446A     	 ldr r4,[r0,#36]
+ 635 0004 0023     	 movs r3,#0
+ 636 0006 0646     	 mov r6,r0
+ 637 0008 A362     	 str r3,[r4,#40]
+ 638 000a 2046     	 mov r0,r4
+ 639 000c 0621     	 movs r1,#6
+ 640 000e FFF7FEFF 	 bl dhcp_set_state
+ 641 0012 3046     	 mov r0,r6
+ 642 0014 2146     	 mov r1,r4
+ 643 0016 0122     	 movs r2,#1
+ 644 0018 FFF7FEFF 	 bl dhcp_create_msg
+ 645 001c 0546     	 mov r5,r0
+ 646 001e 0028     	 cmp r0,#0
+ 647 0020 3BD1     	 bne .L121
+ 648 0022 0222     	 movs r2,#2
+ 649 0024 2046     	 mov r0,r4
+ 650 0026 3921     	 movs r1,#57
+ 651 0028 FFF7FEFF 	 bl dhcp_option
+ 652 002c 2046     	 mov r0,r4
+ 653 002e 718D     	 ldrh r1,[r6,#42]
+ 654 0030 FFF7FEFF 	 bl dhcp_option_short
+ 655 0034 2046     	 mov r0,r4
+ 656 0036 3721     	 movs r1,#55
+ 657 0038 0322     	 movs r2,#3
+ 658 003a FFF7FEFF 	 bl dhcp_option
+ 659 003e A38A     	 ldrh r3,[r4,#20]
+ 660 0040 2269     	 ldr r2,[r4,#16]
+ 661 0042 591C     	 adds r1,r3,#1
+ 662 0044 1344     	 add r3,r3,r2
+ 663 0046 0122     	 movs r2,#1
+ 664 0048 A182     	 strh r1,[r4,#20]
+ 665 004a 83F8F020 	 strb r2,[r3,#240]
+ 666 004e A38A     	 ldrh r3,[r4,#20]
+ 667 0050 2269     	 ldr r2,[r4,#16]
+ 668 0052 591C     	 adds r1,r3,#1
+ 669 0054 1344     	 add r3,r3,r2
+ 670 0056 0322     	 movs r2,#3
+ 671 0058 A182     	 strh r1,[r4,#20]
+ 672 005a 83F8F020 	 strb r2,[r3,#240]
+ 673 005e A38A     	 ldrh r3,[r4,#20]
+ 674 0060 2269     	 ldr r2,[r4,#16]
+ 675 0062 591C     	 adds r1,r3,#1
+ 676 0064 1344     	 add r3,r3,r2
+ 677 0066 1C22     	 movs r2,#28
+ 678 0068 A182     	 strh r1,[r4,#20]
+ 679 006a 2046     	 mov r0,r4
+ 680 006c 83F8F020 	 strb r2,[r3,#240]
+ 681 0070 FFF7FEFF 	 bl dhcp_option_trailer
+ 682 0074 A18A     	 ldrh r1,[r4,#20]
+ 683 0076 E068     	 ldr r0,[r4,#12]
+ 684 0078 F031     	 adds r1,r1,#240
+ 685 007a 89B2     	 uxth r1,r1
+ 686 007c FFF7FEFF 	 bl pbuf_realloc
+ 687 0080 124B     	 ldr r3,.L128
+ 688 0082 0193     	 str r3,[sp,#4]
+ 689 0084 124B     	 ldr r3,.L128+4
+ 690 0086 0096     	 str r6,[sp]
+ 691 0088 1868     	 ldr r0,[r3]
+ 692 008a E168     	 ldr r1,[r4,#12]
+ 693 008c 114A     	 ldr r2,.L128+8
+ 694 008e 4323     	 movs r3,#67
+ 695 0090 FFF7FEFF 	 bl udp_sendto_if_src
+ 696 0094 2046     	 mov r0,r4
+ 697 0096 FFF7FEFF 	 bl dhcp_delete_msg
+ 698              	.L121:
+ 699 009a A37A     	 ldrb r3,[r4,#10]
+ 700 009c FF2B     	 cmp r3,#255
+ 701 009e 1CBF     	 itt ne
+ 702 00a0 0133     	 addne r3,r3,#1
+ 703 00a2 A372     	 strbne r3,[r4,#10]
+ 704 00a4 A27A     	 ldrb r2,[r4,#10]
+ 705 00a6 052A     	 cmp r2,#5
+ 706 00a8 9DBF     	 ittte ls
+ 707 00aa 4FF47A73 	 movls r3,#1000
+ 708 00ae 9340     	 lslls r3,r3,r2
+ 709 00b0 9BB2     	 uxthls r3,r3
+ 710 00b2 4EF66023 	 movwhi r3,#60000
+ 711 00b6 4FF4FA72 	 mov r2,#500
+ 712 00ba 2846     	 mov r0,r5
+ 713 00bc 03F2F313 	 addw r3,r3,#499
+ 714 00c0 93FBF2F3 	 sdiv r3,r3,r2
+ 715 00c4 E382     	 strh r3,[r4,#22]
+ 716 00c6 02B0     	 add sp,sp,#8
+ 717              	 
+ 718 00c8 70BD     	 pop {r4,r5,r6,pc}
+ 719              	.L129:
+ 720 00ca 00BF     	 .align 2
+ 721              	.L128:
+ 722 00cc 00000000 	 .word ip_addr_any
+ 723 00d0 00000000 	 .word .LANCHOR2
+ 724 00d4 00000000 	 .word ip_addr_broadcast
+ 726              	 .section .text.dhcp_reboot,"ax",%progbits
+ 727              	 .align 1
+ 728              	 .thumb
+ 729              	 .thumb_func
+ 731              	dhcp_reboot:
+ 732              	 
+ 733              	 
+ 734 0000 73B5     	 push {r0,r1,r4,r5,r6,lr}
+ 735 0002 446A     	 ldr r4,[r0,#36]
+ 736 0004 0646     	 mov r6,r0
+ 737 0006 0321     	 movs r1,#3
+ 738 0008 2046     	 mov r0,r4
+ 739 000a FFF7FEFF 	 bl dhcp_set_state
+ 740 000e 3046     	 mov r0,r6
+ 741 0010 2146     	 mov r1,r4
+ 742 0012 0322     	 movs r2,#3
+ 743 0014 FFF7FEFF 	 bl dhcp_create_msg
+ 744 0018 0546     	 mov r5,r0
+ 745 001a 0028     	 cmp r0,#0
+ 746 001c 46D1     	 bne .L131
+ 747 001e 0222     	 movs r2,#2
+ 748 0020 2046     	 mov r0,r4
+ 749 0022 3921     	 movs r1,#57
+ 750 0024 FFF7FEFF 	 bl dhcp_option
+ 751 0028 2046     	 mov r0,r4
+ 752 002a 4FF41071 	 mov r1,#576
+ 753 002e FFF7FEFF 	 bl dhcp_option_short
+ 754 0032 0422     	 movs r2,#4
+ 755 0034 3221     	 movs r1,#50
+ 756 0036 2046     	 mov r0,r4
+ 757 0038 FFF7FEFF 	 bl dhcp_option
+ 758 003c A06A     	 ldr r0,[r4,#40]
+ 759 003e FFF7FEFF 	 bl lwip_htonl
+ 760 0042 0146     	 mov r1,r0
+ 761 0044 2046     	 mov r0,r4
+ 762 0046 FFF7FEFF 	 bl dhcp_option_long
+ 763 004a 2046     	 mov r0,r4
+ 764 004c 3721     	 movs r1,#55
+ 765 004e 0322     	 movs r2,#3
+ 766 0050 FFF7FEFF 	 bl dhcp_option
+ 767 0054 A38A     	 ldrh r3,[r4,#20]
+ 768 0056 2269     	 ldr r2,[r4,#16]
+ 769 0058 591C     	 adds r1,r3,#1
+ 770 005a 1344     	 add r3,r3,r2
+ 771 005c 0122     	 movs r2,#1
+ 772 005e A182     	 strh r1,[r4,#20]
+ 773 0060 83F8F020 	 strb r2,[r3,#240]
+ 774 0064 A38A     	 ldrh r3,[r4,#20]
+ 775 0066 2269     	 ldr r2,[r4,#16]
+ 776 0068 591C     	 adds r1,r3,#1
+ 777 006a 1344     	 add r3,r3,r2
+ 778 006c 0322     	 movs r2,#3
+ 779 006e A182     	 strh r1,[r4,#20]
+ 780 0070 83F8F020 	 strb r2,[r3,#240]
+ 781 0074 A38A     	 ldrh r3,[r4,#20]
+ 782 0076 2269     	 ldr r2,[r4,#16]
+ 783 0078 591C     	 adds r1,r3,#1
+ 784 007a 1344     	 add r3,r3,r2
+ 785 007c 1C22     	 movs r2,#28
+ 786 007e A182     	 strh r1,[r4,#20]
+ 787 0080 2046     	 mov r0,r4
+ 788 0082 83F8F020 	 strb r2,[r3,#240]
+ 789 0086 FFF7FEFF 	 bl dhcp_option_trailer
+ 790 008a A18A     	 ldrh r1,[r4,#20]
+ 791 008c E068     	 ldr r0,[r4,#12]
+ 792 008e F031     	 adds r1,r1,#240
+ 793 0090 89B2     	 uxth r1,r1
+ 794 0092 FFF7FEFF 	 bl pbuf_realloc
+ 795 0096 134B     	 ldr r3,.L138
+ 796 0098 0096     	 str r6,[sp]
+ 797 009a 1868     	 ldr r0,[r3]
+ 798 009c E168     	 ldr r1,[r4,#12]
+ 799 009e 124A     	 ldr r2,.L138+4
+ 800 00a0 4323     	 movs r3,#67
+ 801 00a2 FFF7FEFF 	 bl udp_sendto_if
+ 802 00a6 2046     	 mov r0,r4
+ 803 00a8 FFF7FEFF 	 bl dhcp_delete_msg
+ 804              	.L131:
+ 805 00ac A37A     	 ldrb r3,[r4,#10]
+ 806 00ae FF2B     	 cmp r3,#255
+ 807 00b0 1CBF     	 itt ne
+ 808 00b2 0133     	 addne r3,r3,#1
+ 809 00b4 A372     	 strbne r3,[r4,#10]
+ 810 00b6 A37A     	 ldrb r3,[r4,#10]
+ 811 00b8 092B     	 cmp r3,#9
+ 812 00ba 9FBF     	 itttt ls
+ 813 00bc C3EB4312 	 rsbls r2,r3,r3,lsl#5
+ 814 00c0 03EB8203 	 addls r3,r3,r2,lsl#2
+ 815 00c4 DB00     	 lslls r3,r3,#3
+ 816 00c6 9BB2     	 uxthls r3,r3
+ 817 00c8 88BF     	 it hi
+ 818 00ca 42F21073 	 movwhi r3,#10000
+ 819 00ce 4FF4FA72 	 mov r2,#500
+ 820 00d2 2846     	 mov r0,r5
+ 821 00d4 03F2F313 	 addw r3,r3,#499
+ 822 00d8 93FBF2F3 	 sdiv r3,r3,r2
+ 823 00dc E382     	 strh r3,[r4,#22]
+ 824 00de 02B0     	 add sp,sp,#8
+ 825              	 
+ 826 00e0 70BD     	 pop {r4,r5,r6,pc}
+ 827              	.L139:
+ 828 00e2 00BF     	 .align 2
+ 829              	.L138:
+ 830 00e4 00000000 	 .word .LANCHOR2
+ 831 00e8 00000000 	 .word ip_addr_broadcast
+ 833              	 .section .text.dhcp_select,"ax",%progbits
+ 834              	 .align 1
+ 835              	 .thumb
+ 836              	 .thumb_func
+ 838              	dhcp_select:
+ 839              	 
+ 840              	 
+ 841 0000 73B5     	 push {r0,r1,r4,r5,r6,lr}
+ 842 0002 446A     	 ldr r4,[r0,#36]
+ 843 0004 0646     	 mov r6,r0
+ 844 0006 0121     	 movs r1,#1
+ 845 0008 2046     	 mov r0,r4
+ 846 000a FFF7FEFF 	 bl dhcp_set_state
+ 847 000e 3046     	 mov r0,r6
+ 848 0010 2146     	 mov r1,r4
+ 849 0012 0322     	 movs r2,#3
+ 850 0014 FFF7FEFF 	 bl dhcp_create_msg
+ 851 0018 0546     	 mov r5,r0
+ 852 001a 0028     	 cmp r0,#0
+ 853 001c 53D1     	 bne .L141
+ 854 001e 0222     	 movs r2,#2
+ 855 0020 2046     	 mov r0,r4
+ 856 0022 3921     	 movs r1,#57
+ 857 0024 FFF7FEFF 	 bl dhcp_option
+ 858 0028 2046     	 mov r0,r4
+ 859 002a 718D     	 ldrh r1,[r6,#42]
+ 860 002c FFF7FEFF 	 bl dhcp_option_short
+ 861 0030 0422     	 movs r2,#4
+ 862 0032 3221     	 movs r1,#50
+ 863 0034 2046     	 mov r0,r4
+ 864 0036 FFF7FEFF 	 bl dhcp_option
+ 865 003a A06A     	 ldr r0,[r4,#40]
+ 866 003c FFF7FEFF 	 bl lwip_htonl
+ 867 0040 0146     	 mov r1,r0
+ 868 0042 2046     	 mov r0,r4
+ 869 0044 FFF7FEFF 	 bl dhcp_option_long
+ 870 0048 0422     	 movs r2,#4
+ 871 004a 3621     	 movs r1,#54
+ 872 004c 2046     	 mov r0,r4
+ 873 004e FFF7FEFF 	 bl dhcp_option
+ 874 0052 606A     	 ldr r0,[r4,#36]
+ 875 0054 FFF7FEFF 	 bl lwip_htonl
+ 876 0058 0146     	 mov r1,r0
+ 877 005a 2046     	 mov r0,r4
+ 878 005c FFF7FEFF 	 bl dhcp_option_long
+ 879 0060 2046     	 mov r0,r4
+ 880 0062 3721     	 movs r1,#55
+ 881 0064 0322     	 movs r2,#3
+ 882 0066 FFF7FEFF 	 bl dhcp_option
+ 883 006a A38A     	 ldrh r3,[r4,#20]
+ 884 006c 2269     	 ldr r2,[r4,#16]
+ 885 006e 591C     	 adds r1,r3,#1
+ 886 0070 1344     	 add r3,r3,r2
+ 887 0072 0122     	 movs r2,#1
+ 888 0074 A182     	 strh r1,[r4,#20]
+ 889 0076 83F8F020 	 strb r2,[r3,#240]
+ 890 007a A38A     	 ldrh r3,[r4,#20]
+ 891 007c 2269     	 ldr r2,[r4,#16]
+ 892 007e 591C     	 adds r1,r3,#1
+ 893 0080 1344     	 add r3,r3,r2
+ 894 0082 0322     	 movs r2,#3
+ 895 0084 A182     	 strh r1,[r4,#20]
+ 896 0086 83F8F020 	 strb r2,[r3,#240]
+ 897 008a A38A     	 ldrh r3,[r4,#20]
+ 898 008c 2269     	 ldr r2,[r4,#16]
+ 899 008e 591C     	 adds r1,r3,#1
+ 900 0090 1344     	 add r3,r3,r2
+ 901 0092 1C22     	 movs r2,#28
+ 902 0094 A182     	 strh r1,[r4,#20]
+ 903 0096 2046     	 mov r0,r4
+ 904 0098 83F8F020 	 strb r2,[r3,#240]
+ 905 009c FFF7FEFF 	 bl dhcp_option_trailer
+ 906 00a0 A18A     	 ldrh r1,[r4,#20]
+ 907 00a2 E068     	 ldr r0,[r4,#12]
+ 908 00a4 F031     	 adds r1,r1,#240
+ 909 00a6 89B2     	 uxth r1,r1
+ 910 00a8 FFF7FEFF 	 bl pbuf_realloc
+ 911 00ac 124B     	 ldr r3,.L148
+ 912 00ae 0193     	 str r3,[sp,#4]
+ 913 00b0 124B     	 ldr r3,.L148+4
+ 914 00b2 0096     	 str r6,[sp]
+ 915 00b4 1868     	 ldr r0,[r3]
+ 916 00b6 E168     	 ldr r1,[r4,#12]
+ 917 00b8 114A     	 ldr r2,.L148+8
+ 918 00ba 4323     	 movs r3,#67
+ 919 00bc FFF7FEFF 	 bl udp_sendto_if_src
+ 920 00c0 2046     	 mov r0,r4
+ 921 00c2 FFF7FEFF 	 bl dhcp_delete_msg
+ 922              	.L141:
+ 923 00c6 A37A     	 ldrb r3,[r4,#10]
+ 924 00c8 FF2B     	 cmp r3,#255
+ 925 00ca 1CBF     	 itt ne
+ 926 00cc 0133     	 addne r3,r3,#1
+ 927 00ce A372     	 strbne r3,[r4,#10]
+ 928 00d0 A27A     	 ldrb r2,[r4,#10]
+ 929 00d2 052A     	 cmp r2,#5
+ 930 00d4 9DBF     	 ittte ls
+ 931 00d6 4FF47A73 	 movls r3,#1000
+ 932 00da 9340     	 lslls r3,r3,r2
+ 933 00dc 9BB2     	 uxthls r3,r3
+ 934 00de 4EF66023 	 movwhi r3,#60000
+ 935 00e2 4FF4FA72 	 mov r2,#500
+ 936 00e6 2846     	 mov r0,r5
+ 937 00e8 03F2F313 	 addw r3,r3,#499
+ 938 00ec 93FBF2F3 	 sdiv r3,r3,r2
+ 939 00f0 E382     	 strh r3,[r4,#22]
+ 940 00f2 02B0     	 add sp,sp,#8
+ 941              	 
+ 942 00f4 70BD     	 pop {r4,r5,r6,pc}
+ 943              	.L149:
+ 944 00f6 00BF     	 .align 2
+ 945              	.L148:
+ 946 00f8 00000000 	 .word ip_addr_any
+ 947 00fc 00000000 	 .word .LANCHOR2
+ 948 0100 00000000 	 .word ip_addr_broadcast
+ 950              	 .section .text.dhcp_recv,"ax",%progbits
+ 951              	 .align 1
+ 952              	 .thumb
+ 953              	 .thumb_func
+ 955              	dhcp_recv:
+ 956              	 
+ 957              	 
+ 958 0000 B64B     	 ldr r3,.L253
+ 959 0002 5168     	 ldr r1,[r2,#4]
+ 960 0004 2DE9F04F 	 push {r4,r5,r6,r7,r8,r9,r10,fp,lr}
+ 961 0008 5F68     	 ldr r7,[r3,#4]
+ 962 000a D7F82490 	 ldr r9,[r7,#36]
+ 963 000e 87B0     	 sub sp,sp,#28
+ 964 0010 9346     	 mov fp,r2
+ 965 0012 B9F1000F 	 cmp r9,#0
+ 966 0016 7DD0     	 beq .L151
+ 967 0018 99F80830 	 ldrb r3,[r9,#8]
+ 968 001c 002B     	 cmp r3,#0
+ 969 001e 76D0     	 beq .L192
+ 970 0020 5389     	 ldrh r3,[r2,#10]
+ 971 0022 2B2B     	 cmp r3,#43
+ 972 0024 73D9     	 bls .L192
+ 973 0026 0B78     	 ldrb r3,[r1]
+ 974 0028 022B     	 cmp r3,#2
+ 975 002a 70D1     	 bne .L192
+ 976 002c 3A46     	 mov r2,r7
+ 977 002e 01F11B00 	 add r0,r1,#27
+ 978 0032 12F82C4F 	 ldrb r4,[r2,#44]!
+ 979 0036 0023     	 movs r3,#0
+ 980              	.L153:
+ 981 0038 DDB2     	 uxtb r5,r3
+ 982 003a A542     	 cmp r5,r4
+ 983 003c 0AD2     	 bcs .L154
+ 984 003e 062B     	 cmp r3,#6
+ 985 0040 08D0     	 beq .L154
+ 986 0042 12F8016F 	 ldrb r6,[r2,#1]!
+ 987 0046 10F8015F 	 ldrb r5,[r0,#1]!
+ 988 004a AE42     	 cmp r6,r5
+ 989 004c 03F10103 	 add r3,r3,#1
+ 990 0050 F2D0     	 beq .L153
+ 991 0052 5CE0     	 b .L192
+ 992              	.L154:
+ 993 0054 4868     	 ldr r0,[r1,#4]
+ 994 0056 FFF7FEFF 	 bl lwip_htonl
+ 995 005a D9F80030 	 ldr r3,[r9]
+ 996 005e 9842     	 cmp r0,r3
+ 997 0060 55D1     	 bne .L192
+ 998 0062 9F48     	 ldr r0,.L253+4
+ 999 0064 0021     	 movs r1,#0
+ 1000 0066 0822     	 movs r2,#8
+ 1001 0068 FFF7FEFF 	 bl memset
+ 1002 006c BBF80A30 	 ldrh r3,[fp,#10]
+ 1003 0070 2B2B     	 cmp r3,#43
+ 1004 0072 4CD9     	 bls .L192
+ 1005 0074 DBF80430 	 ldr r3,[fp,#4]
+ 1006 0078 C9F80430 	 str r3,[r9,#4]
+ 1007 007c BBF808A0 	 ldrh r10,[fp,#8]
+ 1008 0080 0023     	 movs r3,#0
+ 1009 0082 0093     	 str r3,[sp]
+ 1010 0084 F024     	 movs r4,#240
+ 1011              	.L157:
+ 1012 0086 5D46     	 mov r5,fp
+ 1013              	.L158:
+ 1014 0088 6A89     	 ldrh r2,[r5,#10]
+ 1015 008a 9442     	 cmp r4,r2
+ 1016 008c 09D3     	 bcc .L243
+ 1017 008e 2D68     	 ldr r5,[r5]
+ 1018 0090 A41A     	 subs r4,r4,r2
+ 1019 0092 C2EB0A0A 	 rsb r10,r2,r10
+ 1020 0096 A4B2     	 uxth r4,r4
+ 1021 0098 1FFA8AFA 	 uxth r10,r10
+ 1022 009c 002D     	 cmp r5,#0
+ 1023 009e F3D1     	 bne .L158
+ 1024 00a0 35E0     	 b .L192
+ 1025              	.L243:
+ 1026 00a2 0294     	 str r4,[sp,#8]
+ 1027              	.L240:
+ 1028 00a4 6B68     	 ldr r3,[r5,#4]
+ 1029 00a6 0193     	 str r3,[sp,#4]
+ 1030              	.L195:
+ 1031 00a8 5445     	 cmp r4,r10
+ 1032 00aa 04D3     	 bcc .L244
+ 1033              	.L185:
+ 1034 00ac 8C4A     	 ldr r2,.L253+4
+ 1035 00ae 1378     	 ldrb r3,[r2]
+ 1036 00b0 1146     	 mov r1,r2
+ 1037 00b2 ABB9     	 cbnz r3,.L183
+ 1038 00b4 38E0     	 b .L184
+ 1039              	.L244:
+ 1040 00b6 019B     	 ldr r3,[sp,#4]
+ 1041 00b8 195D     	 ldrb r1,[r3,r4]
+ 1042 00ba FF29     	 cmp r1,#255
+ 1043 00bc F6D0     	 beq .L185
+ 1044 00be 6889     	 ldrh r0,[r5,#10]
+ 1045 00c0 621C     	 adds r2,r4,#1
+ 1046 00c2 A31C     	 adds r3,r4,#2
+ 1047 00c4 8242     	 cmp r2,r0
+ 1048 00c6 9BB2     	 uxth r3,r3
+ 1049 00c8 03DA     	 bge .L161
+ 1050 00ca 019A     	 ldr r2,[sp,#4]
+ 1051 00cc 2244     	 add r2,r2,r4
+ 1052 00ce 5278     	 ldrb r2,[r2,#1]
+ 1053 00d0 19E0     	 b .L162
+ 1054              	.L161:
+ 1055 00d2 2A68     	 ldr r2,[r5]
+ 1056 00d4 002A     	 cmp r2,#0
+ 1057 00d6 00F0E880 	 beq .L163
+ 1058 00da 5268     	 ldr r2,[r2,#4]
+ 1059 00dc 1278     	 ldrb r2,[r2]
+ 1060 00de 12E0     	 b .L162
+ 1061              	.L183:
+ 1062 00e0 804B     	 ldr r3,.L253+8
+ 1063 00e2 1B68     	 ldr r3,[r3]
+ 1064 00e4 0020     	 movs r0,#0
+ 1065 00e6 012B     	 cmp r3,#1
+ 1066 00e8 1070     	 strb r0,[r2]
+ 1067 00ea 19D0     	 beq .L187
+ 1068 00ec 022B     	 cmp r3,#2
+ 1069 00ee 05D1     	 bne .L245
+ 1070              	.L188:
+ 1071 00f0 0023     	 movs r3,#0
+ 1072 00f2 0093     	 str r3,[sp]
+ 1073 00f4 4FF06C0A 	 mov r10,#108
+ 1074 00f8 2C24     	 movs r4,#44
+ 1075 00fa C4E7     	 b .L157
+ 1076              	.L245:
+ 1077 00fc 032B     	 cmp r3,#3
+ 1078 00fe 13D1     	 bne .L184
+ 1079 0100 0123     	 movs r3,#1
+ 1080 0102 0093     	 str r3,[sp]
+ 1081 0104 0CE0     	 b .L187
+ 1082              	.L162:
+ 1083 0106 3429     	 cmp r1,#52
+ 1084 0108 69D1     	 bne .L246
+ 1085 010a 012A     	 cmp r2,#1
+ 1086 010c 60D0     	 beq .L247
+ 1087              	.L192:
+ 1088 010e 0023     	 movs r3,#0
+ 1089 0110 C9F80430 	 str r3,[r9,#4]
+ 1090              	.L151:
+ 1091 0114 5846     	 mov r0,fp
+ 1092 0116 FFF7FEFF 	 bl pbuf_free
+ 1093 011a 07B0     	 add sp,sp,#28
+ 1094              	 
+ 1095 011c BDE8F08F 	 pop {r4,r5,r6,r7,r8,r9,r10,fp,pc}
+ 1096              	.L187:
+ 1097 0120 4FF0EC0A 	 mov r10,#236
+ 1098 0124 6C24     	 movs r4,#108
+ 1099 0126 AEE7     	 b .L157
+ 1100              	.L184:
+ 1101 0128 009B     	 ldr r3,[sp]
+ 1102 012a 002B     	 cmp r3,#0
+ 1103 012c E0D1     	 bne .L188
+ 1104 012e 4B78     	 ldrb r3,[r1,#1]
+ 1105 0130 002B     	 cmp r3,#0
+ 1106 0132 ECD0     	 beq .L192
+ 1107 0134 6B4A     	 ldr r2,.L253+8
+ 1108 0136 1379     	 ldrb r3,[r2,#4]
+ 1109 0138 052B     	 cmp r3,#5
+ 1110 013a 18D1     	 bne .L189
+ 1111 013c 99F80930 	 ldrb r3,[r9,#9]
+ 1112 0140 012B     	 cmp r3,#1
+ 1113 0142 0AD1     	 bne .L190
+ 1114 0144 786A     	 ldr r0,[r7,#36]
+ 1115 0146 FFF7FEFF 	 bl dhcp_handle_ack.isra.1
+ 1116 014a 97F83330 	 ldrb r3,[r7,#51]
+ 1117 014e 1B07     	 lsls r3,r3,#28
+ 1118 0150 3846     	 mov r0,r7
+ 1119 0152 09D5     	 bpl .L241
+ 1120 0154 FFF7FEFF 	 bl dhcp_check
+ 1121 0158 D9E7     	 b .L192
+ 1122              	.L190:
+ 1123 015a 033B     	 subs r3,r3,#3
+ 1124 015c 022B     	 cmp r3,#2
+ 1125 015e D6D8     	 bhi .L192
+ 1126 0160 786A     	 ldr r0,[r7,#36]
+ 1127 0162 FFF7FEFF 	 bl dhcp_handle_ack.isra.1
+ 1128 0166 3846     	 mov r0,r7
+ 1129              	.L241:
+ 1130 0168 FFF7FEFF 	 bl dhcp_bind
+ 1131 016c CFE7     	 b .L192
+ 1132              	.L189:
+ 1133 016e 062B     	 cmp r3,#6
+ 1134 0170 14D1     	 bne .L193
+ 1135 0172 99F80930 	 ldrb r3,[r9,#9]
+ 1136 0176 DA1E     	 subs r2,r3,#3
+ 1137 0178 022A     	 cmp r2,#2
+ 1138 017a 01D9     	 bls .L194
+ 1139 017c 012B     	 cmp r3,#1
+ 1140 017e C6D1     	 bne .L192
+ 1141              	.L194:
+ 1142 0180 786A     	 ldr r0,[r7,#36]
+ 1143 0182 0C21     	 movs r1,#12
+ 1144 0184 FFF7FEFF 	 bl dhcp_set_state
+ 1145 0188 5749     	 ldr r1,.L253+12
+ 1146 018a 3846     	 mov r0,r7
+ 1147 018c 0A46     	 mov r2,r1
+ 1148 018e 0B46     	 mov r3,r1
+ 1149 0190 FFF7FEFF 	 bl netif_set_addr
+ 1150 0194 3846     	 mov r0,r7
+ 1151 0196 FFF7FEFF 	 bl dhcp_discover
+ 1152 019a B8E7     	 b .L192
+ 1153              	.L193:
+ 1154 019c 022B     	 cmp r3,#2
+ 1155 019e B6D1     	 bne .L192
+ 1156 01a0 99F80930 	 ldrb r3,[r9,#9]
+ 1157 01a4 062B     	 cmp r3,#6
+ 1158 01a6 B2D1     	 bne .L192
+ 1159 01a8 BDF80030 	 ldrh r3,[sp]
+ 1160 01ac A9F81630 	 strh r3,[r9,#22]
+ 1161 01b0 4B4B     	 ldr r3,.L253+4
+ 1162 01b2 7C6A     	 ldr r4,[r7,#36]
+ 1163 01b4 9B78     	 ldrb r3,[r3,#2]
+ 1164 01b6 002B     	 cmp r3,#0
+ 1165 01b8 A9D0     	 beq .L192
+ 1166 01ba 9068     	 ldr r0,[r2,#8]
+ 1167 01bc FFF7FEFF 	 bl lwip_htonl
+ 1168 01c0 6368     	 ldr r3,[r4,#4]
+ 1169 01c2 6062     	 str r0,[r4,#36]
+ 1170 01c4 1B69     	 ldr r3,[r3,#16]
+ 1171 01c6 A362     	 str r3,[r4,#40]
+ 1172 01c8 3846     	 mov r0,r7
+ 1173 01ca FFF7FEFF 	 bl dhcp_select
+ 1174 01ce 9EE7     	 b .L192
+ 1175              	.L247:
+ 1176 01d0 0299     	 ldr r1,[sp,#8]
+ 1177 01d2 F029     	 cmp r1,#240
+ 1178 01d4 9BD1     	 bne .L192
+ 1179 01d6 1646     	 mov r6,r2
+ 1180 01d8 4FF00008 	 mov r8,#0
+ 1181 01dc 09E0     	 b .L165
+ 1182              	.L246:
+ 1183 01de 74D8     	 bhi .L199
+ 1184 01e0 0129     	 cmp r1,#1
+ 1185 01e2 49D0     	 beq .L166
+ 1186 01e4 4FD2     	 bcs .L248
+ 1187              	.L164:
+ 1188 01e6 013C     	 subs r4,r4,#1
+ 1189 01e8 0026     	 movs r6,#0
+ 1190 01ea A4B2     	 uxth r4,r4
+ 1191 01ec 4FF0FF38 	 mov r8,#-1
+ 1192 01f0 3246     	 mov r2,r6
+ 1193              	.L165:
+ 1194 01f2 0234     	 adds r4,r4,#2
+ 1195 01f4 12FA84F4 	 uxtah r4,r2,r4
+ 1196 01f8 A4B2     	 uxth r4,r4
+ 1197 01fa 5EB3     	 cbz r6,.L174
+ 1198 01fc 0022     	 movs r2,#0
+ 1199 01fe 0592     	 str r2,[sp,#20]
+ 1200 0200 374A     	 ldr r2,.L253+4
+ 1201 0202 12F80820 	 ldrb r2,[r2,r8]
+ 1202 0206 2ABB     	 cbnz r2,.L174
+ 1203 0208 042E     	 cmp r6,#4
+ 1204 020a 14BF     	 ite ne
+ 1205 020c 1FFA86FC 	 uxthne ip,r6
+ 1206 0210 B446     	 moveq ip,r6
+ 1207 0212 6246     	 mov r2,ip
+ 1208 0214 2846     	 mov r0,r5
+ 1209 0216 05A9     	 add r1,sp,#20
+ 1210 0218 CDF80CC0 	 str ip,[sp,#12]
+ 1211 021c FFF7FEFF 	 bl pbuf_copy_partial
+ 1212 0220 DDF80CC0 	 ldr ip,[sp,#12]
+ 1213 0224 6045     	 cmp r0,ip
+ 1214 0226 7FF472AF 	 bne .L192
+ 1215 022a 042E     	 cmp r6,#4
+ 1216 022c 04D1     	 bne .L178
+ 1217 022e 0598     	 ldr r0,[sp,#20]
+ 1218 0230 FFF7FEFF 	 bl lwip_htonl
+ 1219 0234 0590     	 str r0,[sp,#20]
+ 1220 0236 05E0     	 b .L179
+ 1221              	.L178:
+ 1222 0238 012E     	 cmp r6,#1
+ 1223 023a 7FF468AF 	 bne .L192
+ 1224 023e 9DF81430 	 ldrb r3,[sp,#20]
+ 1225 0242 0593     	 str r3,[sp,#20]
+ 1226              	.L179:
+ 1227 0244 264A     	 ldr r2,.L253+4
+ 1228 0246 0123     	 movs r3,#1
+ 1229 0248 02F80830 	 strb r3,[r2,r8]
+ 1230 024c 254B     	 ldr r3,.L253+8
+ 1231 024e 059A     	 ldr r2,[sp,#20]
+ 1232 0250 43F82820 	 str r2,[r3,r8,lsl#2]
+ 1233              	.L174:
+ 1234 0254 6A89     	 ldrh r2,[r5,#10]
+ 1235 0256 9442     	 cmp r4,r2
+ 1236 0258 FFF426AF 	 bcc .L195
+ 1237 025c A41A     	 subs r4,r4,r2
+ 1238 025e C2EB0A0A 	 rsb r10,r2,r10
+ 1239 0262 A4B2     	 uxth r4,r4
+ 1240 0264 1FFA8AFA 	 uxth r10,r10
+ 1241 0268 5445     	 cmp r4,r10
+ 1242 026a BFF41FAF 	 bcs .L185
+ 1243 026e 2D68     	 ldr r5,[r5]
+ 1244 0270 002D     	 cmp r5,#0
+ 1245 0272 7FF417AF 	 bne .L240
+ 1246 0276 4AE7     	 b .L192
+ 1247              	.L166:
+ 1248 0278 042A     	 cmp r2,#4
+ 1249 027a 7FF448AF 	 bne .L192
+ 1250 027e 1646     	 mov r6,r2
+ 1251 0280 4FF00608 	 mov r8,#6
+ 1252 0284 B5E7     	 b .L165
+ 1253              	.L248:
+ 1254 0286 0329     	 cmp r1,#3
+ 1255 0288 06D1     	 bne .L249
+ 1256 028a 032A     	 cmp r2,#3
+ 1257 028c 7FF63FAF 	 bls .L192
+ 1258 0290 4FF00708 	 mov r8,#7
+ 1259 0294 0426     	 movs r6,#4
+ 1260 0296 ACE7     	 b .L165
+ 1261              	.L249:
+ 1262 0298 3329     	 cmp r1,#51
+ 1263 029a 13D1     	 bne .L198
+ 1264 029c 042A     	 cmp r2,#4
+ 1265 029e 7FF436AF 	 bne .L192
+ 1266 02a2 1646     	 mov r6,r2
+ 1267 02a4 4FF00308 	 mov r8,#3
+ 1268 02a8 A3E7     	 b .L165
+ 1269              	.L163:
+ 1270 02aa 3629     	 cmp r1,#54
+ 1271 02ac 32D8     	 bhi .L200
+ 1272 02ae 3329     	 cmp r1,#51
+ 1273 02b0 BFF42DAF 	 bcs .L192
+ 1274 02b4 0129     	 cmp r1,#1
+ 1275 02b6 3FF42AAF 	 beq .L192
+ 1276 02ba 94D3     	 bcc .L164
+ 1277 02bc 0329     	 cmp r1,#3
+ 1278 02be 3FF426AF 	 beq .L192
+ 1279              	.L203:
+ 1280 02c2 0022     	 movs r2,#0
+ 1281              	.L198:
+ 1282 02c4 9C18     	 adds r4,r3,r2
+ 1283 02c6 A4B2     	 uxth r4,r4
+ 1284 02c8 C4E7     	 b .L174
+ 1285              	.L199:
+ 1286 02ca 3629     	 cmp r1,#54
+ 1287 02cc 0ED1     	 bne .L250
+ 1288 02ce 042A     	 cmp r2,#4
+ 1289 02d0 7FF41DAF 	 bne .L192
+ 1290 02d4 1646     	 mov r6,r2
+ 1291 02d6 4FF00208 	 mov r8,#2
+ 1292 02da 8AE7     	 b .L165
+ 1293              	.L254:
+ 1294              	 .align 2
+ 1295              	.L253:
+ 1296 02dc 00000000 	 .word ip_data
+ 1297 02e0 00000000 	 .word dhcp_rx_options_given
+ 1298 02e4 00000000 	 .word dhcp_rx_options_val
+ 1299 02e8 00000000 	 .word ip_addr_any
+ 1300              	.L250:
+ 1301 02ec 01D2     	 bcs .L251
+ 1302 02ee 012A     	 cmp r2,#1
+ 1303 02f0 02E0     	 b .L242
+ 1304              	.L251:
+ 1305 02f2 3A29     	 cmp r1,#58
+ 1306 02f4 05D1     	 bne .L252
+ 1307 02f6 042A     	 cmp r2,#4
+ 1308              	.L242:
+ 1309 02f8 7FF409AF 	 bne .L192
+ 1310 02fc 1646     	 mov r6,r2
+ 1311 02fe 9046     	 mov r8,r2
+ 1312 0300 77E7     	 b .L165
+ 1313              	.L252:
+ 1314 0302 3B29     	 cmp r1,#59
+ 1315 0304 DED1     	 bne .L198
+ 1316 0306 042A     	 cmp r2,#4
+ 1317 0308 7FF401AF 	 bne .L192
+ 1318 030c 1646     	 mov r6,r2
+ 1319 030e 4FF00508 	 mov r8,#5
+ 1320 0312 6EE7     	 b .L165
+ 1321              	.L200:
+ 1322 0314 3A39     	 subs r1,r1,#58
+ 1323 0316 0129     	 cmp r1,#1
+ 1324 0318 7FF6F9AE 	 bls .L192
+ 1325 031c D1E7     	 b .L203
+ 1327 031e 00BF     	 .section .text.dhcp_set_struct,"ax",%progbits
+ 1328              	 .align 1
+ 1329              	 .global dhcp_set_struct
+ 1330              	 .thumb
+ 1331              	 .thumb_func
+ 1333              	dhcp_set_struct:
+ 1334              	 
+ 1335              	 
+ 1336 0000 38B5     	 push {r3,r4,r5,lr}
+ 1337 0002 0546     	 mov r5,r0
+ 1338 0004 0C46     	 mov r4,r1
+ 1339 0006 0846     	 mov r0,r1
+ 1340 0008 4022     	 movs r2,#64
+ 1341 000a 0021     	 movs r1,#0
+ 1342 000c FFF7FEFF 	 bl memset
+ 1343 0010 6C62     	 str r4,[r5,#36]
+ 1344 0012 38BD     	 pop {r3,r4,r5,pc}
+ 1346              	 .section .text.dhcp_cleanup,"ax",%progbits
+ 1347              	 .align 1
+ 1348              	 .global dhcp_cleanup
+ 1349              	 .thumb
+ 1350              	 .thumb_func
+ 1352              	dhcp_cleanup:
+ 1353              	 
+ 1354              	 
+ 1355 0000 10B5     	 push {r4,lr}
+ 1356 0002 0446     	 mov r4,r0
+ 1357 0004 406A     	 ldr r0,[r0,#36]
+ 1358 0006 18B1     	 cbz r0,.L256
+ 1359 0008 FFF7FEFF 	 bl mem_free
+ 1360 000c 0023     	 movs r3,#0
+ 1361 000e 6362     	 str r3,[r4,#36]
+ 1362              	.L256:
+ 1363 0010 10BD     	 pop {r4,pc}
+ 1365              	 .section .text.dhcp_inform,"ax",%progbits
+ 1366              	 .align 1
+ 1367              	 .global dhcp_inform
+ 1368              	 .thumb
+ 1369              	 .thumb_func
+ 1371              	dhcp_inform:
+ 1372              	 
+ 1373              	 
+ 1374 0000 10B5     	 push {r4,lr}
+ 1375 0002 0446     	 mov r4,r0
+ 1376 0004 92B0     	 sub sp,sp,#72
+ 1377 0006 0028     	 cmp r0,#0
+ 1378 0008 31D0     	 beq .L261
+ 1379 000a FFF7FEFF 	 bl dhcp_inc_pcb_refcount
+ 1380 000e 0146     	 mov r1,r0
+ 1381 0010 68BB     	 cbnz r0,.L261
+ 1382 0012 4022     	 movs r2,#64
+ 1383 0014 02A8     	 add r0,sp,#8
+ 1384 0016 FFF7FEFF 	 bl memset
+ 1385 001a 02A8     	 add r0,sp,#8
+ 1386 001c 0721     	 movs r1,#7
+ 1387 001e FFF7FEFF 	 bl dhcp_set_state
+ 1388 0022 2046     	 mov r0,r4
+ 1389 0024 02A9     	 add r1,sp,#8
+ 1390 0026 0822     	 movs r2,#8
+ 1391 0028 FFF7FEFF 	 bl dhcp_create_msg
+ 1392 002c E8B9     	 cbnz r0,.L263
+ 1393 002e 0222     	 movs r2,#2
+ 1394 0030 02A8     	 add r0,sp,#8
+ 1395 0032 3921     	 movs r1,#57
+ 1396 0034 FFF7FEFF 	 bl dhcp_option
+ 1397 0038 618D     	 ldrh r1,[r4,#42]
+ 1398 003a 02A8     	 add r0,sp,#8
+ 1399 003c FFF7FEFF 	 bl dhcp_option_short
+ 1400 0040 02A8     	 add r0,sp,#8
+ 1401 0042 FFF7FEFF 	 bl dhcp_option_trailer
+ 1402 0046 BDF81C10 	 ldrh r1,[sp,#28]
+ 1403 004a 0598     	 ldr r0,[sp,#20]
+ 1404 004c F031     	 adds r1,r1,#240
+ 1405 004e 89B2     	 uxth r1,r1
+ 1406 0050 FFF7FEFF 	 bl pbuf_realloc
+ 1407 0054 074B     	 ldr r3,.L268
+ 1408 0056 0094     	 str r4,[sp]
+ 1409 0058 1868     	 ldr r0,[r3]
+ 1410 005a 0599     	 ldr r1,[sp,#20]
+ 1411 005c 064A     	 ldr r2,.L268+4
+ 1412 005e 4323     	 movs r3,#67
+ 1413 0060 FFF7FEFF 	 bl udp_sendto_if
+ 1414 0064 02A8     	 add r0,sp,#8
+ 1415 0066 FFF7FEFF 	 bl dhcp_delete_msg
+ 1416              	.L263:
+ 1417 006a FFF7FEFF 	 bl dhcp_dec_pcb_refcount
+ 1418              	.L261:
+ 1419 006e 12B0     	 add sp,sp,#72
+ 1420              	 
+ 1421 0070 10BD     	 pop {r4,pc}
+ 1422              	.L269:
+ 1423 0072 00BF     	 .align 2
+ 1424              	.L268:
+ 1425 0074 00000000 	 .word .LANCHOR2
+ 1426 0078 00000000 	 .word ip_addr_broadcast
+ 1428              	 .section .text.dhcp_network_changed,"ax",%progbits
+ 1429              	 .align 1
+ 1430              	 .global dhcp_network_changed
+ 1431              	 .thumb
+ 1432              	 .thumb_func
+ 1434              	dhcp_network_changed:
+ 1435              	 
+ 1436              	 
+ 1437              	 
+ 1438 0000 436A     	 ldr r3,[r0,#36]
+ 1439 0002 93B1     	 cbz r3,.L270
+ 1440 0004 5A7A     	 ldrb r2,[r3,#9]
+ 1441 0006 0A2A     	 cmp r2,#10
+ 1442 0008 0BD8     	 bhi .L272
+ 1443 000a DFE802F0 	 tbb [pc,r2]
+ 1444              	.L273:
+ 1445 000e 0E       	 .byte (.L270-.L273)/2
+ 1446 000f 0A       	 .byte (.L272-.L273)/2
+ 1447 0010 0A       	 .byte (.L272-.L273)/2
+ 1448 0011 06       	 .byte (.L274-.L273)/2
+ 1449 0012 06       	 .byte (.L274-.L273)/2
+ 1450 0013 06       	 .byte (.L274-.L273)/2
+ 1451 0014 0A       	 .byte (.L272-.L273)/2
+ 1452 0015 0A       	 .byte (.L272-.L273)/2
+ 1453 0016 0A       	 .byte (.L272-.L273)/2
+ 1454 0017 0A       	 .byte (.L272-.L273)/2
+ 1455 0018 06       	 .byte (.L274-.L273)/2
+ 1456 0019 00       	 .p2align 1
+ 1457              	.L274:
+ 1458 001a 0022     	 movs r2,#0
+ 1459 001c 9A72     	 strb r2,[r3,#10]
+ 1460 001e FFF7FEBF 	 b dhcp_reboot
+ 1461              	.L272:
+ 1462 0022 0022     	 movs r2,#0
+ 1463 0024 9A72     	 strb r2,[r3,#10]
+ 1464 0026 FFF7FEBF 	 b dhcp_discover
+ 1465              	.L270:
+ 1466 002a 7047     	 bx lr
+ 1468              	 .section .text.dhcp_arp_reply,"ax",%progbits
+ 1469              	 .align 1
+ 1470              	 .global dhcp_arp_reply
+ 1471              	 .thumb
+ 1472              	 .thumb_func
+ 1474              	dhcp_arp_reply:
+ 1475              	 
+ 1476              	 
+ 1477 0000 37B5     	 push {r0,r1,r2,r4,r5,lr}
+ 1478 0002 0546     	 mov r5,r0
+ 1479 0004 0028     	 cmp r0,#0
+ 1480 0006 3CD0     	 beq .L278
+ 1481 0008 446A     	 ldr r4,[r0,#36]
+ 1482 000a 002C     	 cmp r4,#0
+ 1483 000c 39D0     	 beq .L278
+ 1484 000e 637A     	 ldrb r3,[r4,#9]
+ 1485 0010 082B     	 cmp r3,#8
+ 1486 0012 36D1     	 bne .L278
+ 1487 0014 0A68     	 ldr r2,[r1]
+ 1488 0016 A36A     	 ldr r3,[r4,#40]
+ 1489 0018 9A42     	 cmp r2,r3
+ 1490 001a 32D1     	 bne .L278
+ 1491 001c 2046     	 mov r0,r4
+ 1492 001e 0C21     	 movs r1,#12
+ 1493 0020 FFF7FEFF 	 bl dhcp_set_state
+ 1494 0024 2846     	 mov r0,r5
+ 1495 0026 2146     	 mov r1,r4
+ 1496 0028 0422     	 movs r2,#4
+ 1497 002a FFF7FEFF 	 bl dhcp_create_msg
+ 1498 002e 08BB     	 cbnz r0,.L280
+ 1499 0030 0422     	 movs r2,#4
+ 1500 0032 3221     	 movs r1,#50
+ 1501 0034 2046     	 mov r0,r4
+ 1502 0036 FFF7FEFF 	 bl dhcp_option
+ 1503 003a A06A     	 ldr r0,[r4,#40]
+ 1504 003c FFF7FEFF 	 bl lwip_htonl
+ 1505 0040 0146     	 mov r1,r0
+ 1506 0042 2046     	 mov r0,r4
+ 1507 0044 FFF7FEFF 	 bl dhcp_option_long
+ 1508 0048 2046     	 mov r0,r4
+ 1509 004a FFF7FEFF 	 bl dhcp_option_trailer
+ 1510 004e A18A     	 ldrh r1,[r4,#20]
+ 1511 0050 E068     	 ldr r0,[r4,#12]
+ 1512 0052 F031     	 adds r1,r1,#240
+ 1513 0054 89B2     	 uxth r1,r1
+ 1514 0056 FFF7FEFF 	 bl pbuf_realloc
+ 1515 005a 0B4B     	 ldr r3,.L291
+ 1516 005c 0193     	 str r3,[sp,#4]
+ 1517 005e 0B4B     	 ldr r3,.L291+4
+ 1518 0060 0095     	 str r5,[sp]
+ 1519 0062 1868     	 ldr r0,[r3]
+ 1520 0064 E168     	 ldr r1,[r4,#12]
+ 1521 0066 0A4A     	 ldr r2,.L291+8
+ 1522 0068 4323     	 movs r3,#67
+ 1523 006a FFF7FEFF 	 bl udp_sendto_if_src
+ 1524 006e 2046     	 mov r0,r4
+ 1525 0070 FFF7FEFF 	 bl dhcp_delete_msg
+ 1526              	.L280:
+ 1527 0074 A37A     	 ldrb r3,[r4,#10]
+ 1528 0076 FF2B     	 cmp r3,#255
+ 1529 0078 1CBF     	 itt ne
+ 1530 007a 0133     	 addne r3,r3,#1
+ 1531 007c A372     	 strbne r3,[r4,#10]
+ 1532 007e 1423     	 movs r3,#20
+ 1533 0080 E382     	 strh r3,[r4,#22]
+ 1534              	.L278:
+ 1535 0082 03B0     	 add sp,sp,#12
+ 1536              	 
+ 1537 0084 30BD     	 pop {r4,r5,pc}
+ 1538              	.L292:
+ 1539 0086 00BF     	 .align 2
+ 1540              	.L291:
+ 1541 0088 00000000 	 .word ip_addr_any
+ 1542 008c 00000000 	 .word .LANCHOR2
+ 1543 0090 00000000 	 .word ip_addr_broadcast
+ 1545              	 .section .text.dhcp_renew,"ax",%progbits
+ 1546              	 .align 1
+ 1547              	 .global dhcp_renew
+ 1548              	 .thumb
+ 1549              	 .thumb_func
+ 1551              	dhcp_renew:
+ 1552              	 
+ 1553              	 
+ 1554 0000 73B5     	 push {r0,r1,r4,r5,r6,lr}
+ 1555 0002 446A     	 ldr r4,[r0,#36]
+ 1556 0004 0646     	 mov r6,r0
+ 1557 0006 0521     	 movs r1,#5
+ 1558 0008 2046     	 mov r0,r4
+ 1559 000a FFF7FEFF 	 bl dhcp_set_state
+ 1560 000e 3046     	 mov r0,r6
+ 1561 0010 2146     	 mov r1,r4
+ 1562 0012 0322     	 movs r2,#3
+ 1563 0014 FFF7FEFF 	 bl dhcp_create_msg
+ 1564 0018 0546     	 mov r5,r0
+ 1565 001a 0028     	 cmp r0,#0
+ 1566 001c 3AD1     	 bne .L294
+ 1567 001e 0222     	 movs r2,#2
+ 1568 0020 2046     	 mov r0,r4
+ 1569 0022 3921     	 movs r1,#57
+ 1570 0024 FFF7FEFF 	 bl dhcp_option
+ 1571 0028 2046     	 mov r0,r4
+ 1572 002a 718D     	 ldrh r1,[r6,#42]
+ 1573 002c FFF7FEFF 	 bl dhcp_option_short
+ 1574 0030 2046     	 mov r0,r4
+ 1575 0032 3721     	 movs r1,#55
+ 1576 0034 0322     	 movs r2,#3
+ 1577 0036 FFF7FEFF 	 bl dhcp_option
+ 1578 003a A38A     	 ldrh r3,[r4,#20]
+ 1579 003c 2269     	 ldr r2,[r4,#16]
+ 1580 003e 591C     	 adds r1,r3,#1
+ 1581 0040 1344     	 add r3,r3,r2
+ 1582 0042 0122     	 movs r2,#1
+ 1583 0044 A182     	 strh r1,[r4,#20]
+ 1584 0046 83F8F020 	 strb r2,[r3,#240]
+ 1585 004a A38A     	 ldrh r3,[r4,#20]
+ 1586 004c 2269     	 ldr r2,[r4,#16]
+ 1587 004e 591C     	 adds r1,r3,#1
+ 1588 0050 1344     	 add r3,r3,r2
+ 1589 0052 0322     	 movs r2,#3
+ 1590 0054 A182     	 strh r1,[r4,#20]
+ 1591 0056 83F8F020 	 strb r2,[r3,#240]
+ 1592 005a A38A     	 ldrh r3,[r4,#20]
+ 1593 005c 2269     	 ldr r2,[r4,#16]
+ 1594 005e 591C     	 adds r1,r3,#1
+ 1595 0060 1344     	 add r3,r3,r2
+ 1596 0062 1C22     	 movs r2,#28
+ 1597 0064 A182     	 strh r1,[r4,#20]
+ 1598 0066 2046     	 mov r0,r4
+ 1599 0068 83F8F020 	 strb r2,[r3,#240]
+ 1600 006c FFF7FEFF 	 bl dhcp_option_trailer
+ 1601 0070 A18A     	 ldrh r1,[r4,#20]
+ 1602 0072 E068     	 ldr r0,[r4,#12]
+ 1603 0074 F031     	 adds r1,r1,#240
+ 1604 0076 89B2     	 uxth r1,r1
+ 1605 0078 FFF7FEFF 	 bl pbuf_realloc
+ 1606 007c 134B     	 ldr r3,.L301
+ 1607 007e 0096     	 str r6,[sp]
+ 1608 0080 1868     	 ldr r0,[r3]
+ 1609 0082 E168     	 ldr r1,[r4,#12]
+ 1610 0084 04F12402 	 add r2,r4,#36
+ 1611 0088 4323     	 movs r3,#67
+ 1612 008a FFF7FEFF 	 bl udp_sendto_if
+ 1613 008e 2046     	 mov r0,r4
+ 1614 0090 FFF7FEFF 	 bl dhcp_delete_msg
+ 1615              	.L294:
+ 1616 0094 A37A     	 ldrb r3,[r4,#10]
+ 1617 0096 FF2B     	 cmp r3,#255
+ 1618 0098 1CBF     	 itt ne
+ 1619 009a 0133     	 addne r3,r3,#1
+ 1620 009c A372     	 strbne r3,[r4,#10]
+ 1621 009e A37A     	 ldrb r3,[r4,#10]
+ 1622 00a0 092B     	 cmp r3,#9
+ 1623 00a2 9FBF     	 itttt ls
+ 1624 00a4 C3EB4312 	 rsbls r2,r3,r3,lsl#5
+ 1625 00a8 03EB8203 	 addls r3,r3,r2,lsl#2
+ 1626 00ac 1B01     	 lslls r3,r3,#4
+ 1627 00ae 9BB2     	 uxthls r3,r3
+ 1628 00b0 88BF     	 it hi
+ 1629 00b2 44F62063 	 movwhi r3,#20000
+ 1630 00b6 4FF4FA72 	 mov r2,#500
+ 1631 00ba 2846     	 mov r0,r5
+ 1632 00bc 03F2F313 	 addw r3,r3,#499
+ 1633 00c0 93FBF2F3 	 sdiv r3,r3,r2
+ 1634 00c4 E382     	 strh r3,[r4,#22]
+ 1635 00c6 02B0     	 add sp,sp,#8
+ 1636              	 
+ 1637 00c8 70BD     	 pop {r4,r5,r6,pc}
+ 1638              	.L302:
+ 1639 00ca 00BF     	 .align 2
+ 1640              	.L301:
+ 1641 00cc 00000000 	 .word .LANCHOR2
+ 1643              	 .section .text.dhcp_stop,"ax",%progbits
+ 1644              	 .align 1
+ 1645              	 .global dhcp_stop
+ 1646              	 .thumb
+ 1647              	 .thumb_func
+ 1649              	dhcp_stop:
+ 1650              	 
+ 1651              	 
+ 1652 0000 10B5     	 push {r4,lr}
+ 1653 0002 58B1     	 cbz r0,.L303
+ 1654 0004 446A     	 ldr r4,[r0,#36]
+ 1655 0006 4CB1     	 cbz r4,.L303
+ 1656 0008 2046     	 mov r0,r4
+ 1657 000a 0021     	 movs r1,#0
+ 1658 000c FFF7FEFF 	 bl dhcp_set_state
+ 1659 0010 237A     	 ldrb r3,[r4,#8]
+ 1660 0012 1BB1     	 cbz r3,.L303
+ 1661 0014 FFF7FEFF 	 bl dhcp_dec_pcb_refcount
+ 1662 0018 0023     	 movs r3,#0
+ 1663 001a 2372     	 strb r3,[r4,#8]
+ 1664              	.L303:
+ 1665 001c 10BD     	 pop {r4,pc}
+ 1667              	 .section .text.dhcp_start,"ax",%progbits
+ 1668              	 .align 1
+ 1669              	 .global dhcp_start
+ 1670              	 .thumb
+ 1671              	 .thumb_func
+ 1673              	dhcp_start:
+ 1674              	 
+ 1675              	 
+ 1676 0000 70B5     	 push {r4,r5,r6,lr}
+ 1677 0002 0446     	 mov r4,r0
+ 1678 0004 40B3     	 cbz r0,.L320
+ 1679 0006 90F83330 	 ldrb r3,[r0,#51]
+ 1680 000a DB07     	 lsls r3,r3,#31
+ 1681 000c 24D5     	 bpl .L320
+ 1682 000e 438D     	 ldrh r3,[r0,#42]
+ 1683 0010 456A     	 ldr r5,[r0,#36]
+ 1684 0012 B3F5107F 	 cmp r3,#576
+ 1685 0016 1DD3     	 bcc .L330
+ 1686 0018 35B9     	 cbnz r5,.L316
+ 1687 001a 4020     	 movs r0,#64
+ 1688 001c FFF7FEFF 	 bl mem_malloc
+ 1689 0020 0546     	 mov r5,r0
+ 1690 0022 B8B1     	 cbz r0,.L330
+ 1691 0024 6062     	 str r0,[r4,#36]
+ 1692 0026 03E0     	 b .L318
+ 1693              	.L316:
+ 1694 0028 2B7A     	 ldrb r3,[r5,#8]
+ 1695 002a 0BB1     	 cbz r3,.L318
+ 1696 002c FFF7FEFF 	 bl dhcp_dec_pcb_refcount
+ 1697              	.L318:
+ 1698 0030 0021     	 movs r1,#0
+ 1699 0032 4022     	 movs r2,#64
+ 1700 0034 2846     	 mov r0,r5
+ 1701 0036 FFF7FEFF 	 bl memset
+ 1702 003a FFF7FEFF 	 bl dhcp_inc_pcb_refcount
+ 1703 003e 0646     	 mov r6,r0
+ 1704 0040 40B9     	 cbnz r0,.L330
+ 1705 0042 0123     	 movs r3,#1
+ 1706 0044 2B72     	 strb r3,[r5,#8]
+ 1707 0046 2046     	 mov r0,r4
+ 1708 0048 FFF7FEFF 	 bl dhcp_discover
+ 1709 004c 28B1     	 cbz r0,.L314
+ 1710 004e 2046     	 mov r0,r4
+ 1711 0050 FFF7FEFF 	 bl dhcp_stop
+ 1712              	.L330:
+ 1713 0054 FF26     	 movs r6,#255
+ 1714 0056 00E0     	 b .L314
+ 1715              	.L320:
+ 1716 0058 F026     	 movs r6,#240
+ 1717              	.L314:
+ 1718 005a 70B2     	 sxtb r0,r6
+ 1719 005c 70BD     	 pop {r4,r5,r6,pc}
+ 1721              	 .section .text.dhcp_supplied_address,"ax",%progbits
+ 1722              	 .align 1
+ 1723              	 .global dhcp_supplied_address
+ 1724              	 .thumb
+ 1725              	 .thumb_func
+ 1727              	dhcp_supplied_address:
+ 1728              	 
+ 1729              	 
+ 1730              	 
+ 1731 0000 60B1     	 cbz r0,.L332
+ 1732 0002 406A     	 ldr r0,[r0,#36]
+ 1733 0004 50B1     	 cbz r0,.L332
+ 1734 0006 407A     	 ldrb r0,[r0,#9]
+ 1735 0008 0A28     	 cmp r0,#10
+ 1736 000a 05D0     	 beq .L336
+ 1737 000c 0438     	 subs r0,r0,#4
+ 1738 000e 0128     	 cmp r0,#1
+ 1739 0010 8CBF     	 ite hi
+ 1740 0012 0020     	 movhi r0,#0
+ 1741 0014 0120     	 movls r0,#1
+ 1742 0016 00E0     	 b .L333
+ 1743              	.L336:
+ 1744 0018 0120     	 movs r0,#1
+ 1745              	.L333:
+ 1746 001a C0B2     	 uxtb r0,r0
+ 1747              	.L332:
+ 1748 001c 7047     	 bx lr
+ 1750              	 .section .text.dhcp_release,"ax",%progbits
+ 1751              	 .align 1
+ 1752              	 .global dhcp_release
+ 1753              	 .thumb
+ 1754              	 .thumb_func
+ 1756              	dhcp_release:
+ 1757              	 
+ 1758              	 
+ 1759 0000 F0B5     	 push {r4,r5,r6,r7,lr}
+ 1760 0002 446A     	 ldr r4,[r0,#36]
+ 1761 0004 85B0     	 sub sp,sp,#20
+ 1762 0006 0646     	 mov r6,r0
+ 1763 0008 002C     	 cmp r4,#0
+ 1764 000a 45D0     	 beq .L340
+ 1765 000c 636A     	 ldr r3,[r4,#36]
+ 1766 000e 0393     	 str r3,[sp,#12]
+ 1767 0010 FFF7FEFF 	 bl dhcp_supplied_address
+ 1768 0014 0021     	 movs r1,#0
+ 1769 0016 0546     	 mov r5,r0
+ 1770 0018 2046     	 mov r0,r4
+ 1771 001a FFF7FEFF 	 bl dhcp_set_state
+ 1772 001e 0023     	 movs r3,#0
+ 1773 0020 6362     	 str r3,[r4,#36]
+ 1774 0022 A362     	 str r3,[r4,#40]
+ 1775 0024 E362     	 str r3,[r4,#44]
+ 1776 0026 2363     	 str r3,[r4,#48]
+ 1777 0028 E363     	 str r3,[r4,#60]
+ 1778 002a A363     	 str r3,[r4,#56]
+ 1779 002c 6363     	 str r3,[r4,#52]
+ 1780 002e 6384     	 strh r3,[r4,#34]
+ 1781 0030 2384     	 strh r3,[r4,#32]
+ 1782 0032 E383     	 strh r3,[r4,#30]
+ 1783 0034 A383     	 strh r3,[r4,#28]
+ 1784 0036 8DB3     	 cbz r5,.L341
+ 1785 0038 3046     	 mov r0,r6
+ 1786 003a 2146     	 mov r1,r4
+ 1787 003c 0722     	 movs r2,#7
+ 1788 003e FFF7FEFF 	 bl dhcp_create_msg
+ 1789 0042 0546     	 mov r5,r0
+ 1790 0044 08BB     	 cbnz r0,.L339
+ 1791 0046 04AF     	 add r7,sp,#16
+ 1792 0048 0422     	 movs r2,#4
+ 1793 004a 3621     	 movs r1,#54
+ 1794 004c 2046     	 mov r0,r4
+ 1795 004e FFF7FEFF 	 bl dhcp_option
+ 1796 0052 57F8040D 	 ldr r0,[r7,#-4]!
+ 1797 0056 FFF7FEFF 	 bl lwip_htonl
+ 1798 005a 0146     	 mov r1,r0
+ 1799 005c 2046     	 mov r0,r4
+ 1800 005e FFF7FEFF 	 bl dhcp_option_long
+ 1801 0062 2046     	 mov r0,r4
+ 1802 0064 FFF7FEFF 	 bl dhcp_option_trailer
+ 1803 0068 A18A     	 ldrh r1,[r4,#20]
+ 1804 006a E068     	 ldr r0,[r4,#12]
+ 1805 006c F031     	 adds r1,r1,#240
+ 1806 006e 89B2     	 uxth r1,r1
+ 1807 0070 FFF7FEFF 	 bl pbuf_realloc
+ 1808 0074 0B4B     	 ldr r3,.L342
+ 1809 0076 0096     	 str r6,[sp]
+ 1810 0078 1868     	 ldr r0,[r3]
+ 1811 007a E168     	 ldr r1,[r4,#12]
+ 1812 007c 3A46     	 mov r2,r7
+ 1813 007e 4323     	 movs r3,#67
+ 1814 0080 FFF7FEFF 	 bl udp_sendto_if
+ 1815 0084 2046     	 mov r0,r4
+ 1816 0086 FFF7FEFF 	 bl dhcp_delete_msg
+ 1817              	.L339:
+ 1818 008a 0749     	 ldr r1,.L342+4
+ 1819 008c 3046     	 mov r0,r6
+ 1820 008e 0A46     	 mov r2,r1
+ 1821 0090 0B46     	 mov r3,r1
+ 1822 0092 FFF7FEFF 	 bl netif_set_addr
+ 1823 0096 01E0     	 b .L341
+ 1824              	.L340:
+ 1825 0098 F020     	 movs r0,#240
+ 1826 009a 00E0     	 b .L338
+ 1827              	.L341:
+ 1828 009c 2846     	 mov r0,r5
+ 1829              	.L338:
+ 1830 009e 40B2     	 sxtb r0,r0
+ 1831 00a0 05B0     	 add sp,sp,#20
+ 1832              	 
+ 1833 00a2 F0BD     	 pop {r4,r5,r6,r7,pc}
+ 1834              	.L343:
+ 1835              	 .align 2
+ 1836              	.L342:
+ 1837 00a4 00000000 	 .word .LANCHOR2
+ 1838 00a8 00000000 	 .word ip_addr_any
+ 1840              	 .section .text.dhcp_coarse_tmr,"ax",%progbits
+ 1841              	 .align 1
+ 1842              	 .global dhcp_coarse_tmr
+ 1843              	 .thumb
+ 1844              	 .thumb_func
+ 1846              	dhcp_coarse_tmr:
+ 1847              	 
+ 1848              	 
+ 1849 0000 544B     	 ldr r3,.L383
+ 1850 0002 37B5     	 push {r0,r1,r2,r4,r5,lr}
+ 1851 0004 1D68     	 ldr r5,[r3]
+ 1852              	.L345:
+ 1853 0006 002D     	 cmp r5,#0
+ 1854 0008 00F0A280 	 beq .L382
+ 1855 000c 6C6A     	 ldr r4,[r5,#36]
+ 1856 000e 002C     	 cmp r4,#0
+ 1857 0010 00F09C80 	 beq .L347
+ 1858 0014 637A     	 ldrb r3,[r4,#9]
+ 1859 0016 002B     	 cmp r3,#0
+ 1860 0018 00F09880 	 beq .L347
+ 1861 001c 618C     	 ldrh r1,[r4,#34]
+ 1862 001e 61B1     	 cbz r1,.L349
+ 1863 0020 228C     	 ldrh r2,[r4,#32]
+ 1864 0022 0132     	 adds r2,r2,#1
+ 1865 0024 92B2     	 uxth r2,r2
+ 1866 0026 8A42     	 cmp r2,r1
+ 1867 0028 2284     	 strh r2,[r4,#32]
+ 1868 002a 06D1     	 bne .L349
+ 1869 002c 2846     	 mov r0,r5
+ 1870 002e FFF7FEFF 	 bl dhcp_release
+ 1871 0032 2846     	 mov r0,r5
+ 1872 0034 FFF7FEFF 	 bl dhcp_discover
+ 1873 0038 88E0     	 b .L347
+ 1874              	.L349:
+ 1875 003a E28B     	 ldrh r2,[r4,#30]
+ 1876 003c 002A     	 cmp r2,#0
+ 1877 003e 6FD0     	 beq .L350
+ 1878 0040 511E     	 subs r1,r2,#1
+ 1879 0042 012A     	 cmp r2,#1
+ 1880 0044 E183     	 strh r1,[r4,#30]
+ 1881 0046 6BD1     	 bne .L350
+ 1882 0048 012B     	 cmp r3,#1
+ 1883 004a 04D0     	 beq .L351
+ 1884 004c 0A2B     	 cmp r3,#10
+ 1885 004e 02D0     	 beq .L351
+ 1886 0050 043B     	 subs r3,r3,#4
+ 1887 0052 012B     	 cmp r3,#1
+ 1888 0054 7AD8     	 bhi .L347
+ 1889              	.L351:
+ 1890 0056 2046     	 mov r0,r4
+ 1891 0058 0421     	 movs r1,#4
+ 1892 005a FFF7FEFF 	 bl dhcp_set_state
+ 1893 005e 2846     	 mov r0,r5
+ 1894 0060 2146     	 mov r1,r4
+ 1895 0062 0322     	 movs r2,#3
+ 1896 0064 FFF7FEFF 	 bl dhcp_create_msg
+ 1897 0068 0028     	 cmp r0,#0
+ 1898 006a 39D1     	 bne .L352
+ 1899 006c 0222     	 movs r2,#2
+ 1900 006e 2046     	 mov r0,r4
+ 1901 0070 3921     	 movs r1,#57
+ 1902 0072 FFF7FEFF 	 bl dhcp_option
+ 1903 0076 2046     	 mov r0,r4
+ 1904 0078 698D     	 ldrh r1,[r5,#42]
+ 1905 007a FFF7FEFF 	 bl dhcp_option_short
+ 1906 007e 2046     	 mov r0,r4
+ 1907 0080 3721     	 movs r1,#55
+ 1908 0082 0322     	 movs r2,#3
+ 1909 0084 FFF7FEFF 	 bl dhcp_option
+ 1910 0088 A38A     	 ldrh r3,[r4,#20]
+ 1911 008a 2269     	 ldr r2,[r4,#16]
+ 1912 008c 591C     	 adds r1,r3,#1
+ 1913 008e 1344     	 add r3,r3,r2
+ 1914 0090 0122     	 movs r2,#1
+ 1915 0092 A182     	 strh r1,[r4,#20]
+ 1916 0094 83F8F020 	 strb r2,[r3,#240]
+ 1917 0098 A38A     	 ldrh r3,[r4,#20]
+ 1918 009a 2269     	 ldr r2,[r4,#16]
+ 1919 009c 591C     	 adds r1,r3,#1
+ 1920 009e 1344     	 add r3,r3,r2
+ 1921 00a0 0322     	 movs r2,#3
+ 1922 00a2 A182     	 strh r1,[r4,#20]
+ 1923 00a4 83F8F020 	 strb r2,[r3,#240]
+ 1924 00a8 A38A     	 ldrh r3,[r4,#20]
+ 1925 00aa 2269     	 ldr r2,[r4,#16]
+ 1926 00ac 591C     	 adds r1,r3,#1
+ 1927 00ae 1344     	 add r3,r3,r2
+ 1928 00b0 1C22     	 movs r2,#28
+ 1929 00b2 A182     	 strh r1,[r4,#20]
+ 1930 00b4 2046     	 mov r0,r4
+ 1931 00b6 83F8F020 	 strb r2,[r3,#240]
+ 1932 00ba FFF7FEFF 	 bl dhcp_option_trailer
+ 1933 00be A18A     	 ldrh r1,[r4,#20]
+ 1934 00c0 E068     	 ldr r0,[r4,#12]
+ 1935 00c2 F031     	 adds r1,r1,#240
+ 1936 00c4 89B2     	 uxth r1,r1
+ 1937 00c6 FFF7FEFF 	 bl pbuf_realloc
+ 1938 00ca 234B     	 ldr r3,.L383+4
+ 1939 00cc 0095     	 str r5,[sp]
+ 1940 00ce 1868     	 ldr r0,[r3]
+ 1941 00d0 E168     	 ldr r1,[r4,#12]
+ 1942 00d2 224A     	 ldr r2,.L383+8
+ 1943 00d4 4323     	 movs r3,#67
+ 1944 00d6 FFF7FEFF 	 bl udp_sendto_if
+ 1945 00da 2046     	 mov r0,r4
+ 1946 00dc FFF7FEFF 	 bl dhcp_delete_msg
+ 1947              	.L352:
+ 1948 00e0 A37A     	 ldrb r3,[r4,#10]
+ 1949 00e2 FF2B     	 cmp r3,#255
+ 1950 00e4 1CBF     	 itt ne
+ 1951 00e6 0133     	 addne r3,r3,#1
+ 1952 00e8 A372     	 strbne r3,[r4,#10]
+ 1953 00ea A37A     	 ldrb r3,[r4,#10]
+ 1954 00ec 092B     	 cmp r3,#9
+ 1955 00ee 9FBF     	 itttt ls
+ 1956 00f0 C3EB4312 	 rsbls r2,r3,r3,lsl#5
+ 1957 00f4 03EB8203 	 addls r3,r3,r2,lsl#2
+ 1958 00f8 DB00     	 lslls r3,r3,#3
+ 1959 00fa 9BB2     	 uxthls r3,r3
+ 1960 00fc 88BF     	 it hi
+ 1961 00fe 42F21073 	 movwhi r3,#10000
+ 1962 0102 4FF4FA72 	 mov r2,#500
+ 1963 0106 03F2F313 	 addw r3,r3,#499
+ 1964 010a 93FBF2F3 	 sdiv r3,r3,r2
+ 1965 010e 228C     	 ldrh r2,[r4,#32]
+ 1966 0110 E382     	 strh r3,[r4,#22]
+ 1967 0112 638C     	 ldrh r3,[r4,#34]
+ 1968 0114 9B1A     	 subs r3,r3,r2
+ 1969 0116 012B     	 cmp r3,#1
+ 1970 0118 18DD     	 ble .L347
+ 1971 011a 5B10     	 asrs r3,r3,#1
+ 1972 011c E383     	 strh r3,[r4,#30]
+ 1973 011e 15E0     	 b .L347
+ 1974              	.L350:
+ 1975 0120 A28B     	 ldrh r2,[r4,#28]
+ 1976 0122 9AB1     	 cbz r2,.L347
+ 1977 0124 511E     	 subs r1,r2,#1
+ 1978 0126 012A     	 cmp r2,#1
+ 1979 0128 A183     	 strh r1,[r4,#28]
+ 1980 012a 0FD1     	 bne .L347
+ 1981 012c 03F0FB02 	 and r2,r3,#251
+ 1982 0130 012A     	 cmp r2,#1
+ 1983 0132 01D0     	 beq .L355
+ 1984 0134 0A2B     	 cmp r3,#10
+ 1985 0136 09D1     	 bne .L347
+ 1986              	.L355:
+ 1987 0138 2846     	 mov r0,r5
+ 1988 013a FFF7FEFF 	 bl dhcp_renew
+ 1989 013e 638B     	 ldrh r3,[r4,#26]
+ 1990 0140 228C     	 ldrh r2,[r4,#32]
+ 1991 0142 9B1A     	 subs r3,r3,r2
+ 1992 0144 012B     	 cmp r3,#1
+ 1993 0146 C4BF     	 itt gt
+ 1994 0148 5B10     	 asrgt r3,r3,#1
+ 1995 014a A383     	 strhgt r3,[r4,#28]
+ 1996              	.L347:
+ 1997 014c 2D68     	 ldr r5,[r5]
+ 1998 014e 5AE7     	 b .L345
+ 1999              	.L382:
+ 2000 0150 03B0     	 add sp,sp,#12
+ 2001              	 
+ 2002 0152 30BD     	 pop {r4,r5,pc}
+ 2003              	.L384:
+ 2004              	 .align 2
+ 2005              	.L383:
+ 2006 0154 00000000 	 .word netif_list
+ 2007 0158 00000000 	 .word .LANCHOR2
+ 2008 015c 00000000 	 .word ip_addr_broadcast
+ 2010              	 .section .text.dhcp_fine_tmr,"ax",%progbits
+ 2011              	 .align 1
+ 2012              	 .global dhcp_fine_tmr
+ 2013              	 .thumb
+ 2014              	 .thumb_func
+ 2016              	dhcp_fine_tmr:
+ 2017              	 
+ 2018              	 
+ 2019 0000 1D4B     	 ldr r3,.L404
+ 2020 0002 10B5     	 push {r4,lr}
+ 2021 0004 1C68     	 ldr r4,[r3]
+ 2022              	.L386:
+ 2023 0006 ACB3     	 cbz r4,.L403
+ 2024 0008 636A     	 ldr r3,[r4,#36]
+ 2025 000a 8BB3     	 cbz r3,.L388
+ 2026 000c DA8A     	 ldrh r2,[r3,#22]
+ 2027 000e 012A     	 cmp r2,#1
+ 2028 0010 02D9     	 bls .L389
+ 2029 0012 013A     	 subs r2,r2,#1
+ 2030 0014 DA82     	 strh r2,[r3,#22]
+ 2031 0016 2BE0     	 b .L388
+ 2032              	.L389:
+ 2033 0018 2AD1     	 bne .L388
+ 2034 001a 0022     	 movs r2,#0
+ 2035 001c DA82     	 strh r2,[r3,#22]
+ 2036 001e 5A7A     	 ldrb r2,[r3,#9]
+ 2037 0020 0C2A     	 cmp r2,#12
+ 2038 0022 0CD0     	 beq .L402
+ 2039 0024 062A     	 cmp r2,#6
+ 2040 0026 0AD0     	 beq .L402
+ 2041 0028 012A     	 cmp r2,#1
+ 2042 002a 0AD1     	 bne .L393
+ 2043 002c 9B7A     	 ldrb r3,[r3,#10]
+ 2044 002e 052B     	 cmp r3,#5
+ 2045 0030 2046     	 mov r0,r4
+ 2046 0032 02D8     	 bhi .L394
+ 2047 0034 FFF7FEFF 	 bl dhcp_select
+ 2048 0038 1AE0     	 b .L388
+ 2049              	.L394:
+ 2050 003a FFF7FEFF 	 bl dhcp_release
+ 2051              	.L402:
+ 2052 003e 2046     	 mov r0,r4
+ 2053 0040 14E0     	 b .L397
+ 2054              	.L393:
+ 2055 0042 082A     	 cmp r2,#8
+ 2056 0044 09D1     	 bne .L395
+ 2057 0046 9B7A     	 ldrb r3,[r3,#10]
+ 2058 0048 012B     	 cmp r3,#1
+ 2059 004a 2046     	 mov r0,r4
+ 2060 004c 02D8     	 bhi .L396
+ 2061 004e FFF7FEFF 	 bl dhcp_check
+ 2062 0052 0DE0     	 b .L388
+ 2063              	.L396:
+ 2064 0054 FFF7FEFF 	 bl dhcp_bind
+ 2065 0058 0AE0     	 b .L388
+ 2066              	.L395:
+ 2067 005a 032A     	 cmp r2,#3
+ 2068 005c 08D1     	 bne .L388
+ 2069 005e 9B7A     	 ldrb r3,[r3,#10]
+ 2070 0060 012B     	 cmp r3,#1
+ 2071 0062 2046     	 mov r0,r4
+ 2072 0064 02D8     	 bhi .L397
+ 2073 0066 FFF7FEFF 	 bl dhcp_reboot
+ 2074 006a 01E0     	 b .L388
+ 2075              	.L397:
+ 2076 006c FFF7FEFF 	 bl dhcp_discover
+ 2077              	.L388:
+ 2078 0070 2468     	 ldr r4,[r4]
+ 2079 0072 C8E7     	 b .L386
+ 2080              	.L403:
+ 2081 0074 10BD     	 pop {r4,pc}
+ 2082              	.L405:
+ 2083 0076 00BF     	 .align 2
+ 2084              	.L404:
+ 2085 0078 00000000 	 .word netif_list
+ 2087              	 .comm dhcp_rx_options_given,8,1
+ 2088              	 .comm dhcp_rx_options_val,32,4
+ 2089              	 .section .bss.xid.8188,"aw",%nobits
+ 2090              	 .align 2
+ 2091              	 .set .LANCHOR0,.+0
+ 2094              	xid.8188:
+ 2095 0000 00000000 	 .space 4
+ 2096              	 .section .bss.dhcp_pcb_refcount,"aw",%nobits
+ 2097              	 .set .LANCHOR1,.+0
+ 2100              	dhcp_pcb_refcount:
+ 2101 0000 00       	 .space 1
+ 2102              	 .section .bss.dhcp_pcb,"aw",%nobits
+ 2103              	 .align 2
+ 2104              	 .set .LANCHOR2,.+0
+ 2107              	dhcp_pcb:
+ 2108 0000 00000000 	 .space 4
+ 2109              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 dhcp.c
+    {standard input}:17     .text.dhcp_set_state:00000000 $t
+    {standard input}:21     .text.dhcp_set_state:00000000 dhcp_set_state
+    {standard input}:35     .text.dhcp_option:00000000 $t
+    {standard input}:39     .text.dhcp_option:00000000 dhcp_option
+    {standard input}:58     .text.dhcp_option_short:00000000 $t
+    {standard input}:62     .text.dhcp_option_short:00000000 dhcp_option_short
+    {standard input}:82     .text.dhcp_option_long:00000000 $t
+    {standard input}:86     .text.dhcp_option_long:00000000 dhcp_option_long
+    {standard input}:120    .text.dhcp_create_msg:00000000 $t
+    {standard input}:124    .text.dhcp_create_msg:00000000 dhcp_create_msg
+    {standard input}:289    .text.dhcp_create_msg:00000150 $d
+    {standard input}:292    .text.dhcp_delete_msg:00000000 $t
+    {standard input}:296    .text.dhcp_delete_msg:00000000 dhcp_delete_msg
+    {standard input}:313    .text.dhcp_check:00000000 $t
+    {standard input}:317    .text.dhcp_check:00000000 dhcp_check
+    {standard input}:340    .text.dhcp_bind:00000000 $t
+    {standard input}:344    .text.dhcp_bind:00000000 dhcp_bind
+    {standard input}:453    .text.dhcp_inc_pcb_refcount:00000000 $t
+    {standard input}:457    .text.dhcp_inc_pcb_refcount:00000000 dhcp_inc_pcb_refcount
+    {standard input}:496    .text.dhcp_inc_pcb_refcount:00000048 $d
+    {standard input}:955    .text.dhcp_recv:00000000 dhcp_recv
+    {standard input}:502    .text.dhcp_option_trailer:00000000 $t
+    {standard input}:506    .text.dhcp_option_trailer:00000000 dhcp_option_trailer
+    {standard input}:532    .text.unlikely.dhcp_handle_ack.isra.1:00000000 $t
+    {standard input}:536    .text.unlikely.dhcp_handle_ack.isra.1:00000000 dhcp_handle_ack.isra.1
+    {standard input}:595    .text.unlikely.dhcp_handle_ack.isra.1:00000064 $d
+                            *COM*:00000008 dhcp_rx_options_given
+                            *COM*:00000020 dhcp_rx_options_val
+    {standard input}:599    .text.dhcp_dec_pcb_refcount:00000000 $t
+    {standard input}:603    .text.dhcp_dec_pcb_refcount:00000000 dhcp_dec_pcb_refcount
+    {standard input}:622    .text.dhcp_dec_pcb_refcount:0000001c $d
+    {standard input}:626    .text.dhcp_discover:00000000 $t
+    {standard input}:630    .text.dhcp_discover:00000000 dhcp_discover
+    {standard input}:722    .text.dhcp_discover:000000cc $d
+    {standard input}:727    .text.dhcp_reboot:00000000 $t
+    {standard input}:731    .text.dhcp_reboot:00000000 dhcp_reboot
+    {standard input}:830    .text.dhcp_reboot:000000e4 $d
+    {standard input}:834    .text.dhcp_select:00000000 $t
+    {standard input}:838    .text.dhcp_select:00000000 dhcp_select
+    {standard input}:946    .text.dhcp_select:000000f8 $d
+    {standard input}:951    .text.dhcp_recv:00000000 $t
+    {standard input}:1296   .text.dhcp_recv:000002dc $d
+    {standard input}:1301   .text.dhcp_recv:000002ec $t
+    {standard input}:1328   .text.dhcp_set_struct:00000000 $t
+    {standard input}:1333   .text.dhcp_set_struct:00000000 dhcp_set_struct
+    {standard input}:1347   .text.dhcp_cleanup:00000000 $t
+    {standard input}:1352   .text.dhcp_cleanup:00000000 dhcp_cleanup
+    {standard input}:1366   .text.dhcp_inform:00000000 $t
+    {standard input}:1371   .text.dhcp_inform:00000000 dhcp_inform
+    {standard input}:1425   .text.dhcp_inform:00000074 $d
+    {standard input}:1429   .text.dhcp_network_changed:00000000 $t
+    {standard input}:1434   .text.dhcp_network_changed:00000000 dhcp_network_changed
+    {standard input}:1445   .text.dhcp_network_changed:0000000e $d
+    {standard input}:1469   .text.dhcp_arp_reply:00000000 $t
+    {standard input}:1474   .text.dhcp_arp_reply:00000000 dhcp_arp_reply
+    {standard input}:1541   .text.dhcp_arp_reply:00000088 $d
+    {standard input}:1546   .text.dhcp_renew:00000000 $t
+    {standard input}:1551   .text.dhcp_renew:00000000 dhcp_renew
+    {standard input}:1641   .text.dhcp_renew:000000cc $d
+    {standard input}:1644   .text.dhcp_stop:00000000 $t
+    {standard input}:1649   .text.dhcp_stop:00000000 dhcp_stop
+    {standard input}:1668   .text.dhcp_start:00000000 $t
+    {standard input}:1673   .text.dhcp_start:00000000 dhcp_start
+    {standard input}:1722   .text.dhcp_supplied_address:00000000 $t
+    {standard input}:1727   .text.dhcp_supplied_address:00000000 dhcp_supplied_address
+    {standard input}:1751   .text.dhcp_release:00000000 $t
+    {standard input}:1756   .text.dhcp_release:00000000 dhcp_release
+    {standard input}:1837   .text.dhcp_release:000000a4 $d
+    {standard input}:1841   .text.dhcp_coarse_tmr:00000000 $t
+    {standard input}:1846   .text.dhcp_coarse_tmr:00000000 dhcp_coarse_tmr
+    {standard input}:2006   .text.dhcp_coarse_tmr:00000154 $d
+    {standard input}:2011   .text.dhcp_fine_tmr:00000000 $t
+    {standard input}:2016   .text.dhcp_fine_tmr:00000000 dhcp_fine_tmr
+    {standard input}:2085   .text.dhcp_fine_tmr:00000078 $d
+    {standard input}:2090   .bss.xid.8188:00000000 $d
+    {standard input}:2094   .bss.xid.8188:00000000 xid.8188
+    {standard input}:2100   .bss.dhcp_pcb_refcount:00000000 dhcp_pcb_refcount
+    {standard input}:2101   .bss.dhcp_pcb_refcount:00000000 $d
+    {standard input}:2103   .bss.dhcp_pcb:00000000 $d
+    {standard input}:2107   .bss.dhcp_pcb:00000000 dhcp_pcb
+    {standard input}:1456   .text.dhcp_network_changed:00000019 $d
+    {standard input}:1456   .text.dhcp_network_changed:0000001a $t
+
+UNDEFINED SYMBOLS
+pbuf_alloc
+rand
+lwip_htonl
+pbuf_free
+etharp_query
+netif_set_addr
+udp_new
+udp_bind
+udp_connect
+udp_recv
+ip_addr_any
+udp_remove
+pbuf_realloc
+udp_sendto_if_src
+ip_addr_broadcast
+udp_sendto_if
+memset
+pbuf_copy_partial
+ip_data
+mem_free
+mem_malloc
+netif_list

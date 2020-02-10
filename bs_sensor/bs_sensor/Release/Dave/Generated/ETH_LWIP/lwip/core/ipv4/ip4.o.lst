@@ -1,0 +1,445 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "ip4.c"
+  16              	 .section .text.ip4_route,"ax",%progbits
+  17              	 .align 1
+  18              	 .global ip4_route
+  19              	 .thumb
+  20              	 .thumb_func
+  22              	ip4_route:
+  23              	 
+  24              	 
+  25 0000 30B5     	 push {r4,r5,lr}
+  26 0002 134B     	 ldr r3,.L18
+  27              	.L3:
+  28 0004 1B68     	 ldr r3,[r3]
+  29 0006 9BB1     	 cbz r3,.L17
+  30 0008 93F83340 	 ldrb r4,[r3,#51]
+  31 000c 04F00502 	 and r2,r4,#5
+  32 0010 052A     	 cmp r2,#5
+  33 0012 F7D1     	 bne .L3
+  34 0014 5A68     	 ldr r2,[r3,#4]
+  35 0016 002A     	 cmp r2,#0
+  36 0018 F4D0     	 beq .L3
+  37 001a 0168     	 ldr r1,[r0]
+  38 001c 9D68     	 ldr r5,[r3,#8]
+  39 001e 4A40     	 eors r2,r2,r1
+  40 0020 2A42     	 tst r2,r5
+  41 0022 13D0     	 beq .L8
+  42 0024 A207     	 lsls r2,r4,#30
+  43 0026 EDD4     	 bmi .L3
+  44 0028 DA68     	 ldr r2,[r3,#12]
+  45 002a 9142     	 cmp r1,r2
+  46 002c EAD1     	 bne .L3
+  47 002e 0DE0     	 b .L8
+  48              	.L17:
+  49 0030 084A     	 ldr r2,.L18+4
+  50 0032 1068     	 ldr r0,[r2]
+  51 0034 58B1     	 cbz r0,.L4
+  52 0036 90F83320 	 ldrb r2,[r0,#51]
+  53 003a 02F00502 	 and r2,r2,#5
+  54 003e 052A     	 cmp r2,#5
+  55 0040 04D1     	 bne .L8
+  56 0042 4368     	 ldr r3,[r0,#4]
+  57 0044 002B     	 cmp r3,#0
+  58 0046 08BF     	 it eq
+  59 0048 0020     	 moveq r0,#0
+  60 004a 30BD     	 pop {r4,r5,pc}
+  61              	.L8:
+  62 004c 1846     	 mov r0,r3
+  63              	.L4:
+  64 004e 30BD     	 pop {r4,r5,pc}
+  65              	.L19:
+  66              	 .align 2
+  67              	.L18:
+  68 0050 00000000 	 .word netif_list
+  69 0054 00000000 	 .word netif_default
+  71              	 .section .text.ip4_input,"ax",%progbits
+  72              	 .align 1
+  73              	 .global ip4_input
+  74              	 .thumb
+  75              	 .thumb_func
+  77              	ip4_input:
+  78              	 
+  79              	 
+  80 0000 2DE9F047 	 push {r4,r5,r6,r7,r8,r9,r10,lr}
+  81 0004 D0F80480 	 ldr r8,[r0,#4]
+  82 0008 98F80090 	 ldrb r9,[r8]
+  83 000c 4FEA1913 	 lsr r3,r9,#4
+  84 0010 042B     	 cmp r3,#4
+  85 0012 0646     	 mov r6,r0
+  86 0014 0F46     	 mov r7,r1
+  87 0016 03D0     	 beq .L21
+  88              	.L25:
+  89 0018 3046     	 mov r0,r6
+  90 001a FFF7FEFF 	 bl pbuf_free
+  91 001e C3E0     	 b .L68
+  92              	.L21:
+  93 0020 B8F80200 	 ldrh r0,[r8,#2]
+  94 0024 FFF7FEFF 	 bl lwip_htons
+  95 0028 3389     	 ldrh r3,[r6,#8]
+  96 002a 09F00F09 	 and r9,r9,#15
+  97 002e 8342     	 cmp r3,r0
+  98 0030 4FEA8909 	 lsl r9,r9,#2
+  99 0034 0446     	 mov r4,r0
+ 100 0036 03D9     	 bls .L23
+ 101 0038 3046     	 mov r0,r6
+ 102 003a 2146     	 mov r1,r4
+ 103 003c FFF7FEFF 	 bl pbuf_realloc
+ 104              	.L23:
+ 105 0040 7389     	 ldrh r3,[r6,#10]
+ 106 0042 4B45     	 cmp r3,r9
+ 107 0044 E8D3     	 bcc .L25
+ 108 0046 3389     	 ldrh r3,[r6,#8]
+ 109 0048 A342     	 cmp r3,r4
+ 110 004a E5D3     	 bcc .L25
+ 111 004c B9F1130F 	 cmp r9,#19
+ 112 0050 E2D9     	 bls .L25
+ 113 0052 D8F81030 	 ldr r3,[r8,#16]
+ 114 0056 564D     	 ldr r5,.L73
+ 115 0058 6B61     	 str r3,[r5,#20]
+ 116 005a 03F0F003 	 and r3,r3,#240
+ 117 005e D8F80C20 	 ldr r2,[r8,#12]
+ 118 0062 2A61     	 str r2,[r5,#16]
+ 119 0064 E02B     	 cmp r3,#224
+ 120 0066 07D1     	 bne .L27
+ 121 0068 97F83330 	 ldrb r3,[r7,#51]
+ 122 006c DA07     	 lsls r2,r3,#31
+ 123 006e 28D5     	 bpl .L28
+ 124 0070 7B68     	 ldr r3,[r7,#4]
+ 125 0072 33B3     	 cbz r3,.L28
+ 126 0074 3C46     	 mov r4,r7
+ 127 0076 87E0     	 b .L38
+ 128              	.L27:
+ 129 0078 3C46     	 mov r4,r7
+ 130 007a 4FF0010A 	 mov r10,#1
+ 131              	.L36:
+ 132 007e 94F83330 	 ldrb r3,[r4,#51]
+ 133 0082 DB07     	 lsls r3,r3,#31
+ 134 0084 03D4     	 bmi .L30
+ 135              	.L33:
+ 136 0086 BAF1000F 	 cmp r10,#0
+ 137 008a 0CD1     	 bne .L31
+ 138 008c 11E0     	 b .L72
+ 139              	.L30:
+ 140 008e 6368     	 ldr r3,[r4,#4]
+ 141 0090 002B     	 cmp r3,#0
+ 142 0092 F8D0     	 beq .L33
+ 143 0094 6869     	 ldr r0,[r5,#20]
+ 144 0096 9842     	 cmp r0,r3
+ 145 0098 76D0     	 beq .L38
+ 146 009a 2146     	 mov r1,r4
+ 147 009c FFF7FEFF 	 bl ip4_addr_isbroadcast_u32
+ 148 00a0 0028     	 cmp r0,#0
+ 149 00a2 F0D0     	 beq .L33
+ 150 00a4 70E0     	 b .L38
+ 151              	.L31:
+ 152 00a6 2B7D     	 ldrb r3,[r5,#20]
+ 153 00a8 7F2B     	 cmp r3,#127
+ 154 00aa 0AD0     	 beq .L28
+ 155 00ac 414B     	 ldr r3,.L73+4
+ 156 00ae 1C68     	 ldr r4,[r3]
+ 157 00b0 00E0     	 b .L34
+ 158              	.L72:
+ 159 00b2 2468     	 ldr r4,[r4]
+ 160              	.L34:
+ 161 00b4 BC42     	 cmp r4,r7
+ 162 00b6 08BF     	 it eq
+ 163 00b8 2468     	 ldreq r4,[r4]
+ 164 00ba 4FF0000A 	 mov r10,#0
+ 165 00be 002C     	 cmp r4,#0
+ 166 00c0 DDD1     	 bne .L36
+ 167              	.L28:
+ 168 00c2 98F80930 	 ldrb r3,[r8,#9]
+ 169 00c6 112B     	 cmp r3,#17
+ 170 00c8 5DD1     	 bne .L71
+ 171 00ca 08EB0903 	 add r3,r8,r9
+ 172 00ce 5B88     	 ldrh r3,[r3,#2]
+ 173 00d0 B3F5884F 	 cmp r3,#17408
+ 174 00d4 57D1     	 bne .L71
+ 175 00d6 3C46     	 mov r4,r7
+ 176              	.L37:
+ 177 00d8 002C     	 cmp r4,#0
+ 178 00da 9DD0     	 beq .L25
+ 179 00dc B8F80630 	 ldrh r3,[r8,#6]
+ 180 00e0 23F0C003 	 bic r3,r3,#192
+ 181 00e4 002B     	 cmp r3,#0
+ 182 00e6 97D1     	 bne .L25
+ 183 00e8 B9F1140F 	 cmp r9,#20
+ 184 00ec 94D1     	 bne .L25
+ 185 00ee 85E89001 	 stmia r5,{r4,r7,r8}
+ 186 00f2 98F80030 	 ldrb r3,[r8]
+ 187 00f6 DFF8B8A0 	 ldr r10,.L73
+ 188 00fa 03F00F03 	 and r3,r3,#15
+ 189 00fe 9B00     	 lsls r3,r3,#2
+ 190 0100 3046     	 mov r0,r6
+ 191 0102 3946     	 mov r1,r7
+ 192 0104 AB81     	 strh r3,[r5,#12]
+ 193 0106 FFF7FEFF 	 bl raw_input
+ 194 010a A0BB     	 cbnz r0,.L39
+ 195 010c 3046     	 mov r0,r6
+ 196 010e 6FF01301 	 mvn r1,#19
+ 197 0112 FFF7FEFF 	 bl pbuf_header
+ 198 0116 98F80930 	 ldrb r3,[r8,#9]
+ 199 011a 062B     	 cmp r3,#6
+ 200 011c 0DD0     	 beq .L41
+ 201 011e 112B     	 cmp r3,#17
+ 202 0120 06D0     	 beq .L42
+ 203 0122 012B     	 cmp r3,#1
+ 204 0124 0ED1     	 bne .L70
+ 205 0126 3046     	 mov r0,r6
+ 206 0128 3946     	 mov r1,r7
+ 207 012a FFF7FEFF 	 bl icmp_input
+ 208 012e 22E0     	 b .L39
+ 209              	.L42:
+ 210 0130 3046     	 mov r0,r6
+ 211 0132 3946     	 mov r1,r7
+ 212 0134 FFF7FEFF 	 bl udp_input
+ 213 0138 1DE0     	 b .L39
+ 214              	.L41:
+ 215 013a 3046     	 mov r0,r6
+ 216 013c 3946     	 mov r1,r7
+ 217 013e FFF7FEFF 	 bl tcp_input
+ 218 0142 18E0     	 b .L39
+ 219              	.L70:
+ 220 0144 DAF81400 	 ldr r0,[r10,#20]
+ 221 0148 2146     	 mov r1,r4
+ 222 014a FFF7FEFF 	 bl ip4_addr_isbroadcast_u32
+ 223 014e 78B9     	 cbnz r0,.L44
+ 224 0150 DAF81430 	 ldr r3,[r10,#20]
+ 225 0154 03F0F003 	 and r3,r3,#240
+ 226 0158 E02B     	 cmp r3,#224
+ 227 015a 09D0     	 beq .L44
+ 228 015c 4946     	 mov r1,r9
+ 229 015e 3046     	 mov r0,r6
+ 230 0160 FFF7FEFF 	 bl pbuf_header_force
+ 231 0164 C6F80480 	 str r8,[r6,#4]
+ 232 0168 3046     	 mov r0,r6
+ 233 016a 0221     	 movs r1,#2
+ 234 016c FFF7FEFF 	 bl icmp_dest_unreach
+ 235              	.L44:
+ 236 0170 3046     	 mov r0,r6
+ 237 0172 FFF7FEFF 	 bl pbuf_free
+ 238              	.L39:
+ 239 0176 0023     	 movs r3,#0
+ 240 0178 2B60     	 str r3,[r5]
+ 241 017a 6B60     	 str r3,[r5,#4]
+ 242 017c AB60     	 str r3,[r5,#8]
+ 243 017e AB81     	 strh r3,[r5,#12]
+ 244 0180 2B61     	 str r3,[r5,#16]
+ 245 0182 6B61     	 str r3,[r5,#20]
+ 246 0184 10E0     	 b .L68
+ 247              	.L71:
+ 248 0186 0024     	 movs r4,#0
+ 249              	.L38:
+ 250 0188 2869     	 ldr r0,[r5,#16]
+ 251 018a 0028     	 cmp r0,#0
+ 252 018c A4D0     	 beq .L37
+ 253 018e 3946     	 mov r1,r7
+ 254 0190 FFF7FEFF 	 bl ip4_addr_isbroadcast_u32
+ 255 0194 0028     	 cmp r0,#0
+ 256 0196 7FF43FAF 	 bne .L25
+ 257 019a 054B     	 ldr r3,.L73
+ 258 019c 1B69     	 ldr r3,[r3,#16]
+ 259 019e 03F0F003 	 and r3,r3,#240
+ 260 01a2 E02B     	 cmp r3,#224
+ 261 01a4 98D1     	 bne .L37
+ 262 01a6 37E7     	 b .L25
+ 263              	.L68:
+ 264 01a8 0020     	 movs r0,#0
+ 265 01aa BDE8F087 	 pop {r4,r5,r6,r7,r8,r9,r10,pc}
+ 266              	.L74:
+ 267 01ae 00BF     	 .align 2
+ 268              	.L73:
+ 269 01b0 00000000 	 .word ip_data
+ 270 01b4 00000000 	 .word netif_list
+ 272              	 .section .text.ip4_output_if_src,"ax",%progbits
+ 273              	 .align 1
+ 274              	 .global ip4_output_if_src
+ 275              	 .thumb
+ 276              	 .thumb_func
+ 278              	ip4_output_if_src:
+ 279              	 
+ 280              	 
+ 281 0000 2DE9F347 	 push {r0,r1,r4,r5,r6,r7,r8,r9,r10,lr}
+ 282 0004 DDF83080 	 ldr r8,[sp,#48]
+ 283 0008 0646     	 mov r6,r0
+ 284 000a 8946     	 mov r9,r1
+ 285 000c 9A46     	 mov r10,r3
+ 286 000e 1546     	 mov r5,r2
+ 287 0010 6AB3     	 cbz r2,.L76
+ 288 0012 1421     	 movs r1,#20
+ 289 0014 FFF7FEFF 	 bl pbuf_header
+ 290 0018 0746     	 mov r7,r0
+ 291 001a 0028     	 cmp r0,#0
+ 292 001c 33D1     	 bne .L81
+ 293 001e 7468     	 ldr r4,[r6,#4]
+ 294 0020 9DF82C30 	 ldrb r3,[sp,#44]
+ 295 0024 84F808A0 	 strb r10,[r4,#8]
+ 296 0028 6372     	 strb r3,[r4,#9]
+ 297 002a 2B68     	 ldr r3,[r5]
+ 298 002c 2361     	 str r3,[r4,#16]
+ 299 002e 4523     	 movs r3,#69
+ 300 0030 2370     	 strb r3,[r4]
+ 301 0032 9DF82830 	 ldrb r3,[sp,#40]
+ 302 0036 6370     	 strb r3,[r4,#1]
+ 303 0038 3089     	 ldrh r0,[r6,#8]
+ 304 003a FFF7FEFF 	 bl lwip_htons
+ 305 003e A771     	 strb r7,[r4,#6]
+ 306 0040 E771     	 strb r7,[r4,#7]
+ 307 0042 134F     	 ldr r7,.L83
+ 308 0044 6080     	 strh r0,[r4,#2]
+ 309 0046 3888     	 ldrh r0,[r7]
+ 310 0048 FFF7FEFF 	 bl lwip_htons
+ 311 004c 3B88     	 ldrh r3,[r7]
+ 312 004e A080     	 strh r0,[r4,#4]
+ 313 0050 0133     	 adds r3,r3,#1
+ 314 0052 3B80     	 strh r3,[r7]
+ 315 0054 B9F1000F 	 cmp r9,#0
+ 316 0058 02D1     	 bne .L78
+ 317 005a 0E4B     	 ldr r3,.L83+4
+ 318 005c 1B68     	 ldr r3,[r3]
+ 319 005e 01E0     	 b .L82
+ 320              	.L78:
+ 321 0060 D9F80030 	 ldr r3,[r9]
+ 322              	.L82:
+ 323 0064 E360     	 str r3,[r4,#12]
+ 324 0066 0023     	 movs r3,#0
+ 325 0068 A372     	 strb r3,[r4,#10]
+ 326 006a E372     	 strb r3,[r4,#11]
+ 327 006c 04E0     	 b .L80
+ 328              	.L76:
+ 329 006e 4368     	 ldr r3,[r0,#4]
+ 330 0070 02AD     	 add r5,sp,#8
+ 331 0072 1B69     	 ldr r3,[r3,#16]
+ 332 0074 45F8043D 	 str r3,[r5,#-4]!
+ 333              	.L80:
+ 334 0078 D8F81430 	 ldr r3,[r8,#20]
+ 335 007c 4046     	 mov r0,r8
+ 336 007e 3146     	 mov r1,r6
+ 337 0080 2A46     	 mov r2,r5
+ 338 0082 9847     	 blx r3
+ 339 0084 00E0     	 b .L77
+ 340              	.L81:
+ 341 0086 FE20     	 movs r0,#254
+ 342              	.L77:
+ 343 0088 40B2     	 sxtb r0,r0
+ 344 008a 02B0     	 add sp,sp,#8
+ 345              	 
+ 346 008c BDE8F087 	 pop {r4,r5,r6,r7,r8,r9,r10,pc}
+ 347              	.L84:
+ 348              	 .align 2
+ 349              	.L83:
+ 350 0090 00000000 	 .word .LANCHOR0
+ 351 0094 00000000 	 .word ip_addr_any
+ 353              	 .section .text.ip4_output_if,"ax",%progbits
+ 354              	 .align 1
+ 355              	 .global ip4_output_if
+ 356              	 .thumb
+ 357              	 .thumb_func
+ 359              	ip4_output_if:
+ 360              	 
+ 361              	 
+ 362 0000 F0B5     	 push {r4,r5,r6,r7,lr}
+ 363 0002 079C     	 ldr r4,[sp,#28]
+ 364 0004 9DF81460 	 ldrb r6,[sp,#20]
+ 365 0008 9DF81850 	 ldrb r5,[sp,#24]
+ 366 000c 1AB1     	 cbz r2,.L86
+ 367 000e 09B1     	 cbz r1,.L87
+ 368 0010 0F68     	 ldr r7,[r1]
+ 369 0012 07B9     	 cbnz r7,.L86
+ 370              	.L87:
+ 371 0014 211D     	 adds r1,r4,#4
+ 372              	.L86:
+ 373 0016 0596     	 str r6,[sp,#20]
+ 374 0018 0695     	 str r5,[sp,#24]
+ 375 001a 0794     	 str r4,[sp,#28]
+ 376 001c BDE8F040 	 pop {r4,r5,r6,r7,lr}
+ 377 0020 FFF7FEBF 	 b ip4_output_if_src
+ 379              	 .section .text.ip4_output,"ax",%progbits
+ 380              	 .align 1
+ 381              	 .global ip4_output
+ 382              	 .thumb
+ 383              	 .thumb_func
+ 385              	ip4_output:
+ 386              	 
+ 387              	 
+ 388 0000 F0B5     	 push {r4,r5,r6,r7,lr}
+ 389 0002 0746     	 mov r7,r0
+ 390 0004 85B0     	 sub sp,sp,#20
+ 391 0006 1046     	 mov r0,r2
+ 392 0008 0E46     	 mov r6,r1
+ 393 000a 1446     	 mov r4,r2
+ 394 000c 1D46     	 mov r5,r3
+ 395 000e FFF7FEFF 	 bl ip4_route
+ 396 0012 68B1     	 cbz r0,.L96
+ 397 0014 9DF82830 	 ldrb r3,[sp,#40]
+ 398 0018 0093     	 str r3,[sp]
+ 399 001a 9DF82C30 	 ldrb r3,[sp,#44]
+ 400 001e 0193     	 str r3,[sp,#4]
+ 401 0020 0290     	 str r0,[sp,#8]
+ 402 0022 3146     	 mov r1,r6
+ 403 0024 3846     	 mov r0,r7
+ 404 0026 2246     	 mov r2,r4
+ 405 0028 2B46     	 mov r3,r5
+ 406 002a FFF7FEFF 	 bl ip4_output_if
+ 407 002e 00E0     	 b .L95
+ 408              	.L96:
+ 409 0030 FC20     	 movs r0,#252
+ 410              	.L95:
+ 411 0032 40B2     	 sxtb r0,r0
+ 412 0034 05B0     	 add sp,sp,#20
+ 413              	 
+ 414 0036 F0BD     	 pop {r4,r5,r6,r7,pc}
+ 416              	 .section .bss.ip_id,"aw",%nobits
+ 417              	 .align 1
+ 418              	 .set .LANCHOR0,.+0
+ 421              	ip_id:
+ 422 0000 0000     	 .space 2
+ 423              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 ip4.c
+    {standard input}:17     .text.ip4_route:00000000 $t
+    {standard input}:22     .text.ip4_route:00000000 ip4_route
+    {standard input}:68     .text.ip4_route:00000050 $d
+    {standard input}:72     .text.ip4_input:00000000 $t
+    {standard input}:77     .text.ip4_input:00000000 ip4_input
+    {standard input}:269    .text.ip4_input:000001b0 $d
+    {standard input}:273    .text.ip4_output_if_src:00000000 $t
+    {standard input}:278    .text.ip4_output_if_src:00000000 ip4_output_if_src
+    {standard input}:350    .text.ip4_output_if_src:00000090 $d
+    {standard input}:354    .text.ip4_output_if:00000000 $t
+    {standard input}:359    .text.ip4_output_if:00000000 ip4_output_if
+    {standard input}:380    .text.ip4_output:00000000 $t
+    {standard input}:385    .text.ip4_output:00000000 ip4_output
+    {standard input}:417    .bss.ip_id:00000000 $d
+    {standard input}:421    .bss.ip_id:00000000 ip_id
+
+UNDEFINED SYMBOLS
+netif_list
+netif_default
+pbuf_free
+lwip_htons
+pbuf_realloc
+ip4_addr_isbroadcast_u32
+raw_input
+pbuf_header
+icmp_input
+udp_input
+tcp_input
+pbuf_header_force
+icmp_dest_unreach
+ip_data
+ip_addr_any

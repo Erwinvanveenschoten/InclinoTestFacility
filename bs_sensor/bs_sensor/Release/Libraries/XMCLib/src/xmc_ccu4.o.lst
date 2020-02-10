@@ -1,0 +1,796 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "xmc_ccu4.c"
+  16              	 .section .text.XMC_CCU4_EnableModule,"ax",%progbits
+  17              	 .align 1
+  18              	 .global XMC_CCU4_EnableModule
+  19              	 .thumb
+  20              	 .thumb_func
+  22              	XMC_CCU4_EnableModule:
+  23              	 
+  24              	 
+  25 0000 10B5     	 push {r4,lr}
+  26 0002 0446     	 mov r4,r0
+  27 0004 1020     	 movs r0,#16
+  28 0006 FFF7FEFF 	 bl XMC_SCU_CLOCK_EnableClock
+  29 000a 124B     	 ldr r3,.L8
+  30 000c 9C42     	 cmp r4,r3
+  31 000e 04D1     	 bne .L2
+  32 0010 0420     	 movs r0,#4
+  33 0012 FFF7FEFF 	 bl XMC_SCU_CLOCK_UngatePeripheralClock
+  34 0016 0420     	 movs r0,#4
+  35 0018 16E0     	 b .L6
+  36              	.L2:
+  37 001a 0F4B     	 ldr r3,.L8+4
+  38 001c 9C42     	 cmp r4,r3
+  39 001e 04D1     	 bne .L3
+  40 0020 0820     	 movs r0,#8
+  41 0022 FFF7FEFF 	 bl XMC_SCU_CLOCK_UngatePeripheralClock
+  42 0026 0820     	 movs r0,#8
+  43 0028 0EE0     	 b .L6
+  44              	.L3:
+  45 002a 0C4B     	 ldr r3,.L8+8
+  46 002c 9C42     	 cmp r4,r3
+  47 002e 04D1     	 bne .L4
+  48 0030 1020     	 movs r0,#16
+  49 0032 FFF7FEFF 	 bl XMC_SCU_CLOCK_UngatePeripheralClock
+  50 0036 1020     	 movs r0,#16
+  51 0038 06E0     	 b .L6
+  52              	.L4:
+  53 003a 094B     	 ldr r3,.L8+12
+  54 003c 9C42     	 cmp r4,r3
+  55 003e 07D1     	 bne .L1
+  56 0040 0848     	 ldr r0,.L8+16
+  57 0042 FFF7FEFF 	 bl XMC_SCU_CLOCK_UngatePeripheralClock
+  58 0046 0748     	 ldr r0,.L8+16
+  59              	.L6:
+  60 0048 BDE81040 	 pop {r4,lr}
+  61 004c FFF7FEBF 	 b XMC_SCU_RESET_DeassertPeripheralReset
+  62              	.L1:
+  63 0050 10BD     	 pop {r4,pc}
+  64              	.L9:
+  65 0052 00BF     	 .align 2
+  66              	.L8:
+  67 0054 00C00040 	 .word 1073790976
+  68 0058 00000140 	 .word 1073807360
+  69 005c 00400140 	 .word 1073823744
+  70 0060 00400048 	 .word 1207975936
+  71 0064 01000010 	 .word 268435457
+  73              	 .section .text.XMC_CCU4_DisableModule,"ax",%progbits
+  74              	 .align 1
+  75              	 .global XMC_CCU4_DisableModule
+  76              	 .thumb
+  77              	 .thumb_func
+  79              	XMC_CCU4_DisableModule:
+  80              	 
+  81              	 
+  82 0000 08B5     	 push {r3,lr}
+  83 0002 124B     	 ldr r3,.L16
+  84 0004 9842     	 cmp r0,r3
+  85 0006 04D1     	 bne .L11
+  86 0008 0420     	 movs r0,#4
+  87 000a FFF7FEFF 	 bl XMC_SCU_RESET_AssertPeripheralReset
+  88 000e 0420     	 movs r0,#4
+  89 0010 16E0     	 b .L15
+  90              	.L11:
+  91 0012 0F4B     	 ldr r3,.L16+4
+  92 0014 9842     	 cmp r0,r3
+  93 0016 04D1     	 bne .L12
+  94 0018 0820     	 movs r0,#8
+  95 001a FFF7FEFF 	 bl XMC_SCU_RESET_AssertPeripheralReset
+  96 001e 0820     	 movs r0,#8
+  97 0020 0EE0     	 b .L15
+  98              	.L12:
+  99 0022 0C4B     	 ldr r3,.L16+8
+ 100 0024 9842     	 cmp r0,r3
+ 101 0026 04D1     	 bne .L13
+ 102 0028 1020     	 movs r0,#16
+ 103 002a FFF7FEFF 	 bl XMC_SCU_RESET_AssertPeripheralReset
+ 104 002e 1020     	 movs r0,#16
+ 105 0030 06E0     	 b .L15
+ 106              	.L13:
+ 107 0032 094B     	 ldr r3,.L16+12
+ 108 0034 9842     	 cmp r0,r3
+ 109 0036 07D1     	 bne .L10
+ 110 0038 0848     	 ldr r0,.L16+16
+ 111 003a FFF7FEFF 	 bl XMC_SCU_RESET_AssertPeripheralReset
+ 112 003e 0748     	 ldr r0,.L16+16
+ 113              	.L15:
+ 114 0040 BDE80840 	 pop {r3,lr}
+ 115 0044 FFF7FEBF 	 b XMC_SCU_CLOCK_GatePeripheralClock
+ 116              	.L10:
+ 117 0048 08BD     	 pop {r3,pc}
+ 118              	.L17:
+ 119 004a 00BF     	 .align 2
+ 120              	.L16:
+ 121 004c 00C00040 	 .word 1073790976
+ 122 0050 00000140 	 .word 1073807360
+ 123 0054 00400140 	 .word 1073823744
+ 124 0058 00400048 	 .word 1207975936
+ 125 005c 01000010 	 .word 268435457
+ 127              	 .section .text.XMC_CCU4_Init,"ax",%progbits
+ 128              	 .align 1
+ 129              	 .global XMC_CCU4_Init
+ 130              	 .thumb
+ 131              	 .thumb_func
+ 133              	XMC_CCU4_Init:
+ 134              	 
+ 135              	 
+ 136 0000 38B5     	 push {r3,r4,r5,lr}
+ 137 0002 0446     	 mov r4,r0
+ 138 0004 0D46     	 mov r5,r1
+ 139 0006 FFF7FEFF 	 bl XMC_CCU4_EnableModule
+ 140 000a E368     	 ldr r3,[r4,#12]
+ 141 000c 43F48073 	 orr r3,r3,#256
+ 142 0010 E360     	 str r3,[r4,#12]
+ 143 0012 2368     	 ldr r3,[r4]
+ 144 0014 23F44043 	 bic r3,r3,#49152
+ 145 0018 43EA8531 	 orr r1,r3,r5,lsl#14
+ 146 001c 2160     	 str r1,[r4]
+ 147 001e 38BD     	 pop {r3,r4,r5,pc}
+ 149              	 .section .text.XMC_CCU4_SetModuleClock,"ax",%progbits
+ 150              	 .align 1
+ 151              	 .global XMC_CCU4_SetModuleClock
+ 152              	 .thumb
+ 153              	 .thumb_func
+ 155              	XMC_CCU4_SetModuleClock:
+ 156              	 
+ 157              	 
+ 158              	 
+ 159 0000 0368     	 ldr r3,[r0]
+ 160 0002 23F03003 	 bic r3,r3,#48
+ 161 0006 43EA0111 	 orr r1,r3,r1,lsl#4
+ 162 000a 0160     	 str r1,[r0]
+ 163 000c 7047     	 bx lr
+ 165              	 .section .text.XMC_CCU4_SetMultiChannelShadowTransferMode,"ax",%progbits
+ 166              	 .align 1
+ 167              	 .global XMC_CCU4_SetMultiChannelShadowTransferMode
+ 168              	 .thumb
+ 169              	 .thumb_func
+ 171              	XMC_CCU4_SetMultiChannelShadowTransferMode:
+ 172              	 
+ 173              	 
+ 174              	 
+ 175 0000 0368     	 ldr r3,[r0]
+ 176 0002 23EA1143 	 bic r3,r3,r1,lsr#16
+ 177 0006 89B2     	 uxth r1,r1
+ 178 0008 1943     	 orrs r1,r1,r3
+ 179 000a 0160     	 str r1,[r0]
+ 180 000c 7047     	 bx lr
+ 182              	 .section .text.XMC_CCU4_SLICE_CompareInit,"ax",%progbits
+ 183              	 .align 1
+ 184              	 .global XMC_CCU4_SLICE_CompareInit
+ 185              	 .thumb
+ 186              	 .thumb_func
+ 188              	XMC_CCU4_SLICE_CompareInit:
+ 189              	 
+ 190              	 
+ 191              	 
+ 192 0000 0B68     	 ldr r3,[r1]
+ 193 0002 4361     	 str r3,[r0,#20]
+ 194 0004 4B79     	 ldrb r3,[r1,#5]
+ 195 0006 C3F34013 	 ubfx r3,r3,#5,#1
+ 196 000a 1B05     	 lsls r3,r3,#20
+ 197 000c 4360     	 str r3,[r0,#4]
+ 198 000e 0B79     	 ldrb r3,[r1,#4]
+ 199 0010 03F00F03 	 and r3,r3,#15
+ 200 0014 4362     	 str r3,[r0,#36]
+ 201 0016 4B79     	 ldrb r3,[r1,#5]
+ 202 0018 03F00F03 	 and r3,r3,#15
+ 203 001c 0362     	 str r3,[r0,#32]
+ 204 001e 4B79     	 ldrb r3,[r1,#5]
+ 205 0020 C3F30013 	 ubfx r3,r3,#4,#1
+ 206 0024 8361     	 str r3,[r0,#24]
+ 207 0026 0B79     	 ldrb r3,[r1,#4]
+ 208 0028 1B09     	 lsrs r3,r3,#4
+ 209 002a C362     	 str r3,[r0,#44]
+ 210 002c 7047     	 bx lr
+ 212              	 .section .text.XMC_CCU4_SLICE_CaptureInit,"ax",%progbits
+ 213              	 .align 1
+ 214              	 .global XMC_CCU4_SLICE_CaptureInit
+ 215              	 .thumb
+ 216              	 .thumb_func
+ 218              	XMC_CCU4_SLICE_CaptureInit:
+ 219              	 
+ 220              	 
+ 221              	 
+ 222 0000 0B68     	 ldr r3,[r1]
+ 223 0002 4361     	 str r3,[r0,#20]
+ 224 0004 4B79     	 ldrb r3,[r1,#5]
+ 225 0006 03F00103 	 and r3,r3,#1
+ 226 000a 1B05     	 lsls r3,r3,#20
+ 227 000c 4360     	 str r3,[r0,#4]
+ 228 000e 0B79     	 ldrb r3,[r1,#4]
+ 229 0010 03F00F03 	 and r3,r3,#15
+ 230 0014 4362     	 str r3,[r0,#36]
+ 231 0016 0B79     	 ldrb r3,[r1,#4]
+ 232 0018 1B09     	 lsrs r3,r3,#4
+ 233 001a C362     	 str r3,[r0,#44]
+ 234 001c 7047     	 bx lr
+ 236              	 .section .text.XMC_CCU4_SLICE_StartConfig,"ax",%progbits
+ 237              	 .align 1
+ 238              	 .global XMC_CCU4_SLICE_StartConfig
+ 239              	 .thumb
+ 240              	 .thumb_func
+ 242              	XMC_CCU4_SLICE_StartConfig:
+ 243              	 
+ 244              	 
+ 245              	 
+ 246 0000 4368     	 ldr r3,[r0,#4]
+ 247 0002 23F00303 	 bic r3,r3,#3
+ 248 0006 1943     	 orrs r1,r1,r3
+ 249 0008 4160     	 str r1,[r0,#4]
+ 250 000a 4369     	 ldr r3,[r0,#20]
+ 251 000c 012A     	 cmp r2,#1
+ 252 000e 0CBF     	 ite eq
+ 253 0010 43F48063 	 orreq r3,r3,#1024
+ 254 0014 23F48063 	 bicne r3,r3,#1024
+ 255 0018 4361     	 str r3,[r0,#20]
+ 256 001a 7047     	 bx lr
+ 258              	 .section .text.XMC_CCU4_SLICE_StopConfig,"ax",%progbits
+ 259              	 .align 1
+ 260              	 .global XMC_CCU4_SLICE_StopConfig
+ 261              	 .thumb
+ 262              	 .thumb_func
+ 264              	XMC_CCU4_SLICE_StopConfig:
+ 265              	 
+ 266              	 
+ 267              	 
+ 268 0000 4368     	 ldr r3,[r0,#4]
+ 269 0002 23F00C03 	 bic r3,r3,#12
+ 270 0006 43EA8101 	 orr r1,r3,r1,lsl#2
+ 271 000a 4160     	 str r1,[r0,#4]
+ 272 000c 4369     	 ldr r3,[r0,#20]
+ 273 000e 23F44073 	 bic r3,r3,#768
+ 274 0012 43EA0222 	 orr r2,r3,r2,lsl#8
+ 275 0016 4261     	 str r2,[r0,#20]
+ 276 0018 7047     	 bx lr
+ 278              	 .section .text.XMC_CCU4_SLICE_LoadConfig,"ax",%progbits
+ 279              	 .align 1
+ 280              	 .global XMC_CCU4_SLICE_LoadConfig
+ 281              	 .thumb
+ 282              	 .thumb_func
+ 284              	XMC_CCU4_SLICE_LoadConfig:
+ 285              	 
+ 286              	 
+ 287              	 
+ 288 0000 4368     	 ldr r3,[r0,#4]
+ 289 0002 23F44053 	 bic r3,r3,#12288
+ 290 0006 43EA0131 	 orr r1,r3,r1,lsl#12
+ 291 000a 4160     	 str r1,[r0,#4]
+ 292 000c 7047     	 bx lr
+ 294              	 .section .text.XMC_CCU4_SLICE_ModulationConfig,"ax",%progbits
+ 295              	 .align 1
+ 296              	 .global XMC_CCU4_SLICE_ModulationConfig
+ 297              	 .thumb
+ 298              	 .thumb_func
+ 300              	XMC_CCU4_SLICE_ModulationConfig:
+ 301              	 
+ 302              	 
+ 303 0000 30B5     	 push {r4,r5,lr}
+ 304 0002 4469     	 ldr r4,[r0,#20]
+ 305 0004 4568     	 ldr r5,[r0,#4]
+ 306 0006 25F44025 	 bic r5,r5,#786432
+ 307 000a 012A     	 cmp r2,#1
+ 308 000c 45EA8141 	 orr r1,r5,r1,lsl#18
+ 309 0010 4160     	 str r1,[r0,#4]
+ 310 0012 0CBF     	 ite eq
+ 311 0014 44F08072 	 orreq r2,r4,#16777216
+ 312 0018 24F08072 	 bicne r2,r4,#16777216
+ 313 001c 13B1     	 cbz r3,.L31
+ 314 001e 42F40002 	 orr r2,r2,#8388608
+ 315 0022 01E0     	 b .L32
+ 316              	.L31:
+ 317 0024 22F40002 	 bic r2,r2,#8388608
+ 318              	.L32:
+ 319 0028 4261     	 str r2,[r0,#20]
+ 320 002a 30BD     	 pop {r4,r5,pc}
+ 322              	 .section .text.XMC_CCU4_SLICE_CountConfig,"ax",%progbits
+ 323              	 .align 1
+ 324              	 .global XMC_CCU4_SLICE_CountConfig
+ 325              	 .thumb
+ 326              	 .thumb_func
+ 328              	XMC_CCU4_SLICE_CountConfig:
+ 329              	 
+ 330              	 
+ 331              	 
+ 332 0000 4368     	 ldr r3,[r0,#4]
+ 333 0002 23F44043 	 bic r3,r3,#49152
+ 334 0006 43EA8131 	 orr r1,r3,r1,lsl#14
+ 335 000a 4160     	 str r1,[r0,#4]
+ 336 000c 7047     	 bx lr
+ 338              	 .section .text.XMC_CCU4_SLICE_GateConfig,"ax",%progbits
+ 339              	 .align 1
+ 340              	 .global XMC_CCU4_SLICE_GateConfig
+ 341              	 .thumb
+ 342              	 .thumb_func
+ 344              	XMC_CCU4_SLICE_GateConfig:
+ 345              	 
+ 346              	 
+ 347              	 
+ 348 0000 4368     	 ldr r3,[r0,#4]
+ 349 0002 23F44073 	 bic r3,r3,#768
+ 350 0006 43EA0121 	 orr r1,r3,r1,lsl#8
+ 351 000a 4160     	 str r1,[r0,#4]
+ 352 000c 7047     	 bx lr
+ 354              	 .section .text.XMC_CCU4_SLICE_Capture0Config,"ax",%progbits
+ 355              	 .align 1
+ 356              	 .global XMC_CCU4_SLICE_Capture0Config
+ 357              	 .thumb
+ 358              	 .thumb_func
+ 360              	XMC_CCU4_SLICE_Capture0Config:
+ 361              	 
+ 362              	 
+ 363              	 
+ 364 0000 4368     	 ldr r3,[r0,#4]
+ 365 0002 23F03003 	 bic r3,r3,#48
+ 366 0006 43EA0111 	 orr r1,r3,r1,lsl#4
+ 367 000a 4160     	 str r1,[r0,#4]
+ 368 000c 7047     	 bx lr
+ 370              	 .section .text.XMC_CCU4_SLICE_Capture1Config,"ax",%progbits
+ 371              	 .align 1
+ 372              	 .global XMC_CCU4_SLICE_Capture1Config
+ 373              	 .thumb
+ 374              	 .thumb_func
+ 376              	XMC_CCU4_SLICE_Capture1Config:
+ 377              	 
+ 378              	 
+ 379              	 
+ 380 0000 4368     	 ldr r3,[r0,#4]
+ 381 0002 23F0C003 	 bic r3,r3,#192
+ 382 0006 43EA8111 	 orr r1,r3,r1,lsl#6
+ 383 000a 4160     	 str r1,[r0,#4]
+ 384 000c 7047     	 bx lr
+ 386              	 .section .text.XMC_CCU4_SLICE_DirectionConfig,"ax",%progbits
+ 387              	 .align 1
+ 388              	 .global XMC_CCU4_SLICE_DirectionConfig
+ 389              	 .thumb
+ 390              	 .thumb_func
+ 392              	XMC_CCU4_SLICE_DirectionConfig:
+ 393              	 
+ 394              	 
+ 395              	 
+ 396 0000 4368     	 ldr r3,[r0,#4]
+ 397 0002 23F44063 	 bic r3,r3,#3072
+ 398 0006 43EA8121 	 orr r1,r3,r1,lsl#10
+ 399 000a 4160     	 str r1,[r0,#4]
+ 400 000c 7047     	 bx lr
+ 402              	 .section .text.XMC_CCU4_SLICE_StatusBitOverrideConfig,"ax",%progbits
+ 403              	 .align 1
+ 404              	 .global XMC_CCU4_SLICE_StatusBitOverrideConfig
+ 405              	 .thumb
+ 406              	 .thumb_func
+ 408              	XMC_CCU4_SLICE_StatusBitOverrideConfig:
+ 409              	 
+ 410              	 
+ 411              	 
+ 412 0000 4368     	 ldr r3,[r0,#4]
+ 413 0002 43F48033 	 orr r3,r3,#65536
+ 414 0006 4360     	 str r3,[r0,#4]
+ 415 0008 7047     	 bx lr
+ 417              	 .section .text.XMC_CCU4_SLICE_TrapConfig,"ax",%progbits
+ 418              	 .align 1
+ 419              	 .global XMC_CCU4_SLICE_TrapConfig
+ 420              	 .thumb
+ 421              	 .thumb_func
+ 423              	XMC_CCU4_SLICE_TrapConfig:
+ 424              	 
+ 425              	 
+ 426              	 
+ 427 0000 4368     	 ldr r3,[r0,#4]
+ 428 0002 43F40033 	 orr r3,r3,#131072
+ 429 0006 4360     	 str r3,[r0,#4]
+ 430 0008 4369     	 ldr r3,[r0,#20]
+ 431 000a 12B1     	 cbz r2,.L40
+ 432 000c 43F40013 	 orr r3,r3,#2097152
+ 433 0010 01E0     	 b .L41
+ 434              	.L40:
+ 435 0012 23F40013 	 bic r3,r3,#2097152
+ 436              	.L41:
+ 437 0016 0129     	 cmp r1,#1
+ 438 0018 0CBF     	 ite eq
+ 439 001a 43F48003 	 orreq r3,r3,#4194304
+ 440 001e 23F48003 	 bicne r3,r3,#4194304
+ 441 0022 4361     	 str r3,[r0,#20]
+ 442 0024 7047     	 bx lr
+ 444              	 .section .text.XMC_CCU4_SLICE_ConfigureStatusBitOverrideEvent,"ax",%progbits
+ 445              	 .align 1
+ 446              	 .global XMC_CCU4_SLICE_ConfigureStatusBitOverrideEvent
+ 447              	 .thumb
+ 448              	 .thumb_func
+ 450              	XMC_CCU4_SLICE_ConfigureStatusBitOverrideEvent:
+ 451              	 
+ 452              	 
+ 453 0000 0368     	 ldr r3,[r0]
+ 454 0002 10B5     	 push {r4,lr}
+ 455 0004 4C78     	 ldrb r4,[r1,#1]
+ 456 0006 23F44023 	 bic r3,r3,#786432
+ 457 000a 43EA8443 	 orr r3,r3,r4,lsl#18
+ 458 000e 5478     	 ldrb r4,[r2,#1]
+ 459 0010 23F44013 	 bic r3,r3,#3145728
+ 460 0014 43EA0453 	 orr r3,r3,r4,lsl#20
+ 461 0018 8C78     	 ldrb r4,[r1,#2]
+ 462 001a 23F40003 	 bic r3,r3,#8388608
+ 463 001e 43EAC453 	 orr r3,r3,r4,lsl#23
+ 464 0022 9478     	 ldrb r4,[r2,#2]
+ 465 0024 23F08073 	 bic r3,r3,#16777216
+ 466 0028 43EA0463 	 orr r3,r3,r4,lsl#24
+ 467 002c CC78     	 ldrb r4,[r1,#3]
+ 468 002e 0978     	 ldrb r1,[r1]
+ 469 0030 23F0C053 	 bic r3,r3,#402653184
+ 470 0034 43EAC463 	 orr r3,r3,r4,lsl#27
+ 471 0038 D478     	 ldrb r4,[r2,#3]
+ 472 003a 1278     	 ldrb r2,[r2]
+ 473 003c 23F0C043 	 bic r3,r3,#1610612736
+ 474 0040 43EA4473 	 orr r3,r3,r4,lsl#29
+ 475 0044 23F0F003 	 bic r3,r3,#240
+ 476 0048 43EA0113 	 orr r3,r3,r1,lsl#4
+ 477 004c 23F47063 	 bic r3,r3,#3840
+ 478 0050 43EA0223 	 orr r3,r3,r2,lsl#8
+ 479 0054 0360     	 str r3,[r0]
+ 480 0056 10BD     	 pop {r4,pc}
+ 482              	 .section .text.XMC_CCU4_SLICE_ConfigureEvent,"ax",%progbits
+ 483              	 .align 1
+ 484              	 .global XMC_CCU4_SLICE_ConfigureEvent
+ 485              	 .thumb
+ 486              	 .thumb_func
+ 488              	XMC_CCU4_SLICE_ConfigureEvent:
+ 489              	 
+ 490              	 
+ 491 0000 F0B5     	 push {r4,r5,r6,r7,lr}
+ 492 0002 4C1E     	 subs r4,r1,#1
+ 493 0004 E4B2     	 uxtb r4,r4
+ 494 0006 6600     	 lsls r6,r4,#1
+ 495 0008 F6B2     	 uxtb r6,r6
+ 496 000a 06F1100C 	 add ip,r6,#16
+ 497 000e 0568     	 ldr r5,[r0]
+ 498 0010 5778     	 ldrb r7,[r2,#1]
+ 499 0012 5FFA8CFC 	 uxtb ip,ip
+ 500 0016 0323     	 movs r3,#3
+ 501 0018 03FA0CFE 	 lsl lr,r3,ip
+ 502 001c 1531     	 adds r1,r1,#21
+ 503 001e 07FA0CF7 	 lsl r7,r7,ip
+ 504 0022 25EA0E0E 	 bic lr,r5,lr
+ 505 0026 5FFA81FC 	 uxtb ip,r1
+ 506 002a 0125     	 movs r5,#1
+ 507 002c 05FA0CF5 	 lsl r5,r5,ip
+ 508 0030 4EEA070E 	 orr lr,lr,r7
+ 509 0034 2EEA0507 	 bic r7,lr,r5
+ 510 0038 9578     	 ldrb r5,[r2,#2]
+ 511 003a 1936     	 adds r6,r6,#25
+ 512 003c F6B2     	 uxtb r6,r6
+ 513 003e 05FA0CF5 	 lsl r5,r5,ip
+ 514 0042 B340     	 lsls r3,r3,r6
+ 515 0044 3D43     	 orrs r5,r5,r7
+ 516 0046 25EA0301 	 bic r1,r5,r3
+ 517 004a D378     	 ldrb r3,[r2,#3]
+ 518 004c 1278     	 ldrb r2,[r2]
+ 519 004e B340     	 lsls r3,r3,r6
+ 520 0050 A400     	 lsls r4,r4,#2
+ 521 0052 1943     	 orrs r1,r1,r3
+ 522 0054 E4B2     	 uxtb r4,r4
+ 523 0056 0F23     	 movs r3,#15
+ 524 0058 A340     	 lsls r3,r3,r4
+ 525 005a 21EA0303 	 bic r3,r1,r3
+ 526 005e A240     	 lsls r2,r2,r4
+ 527 0060 1343     	 orrs r3,r3,r2
+ 528 0062 0360     	 str r3,[r0]
+ 529 0064 F0BD     	 pop {r4,r5,r6,r7,pc}
+ 531              	 .section .text.XMC_CCU4_SLICE_SetInput,"ax",%progbits
+ 532              	 .align 1
+ 533              	 .global XMC_CCU4_SLICE_SetInput
+ 534              	 .thumb
+ 535              	 .thumb_func
+ 537              	XMC_CCU4_SLICE_SetInput:
+ 538              	 
+ 539              	 
+ 540 0000 0139     	 subs r1,r1,#1
+ 541 0002 10B5     	 push {r4,lr}
+ 542 0004 8900     	 lsls r1,r1,#2
+ 543 0006 0368     	 ldr r3,[r0]
+ 544 0008 C9B2     	 uxtb r1,r1
+ 545 000a 0F24     	 movs r4,#15
+ 546 000c 8C40     	 lsls r4,r4,r1
+ 547 000e 23EA0403 	 bic r3,r3,r4
+ 548 0012 8A40     	 lsls r2,r2,r1
+ 549 0014 1A43     	 orrs r2,r2,r3
+ 550 0016 0260     	 str r2,[r0]
+ 551 0018 10BD     	 pop {r4,pc}
+ 553              	 .section .text.XMC_CCU4_SLICE_SetTimerRepeatMode,"ax",%progbits
+ 554              	 .align 1
+ 555              	 .global XMC_CCU4_SLICE_SetTimerRepeatMode
+ 556              	 .thumb
+ 557              	 .thumb_func
+ 559              	XMC_CCU4_SLICE_SetTimerRepeatMode:
+ 560              	 
+ 561              	 
+ 562              	 
+ 563 0000 4369     	 ldr r3,[r0,#20]
+ 564 0002 11B9     	 cbnz r1,.L48
+ 565 0004 23F00203 	 bic r3,r3,#2
+ 566 0008 01E0     	 b .L50
+ 567              	.L48:
+ 568 000a 43F00203 	 orr r3,r3,#2
+ 569              	.L50:
+ 570 000e 4361     	 str r3,[r0,#20]
+ 571 0010 7047     	 bx lr
+ 573              	 .section .text.XMC_CCU4_SLICE_SetTimerCountingMode,"ax",%progbits
+ 574              	 .align 1
+ 575              	 .global XMC_CCU4_SLICE_SetTimerCountingMode
+ 576              	 .thumb
+ 577              	 .thumb_func
+ 579              	XMC_CCU4_SLICE_SetTimerCountingMode:
+ 580              	 
+ 581              	 
+ 582              	 
+ 583 0000 4369     	 ldr r3,[r0,#20]
+ 584 0002 11B9     	 cbnz r1,.L52
+ 585 0004 23F00103 	 bic r3,r3,#1
+ 586 0008 01E0     	 b .L54
+ 587              	.L52:
+ 588 000a 43F00103 	 orr r3,r3,#1
+ 589              	.L54:
+ 590 000e 4361     	 str r3,[r0,#20]
+ 591 0010 7047     	 bx lr
+ 593              	 .section .text.XMC_CCU4_SLICE_GetCaptureRegisterValue,"ax",%progbits
+ 594              	 .align 1
+ 595              	 .global XMC_CCU4_SLICE_GetCaptureRegisterValue
+ 596              	 .thumb
+ 597              	 .thumb_func
+ 599              	XMC_CCU4_SLICE_GetCaptureRegisterValue:
+ 600              	 
+ 601              	 
+ 602              	 
+ 603 0000 1C31     	 adds r1,r1,#28
+ 604 0002 00EB8100 	 add r0,r0,r1,lsl#2
+ 605 0006 4068     	 ldr r0,[r0,#4]
+ 606 0008 7047     	 bx lr
+ 608              	 .section .text.XMC_CCU4_SLICE_GetLastCapturedTimerValue,"ax",%progbits
+ 609              	 .align 1
+ 610              	 .global XMC_CCU4_SLICE_GetLastCapturedTimerValue
+ 611              	 .thumb
+ 612              	 .thumb_func
+ 614              	XMC_CCU4_SLICE_GetLastCapturedTimerValue:
+ 615              	 
+ 616              	 
+ 617 0000 4369     	 ldr r3,[r0,#20]
+ 618 0002 30B5     	 push {r4,r5,lr}
+ 619 0004 DD06     	 lsls r5,r3,#27
+ 620 0006 06D4     	 bmi .L62
+ 621 0008 0129     	 cmp r1,#1
+ 622 000a 0BBF     	 itete eq
+ 623 000c 0424     	 moveq r4,#4
+ 624 000e 0224     	 movne r4,#2
+ 625 0010 0223     	 moveq r3,#2
+ 626 0012 0023     	 movne r3,#0
+ 627 0014 04E0     	 b .L58
+ 628              	.L62:
+ 629 0016 0424     	 movs r4,#4
+ 630 0018 0023     	 movs r3,#0
+ 631 001a 01E0     	 b .L58
+ 632              	.L59:
+ 633 001c 0133     	 adds r3,r3,#1
+ 634 001e DBB2     	 uxtb r3,r3
+ 635              	.L58:
+ 636 0020 A342     	 cmp r3,r4
+ 637 0022 0AD0     	 beq .L64
+ 638 0024 03F11C01 	 add r1,r3,#28
+ 639 0028 00EB8101 	 add r1,r0,r1,lsl#2
+ 640 002c 4D68     	 ldr r5,[r1,#4]
+ 641 002e ED02     	 lsls r5,r5,#11
+ 642 0030 F4D5     	 bpl .L59
+ 643 0032 4B68     	 ldr r3,[r1,#4]
+ 644 0034 1360     	 str r3,[r2]
+ 645 0036 0020     	 movs r0,#0
+ 646 0038 30BD     	 pop {r4,r5,pc}
+ 647              	.L64:
+ 648 003a 0120     	 movs r0,#1
+ 649 003c 30BD     	 pop {r4,r5,pc}
+ 651              	 .section .text.XMC_CCU4_SLICE_GetCapturedValueFromFifo,"ax",%progbits
+ 652              	 .align 1
+ 653              	 .global XMC_CCU4_SLICE_GetCapturedValueFromFifo
+ 654              	 .thumb
+ 655              	 .thumb_func
+ 657              	XMC_CCU4_SLICE_GetCapturedValueFromFifo:
+ 658              	 
+ 659              	 
+ 660              	 
+ 661 0000 11B9     	 cbnz r1,.L66
+ 662 0002 D0F8B800 	 ldr r0,[r0,#184]
+ 663 0006 7047     	 bx lr
+ 664              	.L66:
+ 665 0008 D0F8BC00 	 ldr r0,[r0,#188]
+ 666 000c 7047     	 bx lr
+ 668              	 .section .text.XMC_CCU4_SLICE_EnableDithering,"ax",%progbits
+ 669              	 .align 1
+ 670              	 .global XMC_CCU4_SLICE_EnableDithering
+ 671              	 .thumb
+ 672              	 .thumb_func
+ 674              	XMC_CCU4_SLICE_EnableDithering:
+ 675              	 
+ 676              	 
+ 677 0000 10B5     	 push {r4,lr}
+ 678 0002 4469     	 ldr r4,[r0,#20]
+ 679 0004 24F4C044 	 bic r4,r4,#24576
+ 680 0008 09B1     	 cbz r1,.L69
+ 681 000a 44F40054 	 orr r4,r4,#8192
+ 682              	.L69:
+ 683 000e 0AB1     	 cbz r2,.L70
+ 684 0010 44F48044 	 orr r4,r4,#16384
+ 685              	.L70:
+ 686 0014 4461     	 str r4,[r0,#20]
+ 687 0016 0362     	 str r3,[r0,#32]
+ 688 0018 10BD     	 pop {r4,pc}
+ 690              	 .section .text.XMC_CCU4_SLICE_SetPrescaler,"ax",%progbits
+ 691              	 .align 1
+ 692              	 .global XMC_CCU4_SLICE_SetPrescaler
+ 693              	 .thumb
+ 694              	 .thumb_func
+ 696              	XMC_CCU4_SLICE_SetPrescaler:
+ 697              	 
+ 698              	 
+ 699              	 
+ 700 0000 836A     	 ldr r3,[r0,#40]
+ 701 0002 23F47063 	 bic r3,r3,#3840
+ 702 0006 43EA0123 	 orr r3,r3,r1,lsl#8
+ 703 000a 8362     	 str r3,[r0,#40]
+ 704 000c 4162     	 str r1,[r0,#36]
+ 705 000e 7047     	 bx lr
+ 707              	 .section .text.XMC_CCU4_SLICE_SetInterruptNode,"ax",%progbits
+ 708              	 .align 1
+ 709              	 .global XMC_CCU4_SLICE_SetInterruptNode
+ 710              	 .thumb
+ 711              	 .thumb_func
+ 713              	XMC_CCU4_SLICE_SetInterruptNode:
+ 714              	 
+ 715              	 
+ 716 0000 0929     	 cmp r1,#9
+ 717 0002 30B5     	 push {r4,r5,lr}
+ 718 0004 9CBF     	 itt ls
+ 719 0006 094C     	 ldrls r4,.L81
+ 720 0008 094D     	 ldrls r5,.L81+4
+ 721 000a D0F8A830 	 ldr r3,[r0,#168]
+ 722 000e 99BF     	 ittee ls
+ 723 0010 645C     	 ldrbls r4,[r4,r1]
+ 724 0012 35F81110 	 ldrhls r1,[r5,r1,lsl#1]
+ 725 0016 4FF44051 	 movhi r1,#12288
+ 726 001a 0C24     	 movhi r4,#12
+ 727 001c 23EA0103 	 bic r3,r3,r1
+ 728 0020 A240     	 lsls r2,r2,r4
+ 729 0022 1A43     	 orrs r2,r2,r3
+ 730 0024 C0F8A820 	 str r2,[r0,#168]
+ 731 0028 30BD     	 pop {r4,r5,pc}
+ 732              	.L82:
+ 733 002a 00BF     	 .align 2
+ 734              	.L81:
+ 735 002c 00000000 	 .word .LANCHOR0
+ 736 0030 00000000 	 .word .LANCHOR1
+ 738              	 .section .text.XMC_CCU4_SLICE_SetPassiveLevel,"ax",%progbits
+ 739              	 .align 1
+ 740              	 .global XMC_CCU4_SLICE_SetPassiveLevel
+ 741              	 .thumb
+ 742              	 .thumb_func
+ 744              	XMC_CCU4_SLICE_SetPassiveLevel:
+ 745              	 
+ 746              	 
+ 747              	 
+ 748 0000 8369     	 ldr r3,[r0,#24]
+ 749 0002 23F00103 	 bic r3,r3,#1
+ 750 0006 1943     	 orrs r1,r1,r3
+ 751 0008 8161     	 str r1,[r0,#24]
+ 752 000a 7047     	 bx lr
+ 754              	 .section .rodata.CSWTCH.37,"a",%progbits
+ 755              	 .set .LANCHOR0,.+0
+ 758              	CSWTCH.37:
+ 759 0000 00       	 .byte 0
+ 760 0001 00       	 .byte 0
+ 761 0002 02       	 .byte 2
+ 762 0003 02       	 .byte 2
+ 763 0004 0C       	 .byte 12
+ 764 0005 0C       	 .byte 12
+ 765 0006 0C       	 .byte 12
+ 766 0007 0C       	 .byte 12
+ 767 0008 08       	 .byte 8
+ 768 0009 0A       	 .byte 10
+ 769              	 .section .rodata.CSWTCH.38,"a",%progbits
+ 770              	 .align 1
+ 771              	 .set .LANCHOR1,.+0
+ 774              	CSWTCH.38:
+ 775 0000 0300     	 .short 3
+ 776 0002 0300     	 .short 3
+ 777 0004 0C00     	 .short 12
+ 778 0006 0C00     	 .short 12
+ 779 0008 0030     	 .short 12288
+ 780 000a 0030     	 .short 12288
+ 781 000c 0030     	 .short 12288
+ 782 000e 0030     	 .short 12288
+ 783 0010 0003     	 .short 768
+ 784 0012 000C     	 .short 3072
+ 785              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 xmc_ccu4.c
+    {standard input}:17     .text.XMC_CCU4_EnableModule:00000000 $t
+    {standard input}:22     .text.XMC_CCU4_EnableModule:00000000 XMC_CCU4_EnableModule
+    {standard input}:67     .text.XMC_CCU4_EnableModule:00000054 $d
+    {standard input}:74     .text.XMC_CCU4_DisableModule:00000000 $t
+    {standard input}:79     .text.XMC_CCU4_DisableModule:00000000 XMC_CCU4_DisableModule
+    {standard input}:121    .text.XMC_CCU4_DisableModule:0000004c $d
+    {standard input}:128    .text.XMC_CCU4_Init:00000000 $t
+    {standard input}:133    .text.XMC_CCU4_Init:00000000 XMC_CCU4_Init
+    {standard input}:150    .text.XMC_CCU4_SetModuleClock:00000000 $t
+    {standard input}:155    .text.XMC_CCU4_SetModuleClock:00000000 XMC_CCU4_SetModuleClock
+    {standard input}:166    .text.XMC_CCU4_SetMultiChannelShadowTransferMode:00000000 $t
+    {standard input}:171    .text.XMC_CCU4_SetMultiChannelShadowTransferMode:00000000 XMC_CCU4_SetMultiChannelShadowTransferMode
+    {standard input}:183    .text.XMC_CCU4_SLICE_CompareInit:00000000 $t
+    {standard input}:188    .text.XMC_CCU4_SLICE_CompareInit:00000000 XMC_CCU4_SLICE_CompareInit
+    {standard input}:213    .text.XMC_CCU4_SLICE_CaptureInit:00000000 $t
+    {standard input}:218    .text.XMC_CCU4_SLICE_CaptureInit:00000000 XMC_CCU4_SLICE_CaptureInit
+    {standard input}:237    .text.XMC_CCU4_SLICE_StartConfig:00000000 $t
+    {standard input}:242    .text.XMC_CCU4_SLICE_StartConfig:00000000 XMC_CCU4_SLICE_StartConfig
+    {standard input}:259    .text.XMC_CCU4_SLICE_StopConfig:00000000 $t
+    {standard input}:264    .text.XMC_CCU4_SLICE_StopConfig:00000000 XMC_CCU4_SLICE_StopConfig
+    {standard input}:279    .text.XMC_CCU4_SLICE_LoadConfig:00000000 $t
+    {standard input}:284    .text.XMC_CCU4_SLICE_LoadConfig:00000000 XMC_CCU4_SLICE_LoadConfig
+    {standard input}:295    .text.XMC_CCU4_SLICE_ModulationConfig:00000000 $t
+    {standard input}:300    .text.XMC_CCU4_SLICE_ModulationConfig:00000000 XMC_CCU4_SLICE_ModulationConfig
+    {standard input}:323    .text.XMC_CCU4_SLICE_CountConfig:00000000 $t
+    {standard input}:328    .text.XMC_CCU4_SLICE_CountConfig:00000000 XMC_CCU4_SLICE_CountConfig
+    {standard input}:339    .text.XMC_CCU4_SLICE_GateConfig:00000000 $t
+    {standard input}:344    .text.XMC_CCU4_SLICE_GateConfig:00000000 XMC_CCU4_SLICE_GateConfig
+    {standard input}:355    .text.XMC_CCU4_SLICE_Capture0Config:00000000 $t
+    {standard input}:360    .text.XMC_CCU4_SLICE_Capture0Config:00000000 XMC_CCU4_SLICE_Capture0Config
+    {standard input}:371    .text.XMC_CCU4_SLICE_Capture1Config:00000000 $t
+    {standard input}:376    .text.XMC_CCU4_SLICE_Capture1Config:00000000 XMC_CCU4_SLICE_Capture1Config
+    {standard input}:387    .text.XMC_CCU4_SLICE_DirectionConfig:00000000 $t
+    {standard input}:392    .text.XMC_CCU4_SLICE_DirectionConfig:00000000 XMC_CCU4_SLICE_DirectionConfig
+    {standard input}:403    .text.XMC_CCU4_SLICE_StatusBitOverrideConfig:00000000 $t
+    {standard input}:408    .text.XMC_CCU4_SLICE_StatusBitOverrideConfig:00000000 XMC_CCU4_SLICE_StatusBitOverrideConfig
+    {standard input}:418    .text.XMC_CCU4_SLICE_TrapConfig:00000000 $t
+    {standard input}:423    .text.XMC_CCU4_SLICE_TrapConfig:00000000 XMC_CCU4_SLICE_TrapConfig
+    {standard input}:445    .text.XMC_CCU4_SLICE_ConfigureStatusBitOverrideEvent:00000000 $t
+    {standard input}:450    .text.XMC_CCU4_SLICE_ConfigureStatusBitOverrideEvent:00000000 XMC_CCU4_SLICE_ConfigureStatusBitOverrideEvent
+    {standard input}:483    .text.XMC_CCU4_SLICE_ConfigureEvent:00000000 $t
+    {standard input}:488    .text.XMC_CCU4_SLICE_ConfigureEvent:00000000 XMC_CCU4_SLICE_ConfigureEvent
+    {standard input}:532    .text.XMC_CCU4_SLICE_SetInput:00000000 $t
+    {standard input}:537    .text.XMC_CCU4_SLICE_SetInput:00000000 XMC_CCU4_SLICE_SetInput
+    {standard input}:554    .text.XMC_CCU4_SLICE_SetTimerRepeatMode:00000000 $t
+    {standard input}:559    .text.XMC_CCU4_SLICE_SetTimerRepeatMode:00000000 XMC_CCU4_SLICE_SetTimerRepeatMode
+    {standard input}:574    .text.XMC_CCU4_SLICE_SetTimerCountingMode:00000000 $t
+    {standard input}:579    .text.XMC_CCU4_SLICE_SetTimerCountingMode:00000000 XMC_CCU4_SLICE_SetTimerCountingMode
+    {standard input}:594    .text.XMC_CCU4_SLICE_GetCaptureRegisterValue:00000000 $t
+    {standard input}:599    .text.XMC_CCU4_SLICE_GetCaptureRegisterValue:00000000 XMC_CCU4_SLICE_GetCaptureRegisterValue
+    {standard input}:609    .text.XMC_CCU4_SLICE_GetLastCapturedTimerValue:00000000 $t
+    {standard input}:614    .text.XMC_CCU4_SLICE_GetLastCapturedTimerValue:00000000 XMC_CCU4_SLICE_GetLastCapturedTimerValue
+    {standard input}:652    .text.XMC_CCU4_SLICE_GetCapturedValueFromFifo:00000000 $t
+    {standard input}:657    .text.XMC_CCU4_SLICE_GetCapturedValueFromFifo:00000000 XMC_CCU4_SLICE_GetCapturedValueFromFifo
+    {standard input}:669    .text.XMC_CCU4_SLICE_EnableDithering:00000000 $t
+    {standard input}:674    .text.XMC_CCU4_SLICE_EnableDithering:00000000 XMC_CCU4_SLICE_EnableDithering
+    {standard input}:691    .text.XMC_CCU4_SLICE_SetPrescaler:00000000 $t
+    {standard input}:696    .text.XMC_CCU4_SLICE_SetPrescaler:00000000 XMC_CCU4_SLICE_SetPrescaler
+    {standard input}:708    .text.XMC_CCU4_SLICE_SetInterruptNode:00000000 $t
+    {standard input}:713    .text.XMC_CCU4_SLICE_SetInterruptNode:00000000 XMC_CCU4_SLICE_SetInterruptNode
+    {standard input}:735    .text.XMC_CCU4_SLICE_SetInterruptNode:0000002c $d
+    {standard input}:739    .text.XMC_CCU4_SLICE_SetPassiveLevel:00000000 $t
+    {standard input}:744    .text.XMC_CCU4_SLICE_SetPassiveLevel:00000000 XMC_CCU4_SLICE_SetPassiveLevel
+    {standard input}:758    .rodata.CSWTCH.37:00000000 CSWTCH.37
+    {standard input}:770    .rodata.CSWTCH.38:00000000 $d
+    {standard input}:774    .rodata.CSWTCH.38:00000000 CSWTCH.38
+
+UNDEFINED SYMBOLS
+XMC_SCU_CLOCK_EnableClock
+XMC_SCU_CLOCK_UngatePeripheralClock
+XMC_SCU_RESET_DeassertPeripheralReset
+XMC_SCU_RESET_AssertPeripheralReset
+XMC_SCU_CLOCK_GatePeripheralClock

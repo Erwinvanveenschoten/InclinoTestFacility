@@ -1,0 +1,330 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "memp.c"
+  16              	 .section .text.memp_init_pool,"ax",%progbits
+  17              	 .align 1
+  18              	 .global memp_init_pool
+  19              	 .thumb
+  20              	 .thumb_func
+  22              	memp_init_pool:
+  23              	 
+  24              	 
+  25 0000 8368     	 ldr r3,[r0,#8]
+  26 0002 0022     	 movs r2,#0
+  27 0004 30B5     	 push {r4,r5,lr}
+  28 0006 1A60     	 str r2,[r3]
+  29 0008 4368     	 ldr r3,[r0,#4]
+  30 000a 4488     	 ldrh r4,[r0,#2]
+  31 000c 0333     	 adds r3,r3,#3
+  32 000e 23F00303 	 bic r3,r3,#3
+  33              	.L2:
+  34 0012 A242     	 cmp r2,r4
+  35 0014 07DA     	 bge .L5
+  36 0016 8168     	 ldr r1,[r0,#8]
+  37 0018 0D68     	 ldr r5,[r1]
+  38 001a 1D60     	 str r5,[r3]
+  39 001c 0B60     	 str r3,[r1]
+  40 001e 0188     	 ldrh r1,[r0]
+  41 0020 0132     	 adds r2,r2,#1
+  42 0022 0B44     	 add r3,r3,r1
+  43 0024 F5E7     	 b .L2
+  44              	.L5:
+  45 0026 30BD     	 pop {r4,r5,pc}
+  47              	 .section .text.memp_init,"ax",%progbits
+  48              	 .align 1
+  49              	 .global memp_init
+  50              	 .thumb
+  51              	 .thumb_func
+  53              	memp_init:
+  54              	 
+  55              	 
+  56 0000 10B5     	 push {r4,lr}
+  57 0002 0024     	 movs r4,#0
+  58              	.L7:
+  59 0004 044B     	 ldr r3,.L9
+  60 0006 53F82400 	 ldr r0,[r3,r4,lsl#2]
+  61 000a 0134     	 adds r4,r4,#1
+  62 000c FFF7FEFF 	 bl memp_init_pool
+  63 0010 082C     	 cmp r4,#8
+  64 0012 F7D1     	 bne .L7
+  65 0014 10BD     	 pop {r4,pc}
+  66              	.L10:
+  67 0016 00BF     	 .align 2
+  68              	.L9:
+  69 0018 00000000 	 .word .LANCHOR0
+  71              	 .section .text.memp_malloc_pool,"ax",%progbits
+  72              	 .align 1
+  73              	 .global memp_malloc_pool
+  74              	 .thumb
+  75              	 .thumb_func
+  77              	memp_malloc_pool:
+  78              	 
+  79              	 
+  80              	 
+  81 0000 20B1     	 cbz r0,.L12
+  82 0002 8368     	 ldr r3,[r0,#8]
+  83 0004 1868     	 ldr r0,[r3]
+  84 0006 08B1     	 cbz r0,.L12
+  85 0008 0268     	 ldr r2,[r0]
+  86 000a 1A60     	 str r2,[r3]
+  87              	.L12:
+  88 000c 7047     	 bx lr
+  90              	 .section .text.memp_malloc,"ax",%progbits
+  91              	 .align 1
+  92              	 .global memp_malloc
+  93              	 .thumb
+  94              	 .thumb_func
+  96              	memp_malloc:
+  97              	 
+  98              	 
+  99              	 
+ 100 0000 0728     	 cmp r0,#7
+ 101 0002 08D8     	 bhi .L17
+ 102 0004 054B     	 ldr r3,.L19
+ 103 0006 53F82030 	 ldr r3,[r3,r0,lsl#2]
+ 104 000a 9B68     	 ldr r3,[r3,#8]
+ 105 000c 1868     	 ldr r0,[r3]
+ 106 000e 18B1     	 cbz r0,.L16
+ 107 0010 0268     	 ldr r2,[r0]
+ 108 0012 1A60     	 str r2,[r3]
+ 109 0014 7047     	 bx lr
+ 110              	.L17:
+ 111 0016 0020     	 movs r0,#0
+ 112              	.L16:
+ 113 0018 7047     	 bx lr
+ 114              	.L20:
+ 115 001a 00BF     	 .align 2
+ 116              	.L19:
+ 117 001c 00000000 	 .word .LANCHOR0
+ 119              	 .section .text.memp_free_pool,"ax",%progbits
+ 120              	 .align 1
+ 121              	 .global memp_free_pool
+ 122              	 .thumb
+ 123              	 .thumb_func
+ 125              	memp_free_pool:
+ 126              	 
+ 127              	 
+ 128              	 
+ 129 0000 20B1     	 cbz r0,.L21
+ 130 0002 19B1     	 cbz r1,.L21
+ 131 0004 8368     	 ldr r3,[r0,#8]
+ 132 0006 1A68     	 ldr r2,[r3]
+ 133 0008 0A60     	 str r2,[r1]
+ 134 000a 1960     	 str r1,[r3]
+ 135              	.L21:
+ 136 000c 7047     	 bx lr
+ 138              	 .section .text.memp_free,"ax",%progbits
+ 139              	 .align 1
+ 140              	 .global memp_free
+ 141              	 .thumb
+ 142              	 .thumb_func
+ 144              	memp_free:
+ 145              	 
+ 146              	 
+ 147              	 
+ 148 0000 0728     	 cmp r0,#7
+ 149 0002 07D8     	 bhi .L29
+ 150 0004 31B1     	 cbz r1,.L29
+ 151 0006 044B     	 ldr r3,.L34
+ 152 0008 53F82030 	 ldr r3,[r3,r0,lsl#2]
+ 153 000c 9B68     	 ldr r3,[r3,#8]
+ 154 000e 1A68     	 ldr r2,[r3]
+ 155 0010 0A60     	 str r2,[r1]
+ 156 0012 1960     	 str r1,[r3]
+ 157              	.L29:
+ 158 0014 7047     	 bx lr
+ 159              	.L35:
+ 160 0016 00BF     	 .align 2
+ 161              	.L34:
+ 162 0018 00000000 	 .word .LANCHOR0
+ 164              	 .global memp_pools
+ 165              	 .global memp_PBUF_POOL
+ 166              	 .comm memp_memory_PBUF_POOL_base,24835,1
+ 167              	 .global memp_PBUF
+ 168              	 .comm memp_memory_PBUF_base,259,1
+ 169              	 .global memp_SYS_TIMEOUT
+ 170              	 .comm memp_memory_SYS_TIMEOUT_base,147,1
+ 171              	 .global memp_TCP_SEG
+ 172              	 .comm memp_memory_TCP_SEG_base,131,1
+ 173              	 .global memp_TCP_PCB_LISTEN
+ 174              	 .comm memp_memory_TCP_PCB_LISTEN_base,163,1
+ 175              	 .global memp_TCP_PCB
+ 176              	 .comm memp_memory_TCP_PCB_base,763,1
+ 177              	 .global memp_UDP_PCB
+ 178              	 .comm memp_memory_UDP_PCB_base,131,1
+ 179              	 .global memp_RAW_PCB
+ 180              	 .comm memp_memory_RAW_PCB_base,115,1
+ 181              	 .section .bss.memp_tab_TCP_SEG,"aw",%nobits
+ 182              	 .align 2
+ 185              	memp_tab_TCP_SEG:
+ 186 0000 00000000 	 .space 4
+ 187              	 .section .rodata.memp_PBUF_POOL,"a",%progbits
+ 188              	 .align 2
+ 191              	memp_PBUF_POOL:
+ 192 0000 1006     	 .short 1552
+ 193 0002 1000     	 .short 16
+ 194 0004 00000000 	 .word memp_memory_PBUF_POOL_base
+ 195 0008 00000000 	 .word memp_tab_PBUF_POOL
+ 196              	 .section .bss.memp_tab_TCP_PCB,"aw",%nobits
+ 197              	 .align 2
+ 200              	memp_tab_TCP_PCB:
+ 201 0000 00000000 	 .space 4
+ 202              	 .section .rodata.memp_TCP_SEG,"a",%progbits
+ 203              	 .align 2
+ 206              	memp_TCP_SEG:
+ 207 0000 1000     	 .short 16
+ 208 0002 0800     	 .short 8
+ 209 0004 00000000 	 .word memp_memory_TCP_SEG_base
+ 210 0008 00000000 	 .word memp_tab_TCP_SEG
+ 211              	 .section .bss.memp_tab_UDP_PCB,"aw",%nobits
+ 212              	 .align 2
+ 215              	memp_tab_UDP_PCB:
+ 216 0000 00000000 	 .space 4
+ 217              	 .section .rodata.memp_RAW_PCB,"a",%progbits
+ 218              	 .align 2
+ 221              	memp_RAW_PCB:
+ 222 0000 1C00     	 .short 28
+ 223 0002 0400     	 .short 4
+ 224 0004 00000000 	 .word memp_memory_RAW_PCB_base
+ 225 0008 00000000 	 .word memp_tab_RAW_PCB
+ 226              	 .section .rodata.memp_SYS_TIMEOUT,"a",%progbits
+ 227              	 .align 2
+ 230              	memp_SYS_TIMEOUT:
+ 231 0000 1000     	 .short 16
+ 232 0002 0900     	 .short 9
+ 233 0004 00000000 	 .word memp_memory_SYS_TIMEOUT_base
+ 234 0008 00000000 	 .word memp_tab_SYS_TIMEOUT
+ 235              	 .section .bss.memp_tab_PBUF,"aw",%nobits
+ 236              	 .align 2
+ 239              	memp_tab_PBUF:
+ 240 0000 00000000 	 .space 4
+ 241              	 .section .rodata.memp_UDP_PCB,"a",%progbits
+ 242              	 .align 2
+ 245              	memp_UDP_PCB:
+ 246 0000 2000     	 .short 32
+ 247 0002 0400     	 .short 4
+ 248 0004 00000000 	 .word memp_memory_UDP_PCB_base
+ 249 0008 00000000 	 .word memp_tab_UDP_PCB
+ 250              	 .section .rodata.memp_PBUF,"a",%progbits
+ 251              	 .align 2
+ 254              	memp_PBUF:
+ 255 0000 1000     	 .short 16
+ 256 0002 1000     	 .short 16
+ 257 0004 00000000 	 .word memp_memory_PBUF_base
+ 258 0008 00000000 	 .word memp_tab_PBUF
+ 259              	 .section .bss.memp_tab_TCP_PCB_LISTEN,"aw",%nobits
+ 260              	 .align 2
+ 263              	memp_tab_TCP_PCB_LISTEN:
+ 264 0000 00000000 	 .space 4
+ 265              	 .section .rodata.memp_TCP_PCB_LISTEN,"a",%progbits
+ 266              	 .align 2
+ 269              	memp_TCP_PCB_LISTEN:
+ 270 0000 2000     	 .short 32
+ 271 0002 0500     	 .short 5
+ 272 0004 00000000 	 .word memp_memory_TCP_PCB_LISTEN_base
+ 273 0008 00000000 	 .word memp_tab_TCP_PCB_LISTEN
+ 274              	 .section .rodata.memp_TCP_PCB,"a",%progbits
+ 275              	 .align 2
+ 278              	memp_TCP_PCB:
+ 279 0000 9800     	 .short 152
+ 280 0002 0500     	 .short 5
+ 281 0004 00000000 	 .word memp_memory_TCP_PCB_base
+ 282 0008 00000000 	 .word memp_tab_TCP_PCB
+ 283              	 .section .bss.memp_tab_SYS_TIMEOUT,"aw",%nobits
+ 284              	 .align 2
+ 287              	memp_tab_SYS_TIMEOUT:
+ 288 0000 00000000 	 .space 4
+ 289              	 .section .bss.memp_tab_RAW_PCB,"aw",%nobits
+ 290              	 .align 2
+ 293              	memp_tab_RAW_PCB:
+ 294 0000 00000000 	 .space 4
+ 295              	 .section .bss.memp_tab_PBUF_POOL,"aw",%nobits
+ 296              	 .align 2
+ 299              	memp_tab_PBUF_POOL:
+ 300 0000 00000000 	 .space 4
+ 301              	 .section .rodata.memp_pools,"a",%progbits
+ 302              	 .align 2
+ 303              	 .set .LANCHOR0,.+0
+ 306              	memp_pools:
+ 307 0000 00000000 	 .word memp_RAW_PCB
+ 308 0004 00000000 	 .word memp_UDP_PCB
+ 309 0008 00000000 	 .word memp_TCP_PCB
+ 310 000c 00000000 	 .word memp_TCP_PCB_LISTEN
+ 311 0010 00000000 	 .word memp_TCP_SEG
+ 312 0014 00000000 	 .word memp_SYS_TIMEOUT
+ 313 0018 00000000 	 .word memp_PBUF
+ 314 001c 00000000 	 .word memp_PBUF_POOL
+ 315              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 memp.c
+    {standard input}:17     .text.memp_init_pool:00000000 $t
+    {standard input}:22     .text.memp_init_pool:00000000 memp_init_pool
+    {standard input}:48     .text.memp_init:00000000 $t
+    {standard input}:53     .text.memp_init:00000000 memp_init
+    {standard input}:69     .text.memp_init:00000018 $d
+    {standard input}:72     .text.memp_malloc_pool:00000000 $t
+    {standard input}:77     .text.memp_malloc_pool:00000000 memp_malloc_pool
+    {standard input}:91     .text.memp_malloc:00000000 $t
+    {standard input}:96     .text.memp_malloc:00000000 memp_malloc
+    {standard input}:117    .text.memp_malloc:0000001c $d
+    {standard input}:120    .text.memp_free_pool:00000000 $t
+    {standard input}:125    .text.memp_free_pool:00000000 memp_free_pool
+    {standard input}:139    .text.memp_free:00000000 $t
+    {standard input}:144    .text.memp_free:00000000 memp_free
+    {standard input}:162    .text.memp_free:00000018 $d
+    {standard input}:306    .rodata.memp_pools:00000000 memp_pools
+    {standard input}:191    .rodata.memp_PBUF_POOL:00000000 memp_PBUF_POOL
+                            *COM*:00006103 memp_memory_PBUF_POOL_base
+    {standard input}:254    .rodata.memp_PBUF:00000000 memp_PBUF
+                            *COM*:00000103 memp_memory_PBUF_base
+    {standard input}:230    .rodata.memp_SYS_TIMEOUT:00000000 memp_SYS_TIMEOUT
+                            *COM*:00000093 memp_memory_SYS_TIMEOUT_base
+    {standard input}:206    .rodata.memp_TCP_SEG:00000000 memp_TCP_SEG
+                            *COM*:00000083 memp_memory_TCP_SEG_base
+    {standard input}:269    .rodata.memp_TCP_PCB_LISTEN:00000000 memp_TCP_PCB_LISTEN
+                            *COM*:000000a3 memp_memory_TCP_PCB_LISTEN_base
+    {standard input}:278    .rodata.memp_TCP_PCB:00000000 memp_TCP_PCB
+                            *COM*:000002fb memp_memory_TCP_PCB_base
+    {standard input}:245    .rodata.memp_UDP_PCB:00000000 memp_UDP_PCB
+                            *COM*:00000083 memp_memory_UDP_PCB_base
+    {standard input}:221    .rodata.memp_RAW_PCB:00000000 memp_RAW_PCB
+                            *COM*:00000073 memp_memory_RAW_PCB_base
+    {standard input}:182    .bss.memp_tab_TCP_SEG:00000000 $d
+    {standard input}:185    .bss.memp_tab_TCP_SEG:00000000 memp_tab_TCP_SEG
+    {standard input}:188    .rodata.memp_PBUF_POOL:00000000 $d
+    {standard input}:299    .bss.memp_tab_PBUF_POOL:00000000 memp_tab_PBUF_POOL
+    {standard input}:197    .bss.memp_tab_TCP_PCB:00000000 $d
+    {standard input}:200    .bss.memp_tab_TCP_PCB:00000000 memp_tab_TCP_PCB
+    {standard input}:203    .rodata.memp_TCP_SEG:00000000 $d
+    {standard input}:212    .bss.memp_tab_UDP_PCB:00000000 $d
+    {standard input}:215    .bss.memp_tab_UDP_PCB:00000000 memp_tab_UDP_PCB
+    {standard input}:218    .rodata.memp_RAW_PCB:00000000 $d
+    {standard input}:293    .bss.memp_tab_RAW_PCB:00000000 memp_tab_RAW_PCB
+    {standard input}:227    .rodata.memp_SYS_TIMEOUT:00000000 $d
+    {standard input}:287    .bss.memp_tab_SYS_TIMEOUT:00000000 memp_tab_SYS_TIMEOUT
+    {standard input}:236    .bss.memp_tab_PBUF:00000000 $d
+    {standard input}:239    .bss.memp_tab_PBUF:00000000 memp_tab_PBUF
+    {standard input}:242    .rodata.memp_UDP_PCB:00000000 $d
+    {standard input}:251    .rodata.memp_PBUF:00000000 $d
+    {standard input}:260    .bss.memp_tab_TCP_PCB_LISTEN:00000000 $d
+    {standard input}:263    .bss.memp_tab_TCP_PCB_LISTEN:00000000 memp_tab_TCP_PCB_LISTEN
+    {standard input}:266    .rodata.memp_TCP_PCB_LISTEN:00000000 $d
+    {standard input}:275    .rodata.memp_TCP_PCB:00000000 $d
+    {standard input}:284    .bss.memp_tab_SYS_TIMEOUT:00000000 $d
+    {standard input}:290    .bss.memp_tab_RAW_PCB:00000000 $d
+    {standard input}:296    .bss.memp_tab_PBUF_POOL:00000000 $d
+    {standard input}:302    .rodata.memp_pools:00000000 $d
+
+NO UNDEFINED SYMBOLS
