@@ -1,0 +1,260 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,4
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "UDP.c"
+  16              	 .section .text.udp_echo_recv,"ax",%progbits
+  17              	 .align 1
+  18              	 .global udp_echo_recv
+  19              	 .thumb
+  20              	 .thumb_func
+  22              	udp_echo_recv:
+  23              	 
+  24              	 
+  25 0000 10B5     	 push {r4,lr}
+  26 0002 1446     	 mov r4,r2
+  27 0004 B2B1     	 cbz r2,.L1
+  28 0006 0846     	 mov r0,r1
+  29 0008 44F62063 	 movw r3,#20000
+  30 000c 1146     	 mov r1,r2
+  31 000e 0A4A     	 ldr r2,.L4
+  32 0010 FFF7FEFF 	 bl udp_sendto
+  33 0014 094B     	 ldr r3,.L4+4
+  34 0016 6268     	 ldr r2,[r4,#4]
+  35 0018 1B68     	 ldr r3,[r3]
+  36 001a 1168     	 ldr r1,[r2]
+  37 001c 1960     	 str r1,[r3]
+  38 001e 5168     	 ldr r1,[r2,#4]
+  39 0020 5960     	 str r1,[r3,#4]
+  40 0022 1189     	 ldrh r1,[r2,#8]
+  41 0024 1981     	 strh r1,[r3,#8]
+  42 0026 927A     	 ldrb r2,[r2,#10]
+  43 0028 9A72     	 strb r2,[r3,#10]
+  44 002a 2046     	 mov r0,r4
+  45 002c BDE81040 	 pop {r4,lr}
+  46 0030 FFF7FEBF 	 b pbuf_free
+  47              	.L1:
+  48 0034 10BD     	 pop {r4,pc}
+  49              	.L5:
+  50 0036 00BF     	 .align 2
+  51              	.L4:
+  52 0038 00000000 	 .word returnaddr
+  53 003c 00000000 	 .word UDPBuffer
+  55              	 .section .text.udp_initialize,"ax",%progbits
+  56              	 .align 1
+  57              	 .global udp_initialize
+  58              	 .thumb
+  59              	 .thumb_func
+  61              	udp_initialize:
+  62              	 
+  63              	 
+  64 0000 10B5     	 push {r4,lr}
+  65 0002 0A4B     	 ldr r3,.L7
+  66 0004 0A4A     	 ldr r2,.L7+4
+  67 0006 1A60     	 str r2,[r3]
+  68 0008 FFF7FEFF 	 bl udp_new
+  69 000c 094C     	 ldr r4,.L7+8
+  70 000e 0A49     	 ldr r1,.L7+12
+  71 0010 2060     	 str r0,[r4]
+  72 0012 4CF62042 	 movw r2,#52256
+  73 0016 FFF7FEFF 	 bl udp_bind
+  74 001a 2068     	 ldr r0,[r4]
+  75 001c 0749     	 ldr r1,.L7+16
+  76 001e 40F23952 	 movw r2,#1337
+  77 0022 BDE81040 	 pop {r4,lr}
+  78 0026 FFF7FEBF 	 b udp_recv
+  79              	.L8:
+  80 002a 00BF     	 .align 2
+  81              	.L7:
+  82 002c 00000000 	 .word returnaddr
+  83 0030 C0A80009 	 .word 151038144
+  84 0034 00000000 	 .word com_pcb
+  85 0038 00000000 	 .word ip_addr_any
+  86 003c 00000000 	 .word udp_echo_recv
+  88              	 .section .text.udp_fillBuffer,"ax",%progbits
+  89              	 .align 1
+  90              	 .global udp_fillBuffer
+  91              	 .thumb
+  92              	 .thumb_func
+  94              	udp_fillBuffer:
+  95              	 
+  96              	 
+  97 0000 70B5     	 push {r4,r5,r6,lr}
+  98 0002 0B4C     	 ldr r4,.L13
+  99 0004 0B4E     	 ldr r6,.L13+4
+ 100 0006 2568     	 ldr r5,[r4]
+ 101 0008 3678     	 ldrb r6,[r6]
+ 102 000a 2E70     	 strb r6,[r5]
+ 103 000c 2568     	 ldr r5,[r4]
+ 104 000e 6B70     	 strb r3,[r5,#1]
+ 105 0010 2368     	 ldr r3,[r4]
+ 106 0012 9A70     	 strb r2,[r3,#2]
+ 107 0014 40F2B553 	 movw r3,#1461
+ 108 0018 03FB0211 	 mla r1,r3,r2,r1
+ 109 001c 0323     	 movs r3,#3
+ 110              	.L10:
+ 111 001e 8342     	 cmp r3,r0
+ 112 0020 05DA     	 bge .L12
+ 113 0022 2268     	 ldr r2,[r4]
+ 114 0024 11F8015B 	 ldrb r5,[r1],#1
+ 115 0028 D554     	 strb r5,[r2,r3]
+ 116 002a 0133     	 adds r3,r3,#1
+ 117 002c F7E7     	 b .L10
+ 118              	.L12:
+ 119 002e 70BD     	 pop {r4,r5,r6,pc}
+ 120              	.L14:
+ 121              	 .align 2
+ 122              	.L13:
+ 123 0030 00000000 	 .word UDPBuffer
+ 124 0034 00000000 	 .word .LANCHOR0
+ 126              	 .section .text.udp_printStruct,"ax",%progbits
+ 127              	 .align 1
+ 128              	 .global udp_printStruct
+ 129              	 .thumb
+ 130              	 .thumb_func
+ 132              	udp_printStruct:
+ 133              	 
+ 134              	 
+ 135 0000 2DE9F843 	 push {r3,r4,r5,r6,r7,r8,r9,lr}
+ 136 0004 8146     	 mov r9,r0
+ 137 0006 FFF7FEFF 	 bl sys_check_timeouts
+ 138 000a 304B     	 ldr r3,.L19
+ 139 000c 0024     	 movs r4,#0
+ 140 000e 1C70     	 strb r4,[r3]
+ 141 0010 1E46     	 mov r6,r3
+ 142              	.L16:
+ 143 0012 96F80080 	 ldrb r8,[r6]
+ 144 0016 2E4D     	 ldr r5,.L19+4
+ 145 0018 2E4F     	 ldr r7,.L19+8
+ 146 001a 4445     	 cmp r4,r8
+ 147 001c 4FF4B760 	 mov r0,#1464
+ 148 0020 4FF00101 	 mov r1,#1
+ 149 0024 25DA     	 bge .L18
+ 150 0026 FFF7FEFF 	 bl calloc
+ 151 002a 0123     	 movs r3,#1
+ 152 002c E2B2     	 uxtb r2,r4
+ 153 002e 2860     	 str r0,[r5]
+ 154 0030 4946     	 mov r1,r9
+ 155 0032 40F2B550 	 movw r0,#1461
+ 156 0036 FFF7FEFF 	 bl udp_fillBuffer
+ 157 003a 0020     	 movs r0,#0
+ 158 003c 4FF4B761 	 mov r1,#1464
+ 159 0040 0246     	 mov r2,r0
+ 160 0042 FFF7FEFF 	 bl pbuf_alloc
+ 161 0046 2968     	 ldr r1,[r5]
+ 162 0048 8046     	 mov r8,r0
+ 163 004a 4FF4B762 	 mov r2,#1464
+ 164 004e 4068     	 ldr r0,[r0,#4]
+ 165 0050 FFF7FEFF 	 bl memcpy
+ 166 0054 4146     	 mov r1,r8
+ 167 0056 204A     	 ldr r2,.L19+12
+ 168 0058 3868     	 ldr r0,[r7]
+ 169 005a 4CF62043 	 movw r3,#52256
+ 170 005e FFF7FEFF 	 bl udp_sendto
+ 171 0062 4046     	 mov r0,r8
+ 172 0064 FFF7FEFF 	 bl pbuf_free
+ 173 0068 2868     	 ldr r0,[r5]
+ 174 006a FFF7FEFF 	 bl free
+ 175 006e 0134     	 adds r4,r4,#1
+ 176 0070 CFE7     	 b .L16
+ 177              	.L18:
+ 178 0072 FFF7FEFF 	 bl calloc
+ 179 0076 4946     	 mov r1,r9
+ 180 0078 2860     	 str r0,[r5]
+ 181 007a 4246     	 mov r2,r8
+ 182 007c 0123     	 movs r3,#1
+ 183 007e 0B20     	 movs r0,#11
+ 184 0080 FFF7FEFF 	 bl udp_fillBuffer
+ 185 0084 0020     	 movs r0,#0
+ 186 0086 0B21     	 movs r1,#11
+ 187 0088 0246     	 mov r2,r0
+ 188 008a FFF7FEFF 	 bl pbuf_alloc
+ 189 008e 2A68     	 ldr r2,[r5]
+ 190 0090 4368     	 ldr r3,[r0,#4]
+ 191 0092 1168     	 ldr r1,[r2]
+ 192 0094 1960     	 str r1,[r3]
+ 193 0096 5168     	 ldr r1,[r2,#4]
+ 194 0098 5960     	 str r1,[r3,#4]
+ 195 009a 1189     	 ldrh r1,[r2,#8]
+ 196 009c 1981     	 strh r1,[r3,#8]
+ 197 009e 0446     	 mov r4,r0
+ 198 00a0 927A     	 ldrb r2,[r2,#10]
+ 199 00a2 9A72     	 strb r2,[r3,#10]
+ 200 00a4 2146     	 mov r1,r4
+ 201 00a6 0C4A     	 ldr r2,.L19+12
+ 202 00a8 3868     	 ldr r0,[r7]
+ 203 00aa 4CF62043 	 movw r3,#52256
+ 204 00ae FFF7FEFF 	 bl udp_sendto
+ 205 00b2 0646     	 mov r6,r0
+ 206 00b4 2046     	 mov r0,r4
+ 207 00b6 FFF7FEFF 	 bl pbuf_free
+ 208 00ba 2868     	 ldr r0,[r5]
+ 209 00bc FFF7FEFF 	 bl free
+ 210 00c0 FFF7FEFF 	 bl sys_check_timeouts
+ 211 00c4 3046     	 mov r0,r6
+ 212 00c6 BDE8F883 	 pop {r3,r4,r5,r6,r7,r8,r9,pc}
+ 213              	.L20:
+ 214 00ca 00BF     	 .align 2
+ 215              	.L19:
+ 216 00cc 00000000 	 .word .LANCHOR1
+ 217 00d0 00000000 	 .word UDPBuffer
+ 218 00d4 00000000 	 .word com_pcb
+ 219 00d8 00000000 	 .word returnaddr
+ 221              	 .global cycleNr
+ 222              	 .global packetCount
+ 223              	 .comm returnaddr,4,4
+ 224              	 .comm UDPBuffer,4,4
+ 225              	 .comm com_pcb,4,4
+ 226              	 .section .bss.packetCount,"aw",%nobits
+ 227              	 .set .LANCHOR1,.+0
+ 230              	packetCount:
+ 231 0000 00       	 .space 1
+ 232              	 .section .bss.cycleNr,"aw",%nobits
+ 233              	 .set .LANCHOR0,.+0
+ 236              	cycleNr:
+ 237 0000 00       	 .space 1
+ 238              	 .ident "GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-branch revision 218278]"
+DEFINED SYMBOLS
+                            *ABS*:00000000 UDP.c
+    {standard input}:17     .text.udp_echo_recv:00000000 $t
+    {standard input}:22     .text.udp_echo_recv:00000000 udp_echo_recv
+    {standard input}:52     .text.udp_echo_recv:00000038 $d
+                            *COM*:00000004 returnaddr
+                            *COM*:00000004 UDPBuffer
+    {standard input}:56     .text.udp_initialize:00000000 $t
+    {standard input}:61     .text.udp_initialize:00000000 udp_initialize
+    {standard input}:82     .text.udp_initialize:0000002c $d
+                            *COM*:00000004 com_pcb
+    {standard input}:89     .text.udp_fillBuffer:00000000 $t
+    {standard input}:94     .text.udp_fillBuffer:00000000 udp_fillBuffer
+    {standard input}:123    .text.udp_fillBuffer:00000030 $d
+    {standard input}:127    .text.udp_printStruct:00000000 $t
+    {standard input}:132    .text.udp_printStruct:00000000 udp_printStruct
+    {standard input}:216    .text.udp_printStruct:000000cc $d
+    {standard input}:236    .bss.cycleNr:00000000 cycleNr
+    {standard input}:230    .bss.packetCount:00000000 packetCount
+    {standard input}:231    .bss.packetCount:00000000 $d
+    {standard input}:237    .bss.cycleNr:00000000 $d
+
+UNDEFINED SYMBOLS
+udp_sendto
+pbuf_free
+udp_new
+udp_bind
+udp_recv
+ip_addr_any
+sys_check_timeouts
+calloc
+pbuf_alloc
+memcpy
+free
