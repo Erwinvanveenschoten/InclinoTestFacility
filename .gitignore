@@ -2,5 +2,7 @@ xmc4700RelaxKit/Dave/Generated/
 xmc4700RelaxKit/Debug
 
 *.dep
+
+bs_sensor/bs_sensor/Dave/Generated/
 
-bs_sensor/bs_sensor/Dave/Generated/
+.metadata/
