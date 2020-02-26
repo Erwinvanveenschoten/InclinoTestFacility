@@ -6,3 +6,9 @@ xmc4700RelaxKit/Debug
 bs_sensor/bs_sensor/Dave/Generated/
 
 .metadata/
+
+bs_sensor/bs_sensor/Debug/
+
+SPI_DATA_COLLECTION/Dave/Generated/
+
+SPI_DATA_COLLECTION/Debug/

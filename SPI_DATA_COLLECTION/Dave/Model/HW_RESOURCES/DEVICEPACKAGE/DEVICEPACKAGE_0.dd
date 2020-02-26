@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ResourceModel:DevicePackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ResourceModel="http://www.infineon.com/Davex/Resource.ecore" URI="http://resources/LQFP144.0.0/devicepackage/0">
+  <provided xsi:type="ResourceModel:ResourceGroup" name="58" URI="http://resources/lqfp144.0.0/devicepackage/0/58">
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/BUS_IO/v4_0_2/BUS_IO_0.app#//@hwResources.30"/>
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin58"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="134" URI="http://resources/lqfp144.0.0/devicepackage/0/134">
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin134"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="94" URI="http://resources/lqfp144.0.0/devicepackage/0/94">
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin94"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="102" URI="http://resources/lqfp144.0.0/devicepackage/0/102">
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin102"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="77" URI="http://resources/lqfp144.0.0/devicepackage/0/77">
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin77"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="78" URI="http://resources/lqfp144.0.0/devicepackage/0/78">
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/BUS_IO/v4_0_2/BUS_IO_0.app#//@hwResources.31"/>
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin78"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="57" URI="http://resources/lqfp144.0.0/devicepackage/0/57">
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/DIGITAL_IO/v4_0_16/DIGITAL_IO_0.app#//@hwResources.1"/>
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin57"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="81" URI="http://resources/lqfp144.0.0/devicepackage/0/81">
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/BUS_IO/v4_0_2/BUS_IO_0.app#//@hwResources.29"/>
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin81"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="124" URI="http://resources/lqfp144.0.0/devicepackage/0/124">
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/BUS_IO/v4_0_2/BUS_IO_0.app#//@hwResources.25"/>
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin124"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="109" URI="http://resources/lqfp144.0.0/devicepackage/0/109">
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/BUS_IO/v4_0_2/BUS_IO_0.app#//@hwResources.21"/>
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin109"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="104" URI="http://resources/lqfp144.0.0/devicepackage/0/104">
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin104"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="103" URI="http://resources/lqfp144.0.0/devicepackage/0/103">
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin103"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="9" URI="http://resources/lqfp144.0.0/devicepackage/0/9">
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin9"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="115" URI="http://resources/lqfp144.0.0/devicepackage/0/115">
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/BUS_IO/v4_0_2/BUS_IO_0.app#//@hwResources.22"/>
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin115"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="116" URI="http://resources/lqfp144.0.0/devicepackage/0/116">
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin116"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="113" URI="http://resources/lqfp144.0.0/devicepackage/0/113">
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/BUS_IO/v4_0_2/BUS_IO_0.app#//@hwResources.24"/>
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin113"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="114" URI="http://resources/lqfp144.0.0/devicepackage/0/114">
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/BUS_IO/v4_0_2/BUS_IO_0.app#//@hwResources.23"/>
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin114"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="79" URI="http://resources/lqfp144.0.0/devicepackage/0/79">
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/BUS_IO/v4_0_2/BUS_IO_0.app#//@hwResources.28"/>
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin79"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="110" URI="http://resources/lqfp144.0.0/devicepackage/0/110">
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/BUS_IO/v4_0_2/BUS_IO_0.app#//@hwResources.20"/>
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin110"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="80" URI="http://resources/lqfp144.0.0/devicepackage/0/80">
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/BUS_IO/v4_0_2/BUS_IO_0.app#//@hwResources.27"/>
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin80"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="123" URI="http://resources/lqfp144.0.0/devicepackage/0/123">
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/BUS_IO/v4_0_2/BUS_IO_0.app#//@hwResources.26"/>
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin123"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="144" URI="http://resources/lqfp144.0.0/devicepackage/0/144">
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/BUS_IO/v4_0_2/BUS_IO_0.app#//@hwResources.16"/>
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin144"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="142" URI="http://resources/lqfp144.0.0/devicepackage/0/142">
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/BUS_IO/v4_0_2/BUS_IO_0.app#//@hwResources.18"/>
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin142"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="143" URI="http://resources/lqfp144.0.0/devicepackage/0/143">
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/BUS_IO/v4_0_2/BUS_IO_0.app#//@hwResources.17"/>
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin143"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="141" URI="http://resources/lqfp144.0.0/devicepackage/0/141">
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/BUS_IO/v4_0_2/BUS_IO_0.app#//@hwResources.19"/>
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin141"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="60" URI="http://resources/lqfp144.0.0/devicepackage/0/60">
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin60"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="82" URI="http://resources/lqfp144.0.0/devicepackage/0/82">
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/SPI_MASTER/v4_3_26/SPI_MASTER_0.app#//@hwResources.25"/>
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin82"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="84" URI="http://resources/lqfp144.0.0/devicepackage/0/84">
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/SPI_MASTER/v4_3_26/SPI_MASTER_0.app#//@hwResources.21"/>
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin84"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="83" URI="http://resources/lqfp144.0.0/devicepackage/0/83">
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/SPI_MASTER/v4_3_26/SPI_MASTER_0.app#//@hwResources.22"/>
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin83"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="140" URI="http://resources/lqfp144.0.0/devicepackage/0/140">
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin140"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="40" URI="http://resources/lqfp144.0.0/devicepackage/0/40">
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin40"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="39" URI="http://resources/lqfp144.0.0/devicepackage/0/39">
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin39"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="33" URI="http://resources/lqfp144.0.0/devicepackage/0/33">
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_0.app#//@hwResources.24"/>
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin33"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="34" URI="http://resources/lqfp144.0.0/devicepackage/0/34">
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_0.app#//@hwResources.20"/>
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin34"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="42" URI="http://resources/lqfp144.0.0/devicepackage/0/42">
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin42"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="41" URI="http://resources/lqfp144.0.0/devicepackage/0/41">
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin41"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="32" URI="http://resources/lqfp144.0.0/devicepackage/0/32">
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_0.app#//@hwResources.28"/>
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin32"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="106" URI="http://resources/lqfp144.0.0/devicepackage/0/106">
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin106"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="105" URI="http://resources/lqfp144.0.0/devicepackage/0/105">
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin105"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="54" URI="http://resources/lqfp144.0.0/devicepackage/0/54">
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/ETH_LWIP/v4_1_16/ETH_LWIP_0.app#//@hwResources.35"/>
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin54"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="51" URI="http://resources/lqfp144.0.0/devicepackage/0/51">
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin51"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="53" URI="http://resources/lqfp144.0.0/devicepackage/0/53">
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/ETH_LWIP/v4_1_16/ETH_LWIP_0.app#//@hwResources.22"/>
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin53"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="52" URI="http://resources/lqfp144.0.0/devicepackage/0/52">
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin52"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="71" URI="http://resources/lqfp144.0.0/devicepackage/0/71">
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/ETH_LWIP/v4_1_16/ETH_LWIP_0.app#//@hwResources.25"/>
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin71"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="70" URI="http://resources/lqfp144.0.0/devicepackage/0/70">
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/ETH_LWIP/v4_1_16/ETH_LWIP_0.app#//@hwResources.23"/>
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin70"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="72" URI="http://resources/lqfp144.0.0/devicepackage/0/72">
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/ETH_LWIP/v4_1_16/ETH_LWIP_0.app#//@hwResources.24"/>
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin72"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="75" URI="http://resources/lqfp144.0.0/devicepackage/0/75">
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/ETH_LWIP/v4_1_16/ETH_LWIP_0.app#//@hwResources.36"/>
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin75"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="74" URI="http://resources/lqfp144.0.0/devicepackage/0/74">
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/ETH_LWIP/v4_1_16/ETH_LWIP_0.app#//@hwResources.37"/>
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin74"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="69" URI="http://resources/lqfp144.0.0/devicepackage/0/69">
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/ETH_LWIP/v4_1_16/ETH_LWIP_0.app#//@hwResources.28"/>
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin69"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="68" URI="http://resources/lqfp144.0.0/devicepackage/0/68">
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/ETH_LWIP/v4_1_16/ETH_LWIP_0.app#//@hwResources.30"/>
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin68"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="67" URI="http://resources/lqfp144.0.0/devicepackage/0/67">
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/ETH_LWIP/v4_1_16/ETH_LWIP_0.app#//@hwResources.31"/>
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin67"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="108" URI="http://resources/lqfp144.0.0/devicepackage/0/108">
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/UART/v4_1_12/UART_0.app#//@hwResources.10"/>
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin108"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="107" URI="http://resources/lqfp144.0.0/devicepackage/0/107">
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/UART/v4_1_12/UART_0.app#//@hwResources.11"/>
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin107"/>
+  </provided>
+</ResourceModel:DevicePackage>
