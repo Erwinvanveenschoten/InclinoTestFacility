@@ -1,3 +1,5 @@
+
+
 #include <DAVE.h>
 #include <stdio.h>
 #include <ctype.h>
@@ -8,6 +10,7 @@
 
 #include "UDP.h"
 
+#ifdef ENABLE_UDP
 uint8_t packetCount = 0;				/** Counter to indicate how many UDP packets are needed to transmit the whole struct through UDP **/
 
 uint8_t cycleNr = 0;					/** Variable to store the ID of the current distance cycle **/
@@ -42,7 +45,7 @@ void udp_initialize()
  * The header contains the cycleID that the struct is part of, the total number of packets and the current packet number.
  * This is done so the receiving end can reconstruct the whole struct.
  */
-void udp_fillBuffer(uint16_t bufferSize, MESSAGE_t* po, uint8_t packetNr, uint8_t totalPackets)
+void udp_fillBuffer(uint16_t bufferSize, void* po, uint8_t packetNr, uint8_t totalPackets)
 {
 	uint8_t* structPtr = (uint8_t*)po;
 	UDPBuffer[0] = cycleNr;
@@ -64,12 +67,12 @@ void udp_fillBuffer(uint16_t bufferSize, MESSAGE_t* po, uint8_t packetNr, uint8_
  * After each packet the allocated gets freed.
  * After all packets are transmitted the sys_check_timeouts function is called to make sure they are pushed onto the network.
  */
-err_t udp_printStruct(MESSAGE_t *po)
+err_t udp_printStruct(void * po, uint32_t size)
 {
 	sys_check_timeouts();
 	packetCount = 0;
-	packetCount = (sizeof(MESSAGE_t)) / ((maxPayloadSize-3)); // - UDP_OFFSET
-	uint16_t dataLeft = ((sizeof(MESSAGE_t)) % (maxPayloadSize - 3));
+	packetCount = (size) / ((maxPayloadSize-3)); // - UDP_OFFSET
+	uint16_t dataLeft = (size % (maxPayloadSize - 3));
 
 	struct pbuf* b;
 	err_enum_t error; //= ERR_OK;
@@ -103,3 +106,5 @@ err_t udp_printStruct(MESSAGE_t *po)
 }
 
 
+
+#endif

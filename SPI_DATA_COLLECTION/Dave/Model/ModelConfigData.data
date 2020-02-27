@@ -75,9 +75,6 @@
   <nodes xsi:type="ApplicationModel:AppNode">
     <resource xsi:type="ResourceModel:App" href="APPS/DIGITAL_IO/v4_0_16/DIGITAL_IO_0.app#/"/>
   </nodes>
-  <nodes xsi:type="ApplicationModel:AppNode">
-    <resource xsi:type="ResourceModel:App" href="APPS/ETH_LWIP/v4_1_16/ETH_LWIP_0.app#/"/>
-  </nodes>
   <nodes xsi:type="ApplicationModel:PeripheralNode">
     <resource xsi:type="ResourceModel:Peripheral" href="HW_RESOURCES/eth0/eth0_0.dd#/"/>
   </nodes>
@@ -108,20 +105,23 @@
   <nodes xsi:type="ApplicationModel:PeripheralNode">
     <resource xsi:type="ResourceModel:Peripheral" href="HW_RESOURCES/usic0/usic0_0.dd#/"/>
   </nodes>
+  <nodes xsi:type="ApplicationModel:AppNode">
+    <resource xsi:type="ResourceModel:App" href="APPS/ETH_LWIP/v4_1_16/ETH_LWIP_0.app#/"/>
+  </nodes>
   <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.1" target="//@nodes.0"/>
   <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.17" target="//@nodes.0"/>
   <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.18" target="//@nodes.17"/>
   <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.21" target="//@nodes.0"/>
   <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.23" target="//@nodes.0"/>
   <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.23" target="//@nodes.22"/>
-  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.25" target="//@nodes.22"/>
-  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.25" target="//@nodes.23"/>
-  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.31" target="//@nodes.22"/>
-  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.28" target="//@nodes.32"/>
-  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.32" target="//@nodes.0"/>
-  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.1" target="//@nodes.33"/>
-  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.33" target="//@nodes.22"/>
-  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.34" target="//@nodes.0"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.30" target="//@nodes.22"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.27" target="//@nodes.31"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.31" target="//@nodes.0"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.1" target="//@nodes.32"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.32" target="//@nodes.22"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.33" target="//@nodes.0"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.35" target="//@nodes.22"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.35" target="//@nodes.23"/>
   <hwConnections href="APPS/CLOCK_XMC4/v4_0_22/CLOCK_XMC4_0.app#//@connections.0"/>
   <hwConnections href="APPS/CLOCK_XMC4/v4_0_22/CLOCK_XMC4_0.app#//@connections.5"/>
   <hwConnections href="APPS/CLOCK_XMC4/v4_0_22/CLOCK_XMC4_0.app#//@connections.6"/>
@@ -310,6 +310,22 @@
   <hwConnections href="APPS/CPU_CTRL_XMC4/v4_0_16/CPU_CTRL_XMC4_0.app#//@connections.20"/>
   <hwConnections href="APPS/DIGITAL_IO/v4_0_16/DIGITAL_IO_0.app#//@connections.0"/>
   <hwConnections href="APPS/DIGITAL_IO/v4_0_16/DIGITAL_IO_0.app#//@connections.1"/>
+  <hwConnections href="APPS/GLOBAL_CCU4/v4_1_12/GLOBAL_CCU4_0.app#//@connections.0"/>
+  <hwConnections href="APPS/TIMER/v4_1_10/TIMER_0.app#//@connections.0"/>
+  <hwConnections href="APPS/TIMER/v4_1_10/TIMER_0.app#//@connections.2"/>
+  <hwConnections href="APPS/SPI_MASTER/v4_3_26/SPI_MASTER_0.app#//@connections.6"/>
+  <hwConnections href="APPS/SPI_MASTER/v4_3_26/SPI_MASTER_0.app#//@connections.4"/>
+  <hwConnections href="APPS/SPI_MASTER/v4_3_26/SPI_MASTER_0.app#//@connections.5"/>
+  <hwConnections href="APPS/SPI_MASTER/v4_3_26/SPI_MASTER_0.app#//@connections.1"/>
+  <hwConnections href="APPS/SPI_MASTER/v4_3_26/SPI_MASTER_0.app#//@connections.2"/>
+  <hwConnections href="APPS/SPI_MASTER/v4_3_26/SPI_MASTER_0.app#//@connections.0"/>
+  <hwConnections href="APPS/SPI_MASTER/v4_3_26/SPI_MASTER_0.app#//@connections.3"/>
+  <hwConnections href="APPS/UART/v4_1_12/UART_0.app#//@connections.0"/>
+  <hwConnections href="APPS/UART/v4_1_12/UART_0.app#//@connections.1"/>
+  <hwConnections href="APPS/UART/v4_1_12/UART_0.app#//@connections.18"/>
+  <hwConnections href="APPS/UART/v4_1_12/UART_0.app#//@connections.19"/>
+  <hwConnections href="APPS/UART/v4_1_12/UART_0.app#//@connections.20"/>
+  <hwConnections href="APPS/UART/v4_1_12/UART_0.app#//@connections.21"/>
   <hwConnections href="APPS/ETH_LWIP/v4_1_16/ETH_LWIP_0.app#//@connections.2"/>
   <hwConnections href="APPS/ETH_LWIP/v4_1_16/ETH_LWIP_0.app#//@connections.3"/>
   <hwConnections href="APPS/ETH_LWIP/v4_1_16/ETH_LWIP_0.app#//@connections.4"/>
@@ -358,20 +374,4 @@
   <hwConnections href="APPS/ETH_LWIP/v4_1_16/ETH_LWIP_0.app#//@connections.53"/>
   <hwConnections href="APPS/ETH_LWIP/v4_1_16/ETH_LWIP_0.app#//@connections.54"/>
   <hwConnections href="APPS/ETH_LWIP/v4_1_16/ETH_LWIP_0.app#//@connections.55"/>
-  <hwConnections href="APPS/GLOBAL_CCU4/v4_1_12/GLOBAL_CCU4_0.app#//@connections.0"/>
-  <hwConnections href="APPS/TIMER/v4_1_10/TIMER_0.app#//@connections.0"/>
-  <hwConnections href="APPS/TIMER/v4_1_10/TIMER_0.app#//@connections.2"/>
-  <hwConnections href="APPS/SPI_MASTER/v4_3_26/SPI_MASTER_0.app#//@connections.6"/>
-  <hwConnections href="APPS/SPI_MASTER/v4_3_26/SPI_MASTER_0.app#//@connections.4"/>
-  <hwConnections href="APPS/SPI_MASTER/v4_3_26/SPI_MASTER_0.app#//@connections.5"/>
-  <hwConnections href="APPS/SPI_MASTER/v4_3_26/SPI_MASTER_0.app#//@connections.1"/>
-  <hwConnections href="APPS/SPI_MASTER/v4_3_26/SPI_MASTER_0.app#//@connections.2"/>
-  <hwConnections href="APPS/SPI_MASTER/v4_3_26/SPI_MASTER_0.app#//@connections.0"/>
-  <hwConnections href="APPS/SPI_MASTER/v4_3_26/SPI_MASTER_0.app#//@connections.3"/>
-  <hwConnections href="APPS/UART/v4_1_12/UART_0.app#//@connections.0"/>
-  <hwConnections href="APPS/UART/v4_1_12/UART_0.app#//@connections.1"/>
-  <hwConnections href="APPS/UART/v4_1_12/UART_0.app#//@connections.18"/>
-  <hwConnections href="APPS/UART/v4_1_12/UART_0.app#//@connections.19"/>
-  <hwConnections href="APPS/UART/v4_1_12/UART_0.app#//@connections.20"/>
-  <hwConnections href="APPS/UART/v4_1_12/UART_0.app#//@connections.21"/>
 </ApplicationModel:ApplicationData>

@@ -27,6 +27,6 @@ typedef struct BMI055_data
 	uint8_t  temp;
 }BMI055_data_t;
 
-void BMI055_start_transmission( void );
+void BMI055_start_transfer_seq( void );
 
 #endif /* BMI055_H_ */

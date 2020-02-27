@@ -5,10 +5,6 @@
  *  Author: erwin
  */
 
-
-
-
-
 #include <DAVE.h>                 //Declarations from DAVE Code Generation (includes SFR declaration)
 #include "UDP.h"
 #include <BMI055.h>
@@ -22,14 +18,18 @@
  * code.
  */
 
+void BMI055_timer_ISR( void );
+
 int main(void)
 {
   DAVE_STATUS_t status;
 
   status = DAVE_Init();           /* Initialization of DAVE APPs  */
 
+#ifdef ENABLE_UDP
   // init ethernet communication
   udp_initialize();
+#endif
 
   if(status != DAVE_STATUS_SUCCESS)
   {
@@ -45,13 +45,10 @@ int main(void)
 
   while(1U)
   {
-		MESSAGE_t message =
-		{
-			.data_id = 0xAA,
-			.ic_id = 0x55,
-			.data = 0xAA,
-		};
-
-		udp_printStruct(&message);
   }
+}
+
+void BMI055_timer_ISR( void )
+{
+	BMI055_start_transfer_seq();
 }

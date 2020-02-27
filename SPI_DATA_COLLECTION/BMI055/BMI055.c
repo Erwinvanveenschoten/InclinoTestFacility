@@ -10,6 +10,7 @@
 #include <BMI055_defs.h>
 #include "DAVE.h"
 #include "stdio.h"
+#include "UDP.h"
 
 #if BMI055_GYRO_ENA || BMI055_ACC_ENA || BMI055_TEMP_ENA
 
@@ -17,8 +18,14 @@ typedef enum sensor
 {
 	GYROSCOPE 	= 0,
 	ACCELERO 	= 1,
-	TEMPERATURE = 2,
 } sensor_t;
+
+typedef struct message
+{
+	uint32_t data;
+	uint8_t data_id;
+	uint8_t ic_id;
+}MESSAGE_t;
 
 /******************************************************************************
  * 	Runtime Constants
@@ -72,9 +79,9 @@ static volatile uint32_t Data_index = 0;
 #if NROF_BMI055 > 0
 void read_gyro(uint32_t bmi055_index);
 void read_acc (uint32_t bmi055_index);
-void read_temp(uint32_t bmi055_index);
 static void start_spi_transmission ( uint32_t bmi055_index, sensor_t sensor );
 static void BMI055_print_buffer ( void );
+void send_buffer( void );
 #endif
 
 /************************************************************************************
@@ -85,7 +92,7 @@ static void BMI055_print_buffer ( void );
  * API function Definitions
  ************************************************************************************/
 
-void BMI055_start_transmission( void )
+void BMI055_start_transfer_seq( void )
 {
 	// Wait while SPI_MASTER is busy
 	while (SPI_MASTER_IsTxBusy(SPI_HANDLER) || SPI_MASTER_IsRxBusy(SPI_HANDLER) ){}
@@ -107,9 +114,6 @@ static void start_spi_transmission ( uint32_t bmi055_index, sensor_t sensor )
 			break;
 		case ACCELERO:
 			read_acc(bmi055_index);
-			break;
-		case TEMPERATURE:
-			read_temp(bmi055_index);
 			break;
 		default:
 			break;
@@ -173,25 +177,6 @@ void read_acc( uint32_t bmi055_index )
 #endif
 }
 
-void read_temp( uint32_t bmi055_index )
-{
-//	uint8_t addr[] =
-//	{
-//		BMI055_ACCD_TEMP | READ_MASK,
-//		0XFF,
-//	};
-//
-//	// Slave select
-//	BUS_IO_Write(BUS_HANDLER, ~(1 << (BMI055[bmi055_index].cs_acc)));
-//
-//	// Transfer data
-//	SPI_MASTER_Transfer(
-//			SPI_HANDLER,
-//			addr,
-//			TEMP_buffer,
-//			TEMP_BUFFER_SIZE);
-}
-
 void store_buffer( uint32_t bmi055_index, uint32_t Data_index )
 {
 	switch (sensor_to_read[Data_index])
@@ -248,6 +233,7 @@ void BMI055_eo_recieve(void)
 	if ( BMI055_index == (NROF_BMI055-1) && Data_index == (NROF_BMI055_IMU_DATA-1))
 	{
 		// Transmit buffer
+		send_buffer();
 		BMI055_print_buffer();
 	}
 	else
@@ -288,6 +274,58 @@ void BMI055_print_buffer ( void )
 
 		printf("TEMP:   0x%04X\n\r", data_buffer[i].temp);
 	}
+}
+
+void send_buffer( void )
+{
+#ifdef BMI055_ACC_ENA || BMI055_GYRO_ENA
+	for ( int i = 0; i < NROF_BMI055; i++)
+	{
+		const MESSAGE_t data_message[] =
+		{
+#ifdef BMI055_ACC_ENA
+			{
+				.data = (uint32_t)data_buffer[i].acc_x,
+				.data_id = ACC_X_ID,
+				.ic_id = BMI055[i].id,
+			},
+			{
+				.data = (uint32_t)data_buffer[i].acc_y,
+				.data_id = ACC_X_ID,
+				.ic_id = BMI055[i].id,
+			},
+			{
+				.data = (uint32_t)data_buffer[i].acc_z,
+				.data_id = ACC_X_ID,
+				.ic_id = BMI055[i].id,
+			},
+#endif
+#ifdef BMI055_GYRO_ENA
+			{
+				.data = (uint32_t)data_buffer[i].gyro_x,
+				.data_id = ACC_X_ID,
+				.ic_id = BMI055[i].id,
+			},
+			{
+				.data = (uint32_t)data_buffer[i].gyro_y,
+				.data_id = ACC_X_ID,
+				.ic_id = BMI055[i].id,
+			},
+			{
+				.data = (uint32_t)data_buffer[i].gyro_z,
+				.data_id = ACC_X_ID,
+				.ic_id = BMI055[i].id,
+			},
+		};
+#endif
+		const uint8_t SIZEOF_DATA_MESSAGE = (sizeof(data_message)/sizeof(data_message[0]));
+
+		for ( int j = 0; j < SIZEOF_DATA_MESSAGE; j++)
+		{
+			udp_printStruct((void *)&data_message[j], sizeof(data_message[j]));
+		}
+	}
+#endif
 }
 
 #endif
