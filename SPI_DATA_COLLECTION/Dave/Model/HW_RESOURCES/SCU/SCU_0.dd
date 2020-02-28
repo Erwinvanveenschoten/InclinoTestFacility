@@ -114,7 +114,6 @@
     <resourcesList name="fccu" requiredResourceUri="http://resources/47.0.0/peripheral/scu/0/clkctrl0_ccu_fccu"/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="rtctick" URI="http://resources/47.0.0/peripheral/scu/0/gcu/interrupt/rtctick">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/RTC/v4_1_14/RTC_0.app#//@hwResources.0"/>
     <resourcesList name="nmireqen_pi" requiredResourceUri="http://resources/47.0.0/peripheral/scu/0/nmireqen/pi"/>
     <resourcesList name="rawsr_int" requiredResourceUri="http://resources/47.0.0/peripheral/scu/0/srraw/pi"/>
     <resourcesList name="srclr_int" requiredResourceUri="http://resources/47.0.0/peripheral/scu/0/srclr/pi"/>
@@ -159,7 +158,6 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1" description="Enabled"/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="rtcalarm" URI="http://resources/47.0.0/peripheral/scu/0/gcu/interrupt/rtcalarm">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/RTC/v4_1_14/RTC_0.app#//@hwResources.1"/>
     <resourcesList name="nmireqen_ai" requiredResourceUri="http://resources/47.0.0/peripheral/scu/0/nmireqen/ai"/>
     <resourcesList name="rawsr_int" requiredResourceUri="http://resources/47.0.0/peripheral/scu/0/srraw/ai"/>
     <resourcesList name="srclr_int" requiredResourceUri="http://resources/47.0.0/peripheral/scu/0/srclr/ai"/>

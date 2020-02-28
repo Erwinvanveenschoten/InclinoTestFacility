@@ -18,7 +18,7 @@
  * code.
  */
 
-void BMI055_timer_ISR( void );
+void tick_timer_ISR( void );
 
 int main(void)
 {
@@ -41,14 +41,21 @@ int main(void)
     }
   }
   /* Placeholder for user application code. The while loop below can be replaced with user application code. */
-  ADC_MEASUREMENT_ADV_SoftwareTrigger(&ADC_MEASUREMENT_ADV_0);
 
   while(1U)
   {
   }
 }
 
-void BMI055_timer_ISR( void )
+void tick_timer_ISR( void )
 {
+	// Trigger BMI055 transfer sequence
 	BMI055_start_transfer_seq();
+
+	// Trigger SCA103T softwarechannels
+	ADC_MEASUREMENT_ADV_SoftwareTrigger(&ADC_MEASUREMENT_ADV_0);
+	ADC_MEASUREMENT_ADV_SoftwareTrigger(&ADC_MEASUREMENT_ADV_1);
+	ADC_MEASUREMENT_ADV_SoftwareTrigger(&ADC_MEASUREMENT_ADV_2);
+
+	// Trigger
 }

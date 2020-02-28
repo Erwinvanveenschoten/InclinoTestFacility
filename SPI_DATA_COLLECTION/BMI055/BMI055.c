@@ -11,6 +11,7 @@
 #include "DAVE.h"
 #include "stdio.h"
 #include "UDP.h"
+#include "data_config.h"
 
 #if BMI055_GYRO_ENA || BMI055_ACC_ENA || BMI055_TEMP_ENA
 
@@ -19,13 +20,6 @@ typedef enum sensor
 	GYROSCOPE 	= 0,
 	ACCELERO 	= 1,
 } sensor_t;
-
-typedef struct message
-{
-	uint32_t data;
-	uint8_t data_id;
-	uint8_t ic_id;
-}MESSAGE_t;
 
 /******************************************************************************
  * 	Runtime Constants
@@ -278,12 +272,12 @@ void BMI055_print_buffer ( void )
 
 void send_buffer( void )
 {
-#ifdef BMI055_ACC_ENA || BMI055_GYRO_ENA
+#if BMI055_ACC_ENA | BMI055_GYRO_ENA
 	for ( int i = 0; i < NROF_BMI055; i++)
 	{
 		const MESSAGE_t data_message[] =
 		{
-#ifdef BMI055_ACC_ENA
+#if BMI055_ACC_ENA
 			{
 				.data = (uint32_t)data_buffer[i].acc_x,
 				.data_id = ACC_X_ID,
@@ -300,7 +294,7 @@ void send_buffer( void )
 				.ic_id = BMI055[i].id,
 			},
 #endif
-#ifdef BMI055_GYRO_ENA
+#if BMI055_GYRO_ENA
 			{
 				.data = (uint32_t)data_buffer[i].gyro_x,
 				.data_id = ACC_X_ID,

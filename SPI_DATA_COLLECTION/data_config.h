@@ -17,6 +17,7 @@
 #define TEMP_ID 	6
 #define INCL_A 		7
 #define INCL_B 		8
+#define VREF		9
 
 #define BMI055_0_ID			0
 #define BMI055_1_ID			1
@@ -37,5 +38,12 @@
 #define BMI085_ID			16
 #define LMS6DSO_ID			17
 #define MS5611_01BA03_ID	18
+
+typedef struct message
+{
+	uint32_t data;
+	uint8_t data_id;
+	uint8_t ic_id;
+}MESSAGE_t;
 
 #endif /* DATA_CONFIG_H_ */
