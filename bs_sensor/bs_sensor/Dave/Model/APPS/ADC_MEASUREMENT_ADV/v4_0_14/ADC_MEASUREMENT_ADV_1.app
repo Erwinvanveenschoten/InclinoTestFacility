@@ -7354,4 +7354,8 @@
   </connections>
   <connections URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/1/http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/1/vs_adc_measurement_adv_scan_sourceevent/http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/1/vs_adc_measurement_adv_nvic_src" systemDefined="true" sourceSignal="event_scan_source" targetSignal="sr_interrupt_signal" required="false" srcVirtualSignal="//@virtualSignals.17" targetVirtualSignal="//@virtualSignals.0"/>
   <connections URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/1/http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/1/vs_adc_measurement_adv_queue_sourceevent/http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/1/vs_adc_measurement_adv_nvic_src" systemDefined="true" sourceSignal="event_queue_source" targetSignal="sr_interrupt_signal" required="false" srcVirtualSignal="//@virtualSignals.9" targetVirtualSignal="//@virtualSignals.0"/>
+  <connections URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/1/http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/1/vs_adc_adv_measurement_result_evt_7/http://resources/4.0.8/app/INTERRUPT/1/vs_nvic_signal_in" sourceSignal="event_res_Channel_H" targetSignal="sr_irq" srcVirtualSignal="//@virtualSignals.157">
+    <downwardMapList xsi:type="ResourceModel:VirtualSignal" href="../../INTERRUPT/v4_0_8/INTERRUPT_1.app#//@virtualSignals.0"/>
+    <targetVirtualSignal href="../../INTERRUPT/v4_0_8/INTERRUPT_1.app#//@virtualSignals.0"/>
+  </connections>
 </ResourceModel:App>

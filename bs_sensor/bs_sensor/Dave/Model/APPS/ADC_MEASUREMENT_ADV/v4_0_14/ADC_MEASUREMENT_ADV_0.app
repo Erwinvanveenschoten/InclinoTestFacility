@@ -477,7 +477,7 @@
     </solverVarMap>
   </hwResources>
   <hwResources name="Channel_A Result" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_result_reg#0" resourceGroupUri="peripheral/vadc/0/group/sv20/sv21/sv22" solverVariable="true" mResGrpUri="peripheral/vadc/0/group/sv20/sv21/sv22">
-    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/vadc/vadc_0.dd#//@provided.51"/>
+    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/vadc/vadc_0.dd#//@provided.99"/>
     <solverVarMap index="4">
       <value variableName="sv20" solverValue="3"/>
     </solverVarMap>
@@ -485,7 +485,7 @@
       <value variableName="sv21" solverValue="result"/>
     </solverVarMap>
     <solverVarMap index="6">
-      <value variableName="sv22" solverValue="4"/>
+      <value variableName="sv22" solverValue="9"/>
     </solverVarMap>
     <solverVarMap index="4">
       <value variableName="sv20" solverValue="3"/>
@@ -494,11 +494,11 @@
       <value variableName="sv21" solverValue="result"/>
     </solverVarMap>
     <solverVarMap index="6">
-      <value variableName="sv22" solverValue="4"/>
+      <value variableName="sv22" solverValue="9"/>
     </solverVarMap>
   </hwResources>
   <hwResources name="Channel_B Result" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_result_reg#1" resourceGroupUri="peripheral/vadc/0/group/sv23/sv24/sv25" solverVariable="true" mResGrpUri="peripheral/vadc/0/group/sv23/sv24/sv25">
-    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/vadc/vadc_0.dd#//@provided.99"/>
+    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/vadc/vadc_0.dd#//@provided.102"/>
     <solverVarMap index="4">
       <value variableName="sv23" solverValue="3"/>
     </solverVarMap>
@@ -506,16 +506,7 @@
       <value variableName="sv24" solverValue="result"/>
     </solverVarMap>
     <solverVarMap index="6">
-      <value variableName="sv25" solverValue="9"/>
-    </solverVarMap>
-    <solverVarMap index="4">
-      <value variableName="sv23" solverValue="3"/>
-    </solverVarMap>
-    <solverVarMap index="5">
-      <value variableName="sv24" solverValue="result"/>
-    </solverVarMap>
-    <solverVarMap index="6">
-      <value variableName="sv25" solverValue="9"/>
+      <value variableName="sv25" solverValue="8"/>
     </solverVarMap>
     <solverVarMap index="4">
       <value variableName="sv23" solverValue="3"/>
@@ -524,11 +515,20 @@
       <value variableName="sv24" solverValue="result"/>
     </solverVarMap>
     <solverVarMap index="6">
-      <value variableName="sv25" solverValue="9"/>
+      <value variableName="sv25" solverValue="8"/>
+    </solverVarMap>
+    <solverVarMap index="4">
+      <value variableName="sv23" solverValue="3"/>
+    </solverVarMap>
+    <solverVarMap index="5">
+      <value variableName="sv24" solverValue="result"/>
+    </solverVarMap>
+    <solverVarMap index="6">
+      <value variableName="sv25" solverValue="8"/>
     </solverVarMap>
   </hwResources>
   <hwResources name="Channel_C Result" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_result_reg#2" resourceGroupUri="peripheral/vadc/0/group/sv26/sv27/sv28" solverVariable="true" mResGrpUri="peripheral/vadc/0/group/sv26/sv27/sv28">
-    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/vadc/vadc_0.dd#//@provided.102"/>
+    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/vadc/vadc_0.dd#//@provided.104"/>
     <solverVarMap index="4">
       <value variableName="sv26" solverValue="3"/>
     </solverVarMap>
@@ -536,16 +536,7 @@
       <value variableName="sv27" solverValue="result"/>
     </solverVarMap>
     <solverVarMap index="6">
-      <value variableName="sv28" solverValue="8"/>
-    </solverVarMap>
-    <solverVarMap index="4">
-      <value variableName="sv26" solverValue="3"/>
-    </solverVarMap>
-    <solverVarMap index="5">
-      <value variableName="sv27" solverValue="result"/>
-    </solverVarMap>
-    <solverVarMap index="6">
-      <value variableName="sv28" solverValue="8"/>
+      <value variableName="sv28" solverValue="5"/>
     </solverVarMap>
     <solverVarMap index="4">
       <value variableName="sv26" solverValue="3"/>
@@ -554,11 +545,20 @@
       <value variableName="sv27" solverValue="result"/>
     </solverVarMap>
     <solverVarMap index="6">
-      <value variableName="sv28" solverValue="8"/>
+      <value variableName="sv28" solverValue="5"/>
+    </solverVarMap>
+    <solverVarMap index="4">
+      <value variableName="sv26" solverValue="3"/>
+    </solverVarMap>
+    <solverVarMap index="5">
+      <value variableName="sv27" solverValue="result"/>
+    </solverVarMap>
+    <solverVarMap index="6">
+      <value variableName="sv28" solverValue="5"/>
     </solverVarMap>
   </hwResources>
   <hwResources name="Channel_D Result" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_result_reg#3" resourceGroupUri="peripheral/vadc/0/group/sv29/sv30/sv31" solverVariable="true" mResGrpUri="peripheral/vadc/0/group/sv29/sv30/sv31">
-    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/vadc/vadc_0.dd#//@provided.104"/>
+    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/vadc/vadc_0.dd#//@provided.106"/>
     <solverVarMap index="4">
       <value variableName="sv29" solverValue="3"/>
     </solverVarMap>
@@ -566,16 +566,7 @@
       <value variableName="sv30" solverValue="result"/>
     </solverVarMap>
     <solverVarMap index="6">
-      <value variableName="sv31" solverValue="5"/>
-    </solverVarMap>
-    <solverVarMap index="4">
-      <value variableName="sv29" solverValue="3"/>
-    </solverVarMap>
-    <solverVarMap index="5">
-      <value variableName="sv30" solverValue="result"/>
-    </solverVarMap>
-    <solverVarMap index="6">
-      <value variableName="sv31" solverValue="5"/>
+      <value variableName="sv31" solverValue="6"/>
     </solverVarMap>
     <solverVarMap index="4">
       <value variableName="sv29" solverValue="3"/>
@@ -584,41 +575,50 @@
       <value variableName="sv30" solverValue="result"/>
     </solverVarMap>
     <solverVarMap index="6">
-      <value variableName="sv31" solverValue="5"/>
+      <value variableName="sv31" solverValue="6"/>
+    </solverVarMap>
+    <solverVarMap index="4">
+      <value variableName="sv29" solverValue="3"/>
+    </solverVarMap>
+    <solverVarMap index="5">
+      <value variableName="sv30" solverValue="result"/>
+    </solverVarMap>
+    <solverVarMap index="6">
+      <value variableName="sv31" solverValue="6"/>
     </solverVarMap>
   </hwResources>
   <hwResources name="Channel_E Result" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_result_reg#4" resourceGroupUri="peripheral/vadc/0/group/sv32/sv33/sv34" solverVariable="true" mResGrpUri="peripheral/vadc/0/group/sv32/sv33/sv34">
-    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/vadc/vadc_0.dd#//@provided.106"/>
+    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/vadc/vadc_0.dd#//@provided.108"/>
     <solverVarMap index="4">
       <value variableName="sv32" solverValue="3"/>
     </solverVarMap>
     <solverVarMap index="5">
-      <value variableName="sv33" solverValue="result"/>
+      <value variableName="sv33" solverValue="result_adv"/>
     </solverVarMap>
     <solverVarMap index="6">
-      <value variableName="sv34" solverValue="6"/>
-    </solverVarMap>
-    <solverVarMap index="4">
-      <value variableName="sv32" solverValue="3"/>
-    </solverVarMap>
-    <solverVarMap index="5">
-      <value variableName="sv33" solverValue="result"/>
-    </solverVarMap>
-    <solverVarMap index="6">
-      <value variableName="sv34" solverValue="6"/>
+      <value variableName="sv34" solverValue="0"/>
     </solverVarMap>
     <solverVarMap index="4">
       <value variableName="sv32" solverValue="3"/>
     </solverVarMap>
     <solverVarMap index="5">
-      <value variableName="sv33" solverValue="result"/>
+      <value variableName="sv33" solverValue="result_adv"/>
     </solverVarMap>
     <solverVarMap index="6">
-      <value variableName="sv34" solverValue="6"/>
+      <value variableName="sv34" solverValue="0"/>
+    </solverVarMap>
+    <solverVarMap index="4">
+      <value variableName="sv32" solverValue="3"/>
+    </solverVarMap>
+    <solverVarMap index="5">
+      <value variableName="sv33" solverValue="result_adv"/>
+    </solverVarMap>
+    <solverVarMap index="6">
+      <value variableName="sv34" solverValue="0"/>
     </solverVarMap>
   </hwResources>
   <hwResources name="Channel_F Result" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_result_reg#5" resourceGroupUri="peripheral/vadc/0/group/sv35/sv36/sv37" solverVariable="true" mResGrpUri="peripheral/vadc/0/group/sv35/sv36/sv37">
-    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/vadc/vadc_0.dd#//@provided.108"/>
+    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/vadc/vadc_0.dd#//@provided.112"/>
     <solverVarMap index="4">
       <value variableName="sv35" solverValue="3"/>
     </solverVarMap>
@@ -626,16 +626,7 @@
       <value variableName="sv36" solverValue="result_adv"/>
     </solverVarMap>
     <solverVarMap index="6">
-      <value variableName="sv37" solverValue="0"/>
-    </solverVarMap>
-    <solverVarMap index="4">
-      <value variableName="sv35" solverValue="3"/>
-    </solverVarMap>
-    <solverVarMap index="5">
-      <value variableName="sv36" solverValue="result_adv"/>
-    </solverVarMap>
-    <solverVarMap index="6">
-      <value variableName="sv37" solverValue="0"/>
+      <value variableName="sv37" solverValue="3"/>
     </solverVarMap>
     <solverVarMap index="4">
       <value variableName="sv35" solverValue="3"/>
@@ -644,11 +635,20 @@
       <value variableName="sv36" solverValue="result_adv"/>
     </solverVarMap>
     <solverVarMap index="6">
-      <value variableName="sv37" solverValue="0"/>
+      <value variableName="sv37" solverValue="3"/>
+    </solverVarMap>
+    <solverVarMap index="4">
+      <value variableName="sv35" solverValue="3"/>
+    </solverVarMap>
+    <solverVarMap index="5">
+      <value variableName="sv36" solverValue="result_adv"/>
+    </solverVarMap>
+    <solverVarMap index="6">
+      <value variableName="sv37" solverValue="3"/>
     </solverVarMap>
   </hwResources>
   <hwResources name="Channel_G Result" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_result_reg#6" resourceGroupUri="peripheral/vadc/0/group/sv38/sv39/sv40" solverVariable="true" mResGrpUri="peripheral/vadc/0/group/sv38/sv39/sv40">
-    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/vadc/vadc_0.dd#//@provided.112"/>
+    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/vadc/vadc_0.dd#//@provided.110"/>
     <solverVarMap index="4">
       <value variableName="sv38" solverValue="3"/>
     </solverVarMap>
@@ -656,16 +656,7 @@
       <value variableName="sv39" solverValue="result_adv"/>
     </solverVarMap>
     <solverVarMap index="6">
-      <value variableName="sv40" solverValue="3"/>
-    </solverVarMap>
-    <solverVarMap index="4">
-      <value variableName="sv38" solverValue="3"/>
-    </solverVarMap>
-    <solverVarMap index="5">
-      <value variableName="sv39" solverValue="result_adv"/>
-    </solverVarMap>
-    <solverVarMap index="6">
-      <value variableName="sv40" solverValue="3"/>
+      <value variableName="sv40" solverValue="1"/>
     </solverVarMap>
     <solverVarMap index="4">
       <value variableName="sv38" solverValue="3"/>
@@ -674,37 +665,46 @@
       <value variableName="sv39" solverValue="result_adv"/>
     </solverVarMap>
     <solverVarMap index="6">
-      <value variableName="sv40" solverValue="3"/>
+      <value variableName="sv40" solverValue="1"/>
+    </solverVarMap>
+    <solverVarMap index="4">
+      <value variableName="sv38" solverValue="3"/>
+    </solverVarMap>
+    <solverVarMap index="5">
+      <value variableName="sv39" solverValue="result_adv"/>
+    </solverVarMap>
+    <solverVarMap index="6">
+      <value variableName="sv40" solverValue="1"/>
     </solverVarMap>
   </hwResources>
   <hwResources name="Channel_H Result" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_result_reg#7" resourceGroupUri="peripheral/vadc/0/group/sv41/sv42/sv43" solverVariable="true" mResGrpUri="peripheral/vadc/0/group/sv41/sv42/sv43">
-    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/vadc/vadc_0.dd#//@provided.110"/>
+    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/vadc/vadc_0.dd#//@provided.51"/>
     <solverVarMap index="4">
       <value variableName="sv41" solverValue="3"/>
     </solverVarMap>
     <solverVarMap index="5">
-      <value variableName="sv42" solverValue="result_adv"/>
+      <value variableName="sv42" solverValue="result"/>
     </solverVarMap>
     <solverVarMap index="6">
-      <value variableName="sv43" solverValue="1"/>
-    </solverVarMap>
-    <solverVarMap index="4">
-      <value variableName="sv41" solverValue="3"/>
-    </solverVarMap>
-    <solverVarMap index="5">
-      <value variableName="sv42" solverValue="result_adv"/>
-    </solverVarMap>
-    <solverVarMap index="6">
-      <value variableName="sv43" solverValue="1"/>
+      <value variableName="sv43" solverValue="4"/>
     </solverVarMap>
     <solverVarMap index="4">
       <value variableName="sv41" solverValue="3"/>
     </solverVarMap>
     <solverVarMap index="5">
-      <value variableName="sv42" solverValue="result_adv"/>
+      <value variableName="sv42" solverValue="result"/>
     </solverVarMap>
     <solverVarMap index="6">
-      <value variableName="sv43" solverValue="1"/>
+      <value variableName="sv43" solverValue="4"/>
+    </solverVarMap>
+    <solverVarMap index="4">
+      <value variableName="sv41" solverValue="3"/>
+    </solverVarMap>
+    <solverVarMap index="5">
+      <value variableName="sv42" solverValue="result"/>
+    </solverVarMap>
+    <solverVarMap index="6">
+      <value variableName="sv43" solverValue="4"/>
     </solverVarMap>
   </hwResources>
   <hwResources name="Channel_A Result" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_result_reg_fifo_sync#0" resourceGroupUri="" required="false" solverVariable="true" mResGrpUri="peripheral/vadc/0/group/sv20/sv21/sv44">
@@ -7147,7 +7147,7 @@
     <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/vadc/vadc_0.dd#//@provided.54"/>
   </hwResources>
   <hwResources name="Source Event Interrupt" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/hwres_nvicnode_srcevt" resourceGroupUri="peripheral/cpu/0/nvic/interrupt/*" mResGrpUri="peripheral/cpu/0/nvic/interrupt/*">
-    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/cpu/cpu_0.dd#//@provided.15"/>
+    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/cpu/cpu_0.dd#//@provided.37"/>
   </hwResources>
   <hwResources name="Sync Slave Input Class" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/hwres_adc_adv_measurement_sync_slave_iclass" resourceGroupUri="" required="false" mResGrpUri="peripheral/vadc/0/class/1"/>
   <hwResources name="Sync Master" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_adc_adv_measurement_sync_resource#0" resourceGroupUri="" required="false" solverVariable="true" mResGrpUri="peripheral/vadc/0/group/sv688/sync">
@@ -7358,4 +7358,8 @@
   </connections>
   <connections URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/vs_adc_measurement_adv_scan_sourceevent/http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/vs_adc_measurement_adv_nvic_src" systemDefined="true" sourceSignal="event_scan_source" targetSignal="sr_interrupt_signal" required="false" srcVirtualSignal="//@virtualSignals.17" targetVirtualSignal="//@virtualSignals.0"/>
   <connections URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/vs_adc_measurement_adv_queue_sourceevent/http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/vs_adc_measurement_adv_nvic_src" systemDefined="true" sourceSignal="event_queue_source" targetSignal="sr_interrupt_signal" srcVirtualSignal="//@virtualSignals.9" targetVirtualSignal="//@virtualSignals.0"/>
+  <connections URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/vs_adc_adv_measurement_result_evt_7/http://resources/4.0.8/app/INTERRUPT/0/vs_nvic_signal_in" sourceSignal="event_res_Channel_H" targetSignal="sr_irq" srcVirtualSignal="//@virtualSignals.157">
+    <downwardMapList xsi:type="ResourceModel:VirtualSignal" href="../../INTERRUPT/v4_0_8/INTERRUPT_0.app#//@virtualSignals.0"/>
+    <targetVirtualSignal href="../../INTERRUPT/v4_0_8/INTERRUPT_0.app#//@virtualSignals.0"/>
+  </connections>
 </ResourceModel:App>
