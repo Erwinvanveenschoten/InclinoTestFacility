@@ -123,7 +123,8 @@ extern void SPI_MASTER_lProtocolHandler(const SPI_MASTER_t * const handle);
 /***********************************************************************************************************************
 * DATA STRUCTURES
 ***********************************************************************************************************************/
-
+void SPI_MASTER_0_DMA_tx_handler(XMC_DMA_CH_EVENT_t event);
+void SPI_MASTER_0_DMA_rx_handler(XMC_DMA_CH_EVENT_t event);
 static SPI_MASTER_STATUS_t SPI_MASTER_0_lInit(void);
 /* Data Transmit pin from SPI_MASTER */
 const SPI_MASTER_GPIO_t SPI_MASTER_0_MOSI = 
@@ -194,10 +195,42 @@ const SPI_MASTER_GPIO_CONFIG_t SPI_MASTER_0_SS_0_Config =
 
 XMC_SPI_CH_CONFIG_t SPI_MASTER_0_Channel_Config =
 {
-  .baudrate = 4000000U,
+  .baudrate = 7000000U,
   .bus_mode = (XMC_SPI_CH_BUS_MODE_t)XMC_SPI_CH_BUS_MODE_MASTER,
   .selo_inversion = XMC_SPI_CH_SLAVE_SEL_INV_TO_MSLS,
   .parity_mode = XMC_USIC_CH_PARITY_MODE_NONE
+};
+              
+
+XMC_DMA_CH_CONFIG_t SPI_MASTER_0_dma_ch_tx_config =
+{
+  .src_transfer_width = (uint32_t)XMC_DMA_CH_TRANSFER_WIDTH_8,
+  .dst_transfer_width = (uint32_t)XMC_DMA_CH_TRANSFER_WIDTH_8,
+  .src_address_count_mode = (uint32_t)XMC_DMA_CH_ADDRESS_COUNT_MODE_INCREMENT,
+  .dst_address_count_mode = (uint32_t)XMC_DMA_CH_ADDRESS_COUNT_MODE_NO_CHANGE,
+  .src_burst_length = (uint32_t)XMC_DMA_CH_BURST_LENGTH_8,
+  .dst_burst_length = (uint32_t)XMC_DMA_CH_BURST_LENGTH_1,
+  .transfer_flow = (uint32_t)XMC_DMA_CH_TRANSFER_FLOW_M2P_DMA,
+  .transfer_type = XMC_DMA_CH_TRANSFER_TYPE_SINGLE_BLOCK,
+  .dst_handshaking = XMC_DMA_CH_DST_HANDSHAKING_HARDWARE,
+  .dst_peripheral_request = DMA_PERIPHERAL_REQUEST(1, 11),
+  .enable_interrupt = true
+};
+              
+
+XMC_DMA_CH_CONFIG_t SPI_MASTER_0_dma_ch_rx_config =
+{
+  .src_transfer_width = (uint32_t)XMC_DMA_CH_TRANSFER_WIDTH_8,
+  .dst_transfer_width = (uint32_t)XMC_DMA_CH_TRANSFER_WIDTH_8,
+  .src_address_count_mode = (uint32_t)XMC_DMA_CH_ADDRESS_COUNT_MODE_NO_CHANGE,
+  .dst_address_count_mode = (uint32_t)XMC_DMA_CH_ADDRESS_COUNT_MODE_INCREMENT,
+  .src_burst_length = (uint32_t)XMC_DMA_CH_BURST_LENGTH_1,
+  .dst_burst_length = (uint32_t)XMC_DMA_CH_BURST_LENGTH_8,
+  .transfer_flow = (uint32_t)XMC_DMA_CH_TRANSFER_FLOW_P2M_DMA,
+  .transfer_type = XMC_DMA_CH_TRANSFER_TYPE_SINGLE_BLOCK,
+  .src_handshaking = XMC_DMA_CH_SRC_HANDSHAKING_HARDWARE,
+  .src_peripheral_request = DMA_PERIPHERAL_REQUEST(3, 12),
+  .enable_interrupt = true
 };
               
 
@@ -206,15 +239,15 @@ const SPI_MASTER_CONFIG_t SPI_MASTER_0_Config  =
   .channel_config          = &SPI_MASTER_0_Channel_Config,
   .fptr_spi_master_config  = SPI_MASTER_0_lInit,
   /* FIFO configuration */
-  .tx_fifo_size            = (XMC_USIC_CH_FIFO_SIZE_t)XMC_USIC_CH_FIFO_SIZE_16WORDS,
-  .rx_fifo_size            = (XMC_USIC_CH_FIFO_SIZE_t)XMC_USIC_CH_FIFO_SIZE_16WORDS,
+  .tx_fifo_size            = (XMC_USIC_CH_FIFO_SIZE_t)XMC_USIC_CH_FIFO_DISABLED,
+  .rx_fifo_size            = (XMC_USIC_CH_FIFO_SIZE_t)XMC_USIC_CH_FIFO_DISABLED,
   /* Clock Settings */
   .shift_clk_passive_level = XMC_SPI_CH_BRG_SHIFT_CLOCK_PASSIVE_LEVEL_0_DELAY_DISABLED, 
   .slave_select_lines      = (uint8_t)1,
   .leading_trailing_delay  = (uint8_t)2,
   .spi_master_config_mode  = XMC_SPI_CH_MODE_STANDARD, /* spi master initial mode configured mode */
-  .transmit_mode           = SPI_MASTER_TRANSFER_MODE_INTERRUPT,
-  .receive_mode            = SPI_MASTER_TRANSFER_MODE_INTERRUPT,
+  .transmit_mode           = SPI_MASTER_TRANSFER_MODE_DMA,
+  .receive_mode            = SPI_MASTER_TRANSFER_MODE_DMA,
    
   .tx_cbhandler            = NULL,
   .rx_cbhandler            = NULL,
@@ -240,8 +273,8 @@ const SPI_MASTER_CONFIG_t SPI_MASTER_0_Config  =
                               NULL, NULL
                              },
 
-  .tx_sr   = (SPI_MASTER_SR_ID_t)SPI_MASTER_SR_ID_2,
-  .rx_sr   = (SPI_MASTER_SR_ID_t)SPI_MASTER_SR_ID_0,
+  .tx_sr   = (SPI_MASTER_SR_ID_t)SPI_MASTER_SR_ID_0,
+  .rx_sr   = (SPI_MASTER_SR_ID_t)SPI_MASTER_SR_ID_1,
 };
                            
 SPI_MASTER_RUNTIME_t SPI_MASTER_0_runtime =
@@ -272,6 +305,11 @@ SPI_MASTER_t SPI_MASTER_0 =
   .channel = XMC_SPI1_CH1, /* USIC channel */
   .config  = &SPI_MASTER_0_Config, /* spi master configuration structure pointer */
   .runtime = &SPI_MASTER_0_runtime,
+  .global_dma = &GLOBAL_DMA_0,  
+  .dma_ch_tx_number = 5U, /* DMA Transmit channel */
+  .dma_ch_tx_config = &SPI_MASTER_0_dma_ch_tx_config,
+  .dma_ch_rx_number = 4U, /* DMA Receive channel */
+  .dma_ch_rx_config = &SPI_MASTER_0_dma_ch_rx_config,
 };
                           
 /*
@@ -283,6 +321,20 @@ static SPI_MASTER_STATUS_t SPI_MASTER_0_lInit(void)
 {
   SPI_MASTER_STATUS_t status;
   status = SPI_MASTER_STATUS_SUCCESS; 
+  status =  (SPI_MASTER_STATUS_t)GLOBAL_DMA_Init(&GLOBAL_DMA_0);
+  if (status == SPI_MASTER_STATUS_SUCCESS)
+  {            
+                            
+  (void)XMC_DMA_CH_Init(XMC_DMA0, 5U, &SPI_MASTER_0_dma_ch_tx_config);
+  /*"Interrupt Settings" configuration for "transmit" and/or "receive"*/
+  XMC_DMA_CH_EnableEvent(XMC_DMA0, 5U, (uint32_t)XMC_DMA_CH_EVENT_TRANSFER_COMPLETE);
+  XMC_DMA_CH_SetEventHandler(XMC_DMA0, 5U, SPI_MASTER_0_DMA_tx_handler);
+                             
+  (void)XMC_DMA_CH_Init(XMC_DMA0, 4U, &SPI_MASTER_0_dma_ch_rx_config);
+  /*"Interrupt Settings" configuration for "transmit" and/or "receive"*/
+  XMC_DMA_CH_EnableEvent(XMC_DMA0, 4U, (uint32_t)XMC_DMA_CH_EVENT_TRANSFER_COMPLETE);
+  XMC_DMA_CH_SetEventHandler(XMC_DMA0, 4U, SPI_MASTER_0_DMA_rx_handler);
+                             
   /* LLD initialization */
   XMC_SPI_CH_Init(XMC_SPI1_CH1, &SPI_MASTER_0_Channel_Config);
                              
@@ -321,56 +373,43 @@ static SPI_MASTER_STATUS_t SPI_MASTER_0_lInit(void)
   XMC_SPI_CH_EnableSlaveSelect(XMC_SPI1_CH1, XMC_SPI_CH_SLAVE_SELECT_3);
 
   XMC_USIC_CH_SetInterruptNodePointer(XMC_SPI1_CH1,
+                                      XMC_USIC_CH_INTERRUPT_NODE_POINTER_TRANSMIT_BUFFER,
+                                      (uint32_t)SPI_MASTER_SR_ID_0);
+  XMC_USIC_CH_SetInterruptNodePointer(XMC_SPI1_CH1,
+                                      XMC_USIC_CH_INTERRUPT_NODE_POINTER_RECEIVE,
+                                      (uint32_t)SPI_MASTER_SR_ID_1);
+  XMC_USIC_CH_SetInterruptNodePointer(XMC_SPI1_CH1,
+                                      XMC_USIC_CH_INTERRUPT_NODE_POINTER_ALTERNATE_RECEIVE,
+                                      (uint32_t)SPI_MASTER_SR_ID_1);
+  XMC_USIC_CH_SetInterruptNodePointer(XMC_SPI1_CH1,
                                       XMC_USIC_CH_INTERRUPT_NODE_POINTER_PROTOCOL,
                                       (uint32_t)SPI_MASTER_SR_ID_2);
             
-  /* Configure transmit FIFO settings */
-  XMC_USIC_CH_TXFIFO_Configure(XMC_SPI1_CH1,
-                               16U,
-                               (XMC_USIC_CH_FIFO_SIZE_t)XMC_USIC_CH_FIFO_SIZE_16WORDS,
-                               1U);
+  XMC_USIC_CH_TriggerServiceRequest(XMC_SPI1_CH1, (uint32_t)SPI_MASTER_SR_ID_0);
+}            
 
-  /* Configure the service interrupt nodes for standard transmit FIFO events */
-               
-  XMC_USIC_CH_TXFIFO_SetInterruptNodePointer(XMC_SPI1_CH1,
-                                             XMC_USIC_CH_TXFIFO_INTERRUPT_NODE_POINTER_STANDARD,
-                                             (uint32_t)SPI_MASTER_SR_ID_2);
-  /* Configure receive FIFO settings */
-  XMC_USIC_CH_RXFIFO_Configure(XMC_SPI1_CH1,
-                               0U,
-                               (XMC_USIC_CH_FIFO_SIZE_t)XMC_USIC_CH_FIFO_SIZE_16WORDS,
-                               0U);
-             
-  XMC_USIC_CH_RXFIFO_SetInterruptNodePointer(XMC_SPI1_CH1,
-                                             XMC_USIC_CH_RXFIFO_INTERRUPT_NODE_POINTER_STANDARD,
-                                             (uint32_t)SPI_MASTER_SR_ID_0);
-  XMC_USIC_CH_RXFIFO_SetInterruptNodePointer(XMC_SPI1_CH1,
-                                             XMC_USIC_CH_RXFIFO_INTERRUPT_NODE_POINTER_ALTERNATE,
-                                             (uint32_t)SPI_MASTER_SR_ID_0);
-  /* Set priority of the Transmit interrupt */
-  NVIC_SetPriority((IRQn_Type)92, NVIC_EncodePriority(NVIC_GetPriorityGrouping(), 63U, 0U));
-     
-  /* Enable Transmit interrupt */
-  NVIC_EnableIRQ((IRQn_Type)92);
-             
-  /* Set priority of the Receive interrupt */
-  NVIC_SetPriority((IRQn_Type)90, NVIC_EncodePriority(NVIC_GetPriorityGrouping(), 62U, 0U));
-    
-  /* Enable Receive interrupt */
-  NVIC_EnableIRQ((IRQn_Type)90);
-    
   return status;
 }
 /*Transmit ISR*/
-void SPI_MASTER_0_tx_handler()
+void SPI_MASTER_0_DMA_tx_handler(XMC_DMA_CH_EVENT_t event)
 {
-  SPI_MASTER_lTransmitHandler(&SPI_MASTER_0);
+  if (event == XMC_DMA_CH_EVENT_TRANSFER_COMPLETE)
+  {
+    while(XMC_USIC_CH_GetTransmitBufferStatus(XMC_SPI1_CH1) == XMC_USIC_CH_TBUF_STATUS_BUSY);
+    SPI_MASTER_0.runtime->tx_busy = false;
+  }
 }
 
 /*Receive ISR*/
-void SPI_MASTER_0_rx_handler()
+void SPI_MASTER_0_DMA_rx_handler(XMC_DMA_CH_EVENT_t event)
 {
-  SPI_MASTER_lReceiveHandler(&SPI_MASTER_0);
+  if (event == XMC_DMA_CH_EVENT_TRANSFER_COMPLETE)
+  {
+    XMC_SPI_CH_DisableEvent(XMC_SPI1_CH1, (uint32_t)((uint32_t)XMC_SPI_CH_EVENT_STANDARD_RECEIVE | (uint32_t)XMC_SPI_CH_EVENT_ALTERNATIVE_RECEIVE));
+    SPI_MASTER_0.runtime->tx_data_dummy = false;
+    SPI_MASTER_0.runtime->rx_data_dummy = true;
+    SPI_MASTER_0.runtime->rx_busy = false;
+  }
 }
 
 static SPI_MASTER_STATUS_t SPI_MASTER_1_lInit(void);
@@ -489,8 +528,8 @@ const SPI_MASTER_CONFIG_t SPI_MASTER_1_Config  =
                               NULL, NULL
                              },
 
-  .tx_sr   = (SPI_MASTER_SR_ID_t)SPI_MASTER_SR_ID_3,
-  .rx_sr   = (SPI_MASTER_SR_ID_t)SPI_MASTER_SR_ID_1,
+  .tx_sr   = (SPI_MASTER_SR_ID_t)SPI_MASTER_SR_ID_4,
+  .rx_sr   = (SPI_MASTER_SR_ID_t)SPI_MASTER_SR_ID_5,
 };
                            
 SPI_MASTER_RUNTIME_t SPI_MASTER_1_runtime =
@@ -573,7 +612,7 @@ static SPI_MASTER_STATUS_t SPI_MASTER_1_lInit(void)
             
   /* Configure transmit FIFO settings */
   XMC_USIC_CH_TXFIFO_Configure(XMC_SPI1_CH0,
-                               48U,
+                               16U,
                                (XMC_USIC_CH_FIFO_SIZE_t)XMC_USIC_CH_FIFO_SIZE_16WORDS,
                                1U);
 
@@ -581,30 +620,30 @@ static SPI_MASTER_STATUS_t SPI_MASTER_1_lInit(void)
                
   XMC_USIC_CH_TXFIFO_SetInterruptNodePointer(XMC_SPI1_CH0,
                                              XMC_USIC_CH_TXFIFO_INTERRUPT_NODE_POINTER_STANDARD,
-                                             (uint32_t)SPI_MASTER_SR_ID_3);
+                                             (uint32_t)SPI_MASTER_SR_ID_4);
   /* Configure receive FIFO settings */
   XMC_USIC_CH_RXFIFO_Configure(XMC_SPI1_CH0,
-                               32U,
+                               0U,
                                (XMC_USIC_CH_FIFO_SIZE_t)XMC_USIC_CH_FIFO_SIZE_16WORDS,
                                0U);
              
   XMC_USIC_CH_RXFIFO_SetInterruptNodePointer(XMC_SPI1_CH0,
                                              XMC_USIC_CH_RXFIFO_INTERRUPT_NODE_POINTER_STANDARD,
-                                             (uint32_t)SPI_MASTER_SR_ID_1);
+                                             (uint32_t)SPI_MASTER_SR_ID_5);
   XMC_USIC_CH_RXFIFO_SetInterruptNodePointer(XMC_SPI1_CH0,
                                              XMC_USIC_CH_RXFIFO_INTERRUPT_NODE_POINTER_ALTERNATE,
-                                             (uint32_t)SPI_MASTER_SR_ID_1);
+                                             (uint32_t)SPI_MASTER_SR_ID_5);
   /* Set priority of the Transmit interrupt */
-  NVIC_SetPriority((IRQn_Type)93, NVIC_EncodePriority(NVIC_GetPriorityGrouping(), 63U, 0U));
+  NVIC_SetPriority((IRQn_Type)94, NVIC_EncodePriority(NVIC_GetPriorityGrouping(), 63U, 0U));
      
   /* Enable Transmit interrupt */
-  NVIC_EnableIRQ((IRQn_Type)93);
+  NVIC_EnableIRQ((IRQn_Type)94);
              
   /* Set priority of the Receive interrupt */
-  NVIC_SetPriority((IRQn_Type)91, NVIC_EncodePriority(NVIC_GetPriorityGrouping(), 62U, 0U));
+  NVIC_SetPriority((IRQn_Type)95, NVIC_EncodePriority(NVIC_GetPriorityGrouping(), 62U, 0U));
     
   /* Enable Receive interrupt */
-  NVIC_EnableIRQ((IRQn_Type)91);
+  NVIC_EnableIRQ((IRQn_Type)95);
     
   return status;
 }
@@ -619,7 +658,8 @@ void SPI_MASTER_1_rx_handler()
 {
   SPI_MASTER_lReceiveHandler(&SPI_MASTER_1);
 }
-
+void SPI_MASTER_2_DMA_tx_handler(XMC_DMA_CH_EVENT_t event);
+void SPI_MASTER_2_DMA_rx_handler(XMC_DMA_CH_EVENT_t event);
 static SPI_MASTER_STATUS_t SPI_MASTER_2_lInit(void);
 /* Data Transmit pin from SPI_MASTER */
 const SPI_MASTER_GPIO_t SPI_MASTER_2_MOSI = 
@@ -690,10 +730,42 @@ const SPI_MASTER_GPIO_CONFIG_t SPI_MASTER_2_SS_0_Config =
 
 XMC_SPI_CH_CONFIG_t SPI_MASTER_2_Channel_Config =
 {
-  .baudrate = 19200U,
+  .baudrate = 500000U,
   .bus_mode = (XMC_SPI_CH_BUS_MODE_t)XMC_SPI_CH_BUS_MODE_MASTER,
   .selo_inversion = XMC_SPI_CH_SLAVE_SEL_INV_TO_MSLS,
   .parity_mode = XMC_USIC_CH_PARITY_MODE_NONE
+};
+              
+
+XMC_DMA_CH_CONFIG_t SPI_MASTER_2_dma_ch_tx_config =
+{
+  .src_transfer_width = (uint32_t)XMC_DMA_CH_TRANSFER_WIDTH_8,
+  .dst_transfer_width = (uint32_t)XMC_DMA_CH_TRANSFER_WIDTH_8,
+  .src_address_count_mode = (uint32_t)XMC_DMA_CH_ADDRESS_COUNT_MODE_INCREMENT,
+  .dst_address_count_mode = (uint32_t)XMC_DMA_CH_ADDRESS_COUNT_MODE_NO_CHANGE,
+  .src_burst_length = (uint32_t)XMC_DMA_CH_BURST_LENGTH_8,
+  .dst_burst_length = (uint32_t)XMC_DMA_CH_BURST_LENGTH_1,
+  .transfer_flow = (uint32_t)XMC_DMA_CH_TRANSFER_FLOW_M2P_DMA,
+  .transfer_type = XMC_DMA_CH_TRANSFER_TYPE_SINGLE_BLOCK,
+  .dst_handshaking = XMC_DMA_CH_DST_HANDSHAKING_HARDWARE,
+  .dst_peripheral_request = DMA_PERIPHERAL_REQUEST(0, 10),
+  .enable_interrupt = true
+};
+              
+
+XMC_DMA_CH_CONFIG_t SPI_MASTER_2_dma_ch_rx_config =
+{
+  .src_transfer_width = (uint32_t)XMC_DMA_CH_TRANSFER_WIDTH_8,
+  .dst_transfer_width = (uint32_t)XMC_DMA_CH_TRANSFER_WIDTH_8,
+  .src_address_count_mode = (uint32_t)XMC_DMA_CH_ADDRESS_COUNT_MODE_NO_CHANGE,
+  .dst_address_count_mode = (uint32_t)XMC_DMA_CH_ADDRESS_COUNT_MODE_INCREMENT,
+  .src_burst_length = (uint32_t)XMC_DMA_CH_BURST_LENGTH_1,
+  .dst_burst_length = (uint32_t)XMC_DMA_CH_BURST_LENGTH_8,
+  .transfer_flow = (uint32_t)XMC_DMA_CH_TRANSFER_FLOW_P2M_DMA,
+  .transfer_type = XMC_DMA_CH_TRANSFER_TYPE_SINGLE_BLOCK,
+  .src_handshaking = XMC_DMA_CH_SRC_HANDSHAKING_HARDWARE,
+  .src_peripheral_request = DMA_PERIPHERAL_REQUEST(2, 11),
+  .enable_interrupt = true
 };
               
 
@@ -702,18 +774,18 @@ const SPI_MASTER_CONFIG_t SPI_MASTER_2_Config  =
   .channel_config          = &SPI_MASTER_2_Channel_Config,
   .fptr_spi_master_config  = SPI_MASTER_2_lInit,
   /* FIFO configuration */
-  .tx_fifo_size            = (XMC_USIC_CH_FIFO_SIZE_t)XMC_USIC_CH_FIFO_SIZE_16WORDS,
-  .rx_fifo_size            = (XMC_USIC_CH_FIFO_SIZE_t)XMC_USIC_CH_FIFO_SIZE_16WORDS,
+  .tx_fifo_size            = (XMC_USIC_CH_FIFO_SIZE_t)XMC_USIC_CH_FIFO_DISABLED,
+  .rx_fifo_size            = (XMC_USIC_CH_FIFO_SIZE_t)XMC_USIC_CH_FIFO_DISABLED,
   /* Clock Settings */
-  .shift_clk_passive_level = XMC_SPI_CH_BRG_SHIFT_CLOCK_PASSIVE_LEVEL_0_DELAY_DISABLED, 
+  .shift_clk_passive_level = XMC_SPI_CH_BRG_SHIFT_CLOCK_PASSIVE_LEVEL_1_DELAY_DISABLED, 
   .slave_select_lines      = (uint8_t)1,
-  .leading_trailing_delay  = (uint8_t)2,
+  .leading_trailing_delay  = (uint8_t)1,
   .spi_master_config_mode  = XMC_SPI_CH_MODE_STANDARD, /* spi master initial mode configured mode */
-  .transmit_mode           = SPI_MASTER_TRANSFER_MODE_INTERRUPT,
-  .receive_mode            = SPI_MASTER_TRANSFER_MODE_INTERRUPT,
+  .transmit_mode           = SPI_MASTER_TRANSFER_MODE_DMA,
+  .receive_mode            = SPI_MASTER_TRANSFER_MODE_DMA,
    
   .tx_cbhandler            = NULL,
-  .rx_cbhandler            = NULL,
+  .rx_cbhandler            = BMI055_eo_recieve,
   .parity_cbhandler        = NULL,
   .mosi_0_pin              = &SPI_MASTER_2_MOSI, /*!< mosi0 pin pointer*/
   .mosi_0_pin_config       = &SPI_MASTER_2_MOSI_Config,
@@ -736,8 +808,8 @@ const SPI_MASTER_CONFIG_t SPI_MASTER_2_Config  =
                               NULL, NULL
                              },
 
-  .tx_sr   = (SPI_MASTER_SR_ID_t)SPI_MASTER_SR_ID_1,
-  .rx_sr   = (SPI_MASTER_SR_ID_t)SPI_MASTER_SR_ID_3,
+  .tx_sr   = (SPI_MASTER_SR_ID_t)SPI_MASTER_SR_ID_0,
+  .rx_sr   = (SPI_MASTER_SR_ID_t)SPI_MASTER_SR_ID_1,
 };
                            
 SPI_MASTER_RUNTIME_t SPI_MASTER_2_runtime =
@@ -768,6 +840,11 @@ SPI_MASTER_t SPI_MASTER_2 =
   .channel = XMC_SPI0_CH0, /* USIC channel */
   .config  = &SPI_MASTER_2_Config, /* spi master configuration structure pointer */
   .runtime = &SPI_MASTER_2_runtime,
+  .global_dma = &GLOBAL_DMA_0,  
+  .dma_ch_tx_number = 0U, /* DMA Transmit channel */
+  .dma_ch_tx_config = &SPI_MASTER_2_dma_ch_tx_config,
+  .dma_ch_rx_number = 1U, /* DMA Receive channel */
+  .dma_ch_rx_config = &SPI_MASTER_2_dma_ch_rx_config,
 };
                           
 /*
@@ -779,9 +856,25 @@ static SPI_MASTER_STATUS_t SPI_MASTER_2_lInit(void)
 {
   SPI_MASTER_STATUS_t status;
   status = SPI_MASTER_STATUS_SUCCESS; 
+  status =  (SPI_MASTER_STATUS_t)GLOBAL_DMA_Init(&GLOBAL_DMA_0);
+  if (status == SPI_MASTER_STATUS_SUCCESS)
+  {            
+                            
+  (void)XMC_DMA_CH_Init(XMC_DMA0, 0U, &SPI_MASTER_2_dma_ch_tx_config);
+  /*"Interrupt Settings" configuration for "transmit" and/or "receive"*/
+  XMC_DMA_CH_EnableEvent(XMC_DMA0, 0U, (uint32_t)XMC_DMA_CH_EVENT_TRANSFER_COMPLETE);
+  XMC_DMA_CH_SetEventHandler(XMC_DMA0, 0U, SPI_MASTER_2_DMA_tx_handler);
+                             
+  (void)XMC_DMA_CH_Init(XMC_DMA0, 1U, &SPI_MASTER_2_dma_ch_rx_config);
+  /*"Interrupt Settings" configuration for "transmit" and/or "receive"*/
+  XMC_DMA_CH_EnableEvent(XMC_DMA0, 1U, (uint32_t)XMC_DMA_CH_EVENT_TRANSFER_COMPLETE);
+  XMC_DMA_CH_SetEventHandler(XMC_DMA0, 1U, SPI_MASTER_2_DMA_rx_handler);
+                             
   /* LLD initialization */
   XMC_SPI_CH_Init(XMC_SPI0_CH0, &SPI_MASTER_2_Channel_Config);
                              
+  XMC_SPI_CH_DisableFEM(XMC_SPI0_CH0);
+                              
   XMC_SPI_CH_SetBitOrderMsbFirst(XMC_SPI0_CH0);
           
   XMC_SPI_CH_SetWordLength(XMC_SPI0_CH0, (uint8_t)8);
@@ -790,10 +883,10 @@ static SPI_MASTER_STATUS_t SPI_MASTER_2_lInit(void)
 
   /* Configure the clock polarity and clock delay */
   XMC_SPI_CH_ConfigureShiftClockOutput(XMC_SPI0_CH0,
-                                       XMC_SPI_CH_BRG_SHIFT_CLOCK_PASSIVE_LEVEL_0_DELAY_DISABLED,
+                                       XMC_SPI_CH_BRG_SHIFT_CLOCK_PASSIVE_LEVEL_1_DELAY_DISABLED,
                                        XMC_SPI_CH_BRG_SHIFT_CLOCK_OUTPUT_SCLK);
   /* Configure Leading/Trailing delay */
-  XMC_SPI_CH_SetSlaveSelectDelay(XMC_SPI0_CH0, 2U);
+  XMC_SPI_CH_SetSlaveSelectDelay(XMC_SPI0_CH0, 1U);
 
                
   /* Configure the input pin properties */
@@ -815,55 +908,44 @@ static SPI_MASTER_STATUS_t SPI_MASTER_2_lInit(void)
   XMC_SPI_CH_EnableSlaveSelect(XMC_SPI0_CH0, XMC_SPI_CH_SLAVE_SELECT_3);
 
   XMC_USIC_CH_SetInterruptNodePointer(XMC_SPI0_CH0,
-                                      XMC_USIC_CH_INTERRUPT_NODE_POINTER_PROTOCOL,
+                                      XMC_USIC_CH_INTERRUPT_NODE_POINTER_TRANSMIT_BUFFER,
                                       (uint32_t)SPI_MASTER_SR_ID_0);
+  XMC_USIC_CH_SetInterruptNodePointer(XMC_SPI0_CH0,
+                                      XMC_USIC_CH_INTERRUPT_NODE_POINTER_RECEIVE,
+                                      (uint32_t)SPI_MASTER_SR_ID_1);
+  XMC_USIC_CH_SetInterruptNodePointer(XMC_SPI0_CH0,
+                                      XMC_USIC_CH_INTERRUPT_NODE_POINTER_ALTERNATE_RECEIVE,
+                                      (uint32_t)SPI_MASTER_SR_ID_1);
+  XMC_USIC_CH_SetInterruptNodePointer(XMC_SPI0_CH0,
+                                      XMC_USIC_CH_INTERRUPT_NODE_POINTER_PROTOCOL,
+                                      (uint32_t)SPI_MASTER_SR_ID_2);
             
-  /* Configure transmit FIFO settings */
-  XMC_USIC_CH_TXFIFO_Configure(XMC_SPI0_CH0,
-                               16U,
-                               (XMC_USIC_CH_FIFO_SIZE_t)XMC_USIC_CH_FIFO_SIZE_16WORDS,
-                               1U);
+  XMC_USIC_CH_TriggerServiceRequest(XMC_SPI0_CH0, (uint32_t)SPI_MASTER_SR_ID_0);
+}            
 
-  /* Configure the service interrupt nodes for standard transmit FIFO events */
-               
-  XMC_USIC_CH_TXFIFO_SetInterruptNodePointer(XMC_SPI0_CH0,
-                                             XMC_USIC_CH_TXFIFO_INTERRUPT_NODE_POINTER_STANDARD,
-                                             (uint32_t)SPI_MASTER_SR_ID_1);
-  /* Configure receive FIFO settings */
-  XMC_USIC_CH_RXFIFO_Configure(XMC_SPI0_CH0,
-                               0U,
-                               (XMC_USIC_CH_FIFO_SIZE_t)XMC_USIC_CH_FIFO_SIZE_16WORDS,
-                               0U);
-             
-  XMC_USIC_CH_RXFIFO_SetInterruptNodePointer(XMC_SPI0_CH0,
-                                             XMC_USIC_CH_RXFIFO_INTERRUPT_NODE_POINTER_STANDARD,
-                                             (uint32_t)SPI_MASTER_SR_ID_3);
-  XMC_USIC_CH_RXFIFO_SetInterruptNodePointer(XMC_SPI0_CH0,
-                                             XMC_USIC_CH_RXFIFO_INTERRUPT_NODE_POINTER_ALTERNATE,
-                                             (uint32_t)SPI_MASTER_SR_ID_3);
-  /* Set priority of the Transmit interrupt */
-  NVIC_SetPriority((IRQn_Type)85, NVIC_EncodePriority(NVIC_GetPriorityGrouping(), 63U, 0U));
-     
-  /* Enable Transmit interrupt */
-  NVIC_EnableIRQ((IRQn_Type)85);
-             
-  /* Set priority of the Receive interrupt */
-  NVIC_SetPriority((IRQn_Type)87, NVIC_EncodePriority(NVIC_GetPriorityGrouping(), 62U, 0U));
-    
-  /* Enable Receive interrupt */
-  NVIC_EnableIRQ((IRQn_Type)87);
-    
   return status;
 }
 /*Transmit ISR*/
-void SPI_MASTER_2_tx_handler()
+void SPI_MASTER_2_DMA_tx_handler(XMC_DMA_CH_EVENT_t event)
 {
-  SPI_MASTER_lTransmitHandler(&SPI_MASTER_2);
+  if (event == XMC_DMA_CH_EVENT_TRANSFER_COMPLETE)
+  {
+    while(XMC_USIC_CH_GetTransmitBufferStatus(XMC_SPI0_CH0) == XMC_USIC_CH_TBUF_STATUS_BUSY);
+    SPI_MASTER_2.runtime->tx_busy = false;
+  }
 }
 
 /*Receive ISR*/
-void SPI_MASTER_2_rx_handler()
+void SPI_MASTER_2_DMA_rx_handler(XMC_DMA_CH_EVENT_t event)
 {
-  SPI_MASTER_lReceiveHandler(&SPI_MASTER_2);
+  if (event == XMC_DMA_CH_EVENT_TRANSFER_COMPLETE)
+  {
+    XMC_SPI_CH_DisableEvent(XMC_SPI0_CH0, (uint32_t)((uint32_t)XMC_SPI_CH_EVENT_STANDARD_RECEIVE | (uint32_t)XMC_SPI_CH_EVENT_ALTERNATIVE_RECEIVE));
+    SPI_MASTER_2.runtime->tx_data_dummy = false;
+    SPI_MASTER_2.runtime->rx_data_dummy = true;
+    SPI_MASTER_2.runtime->rx_busy = false;
+    BMI055_eo_recieve();
+             
+  }
 }
 

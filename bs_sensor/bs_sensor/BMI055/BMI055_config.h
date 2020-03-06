@@ -95,6 +95,8 @@
 /***********************************************************
  * BMI055 CS bus configuration
  ***********************************************************/
+#define NROF_CS_PIN 16-1
+
 #if BMI055_0_ENA == 1
 // BMI055 Chip Select Pins
 #define BMI055_0_CS_ACC_PIN		0

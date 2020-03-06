@@ -324,4 +324,19 @@
     <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/BUS_IO/v4_0_2/BUS_IO_1.app#//@hwResources.23"/>
     <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin129"/>
   </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="69" URI="http://resources/lqfp144.0.0/devicepackage/0/69">
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin69"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="72" URI="http://resources/lqfp144.0.0/devicepackage/0/72">
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin72"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="13" URI="http://resources/lqfp144.0.0/devicepackage/0/13">
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin13"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="12" URI="http://resources/lqfp144.0.0/devicepackage/0/12">
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin12"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="76" URI="http://resources/lqfp144.0.0/devicepackage/0/76">
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin76"/>
+  </provided>
 </ResourceModel:DevicePackage>

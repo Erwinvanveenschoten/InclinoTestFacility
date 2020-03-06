@@ -30,6 +30,9 @@ void SCA103T_ADC0_ISR(void)
 #if SCA103T_6_ENA && INCL_A_ENA
 	SCA103T_buffer[SCA103T_6_INCLA_BUFFER_INDEX].data =
 			ADC_MEASUREMENT_ADV_GetResult(&ADC_MEASUREMENT_ADV_0_Channel_B);
+
+	SCA103T_buffer[SCA103T_6_INCLA_BUFFER_INDEX].data_id = INCL_A;
+	SCA103T_buffer[SCA103T_6_INCLA_BUFFER_INDEX].ic_id	 = SCA103T_6_ID;
 #endif
 #if SCA103T_7_ENA && INCL_B_ENA
 	SCA103T_buffer[SCA103T_7_INCLB_BUFFER_INDEX].data =
@@ -74,7 +77,7 @@ void SCA103T_ADC0_ISR(void)
 	SCA103T_buffer[SCA103T_VREF_1_BUFFER_INDEX].ic_id	 = SCA103T_7_ID;
 #endif
 	ADC_count++;
-	if ( ADC_count == ( NROF_ADC_APPS - 1 ) )
+	if ( ADC_count == ( NROF_ADC_APPS ) )
 	{
 		ADC_count = 0;
 		// Send buffer
@@ -140,7 +143,7 @@ void SCA103T_ADC1_ISR(void)
 	SCA103T_buffer[SCA103T_1_INCLA_BUFFER_INDEX].ic_id		= SCA103T_1_ID;
 #endif
 	ADC_count++;
-	if ( ADC_count == ( NROF_ADC_APPS - 1 ) )
+	if ( ADC_count == ( NROF_ADC_APPS ) )
 	{
 		ADC_count = 0;
 		// Send buffer
@@ -175,7 +178,7 @@ void SCA103T_ADC2_ISR(void)
 	SCA103T_buffer[SCA103T_2_INCLB_BUFFER_INDEX].ic_id	 = SCA103T_2_ID;
 #endif
 	ADC_count++;
-	if ( ADC_count == ( NROF_ADC_APPS - 1 ) )
+	if ( ADC_count == ( NROF_ADC_APPS ) )
 	{
 		ADC_count = 0;
 		// Send buffer

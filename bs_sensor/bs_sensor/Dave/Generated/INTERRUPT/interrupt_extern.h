@@ -56,25 +56,25 @@
  * MACROS
  **********************************************************************************************************************/
 	
+#define tick_timer_ISR IRQ_Hdlr_57
+		
 #define SCA103T_ADC0_ISR IRQ_Hdlr_32
 		
 #define SCA103T_ADC1_ISR IRQ_Hdlr_26
 		
 #define SCA103T_ADC2_ISR IRQ_Hdlr_25
 		
-#define tick_timer_ISR IRQ_Hdlr_57
-		
 /***********************************************************************************************************************
  * EXTERN DECLARATIONS
 ***********************************************************************************************************************/
 	
-extern const INTERRUPT_t ADC_0_INTERRUPT; 
+extern const INTERRUPT_t TICK_TIMER_INTERRUPT; 
 	
-extern const INTERRUPT_t ADC_1_INTERRUPT; 
+extern const INTERRUPT_t INTERRUPT_0; 
 	
-extern const INTERRUPT_t ADC_2_INTERRUPT; 
+extern const INTERRUPT_t INTERRUPT_1; 
 	
-extern const INTERRUPT_t TICK_TIMER_ISR; 
+extern const INTERRUPT_t INTERRUPT_2; 
 	
 #endif  /* INTERRUPT_EXTERN_H */
 

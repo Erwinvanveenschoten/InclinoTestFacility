@@ -212,9 +212,7 @@
   <requiredApps URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/appres_global_adc" requiredAppName="GLOBAL_ADC" requiringMode="SHARABLE">
     <downwardMapList xsi:type="ResourceModel:App" href="../../GLOBAL_ADC/v4_0_18/GLOBAL_ADC_0.app#/"/>
   </requiredApps>
-  <requiredApps URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/appres_cpu" requiredAppName="CPU_CTRL_XMC4" requiringMode="SHARABLE">
-    <downwardMapList xsi:type="ResourceModel:App" href="../../CPU_CTRL_XMC4/v4_0_14/CPU_CTRL_XMC4_0.app#/"/>
-  </requiredApps>
+  <requiredApps URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/appres_cpu" requiredAppName="CPU_CTRL_XMC4" required="false" requiringMode="SHARABLE"/>
   <hwResources name="Channel_A Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_channel_pin#0" resourceGroupUri="port/p/*/pad/*" mResGrpUri="port/p/*/pad/*">
     <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/port15/port15_15.dd#//@provided.19"/>
   </hwResources>
@@ -251,40 +249,40 @@
   <hwResources name="Channel_H Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_channel_pin#19" resourceGroupUri="port/p/*/pad/*" mResGrpUri="port/p/*/pad/*">
     <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/port15/port15_15.dd#//@provided.0"/>
   </hwResources>
-  <hwResources name="Channel_A Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#0" resourceGroupUri="devicepackage/0/*" mResGrpUri="devicepackage/0/*">
+  <hwResources name="Channel_A Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#0" resourceGroupUri="devicepackage/0/50" constraintType="GLOBAL_RESOURCE" mResGrpUri="devicepackage/0/*">
     <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/DEVICEPACKAGE/DEVICEPACKAGE_0.dd#//@provided.19"/>
   </hwResources>
   <hwResources name="Channel_A_sync_slaveA Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#1" resourceGroupUri="" required="false" mResGrpUri="devicepackage/0/*"/>
   <hwResources name="Channel_A_sync_slaveB Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#2" resourceGroupUri="" required="false" mResGrpUri="devicepackage/0/*"/>
   <hwResources name="Channel_A_sync_slaveC Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#3" resourceGroupUri="" required="false" mResGrpUri="devicepackage/0/*"/>
-  <hwResources name="Channel_B Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#4" resourceGroupUri="devicepackage/0/*" mResGrpUri="devicepackage/0/*">
+  <hwResources name="Channel_B Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#4" resourceGroupUri="devicepackage/0/51" constraintType="GLOBAL_RESOURCE" mResGrpUri="devicepackage/0/*">
     <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/DEVICEPACKAGE/DEVICEPACKAGE_0.dd#//@provided.18"/>
   </hwResources>
   <hwResources name="Channel_B_sync_slaveA Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#5" resourceGroupUri="" required="false" mResGrpUri="devicepackage/0/*"/>
   <hwResources name="Channel_B_sync_slaveB Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#6" resourceGroupUri="" required="false" mResGrpUri="devicepackage/0/*"/>
   <hwResources name="Channel_B_sync_slaveC Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#7" resourceGroupUri="" required="false" mResGrpUri="devicepackage/0/*"/>
-  <hwResources name="Channel_C Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#8" resourceGroupUri="devicepackage/0/*" mResGrpUri="devicepackage/0/*">
+  <hwResources name="Channel_C Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#8" resourceGroupUri="devicepackage/0/52" constraintType="GLOBAL_RESOURCE" mResGrpUri="devicepackage/0/*">
     <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/DEVICEPACKAGE/DEVICEPACKAGE_0.dd#//@provided.16"/>
   </hwResources>
   <hwResources name="Channel_C_sync_slaveA Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#9" resourceGroupUri="" required="false" mResGrpUri="devicepackage/0/*"/>
   <hwResources name="Channel_C_sync_slaveB Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#10" resourceGroupUri="" required="false" mResGrpUri="devicepackage/0/*"/>
   <hwResources name="Channel_C_sync_slaveC Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#11" resourceGroupUri="" required="false" mResGrpUri="devicepackage/0/*"/>
-  <hwResources name="Channel_D Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#12" resourceGroupUri="devicepackage/0/*" mResGrpUri="devicepackage/0/*">
+  <hwResources name="Channel_D Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#12" resourceGroupUri="devicepackage/0/49" constraintType="GLOBAL_RESOURCE" mResGrpUri="devicepackage/0/*">
     <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/DEVICEPACKAGE/DEVICEPACKAGE_0.dd#//@provided.21"/>
   </hwResources>
   <hwResources name="Channel_D_sync_slaveA Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#13" resourceGroupUri="" required="false" mResGrpUri="devicepackage/0/*"/>
   <hwResources name="Channel_D_sync_slaveB Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#14" resourceGroupUri="" required="false" mResGrpUri="devicepackage/0/*"/>
   <hwResources name="Channel_D_sync_slaveC Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#15" resourceGroupUri="" required="false" mResGrpUri="devicepackage/0/*"/>
-  <hwResources name="Channel_E Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#16" resourceGroupUri="devicepackage/0/*" mResGrpUri="devicepackage/0/*">
+  <hwResources name="Channel_E Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#16" resourceGroupUri="devicepackage/0/44" constraintType="GLOBAL_RESOURCE" mResGrpUri="devicepackage/0/*">
     <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/DEVICEPACKAGE/DEVICEPACKAGE_0.dd#//@provided.22"/>
   </hwResources>
-  <hwResources name="Channel_F Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#17" resourceGroupUri="devicepackage/0/*" mResGrpUri="devicepackage/0/*">
+  <hwResources name="Channel_F Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#17" resourceGroupUri="devicepackage/0/43" constraintType="GLOBAL_RESOURCE" mResGrpUri="devicepackage/0/*">
     <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/DEVICEPACKAGE/DEVICEPACKAGE_0.dd#//@provided.23"/>
   </hwResources>
-  <hwResources name="Channel_G Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#18" resourceGroupUri="devicepackage/0/*" mResGrpUri="devicepackage/0/*">
+  <hwResources name="Channel_G Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#18" resourceGroupUri="devicepackage/0/53" constraintType="GLOBAL_RESOURCE" mResGrpUri="devicepackage/0/*">
     <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/DEVICEPACKAGE/DEVICEPACKAGE_0.dd#//@provided.20"/>
   </hwResources>
-  <hwResources name="Channel_H Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#19" resourceGroupUri="devicepackage/0/*" mResGrpUri="devicepackage/0/*">
+  <hwResources name="Channel_H Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#19" resourceGroupUri="devicepackage/0/54" constraintType="GLOBAL_RESOURCE" mResGrpUri="devicepackage/0/*">
     <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/DEVICEPACKAGE/DEVICEPACKAGE_0.dd#//@provided.0"/>
   </hwResources>
   <hwResources name="Channel_A" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_channels#0" resourceGroupUri="peripheral/vadc/0/group/*/ch/sv0" solverVariable="true" mResGrpUri="peripheral/vadc/0/group/*/ch/sv0">
@@ -7146,9 +7144,7 @@
   <hwResources name="Input Class" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/hwres_vadc_inputclass" resourceGroupUri="peripheral/vadc/*/group/*/class/*" mResGrpUri="peripheral/vadc/*/group/*/class/*">
     <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/vadc/vadc_0.dd#//@provided.54"/>
   </hwResources>
-  <hwResources name="Source Event Interrupt" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/hwres_nvicnode_srcevt" resourceGroupUri="peripheral/cpu/0/nvic/interrupt/*" mResGrpUri="peripheral/cpu/0/nvic/interrupt/*">
-    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/cpu/cpu_0.dd#//@provided.37"/>
-  </hwResources>
+  <hwResources name="Source Event Interrupt" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/hwres_nvicnode_srcevt" resourceGroupUri="" required="false" mResGrpUri="peripheral/cpu/0/nvic/interrupt/*"/>
   <hwResources name="Sync Slave Input Class" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/hwres_adc_adv_measurement_sync_slave_iclass" resourceGroupUri="" required="false" mResGrpUri="peripheral/vadc/0/class/1"/>
   <hwResources name="Sync Master" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_adc_adv_measurement_sync_resource#0" resourceGroupUri="" required="false" solverVariable="true" mResGrpUri="peripheral/vadc/0/group/sv688/sync">
     <solverVarMap index="4">
@@ -7357,9 +7353,9 @@
     <srcVirtualSignal href="../../GLOBAL_ADC/v4_0_18/GLOBAL_ADC_0.app#//@virtualSignals.0"/>
   </connections>
   <connections URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/vs_adc_measurement_adv_scan_sourceevent/http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/vs_adc_measurement_adv_nvic_src" systemDefined="true" sourceSignal="event_scan_source" targetSignal="sr_interrupt_signal" required="false" srcVirtualSignal="//@virtualSignals.17" targetVirtualSignal="//@virtualSignals.0"/>
-  <connections URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/vs_adc_measurement_adv_queue_sourceevent/http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/vs_adc_measurement_adv_nvic_src" systemDefined="true" sourceSignal="event_queue_source" targetSignal="sr_interrupt_signal" srcVirtualSignal="//@virtualSignals.9" targetVirtualSignal="//@virtualSignals.0"/>
-  <connections URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/vs_adc_adv_measurement_result_evt_7/http://resources/4.0.8/app/INTERRUPT/0/vs_nvic_signal_in" sourceSignal="event_res_Channel_H" targetSignal="sr_irq" srcVirtualSignal="//@virtualSignals.157">
-    <downwardMapList xsi:type="ResourceModel:VirtualSignal" href="../../INTERRUPT/v4_0_8/INTERRUPT_0.app#//@virtualSignals.0"/>
-    <targetVirtualSignal href="../../INTERRUPT/v4_0_8/INTERRUPT_0.app#//@virtualSignals.0"/>
+  <connections URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/vs_adc_measurement_adv_queue_sourceevent/http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/vs_adc_measurement_adv_nvic_src" systemDefined="true" sourceSignal="event_queue_source" targetSignal="sr_interrupt_signal" required="false" srcVirtualSignal="//@virtualSignals.9" targetVirtualSignal="//@virtualSignals.0"/>
+  <connections URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/vs_adc_adv_measurement_result_evt_7/http://resources/4.0.8/app/INTERRUPT/1/vs_nvic_signal_in" sourceSignal="event_res_Channel_H" targetSignal="sr_irq" srcVirtualSignal="//@virtualSignals.157">
+    <downwardMapList xsi:type="ResourceModel:VirtualSignal" href="../../INTERRUPT/v4_0_8/INTERRUPT_1.app#//@virtualSignals.0"/>
+    <targetVirtualSignal href="../../INTERRUPT/v4_0_8/INTERRUPT_1.app#//@virtualSignals.0"/>
   </connections>
 </ResourceModel:App>

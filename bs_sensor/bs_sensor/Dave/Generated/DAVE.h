@@ -61,6 +61,9 @@
 #include "ETH_LWIP/eth_lwip.h"
   
 
+#include "GLOBAL_DMA/global_dma.h"
+  
+
 #include "SPI_MASTER/spi_master.h"
   
 
@@ -76,13 +79,13 @@
 #include "BUS_IO/bus_io.h"
   
 
-#include "INTERRUPT/interrupt.h"
-  
-
 #include "GLOBAL_CCU4/global_ccu4.h"
   
 
 #include "TIMER/timer.h"
+  
+
+#include "INTERRUPT/interrupt.h"
   
 	
 

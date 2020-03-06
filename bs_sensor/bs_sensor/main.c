@@ -40,7 +40,6 @@ int main(void)
     {
     }
   }
-  /* Placeholder for user application code. The while loop below can be replaced with user application code. */
 
   while(1U)
   {

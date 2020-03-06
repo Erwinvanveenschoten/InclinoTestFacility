@@ -37,15 +37,8 @@ extern "C" {
 #define LWIP_UDP                1
 #define MEMP_NUM_UDP_PCB        4
 
-#define LWIP_TCP                1
-#define MEMP_NUM_TCP_PCB        5
-#define MEMP_NUM_TCP_PCB_LISTEN  5
-#define TCP_MSS                 536
-#define TCP_WND                 2144
-#define TCP_SND_BUF             1072
-#define TCP_SND_QUEUELEN        8
-
-#define LWIP_DHCP               1
+#define LWIP_TCP                0
+#define LWIP_DHCP               0
 
 #define LWIP_ARP                1
 #define ARP_TABLE_SIZE          10
@@ -55,15 +48,15 @@ extern "C" {
 
 #define LWIP_ICMP               1
 
-#define LWIP_IGMP               0
+#define LWIP_IGMP               1
 
 #define LWIP_DNS                0
 
 #define LWIP_SNMP               0
 
-#define IP_OPTIONS_ALLOWED      0
+#define IP_OPTIONS_ALLOWED      1
 
-#define IP_FRAG                 0
+#define IP_FRAG                 1
 
 #define IP_REASSEMBLY           0
 

@@ -2,11 +2,8 @@
 <ResourceModel:App xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ResourceModel="http://www.infineon.com/Davex/Resource.ecore" name="CPU_CTRL_XMC4" URI="http://resources/4.0.14/app/CPU_CTRL_XMC4/0" description="Defines the number of bits for priority grouping.&#xA; Handles NMI, memmanage, usage, bus &amp; hard fault exceptions and MPU settings." version="4.0.14" minDaveVersion="4.0.0" instanceLabel="CPU_CTRL_XMC4_0" appLabel="">
   <upwardMapList xsi:type="ResourceModel:RequiredApp" href="../../SYSTIMER/v4_1_16/SYSTIMER_0.app#//@requiredApps.1"/>
   <upwardMapList xsi:type="ResourceModel:RequiredApp" href="../../ETH_LWIP/v4_1_6/ETH_LWIP_0.app#//@requiredApps.0"/>
-  <upwardMapList xsi:type="ResourceModel:RequiredApp" href="../../SPI_MASTER/v4_3_22/SPI_MASTER_0.app#//@requiredApps.1"/>
-  <upwardMapList xsi:type="ResourceModel:RequiredApp" href="../../ADC_MEASUREMENT_ADV/v4_0_14/ADC_MEASUREMENT_ADV_0.app#//@requiredApps.23"/>
   <upwardMapList xsi:type="ResourceModel:RequiredApp" href="../../SPI_MASTER/v4_3_22/SPI_MASTER_1.app#//@requiredApps.1"/>
-  <upwardMapList xsi:type="ResourceModel:RequiredApp" href="../../SPI_MASTER/v4_3_22/SPI_MASTER_2.app#//@requiredApps.1"/>
-  <upwardMapList xsi:type="ResourceModel:RequiredApp" href="../../UART/v4_1_10/UART_0.app#//@requiredApps.1"/>
+  <upwardMapList xsi:type="ResourceModel:RequiredApp" href="../../GLOBAL_DMA/v4_0_8/GLOBAL_DMA_0.app#//@requiredApps.0"/>
   <upwardMapList xsi:type="ResourceModel:RequiredApp" href="../../INTERRUPT/v4_0_8/INTERRUPT_0.app#//@requiredApps.0"/>
   <upwardMapList xsi:type="ResourceModel:RequiredApp" href="../../INTERRUPT/v4_0_8/INTERRUPT_1.app#//@requiredApps.0"/>
   <upwardMapList xsi:type="ResourceModel:RequiredApp" href="../../INTERRUPT/v4_0_8/INTERRUPT_2.app#//@requiredApps.0"/>

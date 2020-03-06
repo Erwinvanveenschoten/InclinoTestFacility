@@ -75,7 +75,8 @@ BUS_IO_t IO_GA_8 =
   .pin_array = IO_GA_8_pin_list,
   .gpio_config = {
   .mode = XMC_GPIO_MODE_OUTPUT_PUSH_PULL, 
-    .output_level = XMC_GPIO_OUTPUT_LEVEL_LOW,  
+    .output_level = XMC_GPIO_OUTPUT_LEVEL_HIGH, 
+    .output_strength = XMC_GPIO_OUTPUT_STRENGTH_MEDIUM
   },
   .number_of_pins = (uint8_t)16
 };

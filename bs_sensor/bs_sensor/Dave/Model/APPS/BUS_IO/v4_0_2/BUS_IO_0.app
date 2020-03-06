@@ -213,52 +213,52 @@
       <value variableName="sv15" solverValue="5"/>
     </solverVarMap>
   </hwResources>
-  <hwResources name="pad_bus_0" URI="http://resources/4.0.2/app/BUS_IO/0/rarray_hwres_bus_io_pin_pad#0" resourceGroupUri="devicepackage/0/*" mResGrpUri="devicepackage/0/*">
+  <hwResources name="pad_bus_0" URI="http://resources/4.0.2/app/BUS_IO/0/rarray_hwres_bus_io_pin_pad#0" resourceGroupUri="devicepackage/0/9" constraintType="GLOBAL_RESOURCE" mResGrpUri="devicepackage/0/*">
     <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/DEVICEPACKAGE/DEVICEPACKAGE_0.dd#//@provided.68"/>
   </hwResources>
-  <hwResources name="pad_bus_1" URI="http://resources/4.0.2/app/BUS_IO/0/rarray_hwres_bus_io_pin_pad#1" resourceGroupUri="devicepackage/0/*" mResGrpUri="devicepackage/0/*">
+  <hwResources name="pad_bus_1" URI="http://resources/4.0.2/app/BUS_IO/0/rarray_hwres_bus_io_pin_pad#1" resourceGroupUri="devicepackage/0/10" constraintType="GLOBAL_RESOURCE" mResGrpUri="devicepackage/0/*">
     <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/DEVICEPACKAGE/DEVICEPACKAGE_0.dd#//@provided.66"/>
   </hwResources>
-  <hwResources name="pad_bus_2" URI="http://resources/4.0.2/app/BUS_IO/0/rarray_hwres_bus_io_pin_pad#2" resourceGroupUri="devicepackage/0/*" mResGrpUri="devicepackage/0/*">
+  <hwResources name="pad_bus_2" URI="http://resources/4.0.2/app/BUS_IO/0/rarray_hwres_bus_io_pin_pad#2" resourceGroupUri="devicepackage/0/116" constraintType="GLOBAL_RESOURCE" mResGrpUri="devicepackage/0/*">
     <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/DEVICEPACKAGE/DEVICEPACKAGE_0.dd#//@provided.65"/>
   </hwResources>
-  <hwResources name="pad_bus_3" URI="http://resources/4.0.2/app/BUS_IO/0/rarray_hwres_bus_io_pin_pad#3" resourceGroupUri="devicepackage/0/*" mResGrpUri="devicepackage/0/*">
+  <hwResources name="pad_bus_3" URI="http://resources/4.0.2/app/BUS_IO/0/rarray_hwres_bus_io_pin_pad#3" resourceGroupUri="devicepackage/0/115" constraintType="GLOBAL_RESOURCE" mResGrpUri="devicepackage/0/*">
     <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/DEVICEPACKAGE/DEVICEPACKAGE_0.dd#//@provided.56"/>
   </hwResources>
-  <hwResources name="pad_bus_4" URI="http://resources/4.0.2/app/BUS_IO/0/rarray_hwres_bus_io_pin_pad#4" resourceGroupUri="devicepackage/0/*" mResGrpUri="devicepackage/0/*">
+  <hwResources name="pad_bus_4" URI="http://resources/4.0.2/app/BUS_IO/0/rarray_hwres_bus_io_pin_pad#4" resourceGroupUri="devicepackage/0/110" constraintType="GLOBAL_RESOURCE" mResGrpUri="devicepackage/0/*">
     <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/DEVICEPACKAGE/DEVICEPACKAGE_0.dd#//@provided.58"/>
   </hwResources>
-  <hwResources name="pad_bus_5" URI="http://resources/4.0.2/app/BUS_IO/0/rarray_hwres_bus_io_pin_pad#5" resourceGroupUri="devicepackage/0/*" mResGrpUri="devicepackage/0/*">
+  <hwResources name="pad_bus_5" URI="http://resources/4.0.2/app/BUS_IO/0/rarray_hwres_bus_io_pin_pad#5" resourceGroupUri="devicepackage/0/109" constraintType="GLOBAL_RESOURCE" mResGrpUri="devicepackage/0/*">
     <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/DEVICEPACKAGE/DEVICEPACKAGE_0.dd#//@provided.53"/>
   </hwResources>
-  <hwResources name="pad_bus_6" URI="http://resources/4.0.2/app/BUS_IO/0/rarray_hwres_bus_io_pin_pad#6" resourceGroupUri="devicepackage/0/*" mResGrpUri="devicepackage/0/*">
+  <hwResources name="pad_bus_6" URI="http://resources/4.0.2/app/BUS_IO/0/rarray_hwres_bus_io_pin_pad#6" resourceGroupUri="devicepackage/0/108" constraintType="GLOBAL_RESOURCE" mResGrpUri="devicepackage/0/*">
     <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/DEVICEPACKAGE/DEVICEPACKAGE_0.dd#//@provided.52"/>
   </hwResources>
-  <hwResources name="pad_bus_7" URI="http://resources/4.0.2/app/BUS_IO/0/rarray_hwres_bus_io_pin_pad#7" resourceGroupUri="devicepackage/0/*" mResGrpUri="devicepackage/0/*">
+  <hwResources name="pad_bus_7" URI="http://resources/4.0.2/app/BUS_IO/0/rarray_hwres_bus_io_pin_pad#7" resourceGroupUri="devicepackage/0/107" constraintType="GLOBAL_RESOURCE" mResGrpUri="devicepackage/0/*">
     <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/DEVICEPACKAGE/DEVICEPACKAGE_0.dd#//@provided.54"/>
   </hwResources>
-  <hwResources name="pad_bus_8" URI="http://resources/4.0.2/app/BUS_IO/0/rarray_hwres_bus_io_pin_pad#8" resourceGroupUri="devicepackage/0/*" mResGrpUri="devicepackage/0/*">
+  <hwResources name="pad_bus_8" URI="http://resources/4.0.2/app/BUS_IO/0/rarray_hwres_bus_io_pin_pad#8" resourceGroupUri="devicepackage/0/112" constraintType="GLOBAL_RESOURCE" mResGrpUri="devicepackage/0/*">
     <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/DEVICEPACKAGE/DEVICEPACKAGE_0.dd#//@provided.57"/>
   </hwResources>
-  <hwResources name="pad_bus_9" URI="http://resources/4.0.2/app/BUS_IO/0/rarray_hwres_bus_io_pin_pad#9" resourceGroupUri="devicepackage/0/*" mResGrpUri="devicepackage/0/*">
+  <hwResources name="pad_bus_9" URI="http://resources/4.0.2/app/BUS_IO/0/rarray_hwres_bus_io_pin_pad#9" resourceGroupUri="devicepackage/0/123" constraintType="GLOBAL_RESOURCE" mResGrpUri="devicepackage/0/*">
     <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/DEVICEPACKAGE/DEVICEPACKAGE_0.dd#//@provided.59"/>
   </hwResources>
-  <hwResources name="pad_bus_10" URI="http://resources/4.0.2/app/BUS_IO/0/rarray_hwres_bus_io_pin_pad#10" resourceGroupUri="devicepackage/0/*" mResGrpUri="devicepackage/0/*">
+  <hwResources name="pad_bus_10" URI="http://resources/4.0.2/app/BUS_IO/0/rarray_hwres_bus_io_pin_pad#10" resourceGroupUri="devicepackage/0/121" constraintType="GLOBAL_RESOURCE" mResGrpUri="devicepackage/0/*">
     <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/DEVICEPACKAGE/DEVICEPACKAGE_0.dd#//@provided.61"/>
   </hwResources>
-  <hwResources name="pad_bus_11" URI="http://resources/4.0.2/app/BUS_IO/0/rarray_hwres_bus_io_pin_pad#11" resourceGroupUri="devicepackage/0/*" mResGrpUri="devicepackage/0/*">
+  <hwResources name="pad_bus_11" URI="http://resources/4.0.2/app/BUS_IO/0/rarray_hwres_bus_io_pin_pad#11" resourceGroupUri="devicepackage/0/120" constraintType="GLOBAL_RESOURCE" mResGrpUri="devicepackage/0/*">
     <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/DEVICEPACKAGE/DEVICEPACKAGE_0.dd#//@provided.60"/>
   </hwResources>
-  <hwResources name="pad_bus_12" URI="http://resources/4.0.2/app/BUS_IO/0/rarray_hwres_bus_io_pin_pad#12" resourceGroupUri="devicepackage/0/*" mResGrpUri="devicepackage/0/*">
+  <hwResources name="pad_bus_12" URI="http://resources/4.0.2/app/BUS_IO/0/rarray_hwres_bus_io_pin_pad#12" resourceGroupUri="devicepackage/0/118" constraintType="GLOBAL_RESOURCE" mResGrpUri="devicepackage/0/*">
     <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/DEVICEPACKAGE/DEVICEPACKAGE_0.dd#//@provided.55"/>
   </hwResources>
-  <hwResources name="pad_bus_13" URI="http://resources/4.0.2/app/BUS_IO/0/rarray_hwres_bus_io_pin_pad#13" resourceGroupUri="devicepackage/0/*" mResGrpUri="devicepackage/0/*">
+  <hwResources name="pad_bus_13" URI="http://resources/4.0.2/app/BUS_IO/0/rarray_hwres_bus_io_pin_pad#13" resourceGroupUri="devicepackage/0/55" constraintType="GLOBAL_RESOURCE" mResGrpUri="devicepackage/0/*">
     <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/DEVICEPACKAGE/DEVICEPACKAGE_0.dd#//@provided.50"/>
   </hwResources>
-  <hwResources name="pad_bus_14" URI="http://resources/4.0.2/app/BUS_IO/0/rarray_hwres_bus_io_pin_pad#14" resourceGroupUri="devicepackage/0/*" mResGrpUri="devicepackage/0/*">
+  <hwResources name="pad_bus_14" URI="http://resources/4.0.2/app/BUS_IO/0/rarray_hwres_bus_io_pin_pad#14" resourceGroupUri="devicepackage/0/78" constraintType="GLOBAL_RESOURCE" mResGrpUri="devicepackage/0/*">
     <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/DEVICEPACKAGE/DEVICEPACKAGE_0.dd#//@provided.48"/>
   </hwResources>
-  <hwResources name="pad_bus_15" URI="http://resources/4.0.2/app/BUS_IO/0/rarray_hwres_bus_io_pin_pad#15" resourceGroupUri="devicepackage/0/*" mResGrpUri="devicepackage/0/*">
+  <hwResources name="pad_bus_15" URI="http://resources/4.0.2/app/BUS_IO/0/rarray_hwres_bus_io_pin_pad#15" resourceGroupUri="devicepackage/0/77" constraintType="GLOBAL_RESOURCE" mResGrpUri="devicepackage/0/*">
     <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/DEVICEPACKAGE/DEVICEPACKAGE_0.dd#//@provided.46"/>
   </hwResources>
   <connections URI="http://resources/4.0.2/app/BUS_IO/0/http://resources/4.0.2/app/BUS_IO/0/vs_bus_io_channel_pin_0/http://resources/4.0.2/app/BUS_IO/0/vs_bus_io_pin_pad_signal_0" systemDefined="true" sourceSignal="pad_signal_bus_0" targetSignal="bus_0_pin_signal" srcVirtualSignal="//@virtualSignals.0" targetVirtualSignal="//@virtualSignals.16"/>

@@ -118,28 +118,28 @@ DAVE_STATUS_t DAVE_Init(void)
    } 
   if (init_status == DAVE_STATUS_SUCCESS)
   {
-	 /**  Initialization of INTERRUPT APP instance ADC_0_INTERRUPT */
-	 init_status = (DAVE_STATUS_t)INTERRUPT_Init(&ADC_0_INTERRUPT); 
-   } 
-  if (init_status == DAVE_STATUS_SUCCESS)
-  {
-	 /**  Initialization of INTERRUPT APP instance ADC_1_INTERRUPT */
-	 init_status = (DAVE_STATUS_t)INTERRUPT_Init(&ADC_1_INTERRUPT); 
-   } 
-  if (init_status == DAVE_STATUS_SUCCESS)
-  {
-	 /**  Initialization of INTERRUPT APP instance ADC_2_INTERRUPT */
-	 init_status = (DAVE_STATUS_t)INTERRUPT_Init(&ADC_2_INTERRUPT); 
-   } 
-  if (init_status == DAVE_STATUS_SUCCESS)
-  {
 	 /**  Initialization of TIMER APP instance TICK_TIMER */
 	 init_status = (DAVE_STATUS_t)TIMER_Init(&TICK_TIMER); 
    } 
   if (init_status == DAVE_STATUS_SUCCESS)
   {
-	 /**  Initialization of INTERRUPT APP instance TICK_TIMER_ISR */
-	 init_status = (DAVE_STATUS_t)INTERRUPT_Init(&TICK_TIMER_ISR); 
+	 /**  Initialization of INTERRUPT APP instance TICK_TIMER_INTERRUPT */
+	 init_status = (DAVE_STATUS_t)INTERRUPT_Init(&TICK_TIMER_INTERRUPT); 
+   } 
+  if (init_status == DAVE_STATUS_SUCCESS)
+  {
+	 /**  Initialization of INTERRUPT APP instance INTERRUPT_0 */
+	 init_status = (DAVE_STATUS_t)INTERRUPT_Init(&INTERRUPT_0); 
+   } 
+  if (init_status == DAVE_STATUS_SUCCESS)
+  {
+	 /**  Initialization of INTERRUPT APP instance INTERRUPT_1 */
+	 init_status = (DAVE_STATUS_t)INTERRUPT_Init(&INTERRUPT_1); 
+   } 
+  if (init_status == DAVE_STATUS_SUCCESS)
+  {
+	 /**  Initialization of INTERRUPT APP instance INTERRUPT_2 */
+	 init_status = (DAVE_STATUS_t)INTERRUPT_Init(&INTERRUPT_2); 
    }  
   return init_status;
 } /**  End of function DAVE_Init */

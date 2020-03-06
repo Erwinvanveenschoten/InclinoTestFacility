@@ -64,7 +64,6 @@
 
 #include "ETH_LWIP/lwip/include/lwip/opt.h"
 
-#include "ETH_LWIP/lwip/include/lwip/dhcp.h" 
 #include "SYSTIMER/systimer.h"
 #include "ETH_LWIP/lwip/include/lwip/timeouts.h"
 #include "ETH_LWIP/lwip/include/lwip/init.h"
@@ -74,9 +73,29 @@
 #define PHY_DEVICE_NAME  PHY_DP83848C 
 #endif
 
+/*IPv4 address*/
+/*Static IPv4 address*/
+#define IP_ADDR0 (192U)
+#define IP_ADDR1 (168U)
+#define IP_ADDR2 (0U)
+#define IP_ADDR3 (10U)
+
+/*IPv4 subnet mask*/
+/*Static IPv4 address*/
+#define NETMASK_ADDR0 (255U)
+#define NETMASK_ADDR1 (255U)
+#define NETMASK_ADDR2 (255U)
+#define NETMASK_ADDR3 (0U)
+
+/*IPv4 gateway address*/
+/*Static IPv4 address*/
+#define GW_ADDR0 (192U)
+#define GW_ADDR1 (168U)
+#define GW_ADDR2 (0U)
+#define GW_ADDR3 (10U)
+
 #define ETH_SYSTIMER_NAME  SYSTIMER_0
 
-#define ETH_BROADCAST_EN  1
 #define ETH_TIME_250ms_COUNT  (250U * 1000U)
 
 #endif

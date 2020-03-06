@@ -10,7 +10,7 @@
   </requiredApps>
   <requiredApps URI="http://resources/4.1.10/app/TIMER/0/app_global_ccu8" requiredAppName="GLOBAL_CCU8" required="false" requiringMode="SHARABLE"/>
   <hwResources name="CC4 Timer" URI="http://resources/4.1.10/app/TIMER/0/hwres_ccu4_cc4" resourceGroupUri="peripheral/ccu4/*/cc4/*" mResGrpUri="peripheral/ccu4/*/cc4/*">
-    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/ccu43/ccu43_3.dd#//@provided.3"/>
+    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/ccu43/ccu43_3.dd#/1/@provided.3"/>
   </hwResources>
   <hwResources name="CC8 Timer" URI="http://resources/4.1.10/app/TIMER/0/hwres_ccu8_cc8" resourceGroupUri="" required="false" mResGrpUri="peripheral/ccu8/*/cc8/*"/>
   <connections URI="http://resources/4.1.10/app/TIMER/0/http://resources/4.1.10/app/TIMER/0/vs_global_ccu4_enable/http://resources/4.1.10/app/TIMER/0/vs_timer_ccu4_global_enable" systemDefined="true" sourceSignal="ccu4_global" targetSignal="global_enable" targetVirtualSignal="//@virtualSignals.2" proxySrcVirtualSignalUri="http://resources/4.1.12/app/GLOBAL_CCU4/0/vs_global_ccu4_globalsignal" containingProxySignal="true">
@@ -18,8 +18,8 @@
     <srcVirtualSignal href="../../GLOBAL_CCU4/v4_1_12/GLOBAL_CCU4_0.app#//@virtualSignals.0"/>
   </connections>
   <connections URI="http://resources/4.1.10/app/TIMER/0/http://resources/4.1.10/app/TIMER/0/vs_global_ccu8_enable/http://resources/4.1.10/app/TIMER/0/vs_timer_ccu8_global_enable" systemDefined="true" targetSignal="global_enable" required="false" targetVirtualSignal="//@virtualSignals.3" containingProxySignal="true"/>
-  <connections URI="http://resources/4.1.10/app/TIMER/0/http://resources/4.1.10/app/TIMER/0/vs_timer_ccu4_period_match_interrupt/http://resources/4.0.8/app/INTERRUPT/3/vs_nvic_signal_in" sourceSignal="event_time_interval" targetSignal="sr_irq" srcVirtualSignal="//@virtualSignals.0">
-    <downwardMapList xsi:type="ResourceModel:VirtualSignal" href="../../INTERRUPT/v4_0_8/INTERRUPT_3.app#//@virtualSignals.0"/>
-    <targetVirtualSignal href="../../INTERRUPT/v4_0_8/INTERRUPT_3.app#//@virtualSignals.0"/>
+  <connections URI="http://resources/4.1.10/app/TIMER/0/http://resources/4.1.10/app/TIMER/0/vs_timer_ccu4_period_match_interrupt/http://resources/4.0.8/app/INTERRUPT/0/vs_nvic_signal_in" sourceSignal="event_time_interval" targetSignal="sr_irq" srcVirtualSignal="//@virtualSignals.0">
+    <downwardMapList xsi:type="ResourceModel:VirtualSignal" href="../../INTERRUPT/v4_0_8/INTERRUPT_0.app#//@virtualSignals.0"/>
+    <targetVirtualSignal href="../../INTERRUPT/v4_0_8/INTERRUPT_0.app#//@virtualSignals.0"/>
   </connections>
 </ResourceModel:App>

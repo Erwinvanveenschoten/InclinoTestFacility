@@ -332,6 +332,16 @@
                 <Type>C File</Type>
             </Source_File>
             <Source_File>
+                <File_Name>global_dma.c</File_Name>
+                <Path>\Dave\Generated\GLOBAL_DMA\global_dma.c</Path>
+                <Type>C File</Type>
+            </Source_File>
+            <Source_File>
+                <File_Name>global_dma_conf.c</File_Name>
+                <Path>\Dave\Generated\GLOBAL_DMA\global_dma_conf.c</Path>
+                <Type>C File</Type>
+            </Source_File>
+            <Source_File>
                 <File_Name>interrupt.c</File_Name>
                 <Path>\Dave\Generated\INTERRUPT\interrupt.c</Path>
                 <Type>C File</Type>
@@ -1041,6 +1051,21 @@
             <Header_File>
                 <File_Name>global_ccu4_extern.h</File_Name>
                 <Path>\Dave\Generated\GLOBAL_CCU4\global_ccu4_extern.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>global_dma.h</File_Name>
+                <Path>\Dave\Generated\GLOBAL_DMA\global_dma.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>global_dma_conf.h</File_Name>
+                <Path>\Dave\Generated\GLOBAL_DMA\global_dma_conf.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>global_dma_extern.h</File_Name>
+                <Path>\Dave\Generated\GLOBAL_DMA\global_dma_extern.h</Path>
                 <Type>H File</Type>
             </Header_File>
             <Header_File>

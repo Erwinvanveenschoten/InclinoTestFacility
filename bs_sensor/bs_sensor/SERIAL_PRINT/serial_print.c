@@ -12,11 +12,13 @@ static const UART_t * handle = &UART_0;
 /* Redirects printf to UART */
 int _write(int file, uint8_t *buf, int nbytes)
 {
+	BUS_IO_Write(&IO_GP, 0xFF);
     if(UART_Transmit(handle, buf, nbytes) == UART_STATUS_SUCCESS) {
        while(UART_0.runtime->tx_busy) {
         }
     }
     return nbytes;
+    BUS_IO_Write(&IO_GP, 0x00);
 }
 
 /* redirects UART to getchar() */

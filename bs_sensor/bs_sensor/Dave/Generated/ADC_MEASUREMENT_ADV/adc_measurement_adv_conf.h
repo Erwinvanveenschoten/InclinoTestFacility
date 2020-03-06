@@ -99,10 +99,6 @@
  * Instances this macro is generated.*/
 #define ADC_MEASUREMENT_ADV_MUX_USED (1U)
 
-/* If event configuration is not used by all the ADC_MEASUREMENT_ADV APP
- * Instances this macro is generated. Needed for optimization of the code.*/
-#define ADC_MEASUREMENT_ADV_MUX_NOT_ALL_USED (1U)
-
 /* If SHS gain apart from 1:1 is needed and an alias channel is used by one of 
  * the ADC_MEASUREMENT_ADV APP Instances this macro is generated. Needed for correct configuration of the gain value.*/
 #define ADC_MEASUREMENT_ADV_SHS_GAIN_ALIAS (1U)
@@ -126,35 +122,27 @@
 #define ADC_MEASUREMENT_ADV_0_Channel_A  (ADC_MEASUREMENT_ADV_0_Channel_A_handle)
 #define ADC_MEASUREMENT_ADV_0_Channel_A_RES  (VADC_G3->RES[9])
 
-#define adc_measurement_adv_callback IRQ_Hdlr_33
 #define ADC_MEASUREMENT_ADV_0_Channel_B  (ADC_MEASUREMENT_ADV_0_Channel_B_handle)
 #define ADC_MEASUREMENT_ADV_0_Channel_B_RES  (VADC_G3->RES[8])
 
-#define adc_measurement_adv_callback IRQ_Hdlr_33
 #define ADC_MEASUREMENT_ADV_0_Channel_C  (ADC_MEASUREMENT_ADV_0_Channel_C_handle)
 #define ADC_MEASUREMENT_ADV_0_Channel_C_RES  (VADC_G3->RES[5])
 
-#define adc_measurement_adv_callback IRQ_Hdlr_33
 #define ADC_MEASUREMENT_ADV_0_Channel_D  (ADC_MEASUREMENT_ADV_0_Channel_D_handle)
 #define ADC_MEASUREMENT_ADV_0_Channel_D_RES  (VADC_G3->RES[6])
 
-#define adc_measurement_adv_callback IRQ_Hdlr_33
 #define ADC_MEASUREMENT_ADV_0_Channel_E  (ADC_MEASUREMENT_ADV_0_Channel_E_handle)
 #define ADC_MEASUREMENT_ADV_0_Channel_E_RES  (VADC_G3->RES[0])
 
-#define adc_measurement_adv_callback IRQ_Hdlr_33
 #define ADC_MEASUREMENT_ADV_0_Channel_F  (ADC_MEASUREMENT_ADV_0_Channel_F_handle)
 #define ADC_MEASUREMENT_ADV_0_Channel_F_RES  (VADC_G3->RES[3])
 
-#define adc_measurement_adv_callback IRQ_Hdlr_33
 #define ADC_MEASUREMENT_ADV_0_Channel_G  (ADC_MEASUREMENT_ADV_0_Channel_G_handle)
 #define ADC_MEASUREMENT_ADV_0_Channel_G_RES  (VADC_G3->RES[1])
 
-#define adc_measurement_adv_callback IRQ_Hdlr_33
 #define ADC_MEASUREMENT_ADV_0_Channel_H  (ADC_MEASUREMENT_ADV_0_Channel_H_handle)
 #define ADC_MEASUREMENT_ADV_0_Channel_H_RES  (VADC_G3->RES[4])
 
-#define adc_measurement_adv_callback IRQ_Hdlr_33
 #ifndef VADC_QUEUE_GROUP_3_POSITION_0
 #define VADC_QUEUE_GROUP_3_POSITION_0 (0U)
 #else

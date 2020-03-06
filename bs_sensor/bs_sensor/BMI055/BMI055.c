@@ -13,6 +13,8 @@
 #include "UDP.h"
 #include "data_config.h"
 
+#if NROF_BMI055 > 0
+
 #if BMI055_GYRO_ENA || BMI055_ACC_ENA || BMI055_TEMP_ENA
 
 typedef enum sensor
@@ -86,19 +88,6 @@ void send_buffer( void );
  * API function Definitions
  ************************************************************************************/
 
-void BMI055_start_transfer_seq( void )
-{
-	// Wait while SPI_MASTER is busy
-	while (SPI_MASTER_IsTxBusy(SPI_HANDLER) || SPI_MASTER_IsRxBusy(SPI_HANDLER) ){}
-
-	// Reset counters
-	BMI055_index = 0;
-	Data_index = 0;
-
-	// start transmission sequence
-	start_spi_transmission(BMI055_index, sensor_to_read[Data_index]);
-}
-
 static void start_spi_transmission ( uint32_t bmi055_index, sensor_t sensor )
 {
 	switch (sensor)
@@ -130,14 +119,15 @@ void read_gyro( uint32_t bmi055_index )
 		0XFF,
 	};
 	// Slave select
-	BUS_IO_Write(BUS_HANDLER, ~(1 << (BMI055[bmi055_index].cs_gyro)));
+	const uint16_t CS_mask = ~(1 << NROF_CS_PIN - (BMI055[bmi055_index].cs_gyro));
+
+	BUS_IO_Write(BUS_HANDLER, CS_mask);
 
 	// Transfer data
-	SPI_MASTER_Transfer(
-			SPI_HANDLER,
-			addr,
-			GYRO_buffer,
-			GYRO_BUFFER_SIZE);
+	SPI_MASTER_STATUS_t status = SPI_MASTER_Transfer(	SPI_HANDLER,
+														addr,
+														GYRO_buffer,
+														GYRO_BUFFER_SIZE);
 #endif
 }
 
@@ -160,7 +150,9 @@ void read_acc( uint32_t bmi055_index )
 		0XFF,
 	};
 	// Slave select
-	BUS_IO_Write(BUS_HANDLER, ~(1 << (BMI055[bmi055_index].cs_acc)));
+	const uint16_t CS_mask = ~(1 << NROF_CS_PIN - (BMI055[bmi055_index].cs_acc));
+
+	BUS_IO_Write(BUS_HANDLER, CS_mask);
 
 	// Transfer data
 	SPI_MASTER_Transfer(
@@ -215,38 +207,7 @@ void store_buffer( uint32_t bmi055_index, uint32_t Data_index )
 	data_buffer[bmi055_index].sensor_id = BMI055[bmi055_index].id;
 }
 
-void BMI055_eo_recieve(void)
-{
-	// Reset chip select
-	BUS_IO_Write(BUS_HANDLER, BMI055_RESET_CS);
 
-	// Store the IMU buffer
-	store_buffer(BMI055_index, Data_index);
-
-	//	When all registers of interest of the IC's are read, transmit the data
-	if ( BMI055_index == (NROF_BMI055-1) && Data_index == (NROF_BMI055_IMU_DATA-1))
-	{
-		// Transmit buffer
-		send_buffer();
-		BMI055_print_buffer();
-	}
-	else
-	{
-		//update counters
-		if (Data_index == (NROF_BMI055_IMU_DATA-1))
-		{
-			BMI055_index++;
-			Data_index = 0;
-		}
-		else
-		{
-			Data_index++;
-		}
-
-		// start next spi transmission
-		start_spi_transmission( BMI055_index, sensor_to_read[Data_index]);
-	}
-}
 
 void BMI055_print_buffer ( void )
 {
@@ -323,3 +284,62 @@ void send_buffer( void )
 }
 
 #endif
+
+#endif
+
+void BMI055_eo_recieve(void)
+{
+#if NROF_BMI055 > 0
+
+#if BMI055_GYRO_ENA || BMI055_ACC_ENA || BMI055_TEMP_ENA
+
+	// Reset chip select
+	BUS_IO_Write(BUS_HANDLER, BMI055_RESET_CS);
+
+	// Store the IMU buffer
+	store_buffer(BMI055_index, Data_index);
+
+	//	When all registers of interest of the IC's are read, transmit the data
+	if ( BMI055_index == (NROF_BMI055-1) && Data_index == (NROF_BMI055_IMU_DATA-1))
+	{
+		// Transmit buffer
+		send_buffer();
+		BMI055_print_buffer();
+	}
+	else
+	{
+		//update counters
+		if (Data_index == (NROF_BMI055_IMU_DATA-1))
+		{
+			BMI055_index++;
+			Data_index = 0;
+		}
+		else
+		{
+			Data_index++;
+		}
+
+		// start next spi transmission
+		start_spi_transmission( BMI055_index, sensor_to_read[Data_index]);
+	}
+#endif
+#endif
+}
+
+void BMI055_start_transfer_seq( void )
+{
+#if NROF_BMI055 > 0
+#if BMI055_GYRO_ENA || BMI055_ACC_ENA || BMI055_TEMP_ENA
+
+	// Wait while SPI_MASTER is busy
+	while (SPI_MASTER_IsTxBusy(SPI_HANDLER) || SPI_MASTER_IsRxBusy(SPI_HANDLER) ){}
+
+	// Reset counters
+	BMI055_index = 0;
+	Data_index = 0;
+
+	// start transmission sequence
+	start_spi_transmission(BMI055_index, sensor_to_read[Data_index]);
+#endif
+#endif
+}
