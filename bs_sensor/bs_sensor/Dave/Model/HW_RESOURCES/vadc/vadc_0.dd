@@ -608,7 +608,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Store result in group result register GxRES15"/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="3" URI="http://resources/48.0.0/peripheral/vadc/0/group/1/result_adv/3">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/ADC_MEASUREMENT_ADV/v4_0_14/ADC_MEASUREMENT_ADV_2.app#//@hwResources.60"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/ADC_MEASUREMENT_ADV/v4_0_14/ADC_MEASUREMENT_ADV_2.app#//@hwResources.65"/>
     <resourcesList name="gbfl_bfa" requiredResourceUri="http://resources/48.0.0/peripheral/vadc/0/g1_bfl/bfa3"/>
     <resourcesList name="gbfl_bfi" requiredResourceUri="http://resources/48.0.0/peripheral/vadc/0/g1_bfl/bfi3"/>
     <resourcesList name="gbfl_bfl" requiredResourceUri="http://resources/48.0.0/peripheral/vadc/0/g1_bfl/bfl3"/>
@@ -902,7 +902,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0111" description="Select shared service request line 3"/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="4" URI="http://resources/48.0.0/peripheral/vadc/0/group/3/result/4">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/ADC_MEASUREMENT_ADV/v4_0_14/ADC_MEASUREMENT_ADV_0.app#//@hwResources.60"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/ADC_MEASUREMENT_ADV/v4_0_14/ADC_MEASUREMENT_ADV_0.app#//@hwResources.67"/>
     <resourcesList name="grcr" requiredResourceUri="http://resources/48.0.0/peripheral/vadc/0/g3_rcr4"/>
     <resourcesList name="grefclr_rev" requiredResourceUri="http://resources/48.0.0/peripheral/vadc/0/g3_refclr/rev4"/>
     <resourcesList name="greflag_rev" requiredResourceUri="http://resources/48.0.0/peripheral/vadc/0/g3_reflag/rev4"/>
@@ -1656,7 +1656,7 @@
   </provided>
   <provided xsi:type="ResourceModel:BitField" name="ALIAS0" URI="http://resources/48.0.0/peripheral/vadc/0/g3_alias/alias0" value="0x00000000" toolTipHelpDescription="Alias Value for CH0 Conversion Requests" defaultValue="0x00000000" startPos="0" stopPos="4" accessPermission="rw" maxValue="31" minValue="0"/>
   <provided xsi:type="ResourceModel:ResourceGroup" name="9" URI="http://resources/48.0.0/peripheral/vadc/0/group/3/result/9">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/ADC_MEASUREMENT_ADV/v4_0_14/ADC_MEASUREMENT_ADV_0.app#//@hwResources.61"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/ADC_MEASUREMENT_ADV/v4_0_14/ADC_MEASUREMENT_ADV_0.app#//@hwResources.60"/>
     <resourcesList name="grcr" requiredResourceUri="http://resources/48.0.0/peripheral/vadc/0/g3_rcr9"/>
     <resourcesList name="grefclr_rev" requiredResourceUri="http://resources/48.0.0/peripheral/vadc/0/g3_refclr/rev9"/>
     <resourcesList name="greflag_rev" requiredResourceUri="http://resources/48.0.0/peripheral/vadc/0/g3_reflag/rev9"/>
@@ -1724,7 +1724,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0111" description="Select shared service request line 3"/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="8" URI="http://resources/48.0.0/peripheral/vadc/0/group/3/result/8">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/ADC_MEASUREMENT_ADV/v4_0_14/ADC_MEASUREMENT_ADV_0.app#//@hwResources.62"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/ADC_MEASUREMENT_ADV/v4_0_14/ADC_MEASUREMENT_ADV_0.app#//@hwResources.61"/>
     <resourcesList name="grcr" requiredResourceUri="http://resources/48.0.0/peripheral/vadc/0/g3_rcr8"/>
     <resourcesList name="grefclr_rev" requiredResourceUri="http://resources/48.0.0/peripheral/vadc/0/g3_refclr/rev8"/>
     <resourcesList name="greflag_rev" requiredResourceUri="http://resources/48.0.0/peripheral/vadc/0/g3_reflag/rev8"/>
@@ -1742,7 +1742,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0111" description="Select shared service request line 3"/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="5" URI="http://resources/48.0.0/peripheral/vadc/0/group/3/result/5">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/ADC_MEASUREMENT_ADV/v4_0_14/ADC_MEASUREMENT_ADV_0.app#//@hwResources.63"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/ADC_MEASUREMENT_ADV/v4_0_14/ADC_MEASUREMENT_ADV_0.app#//@hwResources.62"/>
     <resourcesList name="grcr" requiredResourceUri="http://resources/48.0.0/peripheral/vadc/0/g3_rcr5"/>
     <resourcesList name="grefclr_rev" requiredResourceUri="http://resources/48.0.0/peripheral/vadc/0/g3_refclr/rev5"/>
     <resourcesList name="greflag_rev" requiredResourceUri="http://resources/48.0.0/peripheral/vadc/0/g3_reflag/rev5"/>
@@ -1760,7 +1760,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0111" description="Select shared service request line 3"/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="6" URI="http://resources/48.0.0/peripheral/vadc/0/group/3/result/6">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/ADC_MEASUREMENT_ADV/v4_0_14/ADC_MEASUREMENT_ADV_0.app#//@hwResources.64"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/ADC_MEASUREMENT_ADV/v4_0_14/ADC_MEASUREMENT_ADV_0.app#//@hwResources.63"/>
     <resourcesList name="grcr" requiredResourceUri="http://resources/48.0.0/peripheral/vadc/0/g3_rcr6"/>
     <resourcesList name="grefclr_rev" requiredResourceUri="http://resources/48.0.0/peripheral/vadc/0/g3_refclr/rev6"/>
     <resourcesList name="greflag_rev" requiredResourceUri="http://resources/48.0.0/peripheral/vadc/0/g3_reflag/rev6"/>
@@ -1778,7 +1778,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0111" description="Select shared service request line 3"/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="0" URI="http://resources/48.0.0/peripheral/vadc/0/group/3/result_adv/0">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/ADC_MEASUREMENT_ADV/v4_0_14/ADC_MEASUREMENT_ADV_0.app#//@hwResources.65"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/ADC_MEASUREMENT_ADV/v4_0_14/ADC_MEASUREMENT_ADV_0.app#//@hwResources.64"/>
     <resourcesList name="gbfl_bfa" requiredResourceUri="http://resources/48.0.0/peripheral/vadc/0/g3_bfl/bfa0"/>
     <resourcesList name="gbfl_bfi" requiredResourceUri="http://resources/48.0.0/peripheral/vadc/0/g3_bfl/bfi0"/>
     <resourcesList name="gbfl_bfl" requiredResourceUri="http://resources/48.0.0/peripheral/vadc/0/g3_bfl/bfl0"/>
@@ -1804,7 +1804,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0111" description="Select shared service request line 3"/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="1" URI="http://resources/48.0.0/peripheral/vadc/0/group/3/result_adv/1">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/ADC_MEASUREMENT_ADV/v4_0_14/ADC_MEASUREMENT_ADV_0.app#//@hwResources.67"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/ADC_MEASUREMENT_ADV/v4_0_14/ADC_MEASUREMENT_ADV_0.app#//@hwResources.66"/>
     <resourcesList name="gbfl_bfa" requiredResourceUri="http://resources/48.0.0/peripheral/vadc/0/g3_bfl/bfa1"/>
     <resourcesList name="gbfl_bfi" requiredResourceUri="http://resources/48.0.0/peripheral/vadc/0/g3_bfl/bfi1"/>
     <resourcesList name="gbfl_bfl" requiredResourceUri="http://resources/48.0.0/peripheral/vadc/0/g3_bfl/bfl1"/>
@@ -1830,7 +1830,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0111" description="Select shared service request line 3"/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="3" URI="http://resources/48.0.0/peripheral/vadc/0/group/3/result_adv/3">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/ADC_MEASUREMENT_ADV/v4_0_14/ADC_MEASUREMENT_ADV_0.app#//@hwResources.66"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/ADC_MEASUREMENT_ADV/v4_0_14/ADC_MEASUREMENT_ADV_0.app#//@hwResources.65"/>
     <resourcesList name="gbfl_bfa" requiredResourceUri="http://resources/48.0.0/peripheral/vadc/0/g3_bfl/bfa3"/>
     <resourcesList name="gbfl_bfi" requiredResourceUri="http://resources/48.0.0/peripheral/vadc/0/g3_bfl/bfi3"/>
     <resourcesList name="gbfl_bfl" requiredResourceUri="http://resources/48.0.0/peripheral/vadc/0/g3_bfl/bfl3"/>
@@ -2914,7 +2914,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#11" description="Use global class 1"/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="15" URI="http://resources/48.0.0/peripheral/vadc/0/group/1/result_filter/15">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/ADC_MEASUREMENT_ADV/v4_0_14/ADC_MEASUREMENT_ADV_2.app#//@hwResources.61"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/ADC_MEASUREMENT_ADV/v4_0_14/ADC_MEASUREMENT_ADV_2.app#//@hwResources.60"/>
     <resourcesList name="grcr" requiredResourceUri="http://resources/48.0.0/peripheral/vadc/0/g1_rcr15"/>
     <resourcesList name="grefclr_rev" requiredResourceUri="http://resources/48.0.0/peripheral/vadc/0/g1_refclr/rev15"/>
     <resourcesList name="greflag_rev" requiredResourceUri="http://resources/48.0.0/peripheral/vadc/0/g1_reflag/rev15"/>
@@ -2982,7 +2982,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0111" description="Select shared service request line 3"/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="0" URI="http://resources/48.0.0/peripheral/vadc/0/group/1/result_adv/0">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/ADC_MEASUREMENT_ADV/v4_0_14/ADC_MEASUREMENT_ADV_2.app#//@hwResources.62"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/ADC_MEASUREMENT_ADV/v4_0_14/ADC_MEASUREMENT_ADV_2.app#//@hwResources.61"/>
     <resourcesList name="gbfl_bfa" requiredResourceUri="http://resources/48.0.0/peripheral/vadc/0/g1_bfl/bfa0"/>
     <resourcesList name="gbfl_bfi" requiredResourceUri="http://resources/48.0.0/peripheral/vadc/0/g1_bfl/bfi0"/>
     <resourcesList name="gbfl_bfl" requiredResourceUri="http://resources/48.0.0/peripheral/vadc/0/g1_bfl/bfl0"/>
@@ -3008,7 +3008,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0111" description="Select shared service request line 3"/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="1" URI="http://resources/48.0.0/peripheral/vadc/0/group/1/result_adv/1">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/ADC_MEASUREMENT_ADV/v4_0_14/ADC_MEASUREMENT_ADV_2.app#//@hwResources.63"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/ADC_MEASUREMENT_ADV/v4_0_14/ADC_MEASUREMENT_ADV_2.app#//@hwResources.62"/>
     <resourcesList name="gbfl_bfa" requiredResourceUri="http://resources/48.0.0/peripheral/vadc/0/g1_bfl/bfa1"/>
     <resourcesList name="gbfl_bfi" requiredResourceUri="http://resources/48.0.0/peripheral/vadc/0/g1_bfl/bfi1"/>
     <resourcesList name="gbfl_bfl" requiredResourceUri="http://resources/48.0.0/peripheral/vadc/0/g1_bfl/bfl1"/>
@@ -3204,7 +3204,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0111" description="Select shared service request line 3"/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="2" URI="http://resources/48.0.0/peripheral/vadc/0/group/1/result_adv/2">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/ADC_MEASUREMENT_ADV/v4_0_14/ADC_MEASUREMENT_ADV_2.app#//@hwResources.64"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/ADC_MEASUREMENT_ADV/v4_0_14/ADC_MEASUREMENT_ADV_2.app#//@hwResources.63"/>
     <resourcesList name="gbfl_bfa" requiredResourceUri="http://resources/48.0.0/peripheral/vadc/0/g1_bfl/bfa2"/>
     <resourcesList name="gbfl_bfi" requiredResourceUri="http://resources/48.0.0/peripheral/vadc/0/g1_bfl/bfi2"/>
     <resourcesList name="gbfl_bfl" requiredResourceUri="http://resources/48.0.0/peripheral/vadc/0/g1_bfl/bfl2"/>
@@ -3230,7 +3230,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0111" description="Select shared service request line 3"/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="7" URI="http://resources/48.0.0/peripheral/vadc/0/group/1/result_filter/7">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/ADC_MEASUREMENT_ADV/v4_0_14/ADC_MEASUREMENT_ADV_2.app#//@hwResources.65"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/ADC_MEASUREMENT_ADV/v4_0_14/ADC_MEASUREMENT_ADV_2.app#//@hwResources.64"/>
     <resourcesList name="grcr" requiredResourceUri="http://resources/48.0.0/peripheral/vadc/0/g1_rcr7"/>
     <resourcesList name="grefclr_rev" requiredResourceUri="http://resources/48.0.0/peripheral/vadc/0/g1_refclr/rev7"/>
     <resourcesList name="greflag_rev" requiredResourceUri="http://resources/48.0.0/peripheral/vadc/0/g1_reflag/rev7"/>

@@ -64,9 +64,6 @@
     <resource xsi:type="ResourceModel:Peripheral" href="HW_RESOURCES/port14/port14_14.dd#/"/>
   </nodes>
   <nodes xsi:type="ApplicationModel:AppNode">
-    <resource xsi:type="ResourceModel:App" href="APPS/RTC/v4_1_14/RTC_0.app#/"/>
-  </nodes>
-  <nodes xsi:type="ApplicationModel:AppNode">
     <resource xsi:type="ResourceModel:App" href="APPS/CPU_CTRL_XMC4/v4_0_16/CPU_CTRL_XMC4_0.app#/"/>
   </nodes>
   <nodes xsi:type="ApplicationModel:AppNode">
@@ -74,9 +71,6 @@
   </nodes>
   <nodes xsi:type="ApplicationModel:AppNode">
     <resource xsi:type="ResourceModel:App" href="APPS/DIGITAL_IO/v4_0_16/DIGITAL_IO_0.app#/"/>
-  </nodes>
-  <nodes xsi:type="ApplicationModel:AppNode">
-    <resource xsi:type="ResourceModel:App" href="APPS/ETH_LWIP/v4_1_16/ETH_LWIP_0.app#/"/>
   </nodes>
   <nodes xsi:type="ApplicationModel:PeripheralNode">
     <resource xsi:type="ResourceModel:Peripheral" href="HW_RESOURCES/eth0/eth0_0.dd#/"/>
@@ -108,20 +102,42 @@
   <nodes xsi:type="ApplicationModel:PeripheralNode">
     <resource xsi:type="ResourceModel:Peripheral" href="HW_RESOURCES/usic0/usic0_0.dd#/"/>
   </nodes>
+  <nodes xsi:type="ApplicationModel:AppNode">
+    <resource xsi:type="ResourceModel:App" href="APPS/ETH_LWIP/v4_1_16/ETH_LWIP_0.app#/"/>
+  </nodes>
+  <nodes xsi:type="ApplicationModel:AppNode">
+    <resource xsi:type="ResourceModel:App" href="APPS/INTERRUPT/v4_0_8/INTERRUPT_1.app#/"/>
+  </nodes>
+  <nodes xsi:type="ApplicationModel:AppNode">
+    <resource xsi:type="ResourceModel:App" href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#/"/>
+  </nodes>
+  <nodes xsi:type="ApplicationModel:AppNode">
+    <resource xsi:type="ResourceModel:App" href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#/"/>
+  </nodes>
+  <nodes xsi:type="ApplicationModel:AppNode">
+    <resource xsi:type="ResourceModel:App" href="APPS/INTERRUPT/v4_0_8/INTERRUPT_2.app#/"/>
+  </nodes>
+  <nodes xsi:type="ApplicationModel:AppNode">
+    <resource xsi:type="ResourceModel:App" href="APPS/INTERRUPT/v4_0_8/INTERRUPT_3.app#/"/>
+  </nodes>
   <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.1" target="//@nodes.0"/>
   <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.17" target="//@nodes.0"/>
   <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.18" target="//@nodes.17"/>
-  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.21" target="//@nodes.0"/>
-  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.23" target="//@nodes.0"/>
-  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.23" target="//@nodes.22"/>
-  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.25" target="//@nodes.22"/>
-  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.25" target="//@nodes.23"/>
-  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.31" target="//@nodes.22"/>
-  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.28" target="//@nodes.32"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.22" target="//@nodes.0"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.22" target="//@nodes.21"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.29" target="//@nodes.21"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.26" target="//@nodes.30"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.30" target="//@nodes.0"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.1" target="//@nodes.31"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.31" target="//@nodes.21"/>
   <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.32" target="//@nodes.0"/>
-  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.1" target="//@nodes.33"/>
-  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.33" target="//@nodes.22"/>
-  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.34" target="//@nodes.0"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.34" target="//@nodes.21"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.34" target="//@nodes.22"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.35" target="//@nodes.21"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.36" target="//@nodes.17"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.37" target="//@nodes.17"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.38" target="//@nodes.21"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.39" target="//@nodes.21"/>
   <hwConnections href="APPS/CLOCK_XMC4/v4_0_22/CLOCK_XMC4_0.app#//@connections.0"/>
   <hwConnections href="APPS/CLOCK_XMC4/v4_0_22/CLOCK_XMC4_0.app#//@connections.5"/>
   <hwConnections href="APPS/CLOCK_XMC4/v4_0_22/CLOCK_XMC4_0.app#//@connections.6"/>
@@ -310,6 +326,22 @@
   <hwConnections href="APPS/CPU_CTRL_XMC4/v4_0_16/CPU_CTRL_XMC4_0.app#//@connections.20"/>
   <hwConnections href="APPS/DIGITAL_IO/v4_0_16/DIGITAL_IO_0.app#//@connections.0"/>
   <hwConnections href="APPS/DIGITAL_IO/v4_0_16/DIGITAL_IO_0.app#//@connections.1"/>
+  <hwConnections href="APPS/GLOBAL_CCU4/v4_1_12/GLOBAL_CCU4_0.app#//@connections.0"/>
+  <hwConnections href="APPS/TIMER/v4_1_10/TIMER_0.app#//@connections.0"/>
+  <hwConnections href="APPS/TIMER/v4_1_10/TIMER_0.app#//@connections.2"/>
+  <hwConnections href="APPS/SPI_MASTER/v4_3_26/SPI_MASTER_0.app#//@connections.6"/>
+  <hwConnections href="APPS/SPI_MASTER/v4_3_26/SPI_MASTER_0.app#//@connections.4"/>
+  <hwConnections href="APPS/SPI_MASTER/v4_3_26/SPI_MASTER_0.app#//@connections.5"/>
+  <hwConnections href="APPS/SPI_MASTER/v4_3_26/SPI_MASTER_0.app#//@connections.1"/>
+  <hwConnections href="APPS/SPI_MASTER/v4_3_26/SPI_MASTER_0.app#//@connections.2"/>
+  <hwConnections href="APPS/SPI_MASTER/v4_3_26/SPI_MASTER_0.app#//@connections.0"/>
+  <hwConnections href="APPS/SPI_MASTER/v4_3_26/SPI_MASTER_0.app#//@connections.3"/>
+  <hwConnections href="APPS/UART/v4_1_12/UART_0.app#//@connections.0"/>
+  <hwConnections href="APPS/UART/v4_1_12/UART_0.app#//@connections.1"/>
+  <hwConnections href="APPS/UART/v4_1_12/UART_0.app#//@connections.18"/>
+  <hwConnections href="APPS/UART/v4_1_12/UART_0.app#//@connections.19"/>
+  <hwConnections href="APPS/UART/v4_1_12/UART_0.app#//@connections.20"/>
+  <hwConnections href="APPS/UART/v4_1_12/UART_0.app#//@connections.21"/>
   <hwConnections href="APPS/ETH_LWIP/v4_1_16/ETH_LWIP_0.app#//@connections.2"/>
   <hwConnections href="APPS/ETH_LWIP/v4_1_16/ETH_LWIP_0.app#//@connections.3"/>
   <hwConnections href="APPS/ETH_LWIP/v4_1_16/ETH_LWIP_0.app#//@connections.4"/>
@@ -358,20 +390,247 @@
   <hwConnections href="APPS/ETH_LWIP/v4_1_16/ETH_LWIP_0.app#//@connections.53"/>
   <hwConnections href="APPS/ETH_LWIP/v4_1_16/ETH_LWIP_0.app#//@connections.54"/>
   <hwConnections href="APPS/ETH_LWIP/v4_1_16/ETH_LWIP_0.app#//@connections.55"/>
-  <hwConnections href="APPS/GLOBAL_CCU4/v4_1_12/GLOBAL_CCU4_0.app#//@connections.0"/>
-  <hwConnections href="APPS/TIMER/v4_1_10/TIMER_0.app#//@connections.0"/>
-  <hwConnections href="APPS/TIMER/v4_1_10/TIMER_0.app#//@connections.2"/>
-  <hwConnections href="APPS/SPI_MASTER/v4_3_26/SPI_MASTER_0.app#//@connections.6"/>
-  <hwConnections href="APPS/SPI_MASTER/v4_3_26/SPI_MASTER_0.app#//@connections.4"/>
-  <hwConnections href="APPS/SPI_MASTER/v4_3_26/SPI_MASTER_0.app#//@connections.5"/>
-  <hwConnections href="APPS/SPI_MASTER/v4_3_26/SPI_MASTER_0.app#//@connections.1"/>
-  <hwConnections href="APPS/SPI_MASTER/v4_3_26/SPI_MASTER_0.app#//@connections.2"/>
-  <hwConnections href="APPS/SPI_MASTER/v4_3_26/SPI_MASTER_0.app#//@connections.0"/>
-  <hwConnections href="APPS/SPI_MASTER/v4_3_26/SPI_MASTER_0.app#//@connections.3"/>
-  <hwConnections href="APPS/UART/v4_1_12/UART_0.app#//@connections.0"/>
-  <hwConnections href="APPS/UART/v4_1_12/UART_0.app#//@connections.1"/>
-  <hwConnections href="APPS/UART/v4_1_12/UART_0.app#//@connections.18"/>
-  <hwConnections href="APPS/UART/v4_1_12/UART_0.app#//@connections.19"/>
-  <hwConnections href="APPS/UART/v4_1_12/UART_0.app#//@connections.20"/>
-  <hwConnections href="APPS/UART/v4_1_12/UART_0.app#//@connections.21"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_0.app#//@connections.120"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_0.app#//@connections.31"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_0.app#//@connections.57"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_0.app#//@connections.109"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_0.app#//@connections.5"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_0.app#//@connections.142"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_0.app#//@connections.131"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_0.app#//@connections.83"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_0.app#//@connections.170"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.0"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.1"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.2"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.8"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.10"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.11"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.12"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.13"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.15"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.16"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.17"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.18"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.20"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.21"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.22"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.23"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.25"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.26"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.27"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.28"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.34"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.36"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.37"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.38"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.39"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.41"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.42"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.43"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.44"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.46"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.47"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.48"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.49"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.51"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.52"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.53"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.54"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.60"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.62"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.63"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.64"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.65"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.67"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.68"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.69"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.70"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.72"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.73"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.74"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.75"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.77"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.78"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.79"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.80"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.86"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.88"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.89"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.90"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.91"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.93"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.94"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.95"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.96"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.98"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.99"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.100"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.101"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.103"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.104"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.105"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.106"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.112"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.114"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.115"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.116"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.117"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.123"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.125"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.126"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.127"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.128"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.134"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.136"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.137"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.138"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.139"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.145"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.147"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.148"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.149"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.150"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.151"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.152"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.153"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.154"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.155"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.156"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.157"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.158"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.159"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.160"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.161"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.162"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.163"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.164"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.165"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.166"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.167"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.0"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.1"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.2"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.8"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.10"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.11"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.12"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.13"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.15"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.16"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.17"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.18"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.20"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.21"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.22"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.23"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.25"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.26"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.27"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.28"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.34"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.36"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.37"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.38"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.39"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.41"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.42"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.43"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.44"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.46"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.47"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.48"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.49"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.51"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.52"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.53"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.54"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.60"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.62"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.63"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.64"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.65"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.67"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.68"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.69"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.70"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.72"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.73"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.74"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.75"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.77"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.78"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.79"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.80"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.86"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.88"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.89"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.90"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.91"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.93"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.94"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.95"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.96"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.98"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.99"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.100"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.101"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.103"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.104"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.105"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.106"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.112"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.114"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.115"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.116"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.117"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.123"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.125"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.126"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.127"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.128"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.134"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.136"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.137"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.138"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.139"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.145"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.147"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.148"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.149"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.150"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.151"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.152"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.153"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.154"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.155"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.156"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.157"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.158"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.159"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.160"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.161"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.162"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.163"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.164"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.165"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.166"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.167"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.142"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.109"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.57"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.120"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.31"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.5"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.131"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.83"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_1.app#//@connections.170"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.109"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.57"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.83"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.131"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.142"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.120"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.5"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.31"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_18/ADC_MEASUREMENT_ADV_2.app#//@connections.170"/>
 </ApplicationModel:ApplicationData>

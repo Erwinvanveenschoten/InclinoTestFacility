@@ -12,7 +12,7 @@
  * ISB selection configuration
  ***********************************************************/
 #define ISB_0_ENABLED 1
-#define	ISB_1_ENABLED 1
+#define	ISB_1_ENABLED 0
 #define	ISB_2_ENABLED 0
 #define ISB_3_ENABLED 0
 #define ISB_4_ENABLED 0

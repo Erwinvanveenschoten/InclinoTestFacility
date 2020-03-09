@@ -90,23 +90,64 @@
   <nodes xsi:type="ApplicationModel:AppNode">
     <resource xsi:type="ResourceModel:App" href="APPS/BUS_IO/v4_0_2/BUS_IO_1.app#/"/>
   </nodes>
+  <nodes xsi:type="ApplicationModel:AppNode">
+    <resource xsi:type="ResourceModel:App" href="APPS/GLOBAL_DMA/v4_0_8/GLOBAL_DMA_0.app#/"/>
+  </nodes>
+  <nodes xsi:type="ApplicationModel:PeripheralNode">
+    <resource xsi:type="ResourceModel:Peripheral" href="HW_RESOURCES/dlr/dlr_0.dd#/1"/>
+  </nodes>
+  <nodes xsi:type="ApplicationModel:PeripheralNode">
+    <resource xsi:type="ResourceModel:Peripheral" href="HW_RESOURCES/usic2/usic2_2.dd#/1"/>
+  </nodes>
+  <nodes xsi:type="ApplicationModel:PeripheralNode">
+    <resource xsi:type="ResourceModel:Peripheral" href="HW_RESOURCES/gpdma1/gpdma1_0.dd#/1"/>
+  </nodes>
+  <nodes xsi:type="ApplicationModel:PeripheralNode">
+    <resource xsi:type="ResourceModel:Peripheral" href="HW_RESOURCES/gpdma0/gpdma0_0.dd#/"/>
+  </nodes>
+  <nodes xsi:type="ApplicationModel:AppNode">
+    <resource xsi:type="ResourceModel:App" href="APPS/GLOBAL_CCU4/v4_1_12/GLOBAL_CCU4_0.app#/"/>
+  </nodes>
+  <nodes xsi:type="ApplicationModel:AppNode">
+    <resource xsi:type="ResourceModel:App" href="APPS/TIMER/v4_1_10/TIMER_0.app#/"/>
+  </nodes>
+  <nodes xsi:type="ApplicationModel:PeripheralNode">
+    <resource xsi:type="ResourceModel:Peripheral" href="HW_RESOURCES/ccu43/ccu43_3.dd#/1"/>
+  </nodes>
+  <nodes xsi:type="ApplicationModel:AppNode">
+    <resource xsi:type="ResourceModel:App" href="APPS/INTERRUPT/v4_0_8/INTERRUPT_0.app#/"/>
+  </nodes>
+  <nodes xsi:type="ApplicationModel:AppNode">
+    <resource xsi:type="ResourceModel:App" href="APPS/INTERRUPT/v4_0_8/INTERRUPT_1.app#/"/>
+  </nodes>
+  <nodes xsi:type="ApplicationModel:AppNode">
+    <resource xsi:type="ResourceModel:App" href="APPS/INTERRUPT/v4_0_8/INTERRUPT_2.app#/"/>
+  </nodes>
+  <nodes xsi:type="ApplicationModel:AppNode">
+    <resource xsi:type="ResourceModel:App" href="APPS/INTERRUPT/v4_0_8/INTERRUPT_3.app#/"/>
+  </nodes>
   <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.1" target="//@nodes.2"/>
   <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.1" target="//@nodes.0"/>
   <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.3" target="//@nodes.0"/>
   <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.3" target="//@nodes.1"/>
   <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.12" target="//@nodes.2"/>
-  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.12" target="//@nodes.0"/>
   <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.17" target="//@nodes.2"/>
   <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.18" target="//@nodes.17"/>
   <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.20" target="//@nodes.17"/>
   <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.21" target="//@nodes.17"/>
-  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.18" target="//@nodes.0"/>
   <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.23" target="//@nodes.2"/>
   <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.23" target="//@nodes.0"/>
   <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.25" target="//@nodes.2"/>
-  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.25" target="//@nodes.0"/>
   <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.27" target="//@nodes.2"/>
-  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.27" target="//@nodes.0"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.12" target="//@nodes.30"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.30" target="//@nodes.0"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.25" target="//@nodes.30"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.35" target="//@nodes.2"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.36" target="//@nodes.35"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.38" target="//@nodes.0"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.39" target="//@nodes.0"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.40" target="//@nodes.0"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.41" target="//@nodes.0"/>
   <hwConnections href="APPS/CPU_CTRL_XMC4/v4_0_14/CPU_CTRL_XMC4_0.app#//@connections.7"/>
   <hwConnections href="APPS/CPU_CTRL_XMC4/v4_0_14/CPU_CTRL_XMC4_0.app#//@connections.8"/>
   <hwConnections href="APPS/CPU_CTRL_XMC4/v4_0_14/CPU_CTRL_XMC4_0.app#//@connections.9"/>
@@ -175,10 +216,6 @@
   <hwConnections href="APPS/SPI_MASTER/v4_3_22/SPI_MASTER_0.app#//@connections.7"/>
   <hwConnections href="APPS/SPI_MASTER/v4_3_22/SPI_MASTER_0.app#//@connections.9"/>
   <hwConnections href="APPS/SPI_MASTER/v4_3_22/SPI_MASTER_0.app#//@connections.14"/>
-  <hwConnections href="APPS/SPI_MASTER/v4_3_22/SPI_MASTER_0.app#//@connections.15"/>
-  <hwConnections href="APPS/SPI_MASTER/v4_3_22/SPI_MASTER_0.app#//@connections.24"/>
-  <hwConnections href="APPS/SPI_MASTER/v4_3_22/SPI_MASTER_0.app#//@connections.27"/>
-  <hwConnections href="APPS/SPI_MASTER/v4_3_22/SPI_MASTER_0.app#//@connections.28"/>
   <hwConnections href="APPS/SPI_MASTER/v4_3_22/SPI_MASTER_0.app#//@connections.30"/>
   <hwConnections href="APPS/SPI_MASTER/v4_3_22/SPI_MASTER_0.app#//@connections.31"/>
   <hwConnections href="APPS/SPI_MASTER/v4_3_22/SPI_MASTER_0.app#//@connections.32"/>
@@ -553,7 +590,6 @@
   <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_14/ADC_MEASUREMENT_ADV_2.app#//@connections.5"/>
   <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_14/ADC_MEASUREMENT_ADV_2.app#//@connections.142"/>
   <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_14/ADC_MEASUREMENT_ADV_2.app#//@connections.57"/>
-  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_14/ADC_MEASUREMENT_ADV_0.app#//@connections.169"/>
   <hwConnections href="APPS/SPI_MASTER/v4_3_22/SPI_MASTER_1.app#//@connections.7"/>
   <hwConnections href="APPS/SPI_MASTER/v4_3_22/SPI_MASTER_1.app#//@connections.9"/>
   <hwConnections href="APPS/SPI_MASTER/v4_3_22/SPI_MASTER_1.app#//@connections.14"/>
@@ -591,9 +627,6 @@
   <hwConnections href="APPS/SPI_MASTER/v4_3_22/SPI_MASTER_2.app#//@connections.9"/>
   <hwConnections href="APPS/SPI_MASTER/v4_3_22/SPI_MASTER_2.app#//@connections.14"/>
   <hwConnections href="APPS/SPI_MASTER/v4_3_22/SPI_MASTER_2.app#//@connections.15"/>
-  <hwConnections href="APPS/SPI_MASTER/v4_3_22/SPI_MASTER_2.app#//@connections.24"/>
-  <hwConnections href="APPS/SPI_MASTER/v4_3_22/SPI_MASTER_2.app#//@connections.27"/>
-  <hwConnections href="APPS/SPI_MASTER/v4_3_22/SPI_MASTER_2.app#//@connections.28"/>
   <hwConnections href="APPS/SPI_MASTER/v4_3_22/SPI_MASTER_2.app#//@connections.30"/>
   <hwConnections href="APPS/SPI_MASTER/v4_3_22/SPI_MASTER_2.app#//@connections.31"/>
   <hwConnections href="APPS/SPI_MASTER/v4_3_22/SPI_MASTER_2.app#//@connections.32"/>
@@ -622,9 +655,6 @@
   <hwConnections href="APPS/SPI_MASTER/v4_3_22/SPI_MASTER_2.app#//@connections.55"/>
   <hwConnections href="APPS/UART/v4_1_10/UART_0.app#//@connections.0"/>
   <hwConnections href="APPS/UART/v4_1_10/UART_0.app#//@connections.1"/>
-  <hwConnections href="APPS/UART/v4_1_10/UART_0.app#//@connections.7"/>
-  <hwConnections href="APPS/UART/v4_1_10/UART_0.app#//@connections.8"/>
-  <hwConnections href="APPS/UART/v4_1_10/UART_0.app#//@connections.9"/>
   <hwConnections href="APPS/UART/v4_1_10/UART_0.app#//@connections.18"/>
   <hwConnections href="APPS/UART/v4_1_10/UART_0.app#//@connections.19"/>
   <hwConnections href="APPS/UART/v4_1_10/UART_0.app#//@connections.20"/>
@@ -693,12 +723,33 @@
   <hwConnections href="APPS/BUS_IO/v4_0_2/BUS_IO_1.app#//@connections.29"/>
   <hwConnections href="APPS/BUS_IO/v4_0_2/BUS_IO_1.app#//@connections.30"/>
   <hwConnections href="APPS/BUS_IO/v4_0_2/BUS_IO_1.app#//@connections.31"/>
-  <hwConnections href="APPS/ETH_LWIP/v4_1_6/ETH_LWIP_0.app#//@connections.6"/>
-  <hwConnections href="APPS/ETH_LWIP/v4_1_6/ETH_LWIP_0.app#//@connections.0"/>
+  <hwConnections href="APPS/SPI_MASTER/v4_3_22/SPI_MASTER_0.app#//@connections.6"/>
+  <hwConnections href="APPS/SPI_MASTER/v4_3_22/SPI_MASTER_0.app#//@connections.4"/>
+  <hwConnections href="APPS/SPI_MASTER/v4_3_22/SPI_MASTER_0.app#//@connections.5"/>
+  <hwConnections href="APPS/SPI_MASTER/v4_3_22/SPI_MASTER_0.app#//@connections.3"/>
+  <hwConnections href="APPS/SPI_MASTER/v4_3_22/SPI_MASTER_0.app#//@connections.0"/>
+  <hwConnections href="APPS/SPI_MASTER/v4_3_22/SPI_MASTER_0.app#//@connections.2"/>
+  <hwConnections href="APPS/SPI_MASTER/v4_3_22/SPI_MASTER_0.app#//@connections.1"/>
+  <hwConnections href="APPS/ETH_LWIP/v4_1_6/ETH_LWIP_0.app#//@connections.12"/>
+  <hwConnections href="APPS/ETH_LWIP/v4_1_6/ETH_LWIP_0.app#//@connections.14"/>
   <hwConnections href="APPS/ETH_LWIP/v4_1_6/ETH_LWIP_0.app#//@connections.1"/>
   <hwConnections href="APPS/ETH_LWIP/v4_1_6/ETH_LWIP_0.app#//@connections.13"/>
+  <hwConnections href="APPS/ETH_LWIP/v4_1_6/ETH_LWIP_0.app#//@connections.0"/>
   <hwConnections href="APPS/ETH_LWIP/v4_1_6/ETH_LWIP_0.app#//@connections.7"/>
-  <hwConnections href="APPS/ETH_LWIP/v4_1_6/ETH_LWIP_0.app#//@connections.14"/>
-  <hwConnections href="APPS/ETH_LWIP/v4_1_6/ETH_LWIP_0.app#//@connections.12"/>
   <hwConnections href="APPS/ETH_LWIP/v4_1_6/ETH_LWIP_0.app#//@connections.9"/>
+  <hwConnections href="APPS/ETH_LWIP/v4_1_6/ETH_LWIP_0.app#//@connections.6"/>
+  <hwConnections href="APPS/SPI_MASTER/v4_3_22/SPI_MASTER_0.app#//@connections.15"/>
+  <hwConnections href="APPS/SPI_MASTER/v4_3_22/SPI_MASTER_2.app#//@connections.6"/>
+  <hwConnections href="APPS/SPI_MASTER/v4_3_22/SPI_MASTER_2.app#//@connections.5"/>
+  <hwConnections href="APPS/SPI_MASTER/v4_3_22/SPI_MASTER_2.app#//@connections.4"/>
+  <hwConnections href="APPS/SPI_MASTER/v4_3_22/SPI_MASTER_2.app#//@connections.3"/>
+  <hwConnections href="APPS/SPI_MASTER/v4_3_22/SPI_MASTER_2.app#//@connections.1"/>
+  <hwConnections href="APPS/SPI_MASTER/v4_3_22/SPI_MASTER_2.app#//@connections.0"/>
+  <hwConnections href="APPS/SPI_MASTER/v4_3_22/SPI_MASTER_2.app#//@connections.2"/>
+  <hwConnections href="APPS/GLOBAL_CCU4/v4_1_12/GLOBAL_CCU4_0.app#//@connections.0"/>
+  <hwConnections href="APPS/TIMER/v4_1_10/TIMER_0.app#//@connections.0"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_14/ADC_MEASUREMENT_ADV_0.app#//@connections.170"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_14/ADC_MEASUREMENT_ADV_1.app#//@connections.170"/>
+  <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_14/ADC_MEASUREMENT_ADV_2.app#//@connections.170"/>
+  <hwConnections href="APPS/TIMER/v4_1_10/TIMER_0.app#//@connections.2"/>
 </ApplicationModel:ApplicationData>

@@ -212,9 +212,7 @@
   <requiredApps URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/appres_global_adc" requiredAppName="GLOBAL_ADC" requiringMode="SHARABLE">
     <downwardMapList xsi:type="ResourceModel:App" href="../../GLOBAL_ADC/v4_0_18/GLOBAL_ADC_0.app#/"/>
   </requiredApps>
-  <requiredApps URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/appres_cpu" requiredAppName="CPU_CTRL_XMC4" requiringMode="SHARABLE">
-    <downwardMapList xsi:type="ResourceModel:App" href="../../CPU_CTRL_XMC4/v4_0_14/CPU_CTRL_XMC4_0.app#/"/>
-  </requiredApps>
+  <requiredApps URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/appres_cpu" requiredAppName="CPU_CTRL_XMC4" required="false" requiringMode="SHARABLE"/>
   <hwResources name="Channel_A Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_channel_pin#0" resourceGroupUri="port/p/*/pad/*" mResGrpUri="port/p/*/pad/*">
     <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/port15/port15_15.dd#//@provided.19"/>
   </hwResources>
@@ -251,40 +249,40 @@
   <hwResources name="Channel_H Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_channel_pin#19" resourceGroupUri="port/p/*/pad/*" mResGrpUri="port/p/*/pad/*">
     <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/port15/port15_15.dd#//@provided.0"/>
   </hwResources>
-  <hwResources name="Channel_A Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#0" resourceGroupUri="devicepackage/0/*" mResGrpUri="devicepackage/0/*">
+  <hwResources name="Channel_A Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#0" resourceGroupUri="devicepackage/0/50" constraintType="GLOBAL_RESOURCE" mResGrpUri="devicepackage/0/*">
     <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/DEVICEPACKAGE/DEVICEPACKAGE_0.dd#//@provided.19"/>
   </hwResources>
   <hwResources name="Channel_A_sync_slaveA Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#1" resourceGroupUri="" required="false" mResGrpUri="devicepackage/0/*"/>
   <hwResources name="Channel_A_sync_slaveB Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#2" resourceGroupUri="" required="false" mResGrpUri="devicepackage/0/*"/>
   <hwResources name="Channel_A_sync_slaveC Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#3" resourceGroupUri="" required="false" mResGrpUri="devicepackage/0/*"/>
-  <hwResources name="Channel_B Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#4" resourceGroupUri="devicepackage/0/*" mResGrpUri="devicepackage/0/*">
+  <hwResources name="Channel_B Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#4" resourceGroupUri="devicepackage/0/51" constraintType="GLOBAL_RESOURCE" mResGrpUri="devicepackage/0/*">
     <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/DEVICEPACKAGE/DEVICEPACKAGE_0.dd#//@provided.18"/>
   </hwResources>
   <hwResources name="Channel_B_sync_slaveA Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#5" resourceGroupUri="" required="false" mResGrpUri="devicepackage/0/*"/>
   <hwResources name="Channel_B_sync_slaveB Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#6" resourceGroupUri="" required="false" mResGrpUri="devicepackage/0/*"/>
   <hwResources name="Channel_B_sync_slaveC Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#7" resourceGroupUri="" required="false" mResGrpUri="devicepackage/0/*"/>
-  <hwResources name="Channel_C Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#8" resourceGroupUri="devicepackage/0/*" mResGrpUri="devicepackage/0/*">
+  <hwResources name="Channel_C Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#8" resourceGroupUri="devicepackage/0/52" constraintType="GLOBAL_RESOURCE" mResGrpUri="devicepackage/0/*">
     <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/DEVICEPACKAGE/DEVICEPACKAGE_0.dd#//@provided.16"/>
   </hwResources>
   <hwResources name="Channel_C_sync_slaveA Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#9" resourceGroupUri="" required="false" mResGrpUri="devicepackage/0/*"/>
   <hwResources name="Channel_C_sync_slaveB Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#10" resourceGroupUri="" required="false" mResGrpUri="devicepackage/0/*"/>
   <hwResources name="Channel_C_sync_slaveC Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#11" resourceGroupUri="" required="false" mResGrpUri="devicepackage/0/*"/>
-  <hwResources name="Channel_D Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#12" resourceGroupUri="devicepackage/0/*" mResGrpUri="devicepackage/0/*">
+  <hwResources name="Channel_D Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#12" resourceGroupUri="devicepackage/0/49" constraintType="GLOBAL_RESOURCE" mResGrpUri="devicepackage/0/*">
     <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/DEVICEPACKAGE/DEVICEPACKAGE_0.dd#//@provided.21"/>
   </hwResources>
   <hwResources name="Channel_D_sync_slaveA Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#13" resourceGroupUri="" required="false" mResGrpUri="devicepackage/0/*"/>
   <hwResources name="Channel_D_sync_slaveB Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#14" resourceGroupUri="" required="false" mResGrpUri="devicepackage/0/*"/>
   <hwResources name="Channel_D_sync_slaveC Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#15" resourceGroupUri="" required="false" mResGrpUri="devicepackage/0/*"/>
-  <hwResources name="Channel_E Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#16" resourceGroupUri="devicepackage/0/*" mResGrpUri="devicepackage/0/*">
+  <hwResources name="Channel_E Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#16" resourceGroupUri="devicepackage/0/44" constraintType="GLOBAL_RESOURCE" mResGrpUri="devicepackage/0/*">
     <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/DEVICEPACKAGE/DEVICEPACKAGE_0.dd#//@provided.22"/>
   </hwResources>
-  <hwResources name="Channel_F Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#17" resourceGroupUri="devicepackage/0/*" mResGrpUri="devicepackage/0/*">
+  <hwResources name="Channel_F Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#17" resourceGroupUri="devicepackage/0/43" constraintType="GLOBAL_RESOURCE" mResGrpUri="devicepackage/0/*">
     <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/DEVICEPACKAGE/DEVICEPACKAGE_0.dd#//@provided.23"/>
   </hwResources>
-  <hwResources name="Channel_G Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#18" resourceGroupUri="devicepackage/0/*" mResGrpUri="devicepackage/0/*">
+  <hwResources name="Channel_G Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#18" resourceGroupUri="devicepackage/0/53" constraintType="GLOBAL_RESOURCE" mResGrpUri="devicepackage/0/*">
     <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/DEVICEPACKAGE/DEVICEPACKAGE_0.dd#//@provided.20"/>
   </hwResources>
-  <hwResources name="Channel_H Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#19" resourceGroupUri="devicepackage/0/*" mResGrpUri="devicepackage/0/*">
+  <hwResources name="Channel_H Pin" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_pin_pad#19" resourceGroupUri="devicepackage/0/54" constraintType="GLOBAL_RESOURCE" mResGrpUri="devicepackage/0/*">
     <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/DEVICEPACKAGE/DEVICEPACKAGE_0.dd#//@provided.0"/>
   </hwResources>
   <hwResources name="Channel_A" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_channels#0" resourceGroupUri="peripheral/vadc/0/group/*/ch/sv0" solverVariable="true" mResGrpUri="peripheral/vadc/0/group/*/ch/sv0">
@@ -477,7 +475,7 @@
     </solverVarMap>
   </hwResources>
   <hwResources name="Channel_A Result" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_result_reg#0" resourceGroupUri="peripheral/vadc/0/group/sv20/sv21/sv22" solverVariable="true" mResGrpUri="peripheral/vadc/0/group/sv20/sv21/sv22">
-    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/vadc/vadc_0.dd#//@provided.51"/>
+    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/vadc/vadc_0.dd#//@provided.99"/>
     <solverVarMap index="4">
       <value variableName="sv20" solverValue="3"/>
     </solverVarMap>
@@ -485,7 +483,7 @@
       <value variableName="sv21" solverValue="result"/>
     </solverVarMap>
     <solverVarMap index="6">
-      <value variableName="sv22" solverValue="4"/>
+      <value variableName="sv22" solverValue="9"/>
     </solverVarMap>
     <solverVarMap index="4">
       <value variableName="sv20" solverValue="3"/>
@@ -494,11 +492,11 @@
       <value variableName="sv21" solverValue="result"/>
     </solverVarMap>
     <solverVarMap index="6">
-      <value variableName="sv22" solverValue="4"/>
+      <value variableName="sv22" solverValue="9"/>
     </solverVarMap>
   </hwResources>
   <hwResources name="Channel_B Result" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_result_reg#1" resourceGroupUri="peripheral/vadc/0/group/sv23/sv24/sv25" solverVariable="true" mResGrpUri="peripheral/vadc/0/group/sv23/sv24/sv25">
-    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/vadc/vadc_0.dd#//@provided.99"/>
+    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/vadc/vadc_0.dd#//@provided.102"/>
     <solverVarMap index="4">
       <value variableName="sv23" solverValue="3"/>
     </solverVarMap>
@@ -506,16 +504,7 @@
       <value variableName="sv24" solverValue="result"/>
     </solverVarMap>
     <solverVarMap index="6">
-      <value variableName="sv25" solverValue="9"/>
-    </solverVarMap>
-    <solverVarMap index="4">
-      <value variableName="sv23" solverValue="3"/>
-    </solverVarMap>
-    <solverVarMap index="5">
-      <value variableName="sv24" solverValue="result"/>
-    </solverVarMap>
-    <solverVarMap index="6">
-      <value variableName="sv25" solverValue="9"/>
+      <value variableName="sv25" solverValue="8"/>
     </solverVarMap>
     <solverVarMap index="4">
       <value variableName="sv23" solverValue="3"/>
@@ -524,11 +513,20 @@
       <value variableName="sv24" solverValue="result"/>
     </solverVarMap>
     <solverVarMap index="6">
-      <value variableName="sv25" solverValue="9"/>
+      <value variableName="sv25" solverValue="8"/>
+    </solverVarMap>
+    <solverVarMap index="4">
+      <value variableName="sv23" solverValue="3"/>
+    </solverVarMap>
+    <solverVarMap index="5">
+      <value variableName="sv24" solverValue="result"/>
+    </solverVarMap>
+    <solverVarMap index="6">
+      <value variableName="sv25" solverValue="8"/>
     </solverVarMap>
   </hwResources>
   <hwResources name="Channel_C Result" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_result_reg#2" resourceGroupUri="peripheral/vadc/0/group/sv26/sv27/sv28" solverVariable="true" mResGrpUri="peripheral/vadc/0/group/sv26/sv27/sv28">
-    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/vadc/vadc_0.dd#//@provided.102"/>
+    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/vadc/vadc_0.dd#//@provided.104"/>
     <solverVarMap index="4">
       <value variableName="sv26" solverValue="3"/>
     </solverVarMap>
@@ -536,16 +534,7 @@
       <value variableName="sv27" solverValue="result"/>
     </solverVarMap>
     <solverVarMap index="6">
-      <value variableName="sv28" solverValue="8"/>
-    </solverVarMap>
-    <solverVarMap index="4">
-      <value variableName="sv26" solverValue="3"/>
-    </solverVarMap>
-    <solverVarMap index="5">
-      <value variableName="sv27" solverValue="result"/>
-    </solverVarMap>
-    <solverVarMap index="6">
-      <value variableName="sv28" solverValue="8"/>
+      <value variableName="sv28" solverValue="5"/>
     </solverVarMap>
     <solverVarMap index="4">
       <value variableName="sv26" solverValue="3"/>
@@ -554,11 +543,20 @@
       <value variableName="sv27" solverValue="result"/>
     </solverVarMap>
     <solverVarMap index="6">
-      <value variableName="sv28" solverValue="8"/>
+      <value variableName="sv28" solverValue="5"/>
+    </solverVarMap>
+    <solverVarMap index="4">
+      <value variableName="sv26" solverValue="3"/>
+    </solverVarMap>
+    <solverVarMap index="5">
+      <value variableName="sv27" solverValue="result"/>
+    </solverVarMap>
+    <solverVarMap index="6">
+      <value variableName="sv28" solverValue="5"/>
     </solverVarMap>
   </hwResources>
   <hwResources name="Channel_D Result" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_result_reg#3" resourceGroupUri="peripheral/vadc/0/group/sv29/sv30/sv31" solverVariable="true" mResGrpUri="peripheral/vadc/0/group/sv29/sv30/sv31">
-    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/vadc/vadc_0.dd#//@provided.104"/>
+    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/vadc/vadc_0.dd#//@provided.106"/>
     <solverVarMap index="4">
       <value variableName="sv29" solverValue="3"/>
     </solverVarMap>
@@ -566,16 +564,7 @@
       <value variableName="sv30" solverValue="result"/>
     </solverVarMap>
     <solverVarMap index="6">
-      <value variableName="sv31" solverValue="5"/>
-    </solverVarMap>
-    <solverVarMap index="4">
-      <value variableName="sv29" solverValue="3"/>
-    </solverVarMap>
-    <solverVarMap index="5">
-      <value variableName="sv30" solverValue="result"/>
-    </solverVarMap>
-    <solverVarMap index="6">
-      <value variableName="sv31" solverValue="5"/>
+      <value variableName="sv31" solverValue="6"/>
     </solverVarMap>
     <solverVarMap index="4">
       <value variableName="sv29" solverValue="3"/>
@@ -584,41 +573,50 @@
       <value variableName="sv30" solverValue="result"/>
     </solverVarMap>
     <solverVarMap index="6">
-      <value variableName="sv31" solverValue="5"/>
+      <value variableName="sv31" solverValue="6"/>
+    </solverVarMap>
+    <solverVarMap index="4">
+      <value variableName="sv29" solverValue="3"/>
+    </solverVarMap>
+    <solverVarMap index="5">
+      <value variableName="sv30" solverValue="result"/>
+    </solverVarMap>
+    <solverVarMap index="6">
+      <value variableName="sv31" solverValue="6"/>
     </solverVarMap>
   </hwResources>
   <hwResources name="Channel_E Result" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_result_reg#4" resourceGroupUri="peripheral/vadc/0/group/sv32/sv33/sv34" solverVariable="true" mResGrpUri="peripheral/vadc/0/group/sv32/sv33/sv34">
-    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/vadc/vadc_0.dd#//@provided.106"/>
+    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/vadc/vadc_0.dd#//@provided.108"/>
     <solverVarMap index="4">
       <value variableName="sv32" solverValue="3"/>
     </solverVarMap>
     <solverVarMap index="5">
-      <value variableName="sv33" solverValue="result"/>
+      <value variableName="sv33" solverValue="result_adv"/>
     </solverVarMap>
     <solverVarMap index="6">
-      <value variableName="sv34" solverValue="6"/>
-    </solverVarMap>
-    <solverVarMap index="4">
-      <value variableName="sv32" solverValue="3"/>
-    </solverVarMap>
-    <solverVarMap index="5">
-      <value variableName="sv33" solverValue="result"/>
-    </solverVarMap>
-    <solverVarMap index="6">
-      <value variableName="sv34" solverValue="6"/>
+      <value variableName="sv34" solverValue="0"/>
     </solverVarMap>
     <solverVarMap index="4">
       <value variableName="sv32" solverValue="3"/>
     </solverVarMap>
     <solverVarMap index="5">
-      <value variableName="sv33" solverValue="result"/>
+      <value variableName="sv33" solverValue="result_adv"/>
     </solverVarMap>
     <solverVarMap index="6">
-      <value variableName="sv34" solverValue="6"/>
+      <value variableName="sv34" solverValue="0"/>
+    </solverVarMap>
+    <solverVarMap index="4">
+      <value variableName="sv32" solverValue="3"/>
+    </solverVarMap>
+    <solverVarMap index="5">
+      <value variableName="sv33" solverValue="result_adv"/>
+    </solverVarMap>
+    <solverVarMap index="6">
+      <value variableName="sv34" solverValue="0"/>
     </solverVarMap>
   </hwResources>
   <hwResources name="Channel_F Result" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_result_reg#5" resourceGroupUri="peripheral/vadc/0/group/sv35/sv36/sv37" solverVariable="true" mResGrpUri="peripheral/vadc/0/group/sv35/sv36/sv37">
-    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/vadc/vadc_0.dd#//@provided.108"/>
+    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/vadc/vadc_0.dd#//@provided.112"/>
     <solverVarMap index="4">
       <value variableName="sv35" solverValue="3"/>
     </solverVarMap>
@@ -626,16 +624,7 @@
       <value variableName="sv36" solverValue="result_adv"/>
     </solverVarMap>
     <solverVarMap index="6">
-      <value variableName="sv37" solverValue="0"/>
-    </solverVarMap>
-    <solverVarMap index="4">
-      <value variableName="sv35" solverValue="3"/>
-    </solverVarMap>
-    <solverVarMap index="5">
-      <value variableName="sv36" solverValue="result_adv"/>
-    </solverVarMap>
-    <solverVarMap index="6">
-      <value variableName="sv37" solverValue="0"/>
+      <value variableName="sv37" solverValue="3"/>
     </solverVarMap>
     <solverVarMap index="4">
       <value variableName="sv35" solverValue="3"/>
@@ -644,11 +633,20 @@
       <value variableName="sv36" solverValue="result_adv"/>
     </solverVarMap>
     <solverVarMap index="6">
-      <value variableName="sv37" solverValue="0"/>
+      <value variableName="sv37" solverValue="3"/>
+    </solverVarMap>
+    <solverVarMap index="4">
+      <value variableName="sv35" solverValue="3"/>
+    </solverVarMap>
+    <solverVarMap index="5">
+      <value variableName="sv36" solverValue="result_adv"/>
+    </solverVarMap>
+    <solverVarMap index="6">
+      <value variableName="sv37" solverValue="3"/>
     </solverVarMap>
   </hwResources>
   <hwResources name="Channel_G Result" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_result_reg#6" resourceGroupUri="peripheral/vadc/0/group/sv38/sv39/sv40" solverVariable="true" mResGrpUri="peripheral/vadc/0/group/sv38/sv39/sv40">
-    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/vadc/vadc_0.dd#//@provided.112"/>
+    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/vadc/vadc_0.dd#//@provided.110"/>
     <solverVarMap index="4">
       <value variableName="sv38" solverValue="3"/>
     </solverVarMap>
@@ -656,16 +654,7 @@
       <value variableName="sv39" solverValue="result_adv"/>
     </solverVarMap>
     <solverVarMap index="6">
-      <value variableName="sv40" solverValue="3"/>
-    </solverVarMap>
-    <solverVarMap index="4">
-      <value variableName="sv38" solverValue="3"/>
-    </solverVarMap>
-    <solverVarMap index="5">
-      <value variableName="sv39" solverValue="result_adv"/>
-    </solverVarMap>
-    <solverVarMap index="6">
-      <value variableName="sv40" solverValue="3"/>
+      <value variableName="sv40" solverValue="1"/>
     </solverVarMap>
     <solverVarMap index="4">
       <value variableName="sv38" solverValue="3"/>
@@ -674,37 +663,46 @@
       <value variableName="sv39" solverValue="result_adv"/>
     </solverVarMap>
     <solverVarMap index="6">
-      <value variableName="sv40" solverValue="3"/>
+      <value variableName="sv40" solverValue="1"/>
+    </solverVarMap>
+    <solverVarMap index="4">
+      <value variableName="sv38" solverValue="3"/>
+    </solverVarMap>
+    <solverVarMap index="5">
+      <value variableName="sv39" solverValue="result_adv"/>
+    </solverVarMap>
+    <solverVarMap index="6">
+      <value variableName="sv40" solverValue="1"/>
     </solverVarMap>
   </hwResources>
   <hwResources name="Channel_H Result" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_result_reg#7" resourceGroupUri="peripheral/vadc/0/group/sv41/sv42/sv43" solverVariable="true" mResGrpUri="peripheral/vadc/0/group/sv41/sv42/sv43">
-    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/vadc/vadc_0.dd#//@provided.110"/>
+    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/vadc/vadc_0.dd#//@provided.51"/>
     <solverVarMap index="4">
       <value variableName="sv41" solverValue="3"/>
     </solverVarMap>
     <solverVarMap index="5">
-      <value variableName="sv42" solverValue="result_adv"/>
+      <value variableName="sv42" solverValue="result"/>
     </solverVarMap>
     <solverVarMap index="6">
-      <value variableName="sv43" solverValue="1"/>
-    </solverVarMap>
-    <solverVarMap index="4">
-      <value variableName="sv41" solverValue="3"/>
-    </solverVarMap>
-    <solverVarMap index="5">
-      <value variableName="sv42" solverValue="result_adv"/>
-    </solverVarMap>
-    <solverVarMap index="6">
-      <value variableName="sv43" solverValue="1"/>
+      <value variableName="sv43" solverValue="4"/>
     </solverVarMap>
     <solverVarMap index="4">
       <value variableName="sv41" solverValue="3"/>
     </solverVarMap>
     <solverVarMap index="5">
-      <value variableName="sv42" solverValue="result_adv"/>
+      <value variableName="sv42" solverValue="result"/>
     </solverVarMap>
     <solverVarMap index="6">
-      <value variableName="sv43" solverValue="1"/>
+      <value variableName="sv43" solverValue="4"/>
+    </solverVarMap>
+    <solverVarMap index="4">
+      <value variableName="sv41" solverValue="3"/>
+    </solverVarMap>
+    <solverVarMap index="5">
+      <value variableName="sv42" solverValue="result"/>
+    </solverVarMap>
+    <solverVarMap index="6">
+      <value variableName="sv43" solverValue="4"/>
     </solverVarMap>
   </hwResources>
   <hwResources name="Channel_A Result" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_result_reg_fifo_sync#0" resourceGroupUri="" required="false" solverVariable="true" mResGrpUri="peripheral/vadc/0/group/sv20/sv21/sv44">
@@ -7146,9 +7144,7 @@
   <hwResources name="Input Class" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/hwres_vadc_inputclass" resourceGroupUri="peripheral/vadc/*/group/*/class/*" mResGrpUri="peripheral/vadc/*/group/*/class/*">
     <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/vadc/vadc_0.dd#//@provided.54"/>
   </hwResources>
-  <hwResources name="Source Event Interrupt" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/hwres_nvicnode_srcevt" resourceGroupUri="peripheral/cpu/0/nvic/interrupt/*" mResGrpUri="peripheral/cpu/0/nvic/interrupt/*">
-    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/cpu/cpu_0.dd#//@provided.15"/>
-  </hwResources>
+  <hwResources name="Source Event Interrupt" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/hwres_nvicnode_srcevt" resourceGroupUri="" required="false" mResGrpUri="peripheral/cpu/0/nvic/interrupt/*"/>
   <hwResources name="Sync Slave Input Class" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/hwres_adc_adv_measurement_sync_slave_iclass" resourceGroupUri="" required="false" mResGrpUri="peripheral/vadc/0/class/1"/>
   <hwResources name="Sync Master" URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/rarray_adc_adv_measurement_sync_resource#0" resourceGroupUri="" required="false" solverVariable="true" mResGrpUri="peripheral/vadc/0/group/sv688/sync">
     <solverVarMap index="4">
@@ -7357,5 +7353,9 @@
     <srcVirtualSignal href="../../GLOBAL_ADC/v4_0_18/GLOBAL_ADC_0.app#//@virtualSignals.0"/>
   </connections>
   <connections URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/vs_adc_measurement_adv_scan_sourceevent/http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/vs_adc_measurement_adv_nvic_src" systemDefined="true" sourceSignal="event_scan_source" targetSignal="sr_interrupt_signal" required="false" srcVirtualSignal="//@virtualSignals.17" targetVirtualSignal="//@virtualSignals.0"/>
-  <connections URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/vs_adc_measurement_adv_queue_sourceevent/http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/vs_adc_measurement_adv_nvic_src" systemDefined="true" sourceSignal="event_queue_source" targetSignal="sr_interrupt_signal" srcVirtualSignal="//@virtualSignals.9" targetVirtualSignal="//@virtualSignals.0"/>
+  <connections URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/vs_adc_measurement_adv_queue_sourceevent/http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/vs_adc_measurement_adv_nvic_src" systemDefined="true" sourceSignal="event_queue_source" targetSignal="sr_interrupt_signal" required="false" srcVirtualSignal="//@virtualSignals.9" targetVirtualSignal="//@virtualSignals.0"/>
+  <connections URI="http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/http://resources/4.0.14/app/ADC_MEASUREMENT_ADV/0/vs_adc_adv_measurement_result_evt_7/http://resources/4.0.8/app/INTERRUPT/1/vs_nvic_signal_in" sourceSignal="event_res_Channel_H" targetSignal="sr_irq" srcVirtualSignal="//@virtualSignals.157">
+    <downwardMapList xsi:type="ResourceModel:VirtualSignal" href="../../INTERRUPT/v4_0_8/INTERRUPT_1.app#//@virtualSignals.0"/>
+    <targetVirtualSignal href="../../INTERRUPT/v4_0_8/INTERRUPT_1.app#//@virtualSignals.0"/>
+  </connections>
 </ResourceModel:App>

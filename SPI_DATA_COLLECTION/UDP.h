@@ -1,3 +1,7 @@
+#define ENABLE_UDP
+
+#ifdef ENABLE_UDP
+
 #ifndef UDP_H_
 #define UDP_H_
 
@@ -43,18 +47,13 @@ typedef struct
 	uint16_t pointDistance[4000];
 } points;*/
 
-typedef struct message
-{
-	uint32_t data;
-	uint8_t data_id;
-	uint8_t ic_id;
-}MESSAGE_t;
-
 void udp_initialize();
-void udp_fillBuffer(uint16_t bufferSize, MESSAGE_t* po, uint8_t packetNr, uint8_t totalPackets);
-err_t udp_printStruct(MESSAGE_t *po);
+void udp_fillBuffer(uint16_t bufferSize, void * po, uint8_t packetNr, uint8_t totalPackets);
+err_t udp_printStruct(void * po, uint32_t size);
 void udp_receive();
 
 
+
+#endif
 
 #endif
