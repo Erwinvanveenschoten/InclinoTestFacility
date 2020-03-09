@@ -674,7 +674,7 @@ SPI_MASTER_GPIO_CONFIG_t SPI_MASTER_2_MOSI_Config =
   {
     .mode = XMC_GPIO_MODE_OUTPUT_PUSH_PULL_ALT1,
     .output_level = XMC_GPIO_OUTPUT_LEVEL_HIGH,
-    .output_strength = XMC_GPIO_OUTPUT_STRENGTH_STRONG_MEDIUM_EDGE
+    .output_strength = XMC_GPIO_OUTPUT_STRENGTH_MEDIUM
   },
   .hw_control = XMC_GPIO_HWCTRL_DISABLED
 };
@@ -707,7 +707,7 @@ const SPI_MASTER_GPIO_CONFIG_t SPI_MASTER_2_SCLKOUT_Config =
   {
     .mode = XMC_GPIO_MODE_OUTPUT_PUSH_PULL_ALT2,
     .output_level = XMC_GPIO_OUTPUT_LEVEL_HIGH,
-    .output_strength = XMC_GPIO_OUTPUT_STRENGTH_STRONG_MEDIUM_EDGE
+    .output_strength = XMC_GPIO_OUTPUT_STRENGTH_MEDIUM
 }
 };
 
@@ -723,14 +723,14 @@ const SPI_MASTER_GPIO_CONFIG_t SPI_MASTER_2_SS_0_Config =
 {
     .mode = XMC_GPIO_MODE_OUTPUT_PUSH_PULL_ALT2,
     .output_level = XMC_GPIO_OUTPUT_LEVEL_HIGH,
-    .output_strength = XMC_GPIO_OUTPUT_STRENGTH_STRONG_MEDIUM_EDGE
+    .output_strength = XMC_GPIO_OUTPUT_STRENGTH_MEDIUM
   },
   .slave_select_ch = XMC_SPI_CH_SLAVE_SELECT_3
 };
 
 XMC_SPI_CH_CONFIG_t SPI_MASTER_2_Channel_Config =
 {
-  .baudrate = 1000000U,
+  .baudrate = 5000000U,
   .bus_mode = (XMC_SPI_CH_BUS_MODE_t)XMC_SPI_CH_BUS_MODE_MASTER,
   .selo_inversion = XMC_SPI_CH_SLAVE_SEL_INV_TO_MSLS,
   .parity_mode = XMC_USIC_CH_PARITY_MODE_NONE

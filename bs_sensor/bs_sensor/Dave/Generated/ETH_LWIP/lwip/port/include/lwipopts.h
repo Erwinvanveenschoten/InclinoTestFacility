@@ -46,17 +46,17 @@ extern "C" {
 
 #define LWIP_AUTOIP             0
 
-#define LWIP_ICMP               1
+#define LWIP_ICMP               0
 
-#define LWIP_IGMP               1
+#define LWIP_IGMP               0
 
 #define LWIP_DNS                0
 
 #define LWIP_SNMP               0
 
-#define IP_OPTIONS_ALLOWED      1
+#define IP_OPTIONS_ALLOWED      0
 
-#define IP_FRAG                 1
+#define IP_FRAG                 0
 
 #define IP_REASSEMBLY           0
 

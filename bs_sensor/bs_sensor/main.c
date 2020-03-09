@@ -48,16 +48,16 @@ int main(void)
 
 void tick_timer_ISR( void )
 {
-	printf("test\n\r");
-	MESSAGE_t message = {4, 2, 0};
-	udp_printStruct((void *)&message, sizeof(MESSAGE_t));
-//	// Trigger BMI055 transfer sequence
-//	BMI055_start_transfer_seq();
-//
-//	// Trigger SCA103T softwarechannels
-//	ADC_MEASUREMENT_ADV_SoftwareTrigger(&ADC_MEASUREMENT_ADV_0);
-//	ADC_MEASUREMENT_ADV_SoftwareTrigger(&ADC_MEASUREMENT_ADV_1);
-//	ADC_MEASUREMENT_ADV_SoftwareTrigger(&ADC_MEASUREMENT_ADV_2);
+//	printf("test\n\r");
+//	MESSAGE_t message = {4, 2, 0};
+//	udp_printStruct((void *)&message, sizeof(MESSAGE_t));
+	// Trigger BMI055 transfer sequence
+	BMI055_start_transfer_seq();
+
+	// Trigger SCA103T softwarechannels
+	ADC_MEASUREMENT_ADV_SoftwareTrigger(&ADC_MEASUREMENT_ADV_0);
+	ADC_MEASUREMENT_ADV_SoftwareTrigger(&ADC_MEASUREMENT_ADV_1);
+	ADC_MEASUREMENT_ADV_SoftwareTrigger(&ADC_MEASUREMENT_ADV_2);
 
 	// Trigger
 }
