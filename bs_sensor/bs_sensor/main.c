@@ -48,13 +48,14 @@ int main(void)
 
 void tick_timer_ISR( void )
 {
-	// Trigger BMI055 transfer sequence
-	BMI055_start_transfer_seq();
-
-	// Trigger SCA103T softwarechannels
-	ADC_MEASUREMENT_ADV_SoftwareTrigger(&ADC_MEASUREMENT_ADV_0);
-	ADC_MEASUREMENT_ADV_SoftwareTrigger(&ADC_MEASUREMENT_ADV_1);
-	ADC_MEASUREMENT_ADV_SoftwareTrigger(&ADC_MEASUREMENT_ADV_2);
+	printf("test\n\r");
+//	// Trigger BMI055 transfer sequence
+//	BMI055_start_transfer_seq();
+//
+//	// Trigger SCA103T softwarechannels
+//	ADC_MEASUREMENT_ADV_SoftwareTrigger(&ADC_MEASUREMENT_ADV_0);
+//	ADC_MEASUREMENT_ADV_SoftwareTrigger(&ADC_MEASUREMENT_ADV_1);
+//	ADC_MEASUREMENT_ADV_SoftwareTrigger(&ADC_MEASUREMENT_ADV_2);
 
 	// Trigger
 }

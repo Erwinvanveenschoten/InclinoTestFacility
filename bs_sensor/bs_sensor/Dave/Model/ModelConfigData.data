@@ -748,8 +748,8 @@
   <hwConnections href="APPS/SPI_MASTER/v4_3_22/SPI_MASTER_2.app#//@connections.2"/>
   <hwConnections href="APPS/GLOBAL_CCU4/v4_1_12/GLOBAL_CCU4_0.app#//@connections.0"/>
   <hwConnections href="APPS/TIMER/v4_1_10/TIMER_0.app#//@connections.0"/>
-  <hwConnections href="APPS/TIMER/v4_1_10/TIMER_0.app#//@connections.2"/>
   <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_14/ADC_MEASUREMENT_ADV_0.app#//@connections.170"/>
   <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_14/ADC_MEASUREMENT_ADV_1.app#//@connections.170"/>
   <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_14/ADC_MEASUREMENT_ADV_2.app#//@connections.170"/>
+  <hwConnections href="APPS/TIMER/v4_1_10/TIMER_0.app#//@connections.2"/>
 </ApplicationModel:ApplicationData>
