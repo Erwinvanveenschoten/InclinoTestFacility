@@ -9,6 +9,7 @@
 #include <math.h>
 
 #include "UDP.h"
+#include "BUS_IO_GP.h"
 
 #ifdef ENABLE_UDP
 uint8_t packetCount = 0;				/** Counter to indicate how many UDP packets are needed to transmit the whole struct through UDP **/
@@ -31,6 +32,10 @@ void udp_echo_recv(void *arg, struct udp_pcb *pcb, struct pbuf *p, struct ip_add
  */
 void udp_initialize()
 {
+	// Disable reset of ethernet chip (active-low)
+	BUS_IO_GP_set(PHY_RESET_PIN);
+	BUS_IO_GP_set(PHY_CLK_PIN);
+
 	uint8_t test = 1337;
 	IP_ADDR4(&returnaddr, ip1,ip2,ip3,ip4);
 	com_pcb = udp_new();

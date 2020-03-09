@@ -5,6 +5,9 @@
 #ifndef UDP_H_
 #define UDP_H_
 
+#define PHY_RESET_PIN 2
+#define PHY_CLK_PIN 3
+
 #define ip1 192							/** Firstbyte of the IP address **/
 #define ip2 168							/** Second byte of the IP address **/
 #define ip3 0							/** Third byte of the IP address **/

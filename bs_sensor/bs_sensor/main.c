@@ -49,6 +49,8 @@ int main(void)
 void tick_timer_ISR( void )
 {
 	printf("test\n\r");
+	MESSAGE_t message = {4, 2, 0};
+	udp_printStruct((void *)&message, sizeof(MESSAGE_t));
 //	// Trigger BMI055 transfer sequence
 //	BMI055_start_transfer_seq();
 //
