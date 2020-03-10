@@ -66,6 +66,12 @@
 /* Extern declaration of EVENT_DET APP handler */
 extern TIMER_t TICK_TIMER;
 
+/* Extern declaration of EVENT_DET APP handler */
+extern TIMER_t SCA103T_TIME_MEASUREMENT;
+
+/* Extern declaration of EVENT_DET APP handler */
+extern TIMER_t BMI055_TIME_MEASUREMENT;
+
 #endif /* TIMER_EXTERN_H */
 
 

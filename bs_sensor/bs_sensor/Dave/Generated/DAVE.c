@@ -128,18 +128,28 @@ DAVE_STATUS_t DAVE_Init(void)
    } 
   if (init_status == DAVE_STATUS_SUCCESS)
   {
-	 /**  Initialization of INTERRUPT APP instance INTERRUPT_0 */
-	 init_status = (DAVE_STATUS_t)INTERRUPT_Init(&INTERRUPT_0); 
+	 /**  Initialization of INTERRUPT APP instance ADC_MEASUREMENT_ADV_0_RESULT */
+	 init_status = (DAVE_STATUS_t)INTERRUPT_Init(&ADC_MEASUREMENT_ADV_0_RESULT); 
    } 
   if (init_status == DAVE_STATUS_SUCCESS)
   {
-	 /**  Initialization of INTERRUPT APP instance INTERRUPT_1 */
-	 init_status = (DAVE_STATUS_t)INTERRUPT_Init(&INTERRUPT_1); 
+	 /**  Initialization of INTERRUPT APP instance ADC_MEASUREMENT_ADV_1_RESULT */
+	 init_status = (DAVE_STATUS_t)INTERRUPT_Init(&ADC_MEASUREMENT_ADV_1_RESULT); 
    } 
   if (init_status == DAVE_STATUS_SUCCESS)
   {
-	 /**  Initialization of INTERRUPT APP instance INTERRUPT_2 */
-	 init_status = (DAVE_STATUS_t)INTERRUPT_Init(&INTERRUPT_2); 
+	 /**  Initialization of INTERRUPT APP instance ADC_MEASUREMENT_ADV_2_RESULT */
+	 init_status = (DAVE_STATUS_t)INTERRUPT_Init(&ADC_MEASUREMENT_ADV_2_RESULT); 
+   } 
+  if (init_status == DAVE_STATUS_SUCCESS)
+  {
+	 /**  Initialization of TIMER APP instance SCA103T_TIME_MEASUREMENT */
+	 init_status = (DAVE_STATUS_t)TIMER_Init(&SCA103T_TIME_MEASUREMENT); 
+   } 
+  if (init_status == DAVE_STATUS_SUCCESS)
+  {
+	 /**  Initialization of TIMER APP instance BMI055_TIME_MEASUREMENT */
+	 init_status = (DAVE_STATUS_t)TIMER_Init(&BMI055_TIME_MEASUREMENT); 
    }  
   return init_status;
 } /**  End of function DAVE_Init */

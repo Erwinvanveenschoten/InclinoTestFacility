@@ -13,6 +13,8 @@
 #include "UDP.h"
 #include "data_config.h"
 
+#define MSEC_SCALE 100
+
 #if NROF_BMI055 > 0
 
 #if BMI055_GYRO_ENA || BMI055_ACC_ENA || BMI055_TEMP_ENA
@@ -35,6 +37,8 @@ static const sensor_t sensor_to_read[] =
 		ACCELERO,
 #endif
 };
+
+static TIMER_t * const timer_handl = &BMI055_TIME_MEASUREMENT;
 static const SPI_MASTER_t * const SPI_HANDLER = &SPI_MASTER_2;
 static BUS_IO_t * const BUS_HANDLER = &IO_GA_8;
 
@@ -119,15 +123,15 @@ void read_gyro( uint32_t bmi055_index )
 		0XFF,
 	};
 	// Slave select
-	const uint16_t CS_mask = ~(1 << NROF_CS_PIN - (BMI055[bmi055_index].cs_gyro));
+	const uint16_t CS_mask = ~(1 << (NROF_CS_PIN - (BMI055[bmi055_index].cs_gyro)));
 
 	BUS_IO_Write(BUS_HANDLER, CS_mask);
 
 	// Transfer data
-	SPI_MASTER_STATUS_t status = SPI_MASTER_Transfer(	SPI_HANDLER,
-														addr,
-														GYRO_buffer,
-														GYRO_BUFFER_SIZE);
+	/*SPI_MASTER_STATUS_t status = */SPI_MASTER_Transfer(	SPI_HANDLER,
+															addr,
+															GYRO_buffer,
+															GYRO_BUFFER_SIZE);
 #endif
 }
 
@@ -150,7 +154,7 @@ void read_acc( uint32_t bmi055_index )
 		0XFF,
 	};
 	// Slave select
-	const uint16_t CS_mask = ~(1 << NROF_CS_PIN - (BMI055[bmi055_index].cs_acc));
+	const uint16_t CS_mask = ~(1 << (NROF_CS_PIN - (BMI055[bmi055_index].cs_acc)));
 
 	BUS_IO_Write(BUS_HANDLER, CS_mask);
 
@@ -211,6 +215,7 @@ void store_buffer( uint32_t bmi055_index, uint32_t Data_index )
 
 void BMI055_print_buffer ( void )
 {
+#ifdef PRINTF
 	printf("\n\n");
 	for (int i = 0; i < NROF_BMI055; i++)
 	{
@@ -229,6 +234,7 @@ void BMI055_print_buffer ( void )
 
 		printf("TEMP:   0x%04X\n\r", data_buffer[i].temp);
 	}
+#endif
 }
 
 void send_buffer( void )
@@ -246,29 +252,29 @@ void send_buffer( void )
 			},
 			{
 				.data = (uint32_t)data_buffer[i].acc_y,
-				.data_id = ACC_X_ID,
+				.data_id = ACC_Y_ID,
 				.ic_id = BMI055[i].id,
 			},
 			{
 				.data = (uint32_t)data_buffer[i].acc_z,
-				.data_id = ACC_X_ID,
+				.data_id = ACC_Z_ID,
 				.ic_id = BMI055[i].id,
 			},
 #endif
 #if BMI055_GYRO_ENA
 			{
 				.data = (uint32_t)data_buffer[i].gyro_x,
-				.data_id = ACC_X_ID,
+				.data_id = GYRO_X_ID,
 				.ic_id = BMI055[i].id,
 			},
 			{
 				.data = (uint32_t)data_buffer[i].gyro_y,
-				.data_id = ACC_X_ID,
+				.data_id = GYRO_Y_ID,
 				.ic_id = BMI055[i].id,
 			},
 			{
 				.data = (uint32_t)data_buffer[i].gyro_z,
-				.data_id = ACC_X_ID,
+				.data_id = GYRO_Z_ID,
 				.ic_id = BMI055[i].id,
 			},
 		};
@@ -302,6 +308,10 @@ void BMI055_eo_recieve(void)
 	//	When all registers of interest of the IC's are read, transmit the data
 	if ( BMI055_index == (NROF_BMI055-1) && Data_index == (NROF_BMI055_IMU_DATA-1))
 	{
+		TIMER_Stop(timer_handl);
+		float time = ((float)TIMER_GetTime(timer_handl))/(float)MSEC_SCALE;
+		printf("Time to complete ADC measurement is: %.2f uSec\n\r", time);
+
 		// Transmit buffer
 		send_buffer();
 		BMI055_print_buffer();
@@ -337,6 +347,10 @@ void BMI055_start_transfer_seq( void )
 	// Reset counters
 	BMI055_index = 0;
 	Data_index = 0;
+
+	// Reset BMI055 timer for time measurement
+	TIMER_Clear (timer_handl);
+	TIMER_Start (timer_handl);
 
 	// start transmission sequence
 	start_spi_transmission(BMI055_index, sensor_to_read[Data_index]);

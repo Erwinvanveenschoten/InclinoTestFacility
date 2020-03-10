@@ -12,5 +12,6 @@
 #include "SCA103T_defs.h"
 
 void SCA103T_ADC_ISR(void);
+void SCA103T_start_adc_conv_seq(void);
 
 #endif /* SCA103T_SCA103T_H_ */

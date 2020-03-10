@@ -8,6 +8,7 @@
 #include <DAVE.h>                 //Declarations from DAVE Code Generation (includes SFR declaration)
 #include "UDP.h"
 #include <BMI055.h>
+#include <SCA103T.h>
 /**
 
  * @brief main() - Application entry point
@@ -53,11 +54,9 @@ void tick_timer_ISR( void )
 //	udp_printStruct((void *)&message, sizeof(MESSAGE_t));
 	// Trigger BMI055 transfer sequence
 	BMI055_start_transfer_seq();
-
-	// Trigger SCA103T softwarechannels
-	ADC_MEASUREMENT_ADV_SoftwareTrigger(&ADC_MEASUREMENT_ADV_0);
-	ADC_MEASUREMENT_ADV_SoftwareTrigger(&ADC_MEASUREMENT_ADV_1);
-	ADC_MEASUREMENT_ADV_SoftwareTrigger(&ADC_MEASUREMENT_ADV_2);
+	SCA103T_start_adc_conv_seq();
 
 	// Trigger
+	//hallo
+
 }
