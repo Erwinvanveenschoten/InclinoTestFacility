@@ -11,11 +11,15 @@
 #include "stdio.h"
 #include "UDP.h"
 
+#define MSEC_SCALE 100
+
 static MESSAGE_t SCA103T_buffer[SCA103_BUFFERSIZE];
+static TIMER_t * const timer_handl = &SCA103T_TIME_MEASUREMENT;
 static uint8_t ADC_count = 0;
 
 static void print_buffer( void );
 static void send_buffer( void );
+void SCA103T_time_measurement( void );
 
 void SCA103T_ADC0_ISR(void)
 {
@@ -79,6 +83,7 @@ void SCA103T_ADC0_ISR(void)
 	ADC_count++;
 	if ( ADC_count == ( NROF_ADC_APPS ) )
 	{
+		SCA103T_time_measurement();
 		ADC_count = 0;
 		// Send buffer
 		print_buffer();
@@ -145,6 +150,7 @@ void SCA103T_ADC1_ISR(void)
 	ADC_count++;
 	if ( ADC_count == ( NROF_ADC_APPS ) )
 	{
+		SCA103T_time_measurement();
 		ADC_count = 0;
 		// Send buffer
 		send_buffer();
@@ -180,6 +186,7 @@ void SCA103T_ADC2_ISR(void)
 	ADC_count++;
 	if ( ADC_count == ( NROF_ADC_APPS ) )
 	{
+		SCA103T_time_measurement();
 		ADC_count = 0;
 		// Send buffer
 		send_buffer();
@@ -189,6 +196,7 @@ void SCA103T_ADC2_ISR(void)
 
 static void print_buffer( void )
 {
+#ifdef PRINTF
 	for ( int i = 0; i < SCA103_BUFFERSIZE; i++ )
 	{
 		printf("\n\n********************\n\r");
@@ -196,6 +204,7 @@ static void print_buffer( void )
 		printf("IC   id: %d\n\r", SCA103T_buffer[i].ic_id);
 		printf("Data   : %04X\n\r", (uint)SCA103T_buffer[i].data);
 	}
+#endif
 }
 
 static void send_buffer( void )
@@ -204,4 +213,22 @@ static void send_buffer( void )
 	{
 		udp_printStruct((void *)&SCA103T_buffer[i], sizeof(SCA103T_buffer[i]));
 	}
+}
+
+void SCA103T_time_measurement( void )
+{
+	TIMER_Stop(timer_handl);
+	float time = ((float)TIMER_GetTime(timer_handl))/(float)MSEC_SCALE;
+	printf("Time to complete ADC measurement is: %.2f uSec\n\r", time);
+}
+
+void SCA103T_start_adc_conv_seq(void)
+{
+	// Trigger SCA103T softwarechannels
+	TIMER_Clear (timer_handl);
+	TIMER_Start (timer_handl);
+
+	ADC_MEASUREMENT_ADV_SoftwareTrigger(&ADC_MEASUREMENT_ADV_0);
+	ADC_MEASUREMENT_ADV_SoftwareTrigger(&ADC_MEASUREMENT_ADV_1);
+	ADC_MEASUREMENT_ADV_SoftwareTrigger(&ADC_MEASUREMENT_ADV_2);
 }

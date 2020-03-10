@@ -78,7 +78,7 @@ const INTERRUPT_t TICK_TIMER_INTERRUPT =
   .enable_at_init = true
 
 };
-const INTERRUPT_t INTERRUPT_0 =
+const INTERRUPT_t ADC_MEASUREMENT_ADV_0_RESULT =
 {
 #if(UC_SERIES == XMC14)
  .irqctrl = (XMC_SCU_IRQCTRL_t)0U,
@@ -92,7 +92,7 @@ const INTERRUPT_t INTERRUPT_0 =
   .enable_at_init = true
 
 };
-const INTERRUPT_t INTERRUPT_1 =
+const INTERRUPT_t ADC_MEASUREMENT_ADV_1_RESULT =
 {
 #if(UC_SERIES == XMC14)
  .irqctrl = (XMC_SCU_IRQCTRL_t)0U,
@@ -106,7 +106,7 @@ const INTERRUPT_t INTERRUPT_1 =
   .enable_at_init = true
 
 };
-const INTERRUPT_t INTERRUPT_2 =
+const INTERRUPT_t ADC_MEASUREMENT_ADV_2_RESULT =
 {
 #if(UC_SERIES == XMC14)
  .irqctrl = (XMC_SCU_IRQCTRL_t)0U,
