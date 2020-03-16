@@ -8,10 +8,10 @@
 #define PHY_RESET_PIN 2
 #define PHY_CLK_PIN 3
 
-#define ip1 192							/** Firstbyte of the IP address **/
-#define ip2 168							/** Second byte of the IP address **/
-#define ip3 0							/** Third byte of the IP address **/
-#define ip4 9							/** Fourth byte of the IP address **/
+#define IP1 192							/** Firstbyte of the IP address **/
+#define IP2 168							/** Second byte of the IP address **/
+#define IP3 0							/** Third byte of the IP address **/
+#define IP4 9							/** Fourth byte of the IP address **/
 
 #define UDP_OFFSET 3					/** UDP packet header size **/
 
@@ -33,7 +33,7 @@ extern uint8_t cycleNr;					/** Variable to store the ID of the current distance
 void udp_initialize();
 void udp_fillBuffer(uint16_t bufferSize, void * po, uint8_t packetNr, uint8_t totalPackets);
 err_t udp_printStruct(void * po, uint32_t size);
-void udp_receive();
+//void udp_echo_recv(void *arg, struct udp_pcb *pcb, struct pbuf *p, struct ip_addr *addr, u16_t port);
 
 
 

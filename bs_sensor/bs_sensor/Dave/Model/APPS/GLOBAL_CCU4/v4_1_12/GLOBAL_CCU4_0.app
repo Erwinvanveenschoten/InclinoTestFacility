@@ -3,11 +3,13 @@
   <upwardMapList xsi:type="ResourceModel:RequiredApp" href="../../TIMER/v4_1_10/TIMER_0.app#//@requiredApps.0"/>
   <upwardMapList xsi:type="ResourceModel:RequiredApp" href="../../TIMER/v4_1_10/TIMER_1.app#//@requiredApps.0"/>
   <upwardMapList xsi:type="ResourceModel:RequiredApp" href="../../TIMER/v4_1_10/TIMER_2.app#//@requiredApps.0"/>
+  <upwardMapList xsi:type="ResourceModel:RequiredApp" href="../../TIMER/v4_1_10/TIMER_3.app#//@requiredApps.0"/>
   <properties provideInit="true" sharable="true"/>
   <virtualSignals name="ccu4_global" URI="http://resources/4.1.12/app/GLOBAL_CCU4/0/vs_global_ccu4_globalsignal" hwSignal="global_signal" hwResource="//@hwResources.0">
     <upwardMapList xsi:type="ResourceModel:Connections" href="../../TIMER/v4_1_10/TIMER_0.app#//@connections.0"/>
     <upwardMapList xsi:type="ResourceModel:Connections" href="../../TIMER/v4_1_10/TIMER_1.app#//@connections.0"/>
     <upwardMapList xsi:type="ResourceModel:Connections" href="../../TIMER/v4_1_10/TIMER_2.app#//@connections.0"/>
+    <upwardMapList xsi:type="ResourceModel:Connections" href="../../TIMER/v4_1_10/TIMER_3.app#//@connections.0"/>
   </virtualSignals>
   <virtualSignals name="clock_ccu" URI="http://resources/4.1.12/app/GLOBAL_CCU4/0/vs_global_ccu4_clk" hwSignal="clk" hwResource="//@hwResources.0"/>
   <virtualSignals name="ccu4_global_start" URI="http://resources/4.1.12/app/GLOBAL_CCU4/0/vs_global_ccu4_gsc_enable" hwSignal="gsc_enable" hwResource="//@hwResources.1" visible="true"/>

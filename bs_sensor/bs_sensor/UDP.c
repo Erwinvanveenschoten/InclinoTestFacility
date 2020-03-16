@@ -7,6 +7,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <math.h>
+#include <delay.h>
 
 #include "UDP.h"
 #include "BUS_IO_GP.h"
@@ -21,7 +22,6 @@ void udp_echo_recv(void *arg, struct udp_pcb *pcb, struct pbuf *p, struct ip_add
       if (p != NULL) {
             udp_sendto(pcb, p, &returnaddr, 20000); //dest port
             memcpy(UDPBuffer, p->payload, 11);
-            uint8_t test = UDPBuffer[3];
             pbuf_free(p);
       }
 }
@@ -34,14 +34,29 @@ void udp_initialize()
 {
 	// Disable reset of ethernet chip (active-low)
 	BUS_IO_GP_set(PHY_RESET_PIN);
-	BUS_IO_GP_set(PHY_CLK_PIN);
 
-	uint8_t test = 1337;
-	IP_ADDR4(&returnaddr, ip1,ip2,ip3,ip4);
+	// Make sure netif is properly set up
+	netif_set_link_up(netif_default);
+	netif_set_up(ETH_LWIP_0.xnetif);
+
+	// Set ip address
+	IP_ADDR4(&returnaddr, IP1,IP2,IP3,IP4);
+
+	// Create new UDP program control block
 	com_pcb = udp_new();
 
-    udp_bind(com_pcb, IP_ADDR_ANY , PORT_COM_OUT);
-    udp_recv(com_pcb, udp_echo_recv, test);
+	// Bind ip address and port to UDP channel
+	err_t udp_bind_err = udp_bind(com_pcb, IP_ADDR_ANY , PORT_COM_OUT);
+	if ( udp_bind_err != ERR_OK)
+	{
+		printf("UDP binding returned with error status: %d\n\r", udp_bind_err);
+	}
+
+	// Register recieve callback
+	udp_recv(com_pcb, (udp_recv_fn)&udp_echo_recv, NULL);
+
+	// Check system timeouts
+	sys_check_timeouts();
 }
 
 
@@ -82,8 +97,6 @@ err_t udp_printStruct(void * po, uint32_t size)
 	struct pbuf* b;
 	err_enum_t error; //= ERR_OK;
 
-	pbuf_init();
-
 	uint8_t sampleCount = packetCount + (dataLeft!=0);
 	for(int k = 0; k < packetCount; k++)
 	{
@@ -102,6 +115,9 @@ err_t udp_printStruct(void * po, uint32_t size)
 		b = pbuf_alloc(PBUF_TRANSPORT, (dataLeft + UDP_OFFSET), PBUF_RAM);
 		memcpy(b->payload, UDPBuffer, (dataLeft + UDP_OFFSET));
 		error = udp_sendto(com_pcb,  b,  &returnaddr, PORT_COM_OUT);
+		if(error != 0){
+			printf("Error Erwin is de Evert %d\n\r", error);
+		}
 		pbuf_free(b);
 		free(UDPBuffer);
 	}

@@ -132,6 +132,24 @@
   <nodes xsi:type="ApplicationModel:AppNode">
     <resource xsi:type="ResourceModel:App" href="APPS/TIMER/v4_1_10/TIMER_2.app#/"/>
   </nodes>
+  <nodes xsi:type="ApplicationModel:AppNode">
+    <resource xsi:type="ResourceModel:App" href="APPS/TIMER/v4_1_10/TIMER_3.app#/"/>
+  </nodes>
+  <nodes xsi:type="ApplicationModel:AppNode">
+    <resource xsi:type="ResourceModel:App" href="APPS/BUS_IO/v4_0_2/BUS_IO_2.app#/"/>
+  </nodes>
+  <nodes xsi:type="ApplicationModel:AppNode">
+    <resource xsi:type="ResourceModel:App" href="APPS/INTERRUPT/v4_0_8/INTERRUPT_4.app#/"/>
+  </nodes>
+  <nodes xsi:type="ApplicationModel:AppNode">
+    <resource xsi:type="ResourceModel:App" href="APPS/GLOBAL_CCU4/v4_1_12/GLOBAL_CCU4_1.app#/"/>
+  </nodes>
+  <nodes xsi:type="ApplicationModel:AppNode">
+    <resource xsi:type="ResourceModel:App" href="APPS/TIMER/v4_1_10/TIMER_4.app#/"/>
+  </nodes>
+  <nodes xsi:type="ApplicationModel:PeripheralNode">
+    <resource xsi:type="ResourceModel:Peripheral" href="HW_RESOURCES/ccu41/ccu41_1.dd#/"/>
+  </nodes>
   <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.1" target="//@nodes.2"/>
   <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.1" target="//@nodes.0"/>
   <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.3" target="//@nodes.0"/>
@@ -156,6 +174,10 @@
   <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.41" target="//@nodes.0"/>
   <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.42" target="//@nodes.35"/>
   <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.43" target="//@nodes.35"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.44" target="//@nodes.35"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.46" target="//@nodes.0"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.47" target="//@nodes.2"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.48" target="//@nodes.47"/>
   <hwConnections href="APPS/CPU_CTRL_XMC4/v4_0_14/CPU_CTRL_XMC4_0.app#//@connections.7"/>
   <hwConnections href="APPS/CPU_CTRL_XMC4/v4_0_14/CPU_CTRL_XMC4_0.app#//@connections.8"/>
   <hwConnections href="APPS/CPU_CTRL_XMC4/v4_0_14/CPU_CTRL_XMC4_0.app#//@connections.9"/>
@@ -762,4 +784,40 @@
   <hwConnections href="APPS/TIMER/v4_1_10/TIMER_0.app#//@connections.2"/>
   <hwConnections href="APPS/TIMER/v4_1_10/TIMER_1.app#//@connections.0"/>
   <hwConnections href="APPS/TIMER/v4_1_10/TIMER_2.app#//@connections.0"/>
+  <hwConnections href="APPS/TIMER/v4_1_10/TIMER_3.app#//@connections.0"/>
+  <hwConnections href="APPS/BUS_IO/v4_0_2/BUS_IO_2.app#//@connections.0"/>
+  <hwConnections href="APPS/BUS_IO/v4_0_2/BUS_IO_2.app#//@connections.1"/>
+  <hwConnections href="APPS/BUS_IO/v4_0_2/BUS_IO_2.app#//@connections.2"/>
+  <hwConnections href="APPS/BUS_IO/v4_0_2/BUS_IO_2.app#//@connections.3"/>
+  <hwConnections href="APPS/BUS_IO/v4_0_2/BUS_IO_2.app#//@connections.4"/>
+  <hwConnections href="APPS/BUS_IO/v4_0_2/BUS_IO_2.app#//@connections.5"/>
+  <hwConnections href="APPS/BUS_IO/v4_0_2/BUS_IO_2.app#//@connections.6"/>
+  <hwConnections href="APPS/BUS_IO/v4_0_2/BUS_IO_2.app#//@connections.7"/>
+  <hwConnections href="APPS/BUS_IO/v4_0_2/BUS_IO_2.app#//@connections.8"/>
+  <hwConnections href="APPS/BUS_IO/v4_0_2/BUS_IO_2.app#//@connections.9"/>
+  <hwConnections href="APPS/BUS_IO/v4_0_2/BUS_IO_2.app#//@connections.10"/>
+  <hwConnections href="APPS/BUS_IO/v4_0_2/BUS_IO_2.app#//@connections.11"/>
+  <hwConnections href="APPS/BUS_IO/v4_0_2/BUS_IO_2.app#//@connections.12"/>
+  <hwConnections href="APPS/BUS_IO/v4_0_2/BUS_IO_2.app#//@connections.13"/>
+  <hwConnections href="APPS/BUS_IO/v4_0_2/BUS_IO_2.app#//@connections.14"/>
+  <hwConnections href="APPS/BUS_IO/v4_0_2/BUS_IO_2.app#//@connections.15"/>
+  <hwConnections href="APPS/BUS_IO/v4_0_2/BUS_IO_2.app#//@connections.16"/>
+  <hwConnections href="APPS/BUS_IO/v4_0_2/BUS_IO_2.app#//@connections.17"/>
+  <hwConnections href="APPS/BUS_IO/v4_0_2/BUS_IO_2.app#//@connections.18"/>
+  <hwConnections href="APPS/BUS_IO/v4_0_2/BUS_IO_2.app#//@connections.19"/>
+  <hwConnections href="APPS/BUS_IO/v4_0_2/BUS_IO_2.app#//@connections.20"/>
+  <hwConnections href="APPS/BUS_IO/v4_0_2/BUS_IO_2.app#//@connections.21"/>
+  <hwConnections href="APPS/BUS_IO/v4_0_2/BUS_IO_2.app#//@connections.22"/>
+  <hwConnections href="APPS/BUS_IO/v4_0_2/BUS_IO_2.app#//@connections.23"/>
+  <hwConnections href="APPS/BUS_IO/v4_0_2/BUS_IO_2.app#//@connections.24"/>
+  <hwConnections href="APPS/BUS_IO/v4_0_2/BUS_IO_2.app#//@connections.25"/>
+  <hwConnections href="APPS/BUS_IO/v4_0_2/BUS_IO_2.app#//@connections.26"/>
+  <hwConnections href="APPS/BUS_IO/v4_0_2/BUS_IO_2.app#//@connections.27"/>
+  <hwConnections href="APPS/BUS_IO/v4_0_2/BUS_IO_2.app#//@connections.28"/>
+  <hwConnections href="APPS/BUS_IO/v4_0_2/BUS_IO_2.app#//@connections.29"/>
+  <hwConnections href="APPS/BUS_IO/v4_0_2/BUS_IO_2.app#//@connections.30"/>
+  <hwConnections href="APPS/BUS_IO/v4_0_2/BUS_IO_2.app#//@connections.31"/>
+  <hwConnections href="APPS/TIMER/v4_1_10/TIMER_3.app#//@connections.2"/>
+  <hwConnections href="APPS/GLOBAL_CCU4/v4_1_12/GLOBAL_CCU4_1.app#//@connections.0"/>
+  <hwConnections href="APPS/TIMER/v4_1_10/TIMER_4.app#//@connections.0"/>
 </ApplicationModel:ApplicationData>

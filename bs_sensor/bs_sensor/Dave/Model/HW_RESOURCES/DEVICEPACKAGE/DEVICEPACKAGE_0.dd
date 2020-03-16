@@ -339,4 +339,26 @@
   <provided xsi:type="ResourceModel:ResourceGroup" name="76" URI="http://resources/lqfp144.0.0/devicepackage/0/76">
     <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin76"/>
   </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="97" URI="http://resources/lqfp144.0.0/devicepackage/0/97">
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin97"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="133" URI="http://resources/lqfp144.0.0/devicepackage/0/133">
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin133"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="66" URI="http://resources/lqfp144.0.0/devicepackage/0/66">
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/BUS_IO/v4_0_2/BUS_IO_2.app#//@hwResources.16"/>
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin66"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="65" URI="http://resources/lqfp144.0.0/devicepackage/0/65">
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/BUS_IO/v4_0_2/BUS_IO_2.app#//@hwResources.17"/>
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin65"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="64" URI="http://resources/lqfp144.0.0/devicepackage/0/64">
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/BUS_IO/v4_0_2/BUS_IO_2.app#//@hwResources.18"/>
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin64"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="63" URI="http://resources/lqfp144.0.0/devicepackage/0/63">
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/BUS_IO/v4_0_2/BUS_IO_2.app#//@hwResources.19"/>
+    <resourcesList name="pin" requiredResourceUri="http://resources/LQFP144.0.0/devicepackage/0/pin63"/>
+  </provided>
 </ResourceModel:DevicePackage>

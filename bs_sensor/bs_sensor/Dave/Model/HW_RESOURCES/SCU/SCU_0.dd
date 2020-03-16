@@ -118,5 +118,10 @@
     <resourcesList name="ccucon_gsc" requiredResourceUri="http://resources/47.0.0/peripheral/scu/0/ccucon/gsc43"/>
     <resourcesList name="gsc_enable" requiredResourceUri="http://resources/47.0.0/peripheral/scu/0/gcu_ccu4_global_enable3_gsc_enable"/>
   </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="1" URI="http://resources/47.0.0/peripheral/scu/0/gcu/ccu4_global_enable/1">
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/GLOBAL_CCU4/v4_1_12/GLOBAL_CCU4_1.app#//@hwResources.1"/>
+    <resourcesList name="ccucon_gsc" requiredResourceUri="http://resources/47.0.0/peripheral/scu/0/ccucon/gsc41"/>
+    <resourcesList name="gsc_enable" requiredResourceUri="http://resources/47.0.0/peripheral/scu/0/gcu_ccu4_global_enable1_gsc_enable"/>
+  </provided>
   <addressBlock offset="0x0" size="0x4000" usage="registers"/>
 </ResourceModel:Peripheral>

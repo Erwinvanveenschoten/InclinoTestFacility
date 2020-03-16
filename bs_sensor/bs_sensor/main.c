@@ -19,18 +19,20 @@
  * code.
  */
 
+static uint32_t test_counter = 0;
+
 void tick_timer_ISR( void );
 
 int main(void)
 {
   DAVE_STATUS_t status;
-
   status = DAVE_Init();           /* Initialization of DAVE APPs  */
 
 #ifdef ENABLE_UDP
   // init ethernet communication
   udp_initialize();
 #endif
+  TIMER_Start (&TICK_TIMER);
 
   if(status != DAVE_STATUS_SUCCESS)
   {
@@ -49,8 +51,13 @@ int main(void)
 
 void tick_timer_ISR( void )
 {
-//	printf("test\n\r");
-//	MESSAGE_t message = {4, 2, 0};
+////	printf("test\n\r");
+//	MESSAGE_t message =
+//	{
+//		.data_id = 0,
+//		.ic_id = 0,
+//		.data = test_counter++,
+//	};
 //	udp_printStruct((void *)&message, sizeof(MESSAGE_t));
 	// Trigger BMI055 transfer sequence
 	BMI055_start_transfer_seq();

@@ -314,6 +314,8 @@ void BMI055_eo_recieve(void)
 
 		// Transmit buffer
 		send_buffer();
+#define BUS_IO_HEAT_PIN 6
+		BUS_IO_GP_reset(BUS_IO_HEAT_PIN);
 		BMI055_print_buffer();
 	}
 	else
@@ -343,6 +345,8 @@ void BMI055_start_transfer_seq( void )
 
 	// Wait while SPI_MASTER is busy
 	while (SPI_MASTER_IsTxBusy(SPI_HANDLER) || SPI_MASTER_IsRxBusy(SPI_HANDLER) ){}
+
+	BUS_IO_GP_set(BUS_IO_HEAT_PIN);
 
 	// Reset counters
 	BMI055_index = 0;
