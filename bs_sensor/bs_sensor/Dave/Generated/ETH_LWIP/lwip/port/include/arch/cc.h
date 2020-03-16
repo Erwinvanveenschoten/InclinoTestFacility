@@ -43,8 +43,6 @@
 
 #include <xmc_common.h>
 
-#include "SEGGER_RTT/SEGGER_RTT.h" 
-void ETH_LWIP_0_debug_msg(const char* msg, ...);
 
 #define LWIP_PROVIDE_ERRNO
 
@@ -67,7 +65,7 @@ void ETH_LWIP_0_debug_msg(const char* msg, ...);
 #endif
 
 /* Plaform specific diagnostic output */
-#define LWIP_PLATFORM_DIAG(x) do {ETH_LWIP_0_debug_msg x ;} while(0)
+#define LWIP_PLATFORM_DIAG(x) do {XMC_DEBUG x;} while(0)
 #define LWIP_PLATFORM_ASSERT(x) do {XMC_ASSERT("Assertion \"%s\" failed at line %d in %s\n", x);} while(0)
 #define LWIP_RAND() ((u32_t)rand())
 #endif /* __ARCH_CC_H__ */

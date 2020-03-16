@@ -12,8 +12,10 @@
 #include "stdio.h"
 #include "UDP.h"
 #include "data_config.h"
+#include "BUS_IO_GP.h"
 
 #define MSEC_SCALE 100
+#define BUS_IO_HEAT_PIN 6
 
 #if NROF_BMI055 > 0
 
@@ -283,10 +285,12 @@ void send_buffer( void )
 
 		for ( int j = 0; j < SIZEOF_DATA_MESSAGE; j++)
 		{
-			udp_printStruct((void *)&data_message[j], sizeof(data_message[j]));
+			buffer_add_message(data_message[j]);
+			//udp_printStruct((void *)&data_message[j], sizeof(data_message[j]));
 		}
 	}
 #endif
+	buffer_signal_BMI055_complete();
 }
 
 #endif
@@ -308,14 +312,9 @@ void BMI055_eo_recieve(void)
 	//	When all registers of interest of the IC's are read, transmit the data
 	if ( BMI055_index == (NROF_BMI055-1) && Data_index == (NROF_BMI055_IMU_DATA-1))
 	{
-		TIMER_Stop(timer_handl);
-		float time = ((float)TIMER_GetTime(timer_handl))/(float)MSEC_SCALE;
-		printf("Time to complete ADC measurement is: %.2f uSec\n\r", time);
-
 		// Transmit buffer
+
 		send_buffer();
-#define BUS_IO_HEAT_PIN 6
-		BUS_IO_GP_reset(BUS_IO_HEAT_PIN);
 		BMI055_print_buffer();
 	}
 	else
@@ -346,15 +345,9 @@ void BMI055_start_transfer_seq( void )
 	// Wait while SPI_MASTER is busy
 	while (SPI_MASTER_IsTxBusy(SPI_HANDLER) || SPI_MASTER_IsRxBusy(SPI_HANDLER) ){}
 
-	BUS_IO_GP_set(BUS_IO_HEAT_PIN);
-
 	// Reset counters
 	BMI055_index = 0;
 	Data_index = 0;
-
-	// Reset BMI055 timer for time measurement
-	TIMER_Clear (timer_handl);
-	TIMER_Start (timer_handl);
 
 	// start transmission sequence
 	start_spi_transmission(BMI055_index, sensor_to_read[Data_index]);

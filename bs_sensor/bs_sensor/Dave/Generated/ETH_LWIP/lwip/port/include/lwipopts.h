@@ -26,7 +26,7 @@ extern "C" {
 #define TCP_LISTEN_BACKLOG        1
 #define LWIP_SO_RCVTIMEO          1
 #define MEM_SIZE                1600
-#define PBUF_POOL_SIZE          32
+#define PBUF_POOL_SIZE          16
 #define PBUF_POOL_BUFSIZE       1536
 
 #define MEMP_NUM_PBUF           16
@@ -37,43 +37,30 @@ extern "C" {
 #define LWIP_UDP                1
 #define MEMP_NUM_UDP_PCB        4
 
-#define UDP_DEBUG               LWIP_DBG_ON
-#define LWIP_TCP                1
-#define MEMP_NUM_TCP_PCB        5
-#define MEMP_NUM_TCP_PCB_LISTEN  5
-#define TCP_MSS                 536
-#define TCP_WND                 2144
-#define TCP_SND_BUF             1072
-#define TCP_SND_QUEUELEN        8
-
-#define TCP_DEBUG               LWIP_DBG_ON
+#define LWIP_TCP                0
 #define LWIP_DHCP               0
 
 #define LWIP_ARP                1
 #define ARP_TABLE_SIZE          10
 #define MEMP_NUM_ARP_QUEUE      30
 
-#define ETHARP_DEBUG            LWIP_DBG_ON
 #define LWIP_AUTOIP             0
 
 #define LWIP_ICMP               1
 
-#define ICMP_DEBUG              LWIP_DBG_ON
 #define LWIP_IGMP               0
 
 #define LWIP_DNS                0
 
 #define LWIP_SNMP               0
 
-#define IP_OPTIONS_ALLOWED      1
+#define IP_OPTIONS_ALLOWED      0
 
-#define IP_FRAG                 1
+#define IP_FRAG                 0
 
-#define IP_REASS_DEBUG          LWIP_DBG_ON
-#define IP_REASSEMBLY           1
+#define IP_REASSEMBLY           0
 
-#define IP_REASS_DEBUG          LWIP_DBG_ON
-#define LWIP_DEBUG              1
+#define LWIP_NOASSERT           1
 
 #define LWIP_STATS              0
 #define LWIP_STATS_DISPLAY      0

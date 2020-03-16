@@ -18,7 +18,7 @@ uint8_t packetCount = 0;				/** Counter to indicate how many UDP packets are nee
 uint8_t cycleNr = 0;					/** Variable to store the ID of the current distance cycle **/
 
 
-void udp_echo_recv(void *arg, struct udp_pcb *pcb, struct pbuf *p, struct ip_addr *addr, u16_t port){
+void udp_echo_recv(void *arg, struct udp_pcb *pcb, struct pbuf *p, const ip_addr_t *addr, u16_t port){
       if (p != NULL) {
             udp_sendto(pcb, p, &returnaddr, 20000); //dest port
             memcpy(UDPBuffer, p->payload, 11);
@@ -52,7 +52,7 @@ void udp_initialize()
 		printf("UDP binding returned with error status: %d\n\r", udp_bind_err);
 	}
 
-	// Register recieve callback
+	// Register receive callback
 	udp_recv(com_pcb, (udp_recv_fn)&udp_echo_recv, NULL);
 
 	// Check system timeouts
@@ -115,15 +115,19 @@ err_t udp_printStruct(void * po, uint32_t size)
 		b = pbuf_alloc(PBUF_TRANSPORT, (dataLeft + UDP_OFFSET), PBUF_RAM);
 		memcpy(b->payload, UDPBuffer, (dataLeft + UDP_OFFSET));
 		error = udp_sendto(com_pcb,  b,  &returnaddr, PORT_COM_OUT);
-		if(error != 0){
-			printf("Error Erwin is de Evert %d\n\r", error);
-		}
+		if(error != 0){}
 		pbuf_free(b);
 		free(UDPBuffer);
 	}
 
 	sys_check_timeouts();
 	return error;
+}
+
+err_t send_messages(void * po, uint32_t size, uint8_t nrof_elements)
+{
+	cycleNr=nrof_elements;
+	return udp_printStruct(po, size);
 }
 
 

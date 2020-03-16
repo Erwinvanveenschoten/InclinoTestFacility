@@ -52,9 +52,6 @@
 #include "CPU_CTRL_XMC4/cpu_ctrl_xmc4.h"
   
 
-#include "SEGGER_RTT/segger_rtt.h"
-  
-
 #include "CLOCK_XMC4/clock_xmc4.h"
   
 

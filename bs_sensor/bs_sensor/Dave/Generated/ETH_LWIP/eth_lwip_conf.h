@@ -96,7 +96,6 @@
 
 #define ETH_SYSTIMER_NAME  SYSTIMER_0
 
-#define ETH_BROADCAST_EN  1
 #define ETH_TIME_250ms_COUNT  (250U * 1000U)
 
 #endif

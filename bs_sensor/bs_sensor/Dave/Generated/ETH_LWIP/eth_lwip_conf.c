@@ -50,19 +50,8 @@
  **********************************************************************************************************************/
 #include "eth_lwip.h"
 
-#include <stdarg.h>
-
 
 ETH_LWIP_t ETH_LWIP_0 =
 {
   .initialized = false
 };
-void ETH_LWIP_0_debug_msg(const char* msg, ...)
-{
-  va_list msg_var;
-  va_start(msg_var, msg);
-  (void)SEGGER_RTT_printf(0U,msg);
-  (void)SEGGER_RTT_printf(0U,"\r");
-  va_end(msg_var);
-}
-

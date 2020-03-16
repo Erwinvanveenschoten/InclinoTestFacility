@@ -377,9 +377,7 @@ static void low_level_init(struct netif *netif)
   XMC_ETH_MAC_SetAddress(&eth_mac, eth_mac.address);
   XMC_ETH_MAC_DisableJumboFrame(&eth_mac);
 
-  XMC_ETH_MAC_EnablePromiscuousMode(&eth_mac);
-
-  XMC_ETH_MAC_EnableReceptionBroadcastFrames(&eth_mac);
+  XMC_ETH_MAC_DisableReceptionBroadcastFrames(&eth_mac);
   
   gpio_config.output_strength = XMC_GPIO_OUTPUT_STRENGTH_STRONG_MEDIUM_EDGE;
   gpio_config.mode = XMC_GPIO_MODE_OUTPUT_PUSH_PULL_ALT1;

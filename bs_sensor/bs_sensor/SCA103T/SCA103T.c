@@ -83,7 +83,7 @@ void SCA103T_ADC0_ISR(void)
 	ADC_count++;
 	if ( ADC_count == ( NROF_ADC_APPS ) )
 	{
-		SCA103T_time_measurement();
+		//SCA103T_time_measurement();
 		ADC_count = 0;
 		// Send buffer
 		print_buffer();
@@ -150,7 +150,7 @@ void SCA103T_ADC1_ISR(void)
 	ADC_count++;
 	if ( ADC_count == ( NROF_ADC_APPS ) )
 	{
-		SCA103T_time_measurement();
+		//SCA103T_time_measurement();
 		ADC_count = 0;
 		// Send buffer
 		send_buffer();
@@ -186,7 +186,7 @@ void SCA103T_ADC2_ISR(void)
 	ADC_count++;
 	if ( ADC_count == ( NROF_ADC_APPS ) )
 	{
-		SCA103T_time_measurement();
+		//SCA103T_time_measurement();
 		ADC_count = 0;
 		// Send buffer
 		send_buffer();
@@ -211,8 +211,11 @@ static void send_buffer( void )
 {
 	for ( int i = 0; i < SCA103_BUFFERSIZE; i++ )
 	{
-		udp_printStruct((void *)&SCA103T_buffer[i], sizeof(SCA103T_buffer[i]));
+		buffer_add_message(SCA103T_buffer[i]);
+		//udp_printStruct((void *)&SCA103T_buffer[i], sizeof(SCA103T_buffer[i]));
 	}
+	buffer_signal_SCA103T_complete();
+	//udp_printStruct((void *)SCA103T_buffer, sizeof(SCA103T_buffer));
 }
 
 void SCA103T_time_measurement( void )

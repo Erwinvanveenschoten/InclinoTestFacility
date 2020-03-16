@@ -34,8 +34,7 @@ void udp_initialize();
 void udp_fillBuffer(uint16_t bufferSize, void * po, uint8_t packetNr, uint8_t totalPackets);
 err_t udp_printStruct(void * po, uint32_t size);
 //void udp_echo_recv(void *arg, struct udp_pcb *pcb, struct pbuf *p, struct ip_addr *addr, u16_t port);
-
-
+err_t send_messages(void * po, uint32_t size, uint8_t nrof_elements);
 
 #endif
 

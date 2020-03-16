@@ -19,25 +19,25 @@
 #define INCL_B 		8
 #define VREF		9
 
-#define BMI055_0_ID			0
-#define BMI055_1_ID			1
-#define BMI055_2_ID			2
-#define BMI055_3_ID			3
-#define BMI055_4_ID			4
-#define BMI055_5_ID			5
-#define BMI055_6_ID			6
-#define BMI055_7_ID			7
-#define SCA103T_0_ID		8
-#define SCA103T_1_ID		9
-#define SCA103T_2_ID		10
-#define SCA103T_3_ID		11
-#define SCA103T_4_ID		12
-#define SCA103T_5_ID		13
-#define SCA103T_6_ID		14
-#define SCA103T_7_ID		15
-#define BMI085_ID			16
-#define LMS6DSO_ID			17
-#define MS5611_01BA03_ID	18
+#define BMI055_0_ID			1
+#define BMI055_1_ID			2
+#define BMI055_2_ID			3
+#define BMI055_3_ID			4
+#define BMI055_4_ID			5
+#define BMI055_5_ID			6
+#define BMI055_6_ID			7
+#define BMI055_7_ID			8
+#define SCA103T_0_ID		9
+#define SCA103T_1_ID		10
+#define SCA103T_2_ID		11
+#define SCA103T_3_ID		12
+#define SCA103T_4_ID		13
+#define SCA103T_5_ID		14
+#define SCA103T_6_ID		15
+#define SCA103T_7_ID		16
+#define BMI085_ID			17
+#define LMS6DSO_ID			18
+#define MS5611_01BA03_ID	19
 
 typedef struct message
 {

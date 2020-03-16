@@ -9,6 +9,7 @@
 #include "UDP.h"
 #include <BMI055.h>
 #include <SCA103T.h>
+#include "BUS_IO_GP.h"
 /**
 
  * @brief main() - Application entry point
@@ -19,7 +20,7 @@
  * code.
  */
 
-static uint32_t test_counter = 0;
+//static uint32_t test_counter = 0;
 
 void tick_timer_ISR( void );
 
@@ -51,19 +52,12 @@ int main(void)
 
 void tick_timer_ISR( void )
 {
-////	printf("test\n\r");
-//	MESSAGE_t message =
-//	{
-//		.data_id = 0,
-//		.ic_id = 0,
-//		.data = test_counter++,
-//	};
-//	udp_printStruct((void *)&message, sizeof(MESSAGE_t));
+	TIMER_Clear(&BMI055_TIME_MEASUREMENT);
+	TIMER_Start(&BMI055_TIME_MEASUREMENT);
+
 	// Trigger BMI055 transfer sequence
 	BMI055_start_transfer_seq();
+
+	// Trigger SCA103T transfer sequence
 	SCA103T_start_adc_conv_seq();
-
-	// Trigger
-	//hallo
-
 }
