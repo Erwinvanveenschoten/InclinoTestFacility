@@ -10,6 +10,7 @@
 #include "data_config.h"
 #include "stdio.h"
 #include "UDP.h"
+#include "message_buffer.h"
 
 #define MSEC_SCALE 100
 

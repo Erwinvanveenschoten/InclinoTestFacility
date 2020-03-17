@@ -8,16 +8,16 @@
 #ifndef DATA_CONFIG_H_
 #define DATA_CONFIG_H_
 
-#define GYRO_X_ID 	0
-#define GYRO_Y_ID 	1
-#define GYRO_Z_ID 	2
-#define ACC_X_ID 	3
-#define ACC_Y_ID 	4
-#define ACC_Z_ID 	5
-#define TEMP_ID 	6
-#define INCL_A 		7
-#define INCL_B 		8
-#define VREF		9
+#define GYRO_X_ID 	1
+#define GYRO_Y_ID 	2
+#define GYRO_Z_ID 	3
+#define ACC_X_ID 	4
+#define ACC_Y_ID 	5
+#define ACC_Z_ID 	6
+#define TEMP_ID 	7
+#define INCL_A 		8
+#define INCL_B 		9
+#define VREF		10
 
 #define BMI055_0_ID			1
 #define BMI055_1_ID			2

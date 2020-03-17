@@ -224,5 +224,20 @@ static const BMI055_conf_t BMI055[] =
 #endif
 };
 
+static const uint8_t BMI055_ACC_DATA[] =
+{
+	GYRO_X_ID,
+	GYRO_Y_ID,
+	GYRO_Z_ID,
+};
+
+static const uint8_t BMI055_GYRO_DATA[] =
+{
+	ACC_X_ID,
+	ACC_Y_ID,
+	ACC_Z_ID,
+	TEMP_ID,
+};
+
 
 #endif /* BMI055_CONFIG_H_ */
