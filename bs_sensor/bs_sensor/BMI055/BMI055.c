@@ -5,9 +5,9 @@
  *      Author: erwin
  */
 
-#include <BMI055.h>
+#include "BMI055.h"
 #include "BMI055_config.h"
-#include <BMI055_defs.h>
+#include "BMI055_defs.h"
 #include "DAVE.h"
 #include "stdio.h"
 #include "UDP.h"
@@ -224,11 +224,11 @@ void store_buffer( uint32_t bmi055_index, uint32_t Data_index )
 				},
 #endif
 #if BMI055_TEMP_ENA
-				{
-					.data = ACC_buffer[ACC_TEMP_BUFFER_INDEX],
-					.data_id = TEMP_ID,
-					.ic_id = BMI055[bmi055_index].id,
-				},
+//				{
+//					.data = ACC_buffer[ACC_TEMP_BUFFER_INDEX],
+//					.data_id = TEMP_ID,
+//					.ic_id = BMI055[bmi055_index].id,
+//				},
 #endif
 			};
 			for ( int i = 0; i < sizeof(acc_message)/sizeof(acc_message[0]); ++i)

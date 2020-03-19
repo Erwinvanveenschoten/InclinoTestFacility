@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ASCII"?>
 <ResourceModel:Peripheral xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ResourceModel="http://www.infineon.com/Davex/Resource.ecore" URI="http://resources/48.0.0/port/p/3" description="Port 3" baseAddress="0x48028300">
   <provided xsi:type="ResourceModel:ResourceGroup" name="P3.14 / #134" URI="http://resources/48.0.0/port/p/3/pad/14">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/SPI_MASTER/v4_3_22/SPI_MASTER_1.app#//@hwResources.6"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/BUS_IO/v4_0_2/BUS_IO_1.app#//@hwResources.8"/>
     <resourcesList name="hwsel_hw" requiredResourceUri="http://resources/48.0.0/port/p/3/hwsel/hw14"/>
     <resourcesList name="in_p" requiredResourceUri="http://resources/48.0.0/port/p/3/in/p14"/>
     <resourcesList name="iocr_oe" requiredResourceUri="http://resources/48.0.0/port/p/3/iocr12/pc14_4"/>

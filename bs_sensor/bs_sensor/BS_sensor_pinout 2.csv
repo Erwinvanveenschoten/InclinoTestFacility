@@ -55,14 +55,15 @@ IO_GA_8,pad_bus_12, ( P4.6 ) ,#118,
 IO_GA_8,pad_bus_13, ( P5.11 ) ,#55,
 IO_GA_8,pad_bus_14, ( P5.6 ) ,#78,
 IO_GA_8,pad_bus_15, ( P5.7 ) ,#77,
-IO_GP,pad_bus_0, ( P3.10 ) ,#11,
-IO_GP,pad_bus_1, ( P3.1 ) ,#6,
+IO_GP,pad_bus_0, ( P3.10 ) ,#11,CS_S_G
+IO_GP,pad_bus_1, ( P3.1 ) ,#6,CS_S_B
 IO_GP,pad_bus_2, ( P3.0 ) ,#7,
 IO_GP,pad_bus_3, ( P3.3 ) ,#132,
 IO_GP,pad_bus_4, ( P3.2 ) ,#5,
 IO_GP,pad_bus_5, ( P3.4 ) ,#131,
 IO_GP,pad_bus_6, ( P3.7 ) ,#14,HEAT
-IO_GP,pad_bus_7, ( P3.6 ) ,#129,
+IO_GP,pad_bus_7, ( P3.6 ) ,#129,CS_S_IMU2
+IO_GP,pad_bus_8, ( P3.14 ) ,#134,CS_S_A
 SPI_MASTER_0,MISO pin, ( P4.2 ) ,#122,
 SPI_MASTER_0,MOSI pin, ( P1.9 ) ,#113,
 SPI_MASTER_0,SCLKOUT pin, ( P1.8 ) ,#114,
@@ -70,7 +71,7 @@ SPI_MASTER_0,Slave Select 0 pin, ( P3.5 ) ,#130,
 SPI_MASTER_1,MISO pin, ( P2.15 ) ,#59,
 SPI_MASTER_1,MOSI pin, ( P1.15 ) ,#94,
 SPI_MASTER_1,SCLKOUT pin, ( P4.0 ) ,#124,
-SPI_MASTER_1,Slave Select 0 pin, ( P3.14 ) ,#134,
+SPI_MASTER_1,Slave Select 0 pin, ( P3.14 ) ,#134,CS_S_A
 SPI_MASTER_2,MISO pin, ( P4.7 ) ,#117,
 SPI_MASTER_2,MOSI pin, ( P5.1 ) ,#83,
 SPI_MASTER_2,SCLKOUT pin, ( P1.1 ) ,#111,

@@ -8,17 +8,20 @@
 #ifndef DATA_CONFIG_H_
 #define DATA_CONFIG_H_
 
-#define GYRO_X_ID 	1
-#define GYRO_Y_ID 	2
-#define GYRO_Z_ID 	3
-#define ACC_X_ID 	4
-#define ACC_Y_ID 	5
-#define ACC_Z_ID 	6
-#define TEMP_ID 	7
-#define INCL_A 		8
-#define INCL_B 		9
-#define VREF		10
+#define EMPTY_DATA_ID	0
+#define GYRO_X_ID 		1
+#define GYRO_Y_ID 		2
+#define GYRO_Z_ID 		3
+#define ACC_X_ID 		4
+#define ACC_Y_ID 		5
+#define ACC_Z_ID 		6
+#define TEMP_ID 		7
+#define INCL_A 			8
+#define INCL_B 			9
+#define BARO			10
+#define VREF			11
 
+#define EMPTY_SENSOR_ID		0
 #define BMI055_0_ID			1
 #define BMI055_1_ID			2
 #define BMI055_2_ID			3
@@ -37,13 +40,6 @@
 #define SCA103T_7_ID		16
 #define BMI085_ID			17
 #define LMS6DSO_ID			18
-#define MS5611_01BA03_ID	19
-
-typedef struct message
-{
-	uint32_t data;
-	uint8_t data_id;
-	uint8_t ic_id;
-}MESSAGE_t;
+#define MS5611_ID			19
 
 #endif /* DATA_CONFIG_H_ */

@@ -73,6 +73,8 @@ extern SPI_MASTER_t	SPI_MASTER_0;
 
 extern SPI_MASTER_t	SPI_MASTER_1; 
 
+extern void spi_1_eo_transf_cb(void);
+
 extern SPI_MASTER_t	SPI_MASTER_2; 
 
 extern void BMI055_eo_recieve(void);

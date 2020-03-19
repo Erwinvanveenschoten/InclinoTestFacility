@@ -66,7 +66,6 @@
             <BindMap MUri="devicepackage/0/130" Proxy="app/SPI_MASTER/0/__pin_hwres_port_pad_spi_ss_0"/>
             <BindMap MUri="peripheral/cpu/0/exception/usagefault" Proxy="app/CPU_CTRL_XMC4/0/hwres_exception_usagefault"/>
             <BindMap MUri="peripheral/scu/0/trap/0/usbvcolock" Proxy="app/CLOCK_XMC4/0/hwres_usbvcolock_trap"/>
-            <BindMap MUri="port/p/3/pad/14" Proxy="app/SPI_MASTER/1/hwres_port_pad_spi_ss_0"/>
             <BindMap MUri="peripheral/vadc/0/group/2/class/0" Proxy="app/ADC_MEASUREMENT_ADV/1/hwres_vadc_inputclass"/>
             <BindMap MUri="peripheral/scu/0/clkctrl/0/pll" Proxy="app/CLOCK_XMC4/0/hwres_pll"/>
             <BindMap MUri="peripheral/vadc/0/group/1/ch/7" Proxy="app/ADC_MEASUREMENT_ADV/2/rarray_hwres_adc_adv_measurement_channels#8"/>
@@ -126,6 +125,7 @@
             <BindMap MUri="port/p/3/pad/4" Proxy="app/BUS_IO/1/rarray_hwres_port_pin#5"/>
             <BindMap MUri="port/p/3/pad/7" Proxy="app/BUS_IO/1/rarray_hwres_port_pin#6"/>
             <BindMap MUri="port/p/3/pad/6" Proxy="app/BUS_IO/1/rarray_hwres_port_pin#7"/>
+            <BindMap MUri="port/p/3/pad/14" Proxy="app/BUS_IO/1/rarray_hwres_port_pin#8"/>
             <BindMap MUri="devicepackage/0/63" Proxy="app/BUS_IO/2/rarray_hwres_bus_io_pin_pad#3"/>
             <BindMap MUri="peripheral/cpu/0/debug" Proxy="app/CPU_CTRL_XMC4/0/hwres_swdclk"/>
             <BindMap MUri="devicepackage/0/64" Proxy="app/BUS_IO/2/rarray_hwres_bus_io_pin_pad#2"/>
@@ -224,8 +224,8 @@
             <BindMap MUri="peripheral/eth/0/eth" Proxy="app/ETH_LWIP/0/hwres_eth_mac"/>
             <BindMap MUri="port/p/5/pad/10" Proxy="app/ETH_LWIP/0/hwres_eth_port_tx_clk"/>
             <BindMap MUri="devicepackage/0/8" Proxy="app/UART/0/__pin_hwres_port_pad_uart_tx"/>
-            <BindMap MUri="devicepackage/0/134" Proxy="app/SPI_MASTER/1/__pin_hwres_port_pad_spi_ss_0"/>
             <BindMap MUri="port/p/15/pad/12" Proxy="app/ADC_MEASUREMENT_ADV/0/rarray_hwres_adc_adv_measurement_channel_pin#0"/>
+            <BindMap MUri="devicepackage/0/134" Proxy="app/BUS_IO/1/rarray_hwres_bus_io_pin_pad#8"/>
             <BindMap MUri="devicepackage/0/14" Proxy="app/BUS_IO/1/rarray_hwres_bus_io_pin_pad#6"/>
             <BindMap MUri="peripheral/vadc/0/group/2/ch/7" Proxy="app/ADC_MEASUREMENT_ADV/1/rarray_hwres_adc_adv_measurement_channels#0"/>
             <BindMap MUri="devicepackage/0/129" Proxy="app/BUS_IO/1/rarray_hwres_bus_io_pin_pad#7"/>

@@ -89,7 +89,8 @@ const BUS_IO_PORT_PIN_t IO_GP_pin_list[] =
        {P3_2},
        {P3_4},
        {P3_7},
-       {P3_6}
+       {P3_6},
+       {P3_14}
 }; 
  
 BUS_IO_t IO_GP =
@@ -99,7 +100,7 @@ BUS_IO_t IO_GP =
   .mode = XMC_GPIO_MODE_OUTPUT_PUSH_PULL, 
     .output_level = XMC_GPIO_OUTPUT_LEVEL_LOW,  
   },
-  .number_of_pins = (uint8_t)8
+  .number_of_pins = (uint8_t)9
 };
 const BUS_IO_PORT_PIN_t GP_LED_BUS_pin_list[] =
 {
