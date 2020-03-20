@@ -61,9 +61,6 @@
 #include "ETH_LWIP/eth_lwip.h"
   
 
-#include "GLOBAL_DMA/global_dma.h"
-  
-
 #include "SPI_MASTER/spi_master.h"
   
 
@@ -71,6 +68,9 @@
   
 
 #include "ADC_MEASUREMENT_ADV/adc_measurement_adv.h"
+  
+
+#include "GLOBAL_DMA/global_dma.h"
   
 
 #include "UART/uart.h"

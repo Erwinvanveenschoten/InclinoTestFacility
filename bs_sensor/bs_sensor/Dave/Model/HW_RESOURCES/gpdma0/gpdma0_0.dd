@@ -157,7 +157,7 @@
   <provided xsi:type="ResourceModel:BitField" name="SRC_PER" URI="http://resources/48.0.0/peripheral/dma8/0/ch0_cfgh/src_per" value="0x00000000" toolTipHelpDescription="Source Peripheral" defaultValue="0x00000000" startPos="7" stopPos="10" accessPermission="rw" maxValue="15" minValue="0"/>
   <provided xsi:type="ResourceModel:BitField" name="DEST_PER" URI="http://resources/48.0.0/peripheral/dma8/0/ch0_cfgh/dest_per" value="0x00000000" toolTipHelpDescription="Destination Peripheral" defaultValue="0x00000000" startPos="11" stopPos="14" accessPermission="rw" maxValue="15" minValue="0"/>
   <provided xsi:type="ResourceModel:ResourceGroup" name="5" URI="http://resources/48.0.0/peripheral/dma8/0/ch/5">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/SPI_MASTER/v4_3_22/SPI_MASTER_0.app#//@hwResources.19"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/SPI_MASTER/v4_3_22/SPI_MASTER_1.app#//@hwResources.17"/>
     <resourcesList name="cfgh" requiredResourceUri="http://resources/48.0.0/peripheral/dma8/0/ch5_cfgh"/>
     <resourcesList name="cfgh_dest_per" requiredResourceUri="http://resources/48.0.0/peripheral/dma8/0/ch5_cfgh/dest_per"/>
     <resourcesList name="cfgh_src_per" requiredResourceUri="http://resources/48.0.0/peripheral/dma8/0/ch5_cfgh/src_per"/>
@@ -226,7 +226,7 @@
   <provided xsi:type="ResourceModel:BitField" name="DEST_PER" URI="http://resources/48.0.0/peripheral/dma8/0/ch5_cfgh/dest_per" value="0x00000000" toolTipHelpDescription="Destination Peripheral" defaultValue="0x00000000" startPos="11" stopPos="14" accessPermission="rw" maxValue="15" minValue="0"/>
   <provided xsi:type="ResourceModel:BitField" name="SRC_PER" URI="http://resources/48.0.0/peripheral/dma8/0/ch5_cfgh/src_per" value="0x00000000" toolTipHelpDescription="Source Peripheral" defaultValue="0x00000000" startPos="7" stopPos="10" accessPermission="rw" maxValue="15" minValue="0"/>
   <provided xsi:type="ResourceModel:ResourceGroup" name="4" URI="http://resources/48.0.0/peripheral/dma8/0/ch/4">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/SPI_MASTER/v4_3_22/SPI_MASTER_0.app#//@hwResources.17"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/SPI_MASTER/v4_3_22/SPI_MASTER_1.app#//@hwResources.19"/>
     <resourcesList name="cfgh" requiredResourceUri="http://resources/48.0.0/peripheral/dma8/0/ch4_cfgh"/>
     <resourcesList name="cfgh_dest_per" requiredResourceUri="http://resources/48.0.0/peripheral/dma8/0/ch4_cfgh/dest_per"/>
     <resourcesList name="cfgh_src_per" requiredResourceUri="http://resources/48.0.0/peripheral/dma8/0/ch4_cfgh/src_per"/>

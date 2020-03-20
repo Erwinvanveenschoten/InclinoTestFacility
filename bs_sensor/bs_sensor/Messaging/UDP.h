@@ -22,7 +22,7 @@
 
 struct udp_pcb*  com_pcb;				/** Struct for storing necessary data for UDP **/
 
-uint8_t* UDPBuffer;						/** Array to contain the UDP packet data **/
+uint8_t UDPBuffer[maxPayloadSize];		/** Array to contain the UDP packet data **/
 
 ip_addr_t returnaddr;					/** Variable to contain the address of the chip which is sent with and UDP packet **/
 

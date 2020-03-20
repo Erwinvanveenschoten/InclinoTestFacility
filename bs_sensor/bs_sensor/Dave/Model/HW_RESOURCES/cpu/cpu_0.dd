@@ -593,7 +593,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1" description="interrupt enabled."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="USIC1_4_IRQHandler" URI="http://resources/48.0.0/peripheral/cpu/0/nvic/interrupt/94">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/SPI_MASTER/v4_3_22/SPI_MASTER_1.app#//@hwResources.14"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/SPI_MASTER/v4_3_22/SPI_MASTER_0.app#//@hwResources.14"/>
     <resourcesList name="iser_setena" requiredResourceUri="http://resources/48.0.0/peripheral/cpu/0/nvic_iser2/setena30"/>
     <resourcesList name="icer_clrena" requiredResourceUri="http://resources/48.0.0/peripheral/cpu/0/nvic_icer2/clrena30"/>
     <resourcesList name="ispr_setpend" requiredResourceUri="http://resources/48.0.0/peripheral/cpu/0/nvic_ispr2/setpend30"/>
@@ -607,7 +607,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1" description="interrupt enabled."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="USIC1_5_IRQHandler" URI="http://resources/48.0.0/peripheral/cpu/0/nvic/interrupt/95">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/SPI_MASTER/v4_3_22/SPI_MASTER_1.app#//@hwResources.15"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/SPI_MASTER/v4_3_22/SPI_MASTER_0.app#//@hwResources.15"/>
     <resourcesList name="iser_setena" requiredResourceUri="http://resources/48.0.0/peripheral/cpu/0/nvic_iser2/setena31"/>
     <resourcesList name="icer_clrena" requiredResourceUri="http://resources/48.0.0/peripheral/cpu/0/nvic_icer2/clrena31"/>
     <resourcesList name="ispr_setpend" requiredResourceUri="http://resources/48.0.0/peripheral/cpu/0/nvic_ispr2/setpend31"/>

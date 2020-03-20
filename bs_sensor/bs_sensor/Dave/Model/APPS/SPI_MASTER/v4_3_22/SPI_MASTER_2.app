@@ -120,7 +120,7 @@
     </solverVarMap>
   </hwResources>
   <hwResources name="Receive DMA DLR" URI="http://resources/4.3.22/app/SPI_MASTER/2/hwres_dlr_channel_rx" resourceGroupUri="resources/48.0.0/peripheral/dlr/0/ch/10" mResGrpUri="peripheral/dlr/0/ch/*">
-    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/dlr/dlr_0.dd#/1/@provided.8"/>
+    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/dlr/dlr_0.dd#/1/@provided.10"/>
   </hwResources>
   <hwResources name="Transmit DMA Channel" URI="http://resources/4.3.22/app/SPI_MASTER/2/hwres_dma_channel_tx" resourceGroupUri="resources/48.0.0/peripheral/dma4/0/ch/2" solverVariable="true" mResGrpUri="peripheral/sv1/0/*/*">
     <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/gpdma0/gpdma0_0.dd#//@provided.4"/>
@@ -135,7 +135,7 @@
     </solverVarMap>
   </hwResources>
   <hwResources name="Transmit DMA DLR" URI="http://resources/4.3.22/app/SPI_MASTER/2/hwres_dlr_channel_tx" resourceGroupUri="resources/48.0.0/peripheral/dlr/0/ch/11" mResGrpUri="peripheral/dlr/0/ch/*">
-    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/dlr/dlr_0.dd#/1/@provided.12"/>
+    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/dlr/dlr_0.dd#/1/@provided.14"/>
   </hwResources>
   <hwResources name="MOSI pin" URI="http://resources/4.3.22/app/SPI_MASTER/2/__pin_hwres_port_pad_spi_mosi_0" resourceGroupUri="devicepackage/0/83" constraintType="GLOBAL_RESOURCE" mResGrpUri="devicepackage/0/*">
     <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/DEVICEPACKAGE/DEVICEPACKAGE_0.dd#//@provided.9"/>

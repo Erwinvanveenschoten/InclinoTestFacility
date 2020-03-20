@@ -79,7 +79,7 @@
     </provided>
     <provided xsi:type="ResourceModel:BitField" name="RS5" URI="http://resources/48.0.0/peripheral/dlr/0/srsel0/rs5" value="0x00000000" toolTipHelpDescription="Request Source for Line 5" defaultValue="0x00000000" startPos="20" stopPos="23" accessPermission="rw" maxValue="15" minValue="0"/>
     <provided xsi:type="ResourceModel:ResourceGroup" name="2" URI="http://resources/48.0.0/peripheral/dlr/0/ch/2">
-      <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/SPI_MASTER/v4_3_22/SPI_MASTER_2.app#//@hwResources.18"/>
+      <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/SPI_MASTER/v4_3_22/SPI_MASTER_1.app#//@hwResources.18"/>
       <resourcesList name="lnen_ln" requiredResourceUri="http://resources/48.0.0/peripheral/dlr/0/lnen/ln2"/>
       <resourcesList name="ovrclr_ln" requiredResourceUri="http://resources/48.0.0/peripheral/dlr/0/ovrclr/ln2"/>
       <resourcesList name="ovrstat_ln" requiredResourceUri="http://resources/48.0.0/peripheral/dlr/0/ovrstat/ln2"/>
@@ -90,7 +90,7 @@
     </provided>
     <provided xsi:type="ResourceModel:BitField" name="RS2" URI="http://resources/48.0.0/peripheral/dlr/0/srsel0/rs2" value="0x00000000" toolTipHelpDescription="Request Source for Line 2" defaultValue="0x00000000" startPos="8" stopPos="11" accessPermission="rw" maxValue="15" minValue="0"/>
     <provided xsi:type="ResourceModel:ResourceGroup" name="3" URI="http://resources/48.0.0/peripheral/dlr/0/ch/3">
-      <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/SPI_MASTER/v4_3_22/SPI_MASTER_0.app#//@hwResources.18"/>
+      <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/SPI_MASTER/v4_3_22/SPI_MASTER_2.app#//@hwResources.18"/>
       <resourcesList name="lnen_ln" requiredResourceUri="http://resources/48.0.0/peripheral/dlr/0/lnen/ln3"/>
       <resourcesList name="ovrclr_ln" requiredResourceUri="http://resources/48.0.0/peripheral/dlr/0/ovrclr/ln3"/>
       <resourcesList name="ovrstat_ln" requiredResourceUri="http://resources/48.0.0/peripheral/dlr/0/ovrstat/ln3"/>
@@ -101,7 +101,7 @@
     </provided>
     <provided xsi:type="ResourceModel:BitField" name="RS3" URI="http://resources/48.0.0/peripheral/dlr/0/srsel0/rs3" value="0x00000000" toolTipHelpDescription="Request Source for Line 3" defaultValue="0x00000000" startPos="12" stopPos="15" accessPermission="rw" maxValue="15" minValue="0"/>
     <provided xsi:type="ResourceModel:ResourceGroup" name="0" URI="http://resources/48.0.0/peripheral/dlr/0/ch/0">
-      <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/SPI_MASTER/v4_3_22/SPI_MASTER_2.app#//@hwResources.20"/>
+      <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/SPI_MASTER/v4_3_22/SPI_MASTER_1.app#//@hwResources.20"/>
       <resourcesList name="lnen_ln" requiredResourceUri="http://resources/48.0.0/peripheral/dlr/0/lnen/ln0"/>
       <resourcesList name="ovrclr_ln" requiredResourceUri="http://resources/48.0.0/peripheral/dlr/0/ovrclr/ln0"/>
       <resourcesList name="ovrstat_ln" requiredResourceUri="http://resources/48.0.0/peripheral/dlr/0/ovrstat/ln0"/>
@@ -112,7 +112,7 @@
     </provided>
     <provided xsi:type="ResourceModel:BitField" name="RS0" URI="http://resources/48.0.0/peripheral/dlr/0/srsel0/rs0" value="0x00000000" toolTipHelpDescription="Request Source for Line 0" defaultValue="0x00000000" startPos="0" stopPos="3" accessPermission="rw" maxValue="15" minValue="0"/>
     <provided xsi:type="ResourceModel:ResourceGroup" name="1" URI="http://resources/48.0.0/peripheral/dlr/0/ch/1">
-      <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/SPI_MASTER/v4_3_22/SPI_MASTER_0.app#//@hwResources.20"/>
+      <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/SPI_MASTER/v4_3_22/SPI_MASTER_2.app#//@hwResources.20"/>
       <resourcesList name="lnen_ln" requiredResourceUri="http://resources/48.0.0/peripheral/dlr/0/lnen/ln1"/>
       <resourcesList name="ovrclr_ln" requiredResourceUri="http://resources/48.0.0/peripheral/dlr/0/ovrclr/ln1"/>
       <resourcesList name="ovrstat_ln" requiredResourceUri="http://resources/48.0.0/peripheral/dlr/0/ovrstat/ln1"/>

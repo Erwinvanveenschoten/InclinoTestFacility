@@ -30,67 +30,33 @@ void buffer_add_message(MESSAGE_t message)
 		message_buffer[write_index] = message;
 		write_index++;
 	}
-//	printf("\n\r********************\n\r");
-//	printf("IC id   : %04d\n\r", (int)message.ic_id);
-//	printf("Data id : %04d\n\r", (int)message.data_id);
-//	printf("Data    : 0x%04X\n\r", (int)message.data);
 }
 void buffer_signal_BMI055_complete( void )
 {
 	BMI055_complete = true;
-
-	if (buffer_message_complete())
-	{
-		buffer_send();
-	}
 }
 
 void buffer_signal_SCA103T_complete( void )
 {
 	SCA103T_complete = true;
-
-	if (buffer_message_complete())
-	{
-		buffer_send();
-	}
 }
 
 void buffer_signal_BMI085_A_complete( void )
 {
 	BMI085_A_complete = true;
-
-	if (buffer_message_complete())
-	{
-		buffer_send();
-	}
 }
 
 void buffer_signal_BMI085_G_complete( void )
 {
 	BMI085_G_complete = true;
-
-	if (buffer_message_complete())
-	{
-		buffer_send();
-	}
 }
 void buffer_signal_LSM6DSO_complete( void )
 {
 	LSM6DSO_complete = true;
-
-	if (buffer_message_complete())
-	{
-		buffer_send();
-	}
 }
 void buffer_signal_MS5611_complete( void )
 {
 	MS5611_complete = true;
-
-	if (buffer_message_complete())
-	{
-		buffer_send();
-	}
 }
 
 bool buffer_message_complete( void )
@@ -102,10 +68,13 @@ bool buffer_message_complete( void )
 
 void buffer_send( void )
 {
+	BMI055_complete 	= false;
+	SCA103T_complete 	= false;
+	BMI085_G_complete 	= false;
+	BMI085_A_complete 	= false;
+	LSM6DSO_complete 	= false;
+	MS5611_complete 	= false;
 	send_messages((void*)message_buffer, sizeof(MESSAGE_t)*write_index, write_index);
-
-	BMI055_complete = false;
-	SCA103T_complete = false;
 	write_index = 0;
 
 	TIMER_Stop(&BMI055_TIME_MEASUREMENT);

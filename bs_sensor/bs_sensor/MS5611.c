@@ -70,12 +70,12 @@ void MS5611_init( void )
 		PROM_READ_TEMPSENS,
 	};
 
-	printf("********************\n\r");
-	for (int i = 0; i < NROF_COEF; ++i )
-	{
-		coefficients[i] = read_PROM(PROM_cmds[i]);
-		printf("PROM value: 0x%04X\n\r", coefficients[i]);
-	}
+//	printf("********************\n\r");
+//	for (int i = 0; i < NROF_COEF; ++i )
+//	{
+//		coefficients[i] = read_PROM(PROM_cmds[i]);
+//		printf("PROM value: 0x%04X\n\r", coefficients[i]);
+//	}
 }
 
 void MS5611_store_buffer( void )

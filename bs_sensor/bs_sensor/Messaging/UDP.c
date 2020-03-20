@@ -100,24 +100,25 @@ err_t udp_printStruct(void * po, uint32_t size)
 	uint8_t sampleCount = packetCount + (dataLeft!=0);
 	for(int k = 0; k < packetCount; k++)
 	{
-		UDPBuffer = (uint8_t*)calloc(maxPayloadSize, 1);
+		//UDPBuffer = (uint8_t*)malloc(maxPayloadSize);
 		udp_fillBuffer((maxPayloadSize-3), po, (uint8_t)k, sampleCount);
 		b = pbuf_alloc(PBUF_TRANSPORT, maxPayloadSize, PBUF_RAM);
 		memcpy(b->payload, UDPBuffer, maxPayloadSize);
 		error = udp_sendto(com_pcb,  b,  &returnaddr, PORT_COM_OUT);
 		pbuf_free(b);
-		free(UDPBuffer);
+		//free(UDPBuffer);
 	}
 	if(dataLeft != 0)
 	{
-		UDPBuffer = (uint8_t*)calloc(maxPayloadSize, 1);
+		//UDPBuffer = (uint8_t*)malloc(dataLeft + UDP_OFFSET);
 		udp_fillBuffer((dataLeft + UDP_OFFSET), po, packetCount, sampleCount);//allocate extra space for the header
 		b = pbuf_alloc(PBUF_TRANSPORT, (dataLeft + UDP_OFFSET), PBUF_RAM);
-		memcpy(b->payload, UDPBuffer, (dataLeft + UDP_OFFSET));
+		//memcpy(b->payload, UDPBuffer, (dataLeft + UDP_OFFSET));
+		b->payload = UDPBuffer;
 		error = udp_sendto(com_pcb,  b,  &returnaddr, PORT_COM_OUT);
 		if(error != 0){}
 		pbuf_free(b);
-		free(UDPBuffer);
+		//free(UDPBuffer);
 	}
 
 	sys_check_timeouts();

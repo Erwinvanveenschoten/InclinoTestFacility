@@ -51,8 +51,8 @@ void spi_1_eo_transf_cb( void )
 			BMI085_G_store_buffer();
 			break;
 		case READ_LSM6DSO:
-			LSM6DSO_buf();
 			current_state = IDLE;
+			LSM6DSO_buf();
 			break;
 		case READ_MS5611_TEMP:
 			break;

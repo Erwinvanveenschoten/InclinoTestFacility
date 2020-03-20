@@ -13,10 +13,7 @@
 #include "spi_master_1.h"
 #include "delay.h"
 #include "stdio.h"
-#include "BMI085_A.h"
-#include "BMI085_G.h"
-#include "LSM6DSO.h"
-#include "MS5611.h"
+#include "message_buffer.h"
 
 /**
 
@@ -55,6 +52,10 @@ int main(void)
 
 	while(1U)
 	{
+		if (buffer_message_complete())
+		{
+			buffer_send();
+		}
 	}
 }
 

@@ -67,9 +67,9 @@
 #define SPI_MASTER_MINOR_VERSION (3U)
 #define SPI_MASTER_PATCH_VERSION (22U)
 
-#define SPI_MASTER_1_tx_handler     IRQ_Hdlr_94
+#define SPI_MASTER_0_tx_handler     IRQ_Hdlr_94
           
-#define SPI_MASTER_1_rx_handler     IRQ_Hdlr_95
+#define SPI_MASTER_0_rx_handler     IRQ_Hdlr_95
           
 /* This is used to disable the code for Transmit handler */
 #define SPI_MASTER_DIRECT_TRANSMIT_MODE  (0U)
