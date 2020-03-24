@@ -87,8 +87,8 @@ void LSM6DSO_read (void)
 void LSM6DSO_buf  (void)
 {
 
-	int i = 3;	// skip temperature sensor
-	for (i ; i < LSM6DS0_BUF_SIZE; i = (i + 2) )
+	int i = 1;	// skip temperature sensor
+	for ( ; i < LSM6DS0_BUF_SIZE; i = (i + 2) )
 	{
 		MESSAGE_t message =
 		{

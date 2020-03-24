@@ -21,7 +21,7 @@ static bool BMI085_A_complete 	= false;
 static bool LSM6DSO_complete 	= false;
 static bool MS5611_complete 	= false;
 
-//static void print_buffer( void );
+static void print_buffer( void );
 
 void buffer_add_message(MESSAGE_t message)
 {
@@ -74,6 +74,7 @@ void buffer_send( void )
 	BMI085_A_complete 	= false;
 	LSM6DSO_complete 	= false;
 	MS5611_complete 	= false;
+	//print_buffer();
 	send_messages((void*)message_buffer, sizeof(MESSAGE_t)*write_index, write_index);
 	write_index = 0;
 
@@ -81,8 +82,8 @@ void buffer_send( void )
 	printf("Time to copy data: %f uSec\n\r", ((float)TIMER_GetTime(&TIME_MEASUREMENT)/100.0));
 }
 
-#ifdef PRINTF
-void print_buffer( void )
+#ifndef PRINTF
+static void print_buffer( void )
 {
 	for (int i = 0; i < write_index; ++i)
 	{

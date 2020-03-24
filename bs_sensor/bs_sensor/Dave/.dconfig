@@ -209,6 +209,7 @@
             <BindMap MUri="peripheral/vadc/0/group/2/result/11" Proxy="app/ADC_MEASUREMENT_ADV/1/rarray_hwres_adc_adv_measurement_result_reg#1"/>
             <BindMap MUri="peripheral/vadc/0/group/2/result/10" Proxy="app/ADC_MEASUREMENT_ADV/1/rarray_hwres_adc_adv_measurement_result_reg#2"/>
             <BindMap MUri="peripheral/vadc/0/group/2/result/12" Proxy="app/ADC_MEASUREMENT_ADV/1/rarray_hwres_adc_adv_measurement_result_reg#0"/>
+            <BindMap MUri="peripheral/ccu4/1/cc4/3" Proxy="app/TIMER/4/hwres_ccu4_cc4"/>
             <BindMap MUri="peripheral/vadc/0/group/2/result_adv/2" Proxy="app/ADC_MEASUREMENT_ADV/1/rarray_hwres_adc_adv_measurement_result_reg#5"/>
             <BindMap MUri="port/p/15/pad/5" Proxy="app/ADC_MEASUREMENT_ADV/1/rarray_hwres_adc_adv_measurement_channel_pin#16"/>
             <BindMap MUri="peripheral/vadc/0/group/2/result_adv/1" Proxy="app/ADC_MEASUREMENT_ADV/1/rarray_hwres_adc_adv_measurement_result_reg#6"/>

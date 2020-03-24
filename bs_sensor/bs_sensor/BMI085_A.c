@@ -30,6 +30,12 @@ static uint8_t tx_buf[BMI085_A_BUF_SIZE] =
 	ACC_Z_LSB | READMASK,
 	ACC_Z_MSB | READMASK,
 	0xFF,
+	0xFF,
+	0xFF,
+	0xFF,
+	TEMP_LSB | READMASK,
+	TEMP_MSB | READMASK,
+	0xFF,
 };
 
 static const SPI_MASTER_t * const spi_handler = &SPI_MASTER_1;
@@ -64,7 +70,8 @@ void BMI085_A_read ( void )
 
 void BMI085_A_store_buffer( void )
 {
-	for (int i = 1; i < BMI085_A_BUF_SIZE; i = (i + 2) )
+	// ACCELERO MESSAGE
+	for (int i = 1; i < BMI085_A_BUF_LIM; i = (i + 2) )
 	{
 		MESSAGE_t message =
 		{
@@ -74,6 +81,16 @@ void BMI085_A_store_buffer( void )
 		};
 		buffer_add_message(message);
 	}
+
+	// TEMPERATURE MESSAGE
+	MESSAGE_t message =
+	{
+		.data = ((uint32_t)(rx_buf[BMI085_TEMP_MSB_INDEX] << 8) |
+							rx_buf[BMI085_TEMP_LSB_INDEX]),	// concatenate MSB and LSB
+		.data_id = TEMP_ID,									// ID of the data
+		.ic_id = BMI085_ID,									// ID of the IC
+	};
+	buffer_add_message(message);
 	buffer_signal_BMI085_A_complete();
 }
 

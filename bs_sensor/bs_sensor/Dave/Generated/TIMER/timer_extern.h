@@ -75,6 +75,9 @@ extern TIMER_t TIME_MEASUREMENT;
 /* Extern declaration of EVENT_DET APP handler */
 extern TIMER_t DELAY_TIMER;
 
+/* Extern declaration of EVENT_DET APP handler */
+extern TIMER_t TIMER_0;
+
 #endif /* TIMER_EXTERN_H */
 
 

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="ASCII"?>
 <ResourceModel:App xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ResourceModel="http://www.infineon.com/Davex/Resource.ecore" name="GLOBAL_CCU4" URI="http://resources/4.1.12/app/GLOBAL_CCU4/1" description="Initializes CCU4 Global Register Set." version="4.1.12" minDaveVersion="4.0.0" instanceLabel="GLOBAL_CCU4_1" appLabel="" containingProxySignal="true">
+  <upwardMapList xsi:type="ResourceModel:RequiredApp" href="../../TIMER/v4_1_10/TIMER_4.app#//@requiredApps.0"/>
   <properties provideInit="true" sharable="true"/>
-  <virtualSignals name="ccu4_global" URI="http://resources/4.1.12/app/GLOBAL_CCU4/1/vs_global_ccu4_globalsignal" hwSignal="global_signal" hwResource="//@hwResources.0"/>
+  <virtualSignals name="ccu4_global" URI="http://resources/4.1.12/app/GLOBAL_CCU4/1/vs_global_ccu4_globalsignal" hwSignal="global_signal" hwResource="//@hwResources.0">
+    <upwardMapList xsi:type="ResourceModel:Connections" href="../../TIMER/v4_1_10/TIMER_4.app#//@connections.0"/>
+  </virtualSignals>
   <virtualSignals name="clock_ccu" URI="http://resources/4.1.12/app/GLOBAL_CCU4/1/vs_global_ccu4_clk" hwSignal="clk" hwResource="//@hwResources.0"/>
   <virtualSignals name="ccu4_global_start" URI="http://resources/4.1.12/app/GLOBAL_CCU4/1/vs_global_ccu4_gsc_enable" hwSignal="gsc_enable" hwResource="//@hwResources.1" visible="true"/>
   <requiredApps URI="http://resources/4.1.12/app/GLOBAL_CCU4/1/appres_clock" requiredAppName="CLOCK_XMC4" requiringMode="SHARABLE">
