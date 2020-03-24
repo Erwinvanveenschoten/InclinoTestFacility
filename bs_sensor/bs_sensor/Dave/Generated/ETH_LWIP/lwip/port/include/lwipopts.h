@@ -46,7 +46,7 @@ extern "C" {
 
 #define LWIP_AUTOIP             0
 
-#define LWIP_ICMP               0
+#define LWIP_ICMP               1
 
 #define LWIP_IGMP               0
 

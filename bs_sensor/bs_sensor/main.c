@@ -25,7 +25,7 @@
  * code.
  */
 
-//static uint32_t test_counter = 0;
+static bool tick_update=false;
 
 void tick_timer_ISR( void );
 
@@ -56,18 +56,25 @@ int main(void)
 		{
 			buffer_send();
 		}
+		if (tick_update)
+		{
+			tick_update=false;
+
+			TIMER_Clear(&TIME_MEASUREMENT);
+			TIMER_Start(&TIME_MEASUREMENT);
+
+			// Trigger BMI055 transfer sequence
+			BMI055_start_transfer_seq();
+
+			// Trigger SCA103T transfer sequence
+			SCA103T_start_adc_conv_seq();
+
+			spi_1_start_transf_seq();
+		}
 	}
 }
 
 void tick_timer_ISR( void )
 {
-	TIMER_Clear(&BMI055_TIME_MEASUREMENT);
-	TIMER_Start(&BMI055_TIME_MEASUREMENT);
-//	// Trigger BMI055 transfer sequence
-	BMI055_start_transfer_seq();
-//
-//	// Trigger SCA103T transfer sequence
-	SCA103T_start_adc_conv_seq();
-
-	spi_1_start_transf_seq();
+	tick_update=true;
 }

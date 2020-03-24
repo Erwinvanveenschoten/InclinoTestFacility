@@ -148,8 +148,8 @@ DAVE_STATUS_t DAVE_Init(void)
    } 
   if (init_status == DAVE_STATUS_SUCCESS)
   {
-	 /**  Initialization of TIMER APP instance BMI055_TIME_MEASUREMENT */
-	 init_status = (DAVE_STATUS_t)TIMER_Init(&BMI055_TIME_MEASUREMENT); 
+	 /**  Initialization of TIMER APP instance TIME_MEASUREMENT */
+	 init_status = (DAVE_STATUS_t)TIMER_Init(&TIME_MEASUREMENT); 
    } 
   if (init_status == DAVE_STATUS_SUCCESS)
   {
@@ -168,8 +168,8 @@ DAVE_STATUS_t DAVE_Init(void)
    } 
   if (init_status == DAVE_STATUS_SUCCESS)
   {
-	 /**  Initialization of TIMER APP instance TIMER_0 */
-	 init_status = (DAVE_STATUS_t)TIMER_Init(&TIMER_0); 
+	 /**  Initialization of GLOBAL_CCU4 APP instance GLOBAL_CCU4_1 */
+	 init_status = (DAVE_STATUS_t)GLOBAL_CCU4_Init(&GLOBAL_CCU4_1); 
    }  
   return init_status;
 } /**  End of function DAVE_Init */

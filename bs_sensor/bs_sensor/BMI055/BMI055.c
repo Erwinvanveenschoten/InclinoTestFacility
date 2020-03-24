@@ -70,7 +70,7 @@ static const sensor_t sensor_to_read[] =
 #endif
 };
 
-static TIMER_t * const timer_handl = &BMI055_TIME_MEASUREMENT;
+static TIMER_t * const timer_handl = &TIME_MEASUREMENT;
 static const SPI_MASTER_t * const SPI_HANDLER = &SPI_MASTER_2;
 static BUS_IO_t * const BUS_HANDLER = &IO_GA_8;
 

@@ -858,8 +858,6 @@ static SPI_MASTER_STATUS_t SPI_MASTER_2_lInit(void)
                              
   XMC_SPI_CH_DisableFEM(XMC_SPI0_CH0);
                               
-  XMC_SPI_CH_SetBitOrderMsbFirst(XMC_SPI0_CH0);
-          
   XMC_SPI_CH_SetWordLength(XMC_SPI0_CH0, (uint8_t)8);
 
   XMC_SPI_CH_SetFrameLength(XMC_SPI0_CH0, (uint8_t)64);

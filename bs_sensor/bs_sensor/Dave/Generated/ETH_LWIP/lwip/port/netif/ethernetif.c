@@ -149,6 +149,9 @@
 #define IFNAME0 'e'
 #define IFNAME1 'n'
 
+/*Maximum retry iterations for phy auto-negotiation*/
+#define ETH_LWIP_PHY_MAX_RETRIES  0xfffffU
+
 
 #if defined(__ICCARM__)
 #pragma data_alignment=4
@@ -180,9 +183,7 @@ static __attribute__((aligned(4))) uint8_t ETH_LWIP_0_tx_buf[ETH_LWIP_0_NUM_TX_B
 const XMC_ETH_PHY_CONFIG_t eth_phy_config =
 {
   .interface = XMC_ETH_LINK_INTERFACE_MII,
-  .enable_auto_negotiate = false,
-  .duplex = XMC_ETH_LINK_DUPLEX_FULL,
-  .speed = XMC_ETH_LINK_SPEED_100M
+  .enable_auto_negotiate = true
 };
 
 XMC_ETH_MAC_t eth_mac =
@@ -224,13 +225,29 @@ static void ethernetif_link_status(void *args);
 
 static void ethernetif_link_callback(struct netif *netif)
 {
+  XMC_ETH_LINK_SPEED_t speed;
+  XMC_ETH_LINK_DUPLEX_t duplex;
+  bool phy_autoneg_state;
+  uint32_t retries = 0U;
 
   if (netif_is_link_up(netif))
   {
 
+    /* If autonegotiation is enabled */
+    do {
+      phy_autoneg_state = XMC_ETH_PHY_IsAutonegotiationCompleted(&eth_mac, ETH_LWIP_0_PHY_ADDR);
+      retries++;
+    } while ((phy_autoneg_state == false) && (retries < ETH_LWIP_PHY_MAX_RETRIES));
+    
+    if(phy_autoneg_state == false)
+    {
+      ETH_LWIP_Error(ETH_LWIP_ERROR_PHY_TIMEOUT);
+    }
 	
-    XMC_ETH_MAC_SetLink(&eth_mac, XMC_ETH_LINK_SPEED_100M, 
-	                                       XMC_ETH_LINK_DUPLEX_FULL);
+    speed = XMC_ETH_PHY_GetLinkSpeed(&eth_mac, ETH_LWIP_0_PHY_ADDR);
+    duplex = XMC_ETH_PHY_GetLinkDuplex(&eth_mac, ETH_LWIP_0_PHY_ADDR);
+	
+    XMC_ETH_MAC_SetLink(&eth_mac, speed, duplex);
     /* Enable ethernet interrupts */
     XMC_ETH_MAC_EnableEvent(&eth_mac, (uint32_t)XMC_ETH_MAC_EVENT_RECEIVE);
 
