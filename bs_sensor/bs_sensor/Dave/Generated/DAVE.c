@@ -143,8 +143,8 @@ DAVE_STATUS_t DAVE_Init(void)
    } 
   if (init_status == DAVE_STATUS_SUCCESS)
   {
-	 /**  Initialization of TIMER APP instance SCA103T_TIME_MEASUREMENT */
-	 init_status = (DAVE_STATUS_t)TIMER_Init(&SCA103T_TIME_MEASUREMENT); 
+	 /**  Initialization of TIMER APP instance ADC_TIMER */
+	 init_status = (DAVE_STATUS_t)TIMER_Init(&ADC_TIMER); 
    } 
   if (init_status == DAVE_STATUS_SUCCESS)
   {
@@ -168,8 +168,23 @@ DAVE_STATUS_t DAVE_Init(void)
    } 
   if (init_status == DAVE_STATUS_SUCCESS)
   {
-	 /**  Initialization of TIMER APP instance TIMER_0 */
-	 init_status = (DAVE_STATUS_t)TIMER_Init(&TIMER_0); 
+	 /**  Initialization of TIMER APP instance MS5611_TIMER */
+	 init_status = (DAVE_STATUS_t)TIMER_Init(&MS5611_TIMER); 
+   } 
+  if (init_status == DAVE_STATUS_SUCCESS)
+  {
+	 /**  Initialization of INTERRUPT APP instance MS5611_TIMER_ISR */
+	 init_status = (DAVE_STATUS_t)INTERRUPT_Init(&MS5611_TIMER_ISR); 
+   } 
+  if (init_status == DAVE_STATUS_SUCCESS)
+  {
+	 /**  Initialization of TIMER APP instance TEMP_UPDATE_TIMER */
+	 init_status = (DAVE_STATUS_t)TIMER_Init(&TEMP_UPDATE_TIMER); 
+   } 
+  if (init_status == DAVE_STATUS_SUCCESS)
+  {
+	 /**  Initialization of INTERRUPT APP instance TEMP_UPDATE_INTERRUPT */
+	 init_status = (DAVE_STATUS_t)INTERRUPT_Init(&TEMP_UPDATE_INTERRUPT); 
    }  
   return init_status;
 } /**  End of function DAVE_Init */

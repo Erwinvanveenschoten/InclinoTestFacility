@@ -19,8 +19,7 @@ typedef enum
 	READ_BMI085_A,
 	READ_BMI085_G,
 	READ_LSM6DSO,
-	READ_MS5611_TEMP,
-	READ_MS5611_BARO,
+	STORE_BUF_MS5611,
 }spi_state_t;
 
 spi_state_t current_state = IDLE;
@@ -51,12 +50,11 @@ void spi_1_eo_transf_cb( void )
 			BMI085_G_store_buffer();
 			break;
 		case READ_LSM6DSO:
-			current_state = IDLE;
+			current_state = STORE_BUF_MS5611;
 			LSM6DSO_buf();
-			break;
-		case READ_MS5611_TEMP:
-			break;
-		case READ_MS5611_BARO:
+		case STORE_BUF_MS5611:
+			MS5611_store_buffer();
+			current_state = IDLE;
 			break;
 		default:
 			break;

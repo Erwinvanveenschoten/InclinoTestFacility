@@ -67,7 +67,7 @@
 extern TIMER_t TICK_TIMER;
 
 /* Extern declaration of EVENT_DET APP handler */
-extern TIMER_t SCA103T_TIME_MEASUREMENT;
+extern TIMER_t ADC_TIMER;
 
 /* Extern declaration of EVENT_DET APP handler */
 extern TIMER_t TIME_MEASUREMENT;
@@ -76,7 +76,10 @@ extern TIMER_t TIME_MEASUREMENT;
 extern TIMER_t DELAY_TIMER;
 
 /* Extern declaration of EVENT_DET APP handler */
-extern TIMER_t TIMER_0;
+extern TIMER_t MS5611_TIMER;
+
+/* Extern declaration of EVENT_DET APP handler */
+extern TIMER_t TEMP_UPDATE_TIMER;
 
 #endif /* TIMER_EXTERN_H */
 

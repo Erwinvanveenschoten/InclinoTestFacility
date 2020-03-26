@@ -20,9 +20,9 @@ static bool BMI085_G_complete 	= false;
 static bool BMI085_A_complete 	= false;
 static bool LSM6DSO_complete 	= false;
 static bool MS5611_complete 	= false;
-
+#ifdef PRINTF
 static void print_buffer( void );
-
+#endif
 void buffer_add_message(MESSAGE_t message)
 {
 	if (write_index < BUFFER_SIZE)
@@ -63,7 +63,7 @@ bool buffer_message_complete( void )
 {
 	return 	BMI055_complete && SCA103T_complete
 			&& BMI085_G_complete && BMI085_A_complete
-			&& LSM6DSO_complete/*&& MS5611_complete*/;
+			&& LSM6DSO_complete && MS5611_complete;
 }
 
 void buffer_send( void )
@@ -74,15 +74,14 @@ void buffer_send( void )
 	BMI085_A_complete 	= false;
 	LSM6DSO_complete 	= false;
 	MS5611_complete 	= false;
-	//print_buffer();
 	send_messages((void*)message_buffer, sizeof(MESSAGE_t)*write_index, write_index);
 	write_index = 0;
 
 	TIMER_Stop(&TIME_MEASUREMENT);
-	printf("Time to copy data: %f uSec\n\r", ((float)TIMER_GetTime(&TIME_MEASUREMENT)/100.0));
+	//printf("Time to copy data: %f uSec\n\r", ((float)TIMER_GetTime(&TIME_MEASUREMENT)/100.0));
 }
 
-#ifndef PRINTF
+#ifdef PRINTF
 static void print_buffer( void )
 {
 	for (int i = 0; i < write_index; ++i)

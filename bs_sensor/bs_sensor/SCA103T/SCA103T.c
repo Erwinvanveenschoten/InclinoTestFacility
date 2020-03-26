@@ -15,7 +15,7 @@
 #define MSEC_SCALE 100
 
 static MESSAGE_t SCA103T_buffer[SCA103_BUFFERSIZE];
-static TIMER_t * const timer_handl = &SCA103T_TIME_MEASUREMENT;
+//static TIMER_t * const timer_handl = &TIME_MEASUREMENT;
 static uint8_t ADC_count = 0;
 
 static void print_buffer( void );
@@ -221,16 +221,16 @@ static void send_buffer( void )
 
 void SCA103T_time_measurement( void )
 {
-	TIMER_Stop(timer_handl);
-	float time = ((float)TIMER_GetTime(timer_handl))/(float)MSEC_SCALE;
-	printf("Time to complete ADC measurement is: %.2f uSec\n\r", time);
+//	TIMER_Stop(timer_handl);
+//	float time = ((float)TIMER_GetTime(timer_handl))/(float)MSEC_SCALE;
+//	printf("Time to complete ADC measurement is: %.2f uSec\n\r", time);
 }
 
 void SCA103T_start_adc_conv_seq(void)
 {
 	// Trigger SCA103T softwarechannels
-	TIMER_Clear (timer_handl);
-	TIMER_Start (timer_handl);
+//	TIMER_Clear (timer_handl);
+//	TIMER_Start (timer_handl);
 
 	ADC_MEASUREMENT_ADV_SoftwareTrigger(&ADC_MEASUREMENT_ADV_0);
 	ADC_MEASUREMENT_ADV_SoftwareTrigger(&ADC_MEASUREMENT_ADV_1);

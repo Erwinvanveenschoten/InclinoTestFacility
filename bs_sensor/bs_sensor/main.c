@@ -14,6 +14,7 @@
 #include "delay.h"
 #include "stdio.h"
 #include "message_buffer.h"
+#include "MS5611.h"
 
 /**
 
@@ -26,6 +27,8 @@
  */
 
 static bool tick_update=false;
+static bool temp_update=false;
+static bool baro_update=false;
 
 void tick_timer_ISR( void );
 
@@ -41,6 +44,7 @@ int main(void)
 	spi_1_init();
 
 	TIMER_Start (&TICK_TIMER);
+	TIMER_Start (&TEMP_UPDATE_TIMER);
 
 	if(status != DAVE_STATUS_SUCCESS)
 	{
@@ -56,6 +60,26 @@ int main(void)
 		{
 			buffer_send();
 		}
+		// if temp/baro conversion is complete, read adc
+		if(baro_update)
+		{
+			baro_update=false;
+			MS5611_start_press_conv();
+		}
+		if(MS5611_baro_conv_complete())
+		{
+			MS5611_read_adc();
+		}
+		if (MS5611_temp_conv_complete())
+		{
+			MS5611_read_adc();
+			baro_update=true;
+		}
+		if (temp_update)
+		{
+			temp_update=false;
+			MS5611_start_temp_conv();
+		}
 		if (tick_update)
 		{
 			tick_update=false;
@@ -69,6 +93,7 @@ int main(void)
 			// Trigger SCA103T transfer sequence
 			SCA103T_start_adc_conv_seq();
 
+			// if temp update start update sequence
 			spi_1_start_transf_seq();
 		}
 	}
@@ -77,4 +102,9 @@ int main(void)
 void tick_timer_ISR( void )
 {
 	tick_update=true;
+}
+
+void temp_update_ISR(void)
+{
+	temp_update=true;
 }

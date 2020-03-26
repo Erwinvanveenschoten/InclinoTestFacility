@@ -9,6 +9,8 @@
   <upwardMapList xsi:type="ResourceModel:RequiredApp" href="../../INTERRUPT/v4_0_8/INTERRUPT_3.app#//@requiredApps.0"/>
   <upwardMapList xsi:type="ResourceModel:RequiredApp" href="../../INTERRUPT/v4_0_8/INTERRUPT_4.app#//@requiredApps.0"/>
   <upwardMapList xsi:type="ResourceModel:RequiredApp" href="../../SPI_MASTER/v4_3_22/SPI_MASTER_0.app#//@requiredApps.1"/>
+  <upwardMapList xsi:type="ResourceModel:RequiredApp" href="../../INTERRUPT/v4_0_8/INTERRUPT_5.app#//@requiredApps.0"/>
+  <upwardMapList xsi:type="ResourceModel:RequiredApp" href="../../INTERRUPT/v4_0_8/INTERRUPT_6.app#//@requiredApps.0"/>
   <properties singleton="true" sharable="true"/>
   <virtualSignals name="nmi_irq" URI="http://resources/4.0.14/app/CPU_CTRL_XMC4/0/vs_nmi_irq" hwSignal="nmi_in" hwResource="//@hwResources.0" visible="true"/>
   <virtualSignals name="jtag tck" URI="http://resources/4.0.14/app/CPU_CTRL_XMC4/0/vs_jtag_tck" hwSignal="db_tck" hwResource="//@hwResources.5" required="false" visible="true"/>

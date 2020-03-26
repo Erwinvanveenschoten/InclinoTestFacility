@@ -134,3 +134,31 @@ const INTERRUPT_t DELAY_TIMER_INTERRUPT =
   .enable_at_init = true
 
 };
+const INTERRUPT_t MS5611_TIMER_ISR =
+{
+#if(UC_SERIES == XMC14)
+ .irqctrl = (XMC_SCU_IRQCTRL_t)0U,
+#endif
+  .node = (IRQn_Type)46,
+  .priority = 63,  
+#if(UC_FAMILY == XMC4)  
+  .subpriority = 0,
+#endif  
+
+  .enable_at_init = true
+
+};
+const INTERRUPT_t TEMP_UPDATE_INTERRUPT =
+{
+#if(UC_SERIES == XMC14)
+ .irqctrl = (XMC_SCU_IRQCTRL_t)0U,
+#endif
+  .node = (IRQn_Type)49,
+  .priority = 63,  
+#if(UC_FAMILY == XMC4)  
+  .subpriority = 0,
+#endif  
+
+  .enable_at_init = true
+
+};

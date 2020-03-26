@@ -64,6 +64,7 @@
 
 
 #define GLOBAL_CCU4_CCUCON_Msk ((uint32_t)XMC_SCU_CCU_TRIGGER_CCU43 |\
+                                XMC_SCU_CCU_TRIGGER_CCU40 |\
                                 XMC_SCU_CCU_TRIGGER_CCU41)
 
 #endif /* GLOBAL_CCU4_CONF_H_ */
