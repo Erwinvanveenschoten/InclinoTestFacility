@@ -28,6 +28,7 @@ static TIMER_t *const handle_ptr = &MS5611_TIMER;
 
 static uint32_t D_temp=0;
 static uint32_t D_baro=0;
+static uint32_t currentTemp = 0;
 static bool temp_updat=false;
 static bool baro_updat=false;
 
@@ -216,6 +217,7 @@ static int32_t process_temperature(void)
 {
 	int32_t dT=D_temp-coefficients[TREF_COEFFICIENT_INDEX]*TEMPERATURE_DIFFERENCE_WEIGHT;	// Temperature Difference
 	int32_t returnValue = AMBIENT_TEMP_OFFSET + (dT*coefficients[TEMPSENS_COEFFICIENT_INDEX])/TEMPERATURE_COEFFICIENT_WEIGHT;
+	currentTemp = returnValue;
 	return returnValue;
 }
 
@@ -231,4 +233,8 @@ static int32_t process_pressure(void)
 
 	int32_t pressure = ((D_baro*(SENS/SENS_AT_TEMP_WEIGHT)-OFF)/COMPENS_PRESS_WEIGHT);//	Temperature compensated pressure (10…1200mbar with 0.01mbar resolution)
 	return (int32_t)pressure;
+}
+
+int getTempMS5611(){
+	return currentTemp;
 }

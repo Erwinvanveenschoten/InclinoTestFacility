@@ -15,6 +15,7 @@
 #include "stdio.h"
 #include "message_buffer.h"
 #include "MS5611.h"
+#include "Heating.h"
 
 /**
 
@@ -56,6 +57,7 @@ int main(void)
 
 	while(1U)
 	{
+		manageTemperature(30);
 		if (buffer_message_complete())
 		{
 			buffer_send();
