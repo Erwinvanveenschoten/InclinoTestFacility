@@ -59,7 +59,8 @@
 
 
 // BMI055 register size
-#define BMI055_REGISTER_SIZE 4
+#define BMI055_ACC_REGISTER_SIZE 4
+#define BMI055_GYR_REGISTER_SIZE 8
 
 // Number of registers per BMI055
 #define NROF_BMI055_GYRO_REG 6

@@ -54,4 +54,6 @@ void MS5611_read_adc 		( void ); // Read ADC value (make sure to wait until conv
 void MS5611_init			( void ); // Initialize MS5611 module by reading PROM registers
 void MS5611_store_buffer 	( void ); // Store Temperature and Pressure Value in message buffer
 
+int getTempMS5611();
+
 #endif /* MS5611_H_ */

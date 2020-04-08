@@ -175,20 +175,20 @@ void store_buffer( uint32_t bmi055_index, uint32_t Data_index )
 		MESSAGE_t gyro_message[] =
 		{
 			{
-				.data = ((uint16_t)GYRO_buffer[GYRO_X_MSB_BUFFER_INDEX] << BMI055_REGISTER_SIZE) 	// Most significant byte
-						| (GYRO_buffer[GYRO_X_LSB_BUFFER_INDEX] >> BMI055_REGISTER_SIZE),					// Least significant byte
+				.data = ((uint16_t)GYRO_buffer[GYRO_X_MSB_BUFFER_INDEX] << BMI055_GYR_REGISTER_SIZE) 	// Most significant byte
+						| (GYRO_buffer[GYRO_X_LSB_BUFFER_INDEX]),					// Least significant byte
 				.data_id = GYRO_X_ID,
 				.ic_id = BMI055[bmi055_index].id,
 			},
 			{
-				.data = ((uint16_t)GYRO_buffer[GYRO_Y_MSB_BUFFER_INDEX] << BMI055_REGISTER_SIZE) 	// Most significant byte
-						| (GYRO_buffer[GYRO_Y_LSB_BUFFER_INDEX] >> BMI055_REGISTER_SIZE),			// Least significant byte
+				.data = ((uint16_t)GYRO_buffer[GYRO_Y_MSB_BUFFER_INDEX] << BMI055_GYR_REGISTER_SIZE) 	// Most significant byte
+						| (GYRO_buffer[GYRO_Y_LSB_BUFFER_INDEX]),			// Least significant byte
 				.data_id = GYRO_Y_ID,
 				.ic_id = BMI055[bmi055_index].id,
 			},
 			{
-				.data = ((uint16_t)GYRO_buffer[GYRO_Z_MSB_BUFFER_INDEX] << BMI055_REGISTER_SIZE) 	// Most significant byte
-						| (GYRO_buffer[GYRO_Z_LSB_BUFFER_INDEX] >> BMI055_REGISTER_SIZE),			// Least significant byte
+				.data = ((uint16_t)GYRO_buffer[GYRO_Z_MSB_BUFFER_INDEX] << BMI055_GYR_REGISTER_SIZE) 	// Most significant byte
+						| (GYRO_buffer[GYRO_Z_LSB_BUFFER_INDEX]),			// Least significant byte
 				.data_id = GYRO_Z_ID,
 				.ic_id = BMI055[bmi055_index].id,
 			},
@@ -205,20 +205,20 @@ void store_buffer( uint32_t bmi055_index, uint32_t Data_index )
 			MESSAGE_t acc_message[] =
 			{
 				{
-					.data = ((uint16_t)ACC_buffer[ACC_X_MSB_BUFFER_INDEX] << BMI055_REGISTER_SIZE) 		// Most significant byte
-							| (ACC_buffer[ACC_X_LSB_BUFFER_INDEX] >> BMI055_REGISTER_SIZE),				// Least significant byte,
+					.data = ((uint16_t)ACC_buffer[ACC_X_MSB_BUFFER_INDEX] << BMI055_ACC_REGISTER_SIZE) 		// Most significant byte
+							| (ACC_buffer[ACC_X_LSB_BUFFER_INDEX] >> BMI055_ACC_REGISTER_SIZE),				// Least significant byte,
 					.data_id = ACC_X_ID,
 					.ic_id = BMI055[bmi055_index].id,
 				},
 				{
-					.data =	((uint16_t)ACC_buffer[ACC_Y_MSB_BUFFER_INDEX] << BMI055_REGISTER_SIZE) 		// Most significant byte
-							| (ACC_buffer[ACC_Y_LSB_BUFFER_INDEX] >> BMI055_REGISTER_SIZE),				// Least significant byte
+					.data =	((uint16_t)ACC_buffer[ACC_Y_MSB_BUFFER_INDEX] << BMI055_ACC_REGISTER_SIZE) 		// Most significant byte
+							| (ACC_buffer[ACC_Y_LSB_BUFFER_INDEX] >> BMI055_ACC_REGISTER_SIZE),				// Least significant byte
 					.data_id = ACC_Y_ID,
 					.ic_id = BMI055[bmi055_index].id,
 				},
 				{
-					.data = ((uint16_t)ACC_buffer[ACC_Z_MSB_BUFFER_INDEX] << BMI055_REGISTER_SIZE) 		// Most significant byte
-							| (ACC_buffer[ACC_Z_LSB_BUFFER_INDEX] >> BMI055_REGISTER_SIZE),				// Least significant byte,
+					.data = ((uint16_t)ACC_buffer[ACC_Z_MSB_BUFFER_INDEX] << BMI055_ACC_REGISTER_SIZE) 		// Most significant byte
+							| (ACC_buffer[ACC_Z_LSB_BUFFER_INDEX] >> BMI055_ACC_REGISTER_SIZE),				// Least significant byte,
 					.data_id = ACC_Z_ID,
 					.ic_id = BMI055[bmi055_index].id,
 				},
