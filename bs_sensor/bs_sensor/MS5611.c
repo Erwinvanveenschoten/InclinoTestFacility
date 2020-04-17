@@ -180,6 +180,7 @@ static void start_conv ( uint8_t cmd )
 
 	if( SPI_MASTER_STATUS_SUCCESS == SPI_MASTER_Transmit( spi_handler, &cmd ,sizeof(cmd)))
 	{
+		// block while transmitting
 		while (SPI_MASTER_1.runtime->tx_busy || SPI_MASTER_1.runtime->rx_busy){}
 	}
 	delay(1);
