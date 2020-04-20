@@ -6,10 +6,10 @@
 void manageTemperature(int desiredTemp){
 	int currentTemp = getTempMS5611()/100;
 	desiredTemp = getDesiredTemp();
-	if((desiredTemp + TEMP_HYSTERESIS) > currentTemp){
+	if((desiredTemp - TEMP_HYSTERESIS) > currentTemp){
 		BUS_IO_GP_set(6);//3.7 heat pin
 	}
-	else if((desiredTemp - TEMP_HYSTERESIS) < currentTemp){
+	else if((desiredTemp + TEMP_HYSTERESIS) < currentTemp){
 		BUS_IO_GP_reset(6);//3.7 heat pin
 	}
 }
