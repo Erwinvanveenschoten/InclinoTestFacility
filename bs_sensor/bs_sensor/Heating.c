@@ -8,11 +8,11 @@ static int32_t temperature_setting = TEMPERATURE_INIT;
 
 void manageTemperature(){
 	int currentTemp = getTempMS5611()/100;
-	if(temperature_setting > currentTemp)
+	if((temperature_setting  - TEMP_HYSTERESIS) > currentTemp)
 	{
 		BUS_IO_GP_set(IO_GP_HEAT_PIN);
 	}
-	else
+	else if ((temperature_setting  + TEMP_HYSTERESIS) < currentTemp)
 	{
 		BUS_IO_GP_reset(IO_GP_HEAT_PIN);
 	}
