@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ASCII"?>
 <ResourceModel:Peripheral xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ResourceModel="http://www.infineon.com/Davex/Resource.ecore" URI="http://resources/48.0.1/peripheral/ccu4/1" description="Capture Compare Unit 4 - Unit 1" baseAddress="0x40010000">
   <provided xsi:type="ResourceModel:ResourceGroup" name="3" URI="http://resources/48.0.1/peripheral/ccu4/1/cc4/3">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/TIMER/v4_1_10/TIMER_6.app#//@hwResources.0"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/TIMER/v4_1_10/TIMER_5.app#//@hwResources.0"/>
     <resourcesList name="c0v" requiredResourceUri="http://resources/48.0.1/peripheral/ccu4/1/cc43_c0v"/>
     <resourcesList name="c1v" requiredResourceUri="http://resources/48.0.1/peripheral/ccu4/1/cc43_c1v"/>
     <resourcesList name="c2v" requiredResourceUri="http://resources/48.0.1/peripheral/ccu4/1/cc43_c2v"/>
@@ -355,7 +355,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="CCU4x.INyP"/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="global" URI="http://resources/48.0.1/peripheral/ccu4/1/global">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/GLOBAL_CCU4/v4_1_12/GLOBAL_CCU4_3.app#//@hwResources.0"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/GLOBAL_CCU4/v4_1_12/GLOBAL_CCU4_2.app#//@hwResources.0"/>
     <resourcesList name="gctrl" requiredResourceUri="http://resources/48.0.1/peripheral/ccu4/1/gctrl"/>
     <resourcesList name="gctrl_pcis" requiredResourceUri="http://resources/48.0.1/peripheral/ccu4/1/gctrl/pcis"/>
     <resourcesList name="gidlc_sprb" requiredResourceUri="http://resources/48.0.1/peripheral/ccu4/1/gidlc/sprb"/>
