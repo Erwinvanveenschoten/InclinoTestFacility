@@ -30,7 +30,6 @@
 static bool tick_update=false;
 static bool temp_update=false;
 static bool baro_update=false;
-static bool SCA103T_update=false;
 
 void tick_timer_ISR( void );
 void SCA103T_update_ISR(void);
@@ -62,6 +61,8 @@ int main(void)
 	while(1U)
 	{
 		manageTemperature();
+		SCA103T_advance();
+
 		if (buffer_message_complete())
 		{
 			buffer_send();
@@ -99,13 +100,7 @@ int main(void)
 			// if temp update start update sequence
 			spi_1_start_transf_seq();
 		}
-		if (SCA103T_update)
-		{
-			SCA103T_update=false;
 
-			// Trigger SCA103T transfer sequence
-			SCA103T_start_adc_conv_seq();
-		}
 	}
 }
 
@@ -117,9 +112,4 @@ void tick_timer_ISR( void )
 void temp_update_ISR(void)
 {
 	temp_update=true;
-}
-
-void SCA103T_update_ISR(void)
-{
-	SCA103T_update=true;
 }
