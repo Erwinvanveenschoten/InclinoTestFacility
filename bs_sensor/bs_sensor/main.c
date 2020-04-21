@@ -6,16 +6,6 @@
  */
 
 #include <DAVE.h>                 //Declarations from DAVE Code Generation (includes SFR declaration)
-#include "UDP.h"
-#include <BMI055.h>
-#include <SCA103T.h>
-#include "BUS_IO_GP.h"
-#include "spi_master_1.h"
-#include "delay.h"
-#include "stdio.h"
-#include "message_buffer.h"
-#include "MS5611.h"
-#include "Heating.h"
 
 /**
 
@@ -26,26 +16,15 @@
  * invoking the APP initialization dispatcher routine - DAVE_Init() and hosting the place-holder for user application
  * code.
  */
-
-static bool tick_update=false;
-static bool temp_update=false;
-static bool baro_update=false;
-
 void tick_timer_ISR( void );
+void SCA103T_update_ISR(void);
 
 int main(void)
 {
 	DAVE_STATUS_t status;
 	status = DAVE_Init();           /* Initialization of DAVE APPs  */
 
-#ifdef ENABLE_UDP
-	// init ethernet communication
-	udp_initialize();
-#endif
-	spi_1_init();
-
-	TIMER_Start (&TICK_TIMER);
-	TIMER_Start (&TEMP_UPDATE_TIMER);
+	ITF_init();
 
 	if(status != DAVE_STATUS_SUCCESS)
 	{
@@ -57,56 +36,6 @@ int main(void)
 
 	while(1U)
 	{
-		manageTemperature(30);
-		if (buffer_message_complete())
-		{
-			buffer_send();
-		}
-		// if temp/baro conversion is complete, read adc
-		if(baro_update)
-		{
-			baro_update=false;
-			MS5611_start_press_conv();
-		}
-		if(MS5611_baro_conv_complete())
-		{
-			MS5611_read_adc();
-		}
-		if (MS5611_temp_conv_complete())
-		{
-			MS5611_read_adc();
-			baro_update=true;
-		}
-		if (temp_update)
-		{
-			temp_update=false;
-			MS5611_start_temp_conv();
-		}
-		if (tick_update)
-		{
-			tick_update=false;
-
-			TIMER_Clear(&TIME_MEASUREMENT);
-			TIMER_Start(&TIME_MEASUREMENT);
-
-			// Trigger BMI055 transfer sequence
-			BMI055_start_transfer_seq();
-
-			// Trigger SCA103T transfer sequence
-			SCA103T_start_adc_conv_seq();
-
-			// if temp update start update sequence
-			spi_1_start_transf_seq();
-		}
+		ITF_manage();
 	}
-}
-
-void tick_timer_ISR( void )
-{
-	tick_update=true;
-}
-
-void temp_update_ISR(void)
-{
-	temp_update=true;
 }

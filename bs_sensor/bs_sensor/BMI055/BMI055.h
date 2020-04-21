@@ -28,5 +28,12 @@ typedef struct BMI055_data
 }BMI055_data_t;
 
 void BMI055_start_transfer_seq( void );
+void BMI055_init(void);
+
+// periodically call BMI055_advance(), for example in main loop, to start BMI055 transfer sequence when timer ISR has given the go ahead
+void BMI055_advance(void);
+
+// call from timer ISR to signal the go ahead for starting the BMI055 transfer sequence
+void BMI055_signal_update(void);
 
 #endif /* BMI055_H_ */

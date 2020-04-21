@@ -28,11 +28,16 @@ static uint8_t tx_buf[BMI085_A_BUF_SIZE] =
 	ACC_Y_LSB | READMASK,
 	ACC_Y_MSB | READMASK,
 	ACC_Z_LSB | READMASK,
-	ACC_Z_MSB | READMASK,
-	0xFF,
-	0xFF,
-	0xFF,
-	0xFF,
+	ACC_Z_MSB | READMASK, 	// 0x17
+	0xFF,				  	// 0x18
+	0xFF,					// 0x19
+	0xFF,					// 0x1A
+	0xFF,					// 0x1B
+	0xFF,				  	// 0x1C
+	0xFF,					// 0x1D
+	0xFF,					// 0x1E
+	0xFF,					// 0x20
+	0xFF,					// 0x21
 	TEMP_LSB | READMASK,
 	TEMP_MSB | READMASK,
 	0xFF,
@@ -85,7 +90,7 @@ void BMI085_A_store_buffer( void )
 	// TEMPERATURE MESSAGE
 	MESSAGE_t message =
 	{
-		.data = ((uint32_t)(rx_buf[BMI085_TEMP_MSB_INDEX] << 8) |
+		.data = ((uint32_t)(rx_buf[BMI085_TEMP_MSB_INDEX]*8) |
 							rx_buf[BMI085_TEMP_LSB_INDEX]),	// concatenate MSB and LSB
 		.data_id = TEMP_ID,									// ID of the data
 		.ic_id = BMI085_ID,									// ID of the IC

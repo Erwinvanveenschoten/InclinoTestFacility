@@ -27,8 +27,8 @@
 
 #define INCL_B_ENA  1
 #define INCL_A_ENA 	1
-#define VREF1_ENA 	0
-#define VREF2_ENA 	0
+#define VREF1_ENA 	1
+#define VREF2_ENA 	1
 
 #define NROF_SCA103T 	( 	SCA103T_0_ENA + \
 							SCA103T_1_ENA + \

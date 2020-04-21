@@ -97,8 +97,11 @@ static uint8_t TEMP_buffer[TEMP_BUFFER_SIZE];
  * 	(These are available by all the routines in this file. This is necessary
  * 	since the interrupt handlers don't take any parameters.)
  ******************************************************************************/
+
+static volatile bool BMI055_update=false;
 static volatile uint32_t BMI055_index = 0;
 static volatile uint32_t Data_index = 0;
+static volatile bool init_complete = false;
 
 
 /************************************************************************************
@@ -118,6 +121,45 @@ static void start_spi_transmission ( uint32_t bmi055_index, sensor_t sensor );
 /************************************************************************************
  * API function Definitions
  ************************************************************************************/
+
+void BMI055_init(void)
+{
+	uint16_t gyro_cs[]=
+	{
+		BMI055_0_CS_GYRO_PIN,
+		BMI055_1_CS_GYRO_PIN,
+		BMI055_2_CS_GYRO_PIN,
+		BMI055_3_CS_GYRO_PIN,
+		BMI055_4_CS_GYRO_PIN,
+		BMI055_5_CS_GYRO_PIN,
+		BMI055_6_CS_GYRO_PIN,
+		BMI055_7_CS_GYRO_PIN,
+	};
+
+	const int NROF_GYRO = sizeof(gyro_cs)/sizeof(gyro_cs[0]);
+
+	uint8_t tx[]=
+	{
+		0x10,
+		0x01,
+	};
+
+	for (int i = 0; i < NROF_GYRO; i++)
+	{
+		// set active low chipselect
+		BUS_IO_GP_reset(gyro_cs[i]);
+
+		// set gyro bandwidth to 230Hz
+		if( SPI_MASTER_STATUS_SUCCESS == SPI_MASTER_Transmit( SPI_HANDLER, tx, sizeof(tx)/sizeof(tx[0])))
+		{
+			// Wait while transmission is complete
+			while (SPI_MASTER_2.runtime->tx_busy || SPI_MASTER_2.runtime->rx_busy){}
+		}
+		// reset active low chipselect
+		BUS_IO_GP_set(gyro_cs[i]);
+	}
+	init_complete=true;
+}
 
 static void start_spi_transmission ( uint32_t bmi055_index, sensor_t sensor )
 {
@@ -250,6 +292,10 @@ void BMI055_eo_recieve(void)
 #if NROF_BMI055 > 0
 
 #if BMI055_GYRO_ENA || BMI055_ACC_ENA || BMI055_TEMP_ENA
+	if (!init_complete)
+	{
+		return;
+	}
 
 	// Store the SPI buffer as a message
 	store_buffer(BMI055_index, Data_index);
@@ -295,4 +341,19 @@ void BMI055_start_transfer_seq( void )
 	start_spi_transmission(BMI055_index, sensor_to_read[Data_index]);
 #endif
 #endif
+}
+
+void BMI055_advance(void)
+{
+	// When the go ahead is given, start transfer sequence
+	if (BMI055_update)
+	{
+		BMI055_start_transfer_seq();
+		BMI055_update=false;
+	}
+}
+
+void BMI055_signal_update(void)
+{
+	BMI055_update=true;
 }

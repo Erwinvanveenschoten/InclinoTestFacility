@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Project MotherSystem_Version="" Name="bs_sensor" Path="C:\Users\Kees\Documents\Kraken\InclinoTestFacility\bs_sensor\bs_sensor">
+<Project MotherSystem_Version="" Name="bs_sensor" Path="C:\Workspaces\InclinoTestFacility\bs_sensor\bs_sensor">
     <COMPILER>
         <Name>ARM_GCC_HOME</Name>
         <Version/>
