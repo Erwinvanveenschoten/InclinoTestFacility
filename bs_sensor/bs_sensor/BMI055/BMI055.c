@@ -97,6 +97,8 @@ static uint8_t TEMP_buffer[TEMP_BUFFER_SIZE];
  * 	(These are available by all the routines in this file. This is necessary
  * 	since the interrupt handlers don't take any parameters.)
  ******************************************************************************/
+
+static volatile bool BMI055_update=false;
 static volatile uint32_t BMI055_index = 0;
 static volatile uint32_t Data_index = 0;
 static volatile bool init_complete = false;
@@ -339,4 +341,19 @@ void BMI055_start_transfer_seq( void )
 	start_spi_transmission(BMI055_index, sensor_to_read[Data_index]);
 #endif
 #endif
+}
+
+void BMI055_advance(void)
+{
+	// When the go ahead is given, start transfer sequence
+	if (BMI055_update)
+	{
+		BMI055_start_transfer_seq();
+		BMI055_update=false;
+	}
+}
+
+void BMI055_signal_update(void)
+{
+	BMI055_update=true;
 }

@@ -22,7 +22,10 @@ typedef enum
 	STORE_BUF_MS5611,
 }spi_state_t;
 
-spi_state_t current_state = IDLE;
+static spi_state_t current_state = IDLE;
+static bool spi_1_start_update=false;
+static bool temp_update=false;
+static bool baro_update=false;
 
 static void disable_cs( void );
 
@@ -81,3 +84,36 @@ static void disable_cs( void )
 	BUS_IO_GP_set(MS5611_CS_PIN  );
 }
 
+void spi_1_advance(void)
+{
+	// if temp/baro conversion is complete, read adc
+	if(baro_update)
+	{
+		baro_update=false;
+		MS5611_start_press_conv();
+	}
+	if(MS5611_baro_conv_complete())
+	{
+		MS5611_read_adc();
+	}
+	if (MS5611_temp_conv_complete())
+	{
+		MS5611_read_adc();
+		baro_update=true;
+	}
+	if (temp_update)
+	{
+		temp_update=false;
+		MS5611_start_temp_conv();
+	}
+	if(spi_1_start_update)
+	{
+		spi_1_start_update=false;
+		spi_1_start_transf_seq();
+	}
+}
+
+void spi_1_update(void)
+{
+	spi_1_start_update=true;
+}

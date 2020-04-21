@@ -14,6 +14,7 @@
 
 #define MSEC_SCALE 100
 
+static bool SCA103T_update=false;
 static MESSAGE_t SCA103T_buffer[SCA103_BUFFERSIZE];
 //static TIMER_t * const timer_handl = &TIME_MEASUREMENT;
 static uint8_t ADC_count = 0;
@@ -235,4 +236,19 @@ void SCA103T_start_adc_conv_seq(void)
 	ADC_MEASUREMENT_ADV_SoftwareTrigger(&ADC_MEASUREMENT_ADV_0);
 	ADC_MEASUREMENT_ADV_SoftwareTrigger(&ADC_MEASUREMENT_ADV_1);
 	ADC_MEASUREMENT_ADV_SoftwareTrigger(&ADC_MEASUREMENT_ADV_2);
+}
+
+void SCA103T_advance(void)
+{
+	if (SCA103T_update)
+	{
+		SCA103T_update=false;
+		SCA103T_start_adc_conv_seq();
+	}
+}
+
+void SCA103T_update_ISR(void)
+{
+	// Set update flag to start conversion sequence from main loop using SCA103T_advance()
+	SCA103T_update=true;
 }

@@ -14,4 +14,7 @@ void spi_1_eo_transf_cb( void );
 void spi_1_start_transf_seq( void );
 void spi_1_init( void );
 
+void spi_1_advance(void);
+void spi_1_update(void);
+
 #endif /* SPI_MASTER_1_SPI_MASTER_1_H_ */
