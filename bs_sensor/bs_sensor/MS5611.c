@@ -63,6 +63,7 @@ void MS5611_read_adc( void )
 	{
 		while (SPI_MASTER_1.runtime->tx_busy || SPI_MASTER_1.runtime->rx_busy){}
 	}
+	delay(1);
 	BUS_IO_GP_set(MS5611_CS_PIN);
 
 	if( current_state==conv_temp_complete )
@@ -163,6 +164,7 @@ static uint16_t read_PROM( const uint8_t PROM_cmd )
 	{
 		while (SPI_MASTER_1.runtime->tx_busy || SPI_MASTER_1.runtime->rx_busy){}
 	}
+	delay(1);
 	BUS_IO_GP_set(MS5611_CS_PIN);
 
 	return (uint16_t)(PROM_rx[1] << 8) | PROM_rx[2];
@@ -183,7 +185,7 @@ static void start_conv ( uint8_t cmd )
 		// block while transmitting
 		while (SPI_MASTER_1.runtime->tx_busy || SPI_MASTER_1.runtime->rx_busy){}
 	}
-	delay(1);
+	delay(2);
 
 	// start conversion timer
 	start_timer();
