@@ -68,7 +68,7 @@
 		
 #define MS5611_timer_ISR IRQ_Hdlr_53
 		
-#define temp_update_ISR IRQ_Hdlr_46
+#define spi_1_update_ISR IRQ_Hdlr_46
 		
 #define SCA103T_update_ISR IRQ_Hdlr_49
 		
