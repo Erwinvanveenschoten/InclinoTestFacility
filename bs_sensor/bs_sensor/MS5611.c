@@ -183,7 +183,7 @@ static void start_conv ( uint8_t cmd )
 		// block while transmitting
 		while (SPI_MASTER_1.runtime->tx_busy || SPI_MASTER_1.runtime->rx_busy){}
 	}
-	delay(1);
+	delay(2);
 
 	// start conversion timer
 	start_timer();

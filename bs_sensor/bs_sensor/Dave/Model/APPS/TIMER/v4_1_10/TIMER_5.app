@@ -10,7 +10,7 @@
   </requiredApps>
   <requiredApps URI="http://resources/4.1.10/app/TIMER/5/app_global_ccu8" requiredAppName="GLOBAL_CCU8" required="false" requiringMode="SHARABLE"/>
   <hwResources name="CC4 Timer" URI="http://resources/4.1.10/app/TIMER/5/hwres_ccu4_cc4" resourceGroupUri="peripheral/ccu4/*/cc4/*" mResGrpUri="peripheral/ccu4/*/cc4/*">
-    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/ccu41/ccu41_1.dd#//@provided.0"/>
+    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/ccu40/ccu40_0.dd#//@provided.0"/>
   </hwResources>
   <hwResources name="CC8 Timer" URI="http://resources/4.1.10/app/TIMER/5/hwres_ccu8_cc8" resourceGroupUri="" required="false" mResGrpUri="peripheral/ccu8/*/cc8/*"/>
   <connections URI="http://resources/4.1.10/app/TIMER/5/http://resources/4.1.10/app/TIMER/5/vs_global_ccu4_enable/http://resources/4.1.10/app/TIMER/5/vs_timer_ccu4_global_enable" systemDefined="true" sourceSignal="ccu4_global" targetSignal="global_enable" targetVirtualSignal="//@virtualSignals.2" proxySrcVirtualSignalUri="http://resources/4.1.12/app/GLOBAL_CCU4/2/vs_global_ccu4_globalsignal" containingProxySignal="true">
