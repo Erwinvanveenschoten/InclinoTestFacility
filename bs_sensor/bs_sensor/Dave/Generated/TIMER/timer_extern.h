@@ -81,6 +81,9 @@ extern TIMER_t MS5611_TIMER;
 /* Extern declaration of EVENT_DET APP handler */
 extern TIMER_t TEMP_UPDATE_TIMER;
 
+/* Extern declaration of EVENT_DET APP handler */
+extern TIMER_t SCA103T_TIMER;
+
 #endif /* TIMER_EXTERN_H */
 
 

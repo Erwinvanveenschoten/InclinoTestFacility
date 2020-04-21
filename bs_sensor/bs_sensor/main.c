@@ -30,8 +30,10 @@
 static bool tick_update=false;
 static bool temp_update=false;
 static bool baro_update=false;
+static bool SCA103T_update=false;
 
 void tick_timer_ISR( void );
+void SCA103T_update_ISR(void);
 
 int main(void)
 {
@@ -43,9 +45,11 @@ int main(void)
 	udp_initialize();
 #endif
 	spi_1_init();
+	BMI055_init();
 
 	TIMER_Start (&TICK_TIMER);
 	TIMER_Start (&TEMP_UPDATE_TIMER);
+	TIMER_Start (&SCA103T_TIMER);
 
 	if(status != DAVE_STATUS_SUCCESS)
 	{
@@ -57,7 +61,7 @@ int main(void)
 
 	while(1U)
 	{
-		manageTemperature(30);
+		manageTemperature();
 		if (buffer_message_complete())
 		{
 			buffer_send();
@@ -92,11 +96,15 @@ int main(void)
 			// Trigger BMI055 transfer sequence
 			BMI055_start_transfer_seq();
 
-			// Trigger SCA103T transfer sequence
-			SCA103T_start_adc_conv_seq();
-
 			// if temp update start update sequence
 			spi_1_start_transf_seq();
+		}
+		if (SCA103T_update)
+		{
+			SCA103T_update=false;
+
+			// Trigger SCA103T transfer sequence
+			SCA103T_start_adc_conv_seq();
 		}
 	}
 }
@@ -109,4 +117,9 @@ void tick_timer_ISR( void )
 void temp_update_ISR(void)
 {
 	temp_update=true;
+}
+
+void SCA103T_update_ISR(void)
+{
+	SCA103T_update=true;
 }
