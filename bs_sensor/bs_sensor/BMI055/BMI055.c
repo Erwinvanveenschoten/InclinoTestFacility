@@ -120,7 +120,7 @@ static void start_spi_transmission ( uint32_t bmi055_index, sensor_t sensor );
  * API function Definitions
  ************************************************************************************/
 
-void BNI055_init(void)
+void BMI055_init(void)
 {
 	uint16_t gyro_cs[]=
 	{

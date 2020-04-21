@@ -28,6 +28,6 @@ typedef struct BMI055_data
 }BMI055_data_t;
 
 void BMI055_start_transfer_seq( void );
-void BNI055_init(void);
+void BMI055_init(void);
 
 #endif /* BMI055_H_ */

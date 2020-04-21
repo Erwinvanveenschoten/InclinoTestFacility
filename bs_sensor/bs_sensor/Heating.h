@@ -8,8 +8,10 @@
 #ifndef HEATING_H_
 #define HEATING_H_
 
-void manageTemperature(int currentTemp);
+#define TEMPERATURE_INIT 30
+#define IO_GP_HEAT_PIN 6
 
-
+void manageTemperature(void);
+void set_temperature(int32_t temperature);
 
 #endif /* HEATING_H_ */

@@ -185,6 +185,16 @@ DAVE_STATUS_t DAVE_Init(void)
   {
 	 /**  Initialization of INTERRUPT APP instance TEMP_UPDATE_INTERRUPT */
 	 init_status = (DAVE_STATUS_t)INTERRUPT_Init(&TEMP_UPDATE_INTERRUPT); 
+   } 
+  if (init_status == DAVE_STATUS_SUCCESS)
+  {
+	 /**  Initialization of TIMER APP instance SCA103T_TIMER */
+	 init_status = (DAVE_STATUS_t)TIMER_Init(&SCA103T_TIMER); 
+   } 
+  if (init_status == DAVE_STATUS_SUCCESS)
+  {
+	 /**  Initialization of INTERRUPT APP instance SCA103T_TIMERINTERRUPT */
+	 init_status = (DAVE_STATUS_t)INTERRUPT_Init(&SCA103T_TIMERINTERRUPT); 
    }  
   return init_status;
 } /**  End of function DAVE_Init */

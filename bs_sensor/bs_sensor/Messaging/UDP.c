@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <delay.h>
+#include "Heating.h"
 
 #include "UDP.h"
 #include "BUS_IO_GP.h"
@@ -17,19 +18,15 @@ uint8_t packetCount = 0;				/** Counter to indicate how many UDP packets are nee
 
 uint8_t cycleNr = 0;					/** Variable to store the ID of the current distance cycle **/
 
-static uint32_t desiredTemp = 0;
-
 void udp_echo_recv(void *arg, struct udp_pcb *pcb, struct pbuf *p, const ip_addr_t *addr, u16_t port){
       if (p != NULL) {
-            //udp_sendto(pcb, p, &returnaddr, 20000); //dest port
             memcpy(UDPBuffer, p->payload, 1);
-            desiredTemp = UDPBuffer[0];
+
+            // Only content of receive buffer is temperature setting
+            set_temperature(UDPBuffer[0]);
+
             pbuf_free(p);
       }
-}
-
-int getDesiredTemp(){
-	return desiredTemp;
 }
 
 /**

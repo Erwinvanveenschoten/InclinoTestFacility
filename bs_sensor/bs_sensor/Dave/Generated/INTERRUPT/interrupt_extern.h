@@ -66,9 +66,11 @@
 		
 #define delay_timer_cb IRQ_Hdlr_57
 		
-#define MS5611_timer_ISR IRQ_Hdlr_46
+#define MS5611_timer_ISR IRQ_Hdlr_53
 		
-#define temp_update_ISR IRQ_Hdlr_49
+#define temp_update_ISR IRQ_Hdlr_46
+		
+#define SCA103T_update_ISR IRQ_Hdlr_49
 		
 /***********************************************************************************************************************
  * EXTERN DECLARATIONS
@@ -87,6 +89,8 @@ extern const INTERRUPT_t DELAY_TIMER_INTERRUPT;
 extern const INTERRUPT_t MS5611_TIMER_ISR; 
 	
 extern const INTERRUPT_t TEMP_UPDATE_INTERRUPT; 
+	
+extern const INTERRUPT_t SCA103T_TIMERINTERRUPT; 
 	
 #endif  /* INTERRUPT_EXTERN_H */
 
