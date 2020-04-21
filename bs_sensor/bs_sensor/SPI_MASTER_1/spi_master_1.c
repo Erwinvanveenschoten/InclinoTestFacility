@@ -117,3 +117,8 @@ void spi_1_update(void)
 {
 	spi_1_start_update=true;
 }
+
+void spi_1_update_ISR(void)
+{
+	temp_update=true;
+}

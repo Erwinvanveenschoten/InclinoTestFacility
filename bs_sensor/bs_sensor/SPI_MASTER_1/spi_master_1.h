@@ -16,5 +16,6 @@ void spi_1_init( void );
 
 void spi_1_advance(void);
 void spi_1_update(void);
+void spi_1_update_temp_ISR(void);
 
 #endif /* SPI_MASTER_1_SPI_MASTER_1_H_ */

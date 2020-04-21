@@ -6,7 +6,7 @@
  */
 
 #include <DAVE.h>                 //Declarations from DAVE Code Generation (includes SFR declaration)
-
+#include "ITF.h"
 /**
 
  * @brief main() - Application entry point
