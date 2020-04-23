@@ -16,8 +16,12 @@
  * invoking the APP initialization dispatcher routine - DAVE_Init() and hosting the place-holder for user application
  * code.
  */
+
+#define ITF_ENA 1
+
 void tick_timer_ISR( void );
 void SCA103T_update_ISR(void);
+void BMI055_test(void);
 
 int main(void)
 {
@@ -36,6 +40,47 @@ int main(void)
 
 	while(1U)
 	{
+#if ITF_ENA
 		ITF_manage();
+#else
+		// place test code here
+		BMI055_test();
+#endif
 	}
+}
+
+void BMI055_test(void)
+{
+		const uint8_t NROF_CS 	= 15;
+		const uint8_t ACC_CS  	= 00;
+		const uint16_t CS_mask 	= ~(1 << (NROF_CS - (ACC_CS)));
+		const uint16_t CS_reset	= 0xFF;
+		const uint8_t READMASK	= 0x80;
+		const uint8_t DUMMY		= 0xFF;
+
+		const uint8_t REG_BGW_CHIPID	= 0X00;
+		const uint8_t REG_PMU_BW		= 0x10;
+
+		uint8_t tx[]=
+		{
+			REG_BGW_CHIPID | READMASK,
+			DUMMY,
+		};
+		uint8_t tx_size=sizeof(tx)/sizeof(tx[0]);
+		uint8_t rx[tx_size];
+
+		// set CS
+		BUS_IO_Write(&IO_GA_8, CS_mask);
+
+		// Transfer data
+		if (SPI_MASTER_STATUS_SUCCESS == SPI_MASTER_Transfer(	&SPI_MASTER_2,
+																tx,
+																rx,
+																tx_size))
+		{
+			// Wait while transmission is complete
+			while (SPI_MASTER_2.runtime->tx_busy || SPI_MASTER_2.runtime->rx_busy){}
+		}
+
+		BUS_IO_Write(&IO_GA_8, CS_reset);
 }

@@ -124,39 +124,50 @@ static void start_spi_transmission ( uint32_t bmi055_index, sensor_t sensor );
 
 void BMI055_init(void)
 {
-	uint16_t gyro_cs[]=
+	uint8_t gyro_init_tx[]=
 	{
-		BMI055_0_CS_GYRO_PIN,
-		BMI055_1_CS_GYRO_PIN,
-		BMI055_2_CS_GYRO_PIN,
-		BMI055_3_CS_GYRO_PIN,
-		BMI055_4_CS_GYRO_PIN,
-		BMI055_5_CS_GYRO_PIN,
-		BMI055_6_CS_GYRO_PIN,
-		BMI055_7_CS_GYRO_PIN,
+		BMI055_GYRO_BW_CTRL,
+		BMI055_GYRO_BW_1000DPS,
+	};
+	uint8_t acc_init_tx[]=
+	{
+		BMI055_ACCD_PMU_BW_CTRL,
+		BMI055_ACCD_PMU_BW_1000Hz,
 	};
 
-	const int NROF_GYRO = sizeof(gyro_cs)/sizeof(gyro_cs[0]);
-
-	uint8_t tx[]=
+	for (int i = 0; i < NROF_BMI055; i++)
 	{
-		0x10,
-		0x01,
-	};
-
-	for (int i = 0; i < NROF_GYRO; i++)
-	{
+		/************************************************************************************
+		 * Gyro
+		 ************************************************************************************/
 		// set active low chipselect
-		BUS_IO_GP_reset(gyro_cs[i]);
+		uint16_t CS_mask = ~(1 << (NROF_CS_PIN - (BMI055[i].cs_gyro)));
+		BUS_IO_Write(BUS_HANDLER, CS_mask);
 
-		// set gyro bandwidth to 230Hz
-		if( SPI_MASTER_STATUS_SUCCESS == SPI_MASTER_Transmit( SPI_HANDLER, tx, sizeof(tx)/sizeof(tx[0])))
+		// Gyro initialisation
+		if( SPI_MASTER_STATUS_SUCCESS == SPI_MASTER_Transmit( SPI_HANDLER, gyro_init_tx, sizeof(gyro_init_tx)/sizeof(gyro_init_tx[0])))
 		{
 			// Wait while transmission is complete
 			while (SPI_MASTER_2.runtime->tx_busy || SPI_MASTER_2.runtime->rx_busy){}
 		}
 		// reset active low chipselect
-		BUS_IO_GP_set(gyro_cs[i]);
+		BUS_IO_Write(BUS_HANDLER, 0xFFFF);
+
+		/************************************************************************************
+		 * Accelero
+		 ************************************************************************************/
+		// set active low chipselect
+		CS_mask = ~(1 << (NROF_CS_PIN - (BMI055[i].cs_acc)));
+		BUS_IO_Write(BUS_HANDLER, CS_mask);
+
+		// acc initialisation
+		if( SPI_MASTER_STATUS_SUCCESS == SPI_MASTER_Transmit( SPI_HANDLER, acc_init_tx, sizeof(acc_init_tx)/sizeof(acc_init_tx[0])))
+		{
+			// Wait while transmission is complete
+			while (SPI_MASTER_2.runtime->tx_busy || SPI_MASTER_2.runtime->rx_busy){}
+		}
+		// reset active low chipselect
+		BUS_IO_Write(BUS_HANDLER, 0xFFFF);
 	}
 	init_complete=true;
 }
