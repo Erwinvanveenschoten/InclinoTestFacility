@@ -94,8 +94,7 @@ void BMI085_A_store_buffer( void )
 	// TEMPERATURE MESSAGE
 	MESSAGE_t message =
 	{
-		.data = ((uint32_t)(rx_buf[BMI085_TEMP_MSB_INDEX]*8) |
-							rx_buf[BMI085_TEMP_LSB_INDEX]),	// concatenate MSB and LSB
+		.data = ((uint32_t)(rx_buf[BMI085_TEMP_MSB_INDEX]*8) + rx_buf[BMI085_TEMP_LSB_INDEX]/32),	// concatenate MSB and LSB
 		.data_id = TEMP_ID,									// ID of the data
 		.ic_id = BMI085_ID,									// ID of the IC
 	};

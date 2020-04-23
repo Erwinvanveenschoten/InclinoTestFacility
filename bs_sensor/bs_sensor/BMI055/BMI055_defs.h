@@ -32,8 +32,8 @@
 #define BMI055_ACCD_Y_LSB 			0x04
 #define BMI055_ACCD_Y_MSB 			0x05
 #define BMI055_ACCD_Z_LSB 			0x06
-#define BMI055_ACCD_Z_MSB 		0x07
-#define BMI055_ACCD_TEMP		0x08
+#define BMI055_ACCD_Z_MSB 			0x07
+#define BMI055_ACCD_TEMP			0x08
 
 #define BMI055_RESET_CS 0xFFFF
 #define READ_MASK 0x80

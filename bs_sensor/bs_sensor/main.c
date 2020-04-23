@@ -29,6 +29,14 @@ int main(void)
 	status = DAVE_Init();           /* Initialization of DAVE APPs  */
 
 	ITF_init();
+	BMI055_test();
+	BMI055_test();
+	BMI055_test();
+	BMI055_test();
+	BMI055_test();
+	BMI055_test();
+	BMI055_test();
+	BMI055_test();
 
 	if(status != DAVE_STATUS_SUCCESS)
 	{
@@ -53,7 +61,7 @@ int main(void)
 void BMI055_test(void)
 {
 		const uint8_t NROF_CS 	= 15;
-		const uint8_t ACC_CS  	= 4;
+		const uint8_t ACC_CS  	= 3;
 		const uint16_t CS_mask 	= ~(1 << (NROF_CS - (ACC_CS)));
 		const uint16_t CS_reset	= 0xFFFF;
 		const uint8_t READMASK	= 0x80;

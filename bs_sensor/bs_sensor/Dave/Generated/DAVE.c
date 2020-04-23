@@ -143,6 +143,11 @@ DAVE_STATUS_t DAVE_Init(void)
    } 
   if (init_status == DAVE_STATUS_SUCCESS)
   {
+	 /**  Initialization of TIMER APP instance ADC_TIMER */
+	 init_status = (DAVE_STATUS_t)TIMER_Init(&ADC_TIMER); 
+   } 
+  if (init_status == DAVE_STATUS_SUCCESS)
+  {
 	 /**  Initialization of TIMER APP instance TIME_MEASUREMENT */
 	 init_status = (DAVE_STATUS_t)TIMER_Init(&TIME_MEASUREMENT); 
    } 

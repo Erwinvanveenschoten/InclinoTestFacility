@@ -765,9 +765,9 @@ const SPI_MASTER_CONFIG_t SPI_MASTER_2_Config  =
   .tx_fifo_size            = (XMC_USIC_CH_FIFO_SIZE_t)XMC_USIC_CH_FIFO_DISABLED,
   .rx_fifo_size            = (XMC_USIC_CH_FIFO_SIZE_t)XMC_USIC_CH_FIFO_DISABLED,
   /* Clock Settings */
-  .shift_clk_passive_level = XMC_SPI_CH_BRG_SHIFT_CLOCK_PASSIVE_LEVEL_0_DELAY_ENABLED, 
+  .shift_clk_passive_level = XMC_SPI_CH_BRG_SHIFT_CLOCK_PASSIVE_LEVEL_0_DELAY_DISABLED, 
   .slave_select_lines      = (uint8_t)1,
-  .leading_trailing_delay  = (uint8_t)2,
+  .leading_trailing_delay  = (uint8_t)4,
   .spi_master_config_mode  = XMC_SPI_CH_MODE_STANDARD, /* spi master initial mode configured mode */
   .transmit_mode           = SPI_MASTER_TRANSFER_MODE_DMA,
   .receive_mode            = SPI_MASTER_TRANSFER_MODE_DMA,
@@ -871,10 +871,10 @@ static SPI_MASTER_STATUS_t SPI_MASTER_2_lInit(void)
 
   /* Configure the clock polarity and clock delay */
   XMC_SPI_CH_ConfigureShiftClockOutput(XMC_SPI0_CH0,
-                                       XMC_SPI_CH_BRG_SHIFT_CLOCK_PASSIVE_LEVEL_0_DELAY_ENABLED,
+                                       XMC_SPI_CH_BRG_SHIFT_CLOCK_PASSIVE_LEVEL_0_DELAY_DISABLED,
                                        XMC_SPI_CH_BRG_SHIFT_CLOCK_OUTPUT_SCLK);
   /* Configure Leading/Trailing delay */
-  XMC_SPI_CH_SetSlaveSelectDelay(XMC_SPI0_CH0, 2U);
+  XMC_SPI_CH_SetSlaveSelectDelay(XMC_SPI0_CH0, 4U);
 
                
   /* Configure the inter word delay */

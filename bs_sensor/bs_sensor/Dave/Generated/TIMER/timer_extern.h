@@ -67,6 +67,9 @@
 extern TIMER_t TICK_TIMER;
 
 /* Extern declaration of EVENT_DET APP handler */
+extern TIMER_t ADC_TIMER;
+
+/* Extern declaration of EVENT_DET APP handler */
 extern TIMER_t TIME_MEASUREMENT;
 
 /* Extern declaration of EVENT_DET APP handler */
