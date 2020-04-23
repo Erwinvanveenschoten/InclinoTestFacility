@@ -20,6 +20,8 @@
 
 #define ACC_PWR_CTRL	0x7D
 #define ACC_PWR_NORMAL 	0x04
+#define ACC_RANGE_CTRL	0x41
+#define ACC_RANGE_2g	0x00
 #define ACC_X_LSB		0x12
 #define ACC_X_MSB		0x13
 #define ACC_Y_LSB		0x14

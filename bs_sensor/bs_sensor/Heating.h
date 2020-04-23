@@ -13,6 +13,7 @@
 #define TEMPERATURE_INIT 30
 #define IO_GP_HEAT_PIN 6
 #define TEMP_HYSTERESIS 1
+#define TEMPERATURE_SCALER 100
 
 void manageTemperature(void);
 void set_temperature(int32_t temperature);
