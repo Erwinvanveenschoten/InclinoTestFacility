@@ -15,6 +15,10 @@
 
 void ITF_manage(void)
 {
+	if(buffer_message_complete())
+	{
+		buffer_send();
+	}
 	manageTemperature();
 	SCA103T_advance();
 	BMI055_advance();

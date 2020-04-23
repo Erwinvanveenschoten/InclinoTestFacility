@@ -41,6 +41,7 @@ static uint8_t tx_buf[BMI085_A_BUF_SIZE] =
 	TEMP_LSB | READMASK,
 	TEMP_MSB | READMASK,
 	0xFF,
+	0xFF,
 };
 
 static const SPI_MASTER_t * const spi_handler = &SPI_MASTER_1;
@@ -53,7 +54,10 @@ void BMI085_A_init ( void )
 
 	uint8_t init_tx[] =
 	{	ACC_PWR_CTRL,		// Power mode control register
-		ACC_PWR_NORMAL,	};	// Data to select normal power mode
+		ACC_PWR_NORMAL,		// Data to select normal power mode
+		ACC_RANGE_CTRL,			//range register
+		ACC_RANGE_2g		//range set value
+	};
 
 	BUS_IO_GP_reset(BMI085_CS_A_PIN);
 	if(SPI_MASTER_STATUS_SUCCESS == SPI_MASTER_Transmit( &SPI_MASTER_1, init_tx, sizeof(init_tx)/sizeof(init_tx[0]) ))
@@ -80,7 +84,7 @@ void BMI085_A_store_buffer( void )
 	{
 		MESSAGE_t message =
 		{
-			.data = ((uint32_t)(rx_buf[i+1] << 8) | rx_buf[i]),	// concatenate MSB and LSB
+			.data = ((uint32_t)(rx_buf[i+2] << 8) | rx_buf[i+1]),	// concatenate MSB and LSB
 			.data_id = data_id[i/2],							// ID of the data
 			.ic_id = BMI085_ID,									// ID of the IC
 		};
