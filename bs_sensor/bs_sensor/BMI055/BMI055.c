@@ -141,7 +141,7 @@ void BMI055_init(void)
 		 * Gyro
 		 ************************************************************************************/
 		// set active low chipselect
-		uint16_t CS_mask = ~(1 << (NROF_CS_PIN - (BMI055[i].cs_gyro)));
+		uint16_t CS_mask = ~(1 << (BMI055[i].cs_gyro));
 		BUS_IO_Write(BUS_HANDLER, CS_mask);
 
 		// Gyro initialisation
@@ -157,7 +157,7 @@ void BMI055_init(void)
 		 * Accelero
 		 ************************************************************************************/
 		// set active low chipselect
-		CS_mask = ~(1 << (NROF_CS_PIN - (BMI055[i].cs_acc)));
+		CS_mask = ~(1 << ((BMI055[i].cs_acc)));
 		BUS_IO_Write(BUS_HANDLER, CS_mask);
 
 		// acc initialisation
@@ -191,7 +191,7 @@ void read_gyro( uint32_t bmi055_index )
 {
 #if BMI055_GYRO_ENA
 	// Slave select
-	const uint16_t CS_mask = ~(1 << (NROF_CS_PIN - (BMI055[bmi055_index].cs_gyro)));
+	const uint16_t CS_mask = ~(1 << (BMI055[bmi055_index].cs_gyro));
 
 	BUS_IO_Write(BUS_HANDLER, CS_mask);
 
@@ -206,7 +206,7 @@ void read_gyro( uint32_t bmi055_index )
 void read_acc( uint32_t bmi055_index )
 {
 	// Slave select
-	const uint16_t CS_mask = ~(1 << (NROF_CS_PIN - (BMI055[bmi055_index].cs_acc)));
+	const uint16_t CS_mask = ~(1 << (BMI055[bmi055_index].cs_acc));
 
 	BUS_IO_Write(BUS_HANDLER, CS_mask);
 
