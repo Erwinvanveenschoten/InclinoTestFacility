@@ -37,6 +37,11 @@
 #define IF_INC		0x04
 #define CTRL4_C		0x13
 #define DIS_I2C		0x04
+#define CTRL2_G 	0x11
+#define GYRO_BANDWIDTH 	0x80
+#define GYRO_RANGE		0X02
+#define LSM6DS0_XL_BANDWIDTH 	0x80
+#define	LSM6DS0_XL_RANGE		0x00
 
 void LSM6DSO_init (void);
 void LSM6DSO_read (void);

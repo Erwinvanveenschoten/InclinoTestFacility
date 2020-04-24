@@ -14,6 +14,8 @@
 
 static uint8_t rx_buf[BMI085_A_BUF_SIZE];
 
+void BMI085_A_write(uint8_t addr, uint8_t data);
+
 static uint8_t data_id[] =
 {
 		ACC_X_ID,
@@ -52,21 +54,9 @@ void BMI085_A_init ( void )
 
 	delay(1000);	//Wait 1 mSec
 
-	uint8_t init_tx[] =
-	{	ACC_PWR_CTRL,		// Power mode control register
-		ACC_PWR_NORMAL,		// Data to select normal power mode
-		ACC_RANGE_CTRL,			//range register
-		ACC_RANGE_2g		//range set value
-	};
-
-	BUS_IO_GP_reset(BMI085_CS_A_PIN);
-	if(SPI_MASTER_STATUS_SUCCESS == SPI_MASTER_Transmit( &SPI_MASTER_1, init_tx, sizeof(init_tx)/sizeof(init_tx[0]) ))
-	{
-		while (SPI_MASTER_1.runtime->rx_busy){}
-	}
-	delay(1);
-	BUS_IO_GP_set(BMI085_CS_A_PIN);
-
+	BMI085_A_write(ACC_PWR_CTRL, ACC_PWR_NORMAL);
+	delay(50000);	//Wait 50 mSec
+	BMI085_A_write(ACC_RANGE_CTRL, ACC_RANGE_2g);
 	delay(50000);	//Wait 50 mSec
 }
 
@@ -102,4 +92,18 @@ void BMI085_A_store_buffer( void )
 	buffer_signal_BMI085_A_complete();
 }
 
-
+void BMI085_A_write(uint8_t addr, uint8_t data)
+{
+	uint8_t tx[]=
+	{
+		addr,
+		data,
+	};
+	BUS_IO_GP_reset(BMI085_CS_A_PIN);
+	if(SPI_MASTER_STATUS_SUCCESS == SPI_MASTER_Transmit( &SPI_MASTER_1, tx, sizeof(tx)/sizeof(tx[0]) ))
+	{
+		while (SPI_MASTER_1.runtime->rx_busy){}
+	}
+	delay(1);
+	BUS_IO_GP_set(BMI085_CS_A_PIN);
+}

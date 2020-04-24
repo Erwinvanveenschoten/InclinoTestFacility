@@ -17,11 +17,11 @@
  * code.
  */
 
-#define ITF_ENA 0
+#define ITF_ENA 1
 
-void tick_timer_ISR( void );
-void SCA103T_update_ISR(void);
 void BMI055_test(void);
+
+static uint32_t counter=0;
 
 int main(void)
 {
@@ -29,14 +29,6 @@ int main(void)
 	status = DAVE_Init();           /* Initialization of DAVE APPs  */
 
 	ITF_init();
-	BMI055_test();
-	BMI055_test();
-	BMI055_test();
-	BMI055_test();
-	BMI055_test();
-	BMI055_test();
-	BMI055_test();
-	BMI055_test();
 
 	if(status != DAVE_STATUS_SUCCESS)
 	{
@@ -72,7 +64,7 @@ void BMI055_test(void)
 
 		uint8_t tx[]=
 		{
-			REG_BGW_CHIPID | READMASK,
+			REG_PMU_BW | READMASK,
 			DUMMY,
 		};
 		uint8_t tx_size=sizeof(tx)/sizeof(tx[0]);
@@ -95,6 +87,11 @@ void BMI055_test(void)
 		delay(2);
 
 		BUS_IO_Write(&IO_GA_8, CS_reset);
+
+		if(rx[1]!=0xFA)
+		{
+			counter++;
+		}
 
 		SPI_MASTER_RXFIFO_EnableEvent( &SPI_MASTER_2, XMC_USIC_CH_RXFIFO_EVENT_STANDARD);
 }

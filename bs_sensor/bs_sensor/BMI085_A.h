@@ -30,7 +30,10 @@
 #define ACC_Z_MSB		0x17
 #define TEMP_LSB		0x22
 #define TEMP_MSB		0x23
+#define REG_GYRO_BANDWIDTH 	0x10
+#define GYRO_BANDWIDTH		0x02
 
+void BMI085_G_init(void);
 void BMI085_A_init ( void );
 void BMI085_A_read ( void );
 void BMI085_A_store_buffer( void );

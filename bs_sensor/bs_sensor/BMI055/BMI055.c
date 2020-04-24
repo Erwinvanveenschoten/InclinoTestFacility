@@ -124,11 +124,21 @@ static void start_spi_transmission ( uint32_t bmi055_index, sensor_t sensor );
 
 void BMI055_init(void)
 {
+	while(SPI_MASTER_STATUS_SUCCESS != SPI_MASTER_SetBaudRate (&SPI_MASTER_2, 5000000)){}
+
 	uint8_t gyro_init_tx[]=
 	{
 		BMI055_GYRO_BW_CTRL,
 		BMI055_GYRO_BW_1000DPS,
+		0x0F,//REG_RANGE
+		0x04,//RANGE
 	};
+	uint8_t gyro_range_tx[]=
+	{
+		BMI055_GYRO_REG_RANGE,
+		BMI055_GYRO_RANGE,
+	};
+
 	uint8_t acc_init_tx[]=
 	{
 		BMI055_ACCD_PMU_BW_CTRL,
@@ -150,6 +160,21 @@ void BMI055_init(void)
 			// Wait while transmission is complete
 			while (SPI_MASTER_2.runtime->tx_busy || SPI_MASTER_2.runtime->rx_busy){}
 		}
+		delay(1);
+		// reset active low chipselect
+		BUS_IO_Write(BUS_HANDLER, 0xFFFF);
+
+		//	RANGE
+		CS_mask = ~(1 << (BMI055[i].cs_gyro));
+		BUS_IO_Write(BUS_HANDLER, CS_mask);
+
+		// Gyro initialisation
+		if( SPI_MASTER_STATUS_SUCCESS == SPI_MASTER_Transmit( SPI_HANDLER, gyro_range_tx, sizeof(gyro_range_tx)/sizeof(gyro_range_tx[0])))
+		{
+			// Wait while transmission is complete
+			while (SPI_MASTER_2.runtime->tx_busy || SPI_MASTER_2.runtime->rx_busy){}
+		}
+		delay(1);
 		// reset active low chipselect
 		BUS_IO_Write(BUS_HANDLER, 0xFFFF);
 
@@ -166,6 +191,7 @@ void BMI055_init(void)
 			// Wait while transmission is complete
 			while (SPI_MASTER_2.runtime->tx_busy || SPI_MASTER_2.runtime->rx_busy){}
 		}
+		delay(1);
 		// reset active low chipselect
 		BUS_IO_Write(BUS_HANDLER, 0xFFFF);
 	}
