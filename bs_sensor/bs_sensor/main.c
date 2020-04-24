@@ -17,7 +17,7 @@
  * code.
  */
 
-#define ITF_ENA 1
+#define ITF_ENA 0
 
 void tick_timer_ISR( void );
 void SCA103T_update_ISR(void);
