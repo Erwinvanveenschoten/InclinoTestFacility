@@ -122,7 +122,7 @@
             <BindMap MUri="port/p/3/pad/10" Proxy="app/BUS_IO/1/rarray_hwres_port_pin#0"/>
             <BindMap MUri="port/p/3/pad/1" Proxy="app/BUS_IO/1/rarray_hwres_port_pin#1"/>
             <BindMap MUri="port/p/3/pad/0" Proxy="app/BUS_IO/1/rarray_hwres_port_pin#2"/>
-            <BindMap MUri="peripheral/ccu4/3/cc4/0" Proxy="app/TIMER/2/hwres_ccu4_cc4"/>
+            <BindMap MUri="peripheral/ccu4/3/cc4/1" Proxy="app/TIMER/2/hwres_ccu4_cc4"/>
             <BindMap MUri="port/p/3/pad/3" Proxy="app/BUS_IO/1/rarray_hwres_port_pin#3"/>
             <BindMap MUri="port/p/3/pad/2" Proxy="app/BUS_IO/1/rarray_hwres_port_pin#4"/>
             <BindMap MUri="port/p/3/pad/4" Proxy="app/BUS_IO/1/rarray_hwres_port_pin#5"/>
@@ -228,7 +228,6 @@
             <BindMap MUri="port/p/5/pad/3" Proxy="app/ETH_LWIP/0/hwres_eth_port_rxer"/>
             <BindMap MUri="peripheral/vadc/0/group/2/result_adv/0" Proxy="app/ADC_MEASUREMENT_ADV/1/rarray_hwres_adc_adv_measurement_result_reg#7"/>
             <BindMap MUri="devicepackage/0/79" Proxy="app/ETH_LWIP/0/__pin_hwres_eth_port_cd"/>
-            <BindMap MUri="peripheral/ccu4/3/cc4/1" Proxy="app/TIMER/1/hwres_ccu4_cc4"/>
             <BindMap MUri="peripheral/eth/0/eth" Proxy="app/ETH_LWIP/0/hwres_eth_mac"/>
             <BindMap MUri="port/p/5/pad/10" Proxy="app/ETH_LWIP/0/hwres_eth_port_tx_clk"/>
             <BindMap MUri="devicepackage/0/8" Proxy="app/UART/0/__pin_hwres_port_pad_uart_tx"/>
