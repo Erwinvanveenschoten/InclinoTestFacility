@@ -31,7 +31,7 @@ static void disable_cs( void );
 
 void spi_1_init( void )
 {
-	while(SPI_MASTER_STATUS_SUCCESS != SPI_MASTER_SetBaudRate (&SPI_MASTER_2, 5000000)){}
+	while(SPI_MASTER_STATUS_SUCCESS != SPI_MASTER_SetBaudRate (&SPI_MASTER_1, 8000000)){}
 	disable_cs();
 	BMI085_G_init();
 	BMI085_A_init();
