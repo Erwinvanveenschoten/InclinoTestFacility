@@ -14,6 +14,7 @@
 #include "data_config.h"
 #include "BUS_IO_GP.h"
 #include "message_buffer.h"
+#include "delay.h"
 
 #define MSEC_SCALE 100
 #define BUS_IO_HEAT_PIN 6

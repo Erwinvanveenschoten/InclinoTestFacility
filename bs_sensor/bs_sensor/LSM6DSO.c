@@ -54,7 +54,7 @@ void LSM6DSO_init (void)
 	LSM6DS0_write(CTRL1_XL, LSM6DS0_XL_BANDWIDTH|LSM6DS0_XL_RANGE);
 
 	// gyroscope 8.33Hz bandwidth and 125 degrees per second range
-	LSM6DS0_write(CTRL2_G, GYRO_BANDWIDTH|GYRO_RANGE);
+	LSM6DS0_write(CTRL2_G, LSM6DSO_GYRO_BANDWIDTH|LSM6DSO_GYRO_RANGE);
 
 	// Manually disable I2C
 	LSM6DS0_write(CTRL4_C,DIS_I2C);

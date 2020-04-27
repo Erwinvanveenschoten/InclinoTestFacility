@@ -10,6 +10,7 @@
 #include "stdio.h"
 #include "message_buffer.h"
 #include "data_config.h"
+#include "delay.h"
 
 static uint8_t rx_buf[BMI085_G_BUF_SIZE];
 void BMI085_G_write(uint8_t addr, uint8_t data);
