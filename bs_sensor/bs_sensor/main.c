@@ -28,26 +28,17 @@ void test(void);
 uint32_t counter = 0;
 #endif
 
-
-
 int main(void)
 {
-	DAVE_STATUS_t status;
 
-	status = DAVE_Init();           /* Initialization of DAVE APPs  */
 
-	delay(INIT_DELAY);
-
-	ITF_init();
-
-	if(status != DAVE_STATUS_SUCCESS)
+	while(DAVE_Init() != DAVE_STATUS_SUCCESS)
 	{
 		/* Placeholder for error handler code. The while loop below can be replaced with an user error handler. */
 		XMC_DEBUG("DAVE APPs initialization failed\n");
-
-		while(1U){}
 	}
 
+	ITF_init();
 	while(1U)
 	{
 #if ITF_ENA

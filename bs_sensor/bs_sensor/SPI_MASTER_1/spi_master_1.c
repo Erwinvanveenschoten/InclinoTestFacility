@@ -31,7 +31,7 @@ static void disable_cs( void );
 
 void spi_1_init( void )
 {
-	while(SPI_MASTER_STATUS_SUCCESS != SPI_MASTER_SetBaudRate (&SPI_MASTER_1, 9250000)){}
+	while(SPI_MASTER_STATUS_SUCCESS != SPI_MASTER_SetBaudRate (&SPI_MASTER_1, 10000000)){}
 	disable_cs();
 
 	delay(50);
