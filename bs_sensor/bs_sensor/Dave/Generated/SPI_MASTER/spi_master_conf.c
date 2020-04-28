@@ -476,7 +476,7 @@ const SPI_MASTER_CONFIG_t SPI_MASTER_1_Config  =
   /* Clock Settings */
   .shift_clk_passive_level = XMC_SPI_CH_BRG_SHIFT_CLOCK_PASSIVE_LEVEL_1_DELAY_DISABLED, 
   .slave_select_lines      = (uint8_t)0,
-  .leading_trailing_delay  = (uint8_t)1,
+  .leading_trailing_delay  = (uint8_t)2,
   .spi_master_config_mode  = XMC_SPI_CH_MODE_STANDARD, /* spi master initial mode configured mode */
   .transmit_mode           = SPI_MASTER_TRANSFER_MODE_DMA,
   .receive_mode            = SPI_MASTER_TRANSFER_MODE_DMA,
@@ -583,9 +583,14 @@ static SPI_MASTER_STATUS_t SPI_MASTER_1_lInit(void)
                                        XMC_SPI_CH_BRG_SHIFT_CLOCK_PASSIVE_LEVEL_1_DELAY_DISABLED,
                                        XMC_SPI_CH_BRG_SHIFT_CLOCK_OUTPUT_SCLK);
   /* Configure Leading/Trailing delay */
-  XMC_SPI_CH_SetSlaveSelectDelay(XMC_SPI1_CH0, 1U);
+  XMC_SPI_CH_SetSlaveSelectDelay(XMC_SPI1_CH0, 2U);
 
                
+  /* Configure the inter word delay */
+  XMC_SPI_CH_SetInterwordDelaySCLK(XMC_SPI1_CH0, 2U);
+  /* Enable inter word delay */
+  XMC_SPI_CH_EnableInterwordDelay(XMC_SPI1_CH0);
+                
   /* Configure the input pin properties */
   XMC_GPIO_Init((XMC_GPIO_PORT_t *)PORT2_BASE, (uint8_t)15, &SPI_MASTER_1_MISO_Config.port_config);
 
@@ -762,7 +767,7 @@ const SPI_MASTER_CONFIG_t SPI_MASTER_2_Config  =
   /* Clock Settings */
   .shift_clk_passive_level = XMC_SPI_CH_BRG_SHIFT_CLOCK_PASSIVE_LEVEL_0_DELAY_ENABLED, 
   .slave_select_lines      = (uint8_t)1,
-  .leading_trailing_delay  = (uint8_t)1,
+  .leading_trailing_delay  = (uint8_t)4,
   .spi_master_config_mode  = XMC_SPI_CH_MODE_STANDARD, /* spi master initial mode configured mode */
   .transmit_mode           = SPI_MASTER_TRANSFER_MODE_DMA,
   .receive_mode            = SPI_MASTER_TRANSFER_MODE_DMA,
@@ -869,9 +874,14 @@ static SPI_MASTER_STATUS_t SPI_MASTER_2_lInit(void)
                                        XMC_SPI_CH_BRG_SHIFT_CLOCK_PASSIVE_LEVEL_0_DELAY_ENABLED,
                                        XMC_SPI_CH_BRG_SHIFT_CLOCK_OUTPUT_SCLK);
   /* Configure Leading/Trailing delay */
-  XMC_SPI_CH_SetSlaveSelectDelay(XMC_SPI0_CH0, 1U);
+  XMC_SPI_CH_SetSlaveSelectDelay(XMC_SPI0_CH0, 4U);
 
                
+  /* Configure the inter word delay */
+  XMC_SPI_CH_SetInterwordDelaySCLK(XMC_SPI0_CH0, 2U);
+  /* Enable inter word delay */
+  XMC_SPI_CH_EnableInterwordDelay(XMC_SPI0_CH0);
+                
   /* Configure the input pin properties */
   XMC_GPIO_Init((XMC_GPIO_PORT_t *)PORT4_BASE, (uint8_t)7, &SPI_MASTER_2_MISO_Config.port_config);
 
