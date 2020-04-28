@@ -62,6 +62,7 @@ void BMI085_A_init ( void )
 
 void BMI085_A_read ( void )
 {
+	while (SPI_MASTER_1.runtime->tx_busy || SPI_MASTER_1.runtime->rx_busy){}
 	BUS_IO_GP_reset(BMI085_CS_A_PIN);
 	if( SPI_MASTER_STATUS_SUCCESS == SPI_MASTER_Transfer( spi_handler, tx_buf, rx_buf, BMI085_A_BUF_SIZE )){}
 	return;

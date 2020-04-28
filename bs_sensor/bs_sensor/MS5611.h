@@ -10,11 +10,10 @@
 
 #include "DAVE.h"
 
-#define MS5611_CS_PIN	1
 #define READMASK 		0x80
 #define MS5611_BUF_SIZE	1
 #define NROF_COEF		6
-#define ADC_CONV_TIME	10000
+#define ADC_CONV_TIME	16400 // double the required 8200 microseconds
 #define TIMER_SCALER	100
 
 #define RESET_SEQ			0x1E // Command to start reset sequence ( wait for 2.8 mSec afterwards)

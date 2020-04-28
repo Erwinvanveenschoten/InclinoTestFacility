@@ -50,6 +50,13 @@ static const SPI_MASTER_t * const spi_handler = &SPI_MASTER_1;
 
 void LSM6DSO_init (void)
 {
+	//Software reset
+	LSM6DS0_write(CTRL3_C, SW_RESET);
+
+	delay(100);
+
+	LSM6DS0_write(CTRL3_C, BDU|IF_INC);
+
 	// activate accelero (high performance)
 	LSM6DS0_write(CTRL1_XL, LSM6DS0_XL_BANDWIDTH|LSM6DS0_XL_RANGE);
 
@@ -62,6 +69,7 @@ void LSM6DSO_init (void)
 
 void LSM6DSO_read (void)
 {
+	while (SPI_MASTER_1.runtime->tx_busy || SPI_MASTER_1.runtime->rx_busy){}
 	BUS_IO_GP_reset(LSM6DS0_CS_PIN);
 	if( SPI_MASTER_STATUS_SUCCESS == SPI_MASTER_Transfer( spi_handler, tx_buf, rx_buf, LSM6DS0_BUF_SIZE )){}
 }
@@ -69,7 +77,7 @@ void LSM6DSO_read (void)
 void LSM6DSO_buf  (void)
 {
 
-	int i = 1;	// skip temperature sensor
+	int i = 1;
 	for ( ; i < LSM6DS0_BUF_SIZE; i = (i + 2) )
 	{
 		MESSAGE_t message =
@@ -95,6 +103,6 @@ void LSM6DS0_write(uint8_t addr, uint8_t data)
 	{
 		while (SPI_MASTER_1.runtime->tx_busy || SPI_MASTER_1.runtime->rx_busy){}
 	}
-	delay(2);
+	delay(1);
 	BUS_IO_GP_set(LSM6DS0_CS_PIN);
 }

@@ -125,7 +125,7 @@ static void start_spi_transmission ( uint32_t bmi055_index, sensor_t sensor );
 
 void BMI055_init(void)
 {
-	while(SPI_MASTER_STATUS_SUCCESS != SPI_MASTER_SetBaudRate (&SPI_MASTER_2, 5000000)){}
+	while(SPI_MASTER_STATUS_SUCCESS != SPI_MASTER_SetBaudRate (&SPI_MASTER_2, 5500000)){}
 
 	uint8_t gyro_init_tx[]=
 	{

@@ -8,6 +8,10 @@
 #include <DAVE.h>                 //Declarations from DAVE Code Generation (includes SFR declaration)
 #include "ITF.h"
 #include "delay.h"
+#include "LSM6DSO.h"
+#include "BMI085_G.h"
+#include "BMI085_A.h"
+#include "BUS_IO_GP.h"
 /**
 
  * @brief main() - Application entry point
@@ -17,13 +21,22 @@
  * invoking the APP initialization dispatcher routine - DAVE_Init() and hosting the place-holder for user application
  * code.
  */
-
 #define ITF_ENA 1
+#define INIT_DELAY 1000000
+#if !ITF_ENA
+void test(void);
+uint32_t counter = 0;
+#endif
+
+
 
 int main(void)
 {
 	DAVE_STATUS_t status;
+
 	status = DAVE_Init();           /* Initialization of DAVE APPs  */
+
+	delay(INIT_DELAY);
 
 	ITF_init();
 
@@ -40,7 +53,42 @@ int main(void)
 #if ITF_ENA
 		ITF_manage();
 #else
-
+		test();
 #endif
 	}
 }
+
+#if !ITF_ENA
+void test(void)
+{
+
+	while(SPI_MASTER_STATUS_SUCCESS != SPI_MASTER_SetBaudRate (&SPI_MASTER_1, 1000000)){}
+
+	const uint8_t DUMMY = 0xFF;
+	const uint8_t WHO_AM_I = 0x0F;
+	uint8_t tx[]=
+	{
+		WHO_AM_I | READMASK,
+		DUMMY,
+	};
+	const uint8_t tx_size = sizeof(tx)/sizeof(tx[0]);
+	uint8_t rx[tx_size];
+
+	BUS_IO_GP_reset(LSM6DS0_CS_PIN);
+
+	delay(100);
+
+	if( SPI_MASTER_STATUS_SUCCESS == SPI_MASTER_Transfer( &SPI_MASTER_1, tx, rx, tx_size))
+	{
+		while (SPI_MASTER_1.runtime->tx_busy || SPI_MASTER_1.runtime->rx_busy){}
+	}
+	if(0x6C != rx[1])
+	{
+		counter++;
+	}
+	BUS_IO_GP_set(LSM6DS0_CS_PIN);
+}
+#else
+#endif
+
+

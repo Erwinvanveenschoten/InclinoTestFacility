@@ -79,7 +79,6 @@ void buffer_send( void )
 
 	TIMER_Stop(&TIME_MEASUREMENT);
 	//float time_us=((float)TIMER_GetTime(&TIME_MEASUREMENT)/100.0);
-	//printf("Time to copy data: %f uSec\n\r", ((float)TIMER_GetTime(&TIME_MEASUREMENT)/100.0));
 }
 
 #ifdef PRINTF

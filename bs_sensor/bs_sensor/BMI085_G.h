@@ -10,7 +10,6 @@
 
 #include "DAVE.h"
 
-#define BMI085_CS_G_PIN	0
 #define READMASK 0x80
 #define BMI085_G_BUF_SIZE 7
 
