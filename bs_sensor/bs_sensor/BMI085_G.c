@@ -37,6 +37,10 @@ static const SPI_MASTER_t * const spi_handler = &SPI_MASTER_1;
 
 void BMI085_G_init(void)
 {
+	// SW reset
+	BMI085_G_write(BMI085_G_RST_REG, BMI085_G_RST_CMD);
+	delay(50000); // 50 ms
+
 	BMI085_G_write(REG_GYRO_BANDWIDTH, GYRO_BANDWIDTH);
 	BMI085_G_write(BMI085_GYRO_REG_RANGE,BMI085_GYRO_RANGE);
 }

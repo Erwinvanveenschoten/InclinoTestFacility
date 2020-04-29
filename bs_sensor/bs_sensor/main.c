@@ -53,10 +53,11 @@ int main(void)
 void test(void)
 {
 
-	while(SPI_MASTER_STATUS_SUCCESS != SPI_MASTER_SetBaudRate (&SPI_MASTER_1, 1000000)){}
+	while(SPI_MASTER_STATUS_SUCCESS != SPI_MASTER_SetBaudRate (&SPI_MASTER_1, 10000000)){}
 
 	const uint8_t DUMMY = 0xFF;
 	const uint8_t WHO_AM_I = 0x0F;
+	const uint8_t CHIP_ID = 0x00;
 	uint8_t tx[]=
 	{
 		WHO_AM_I | READMASK,
@@ -67,17 +68,17 @@ void test(void)
 
 	BUS_IO_GP_reset(LSM6DS0_CS_PIN);
 
-	delay(100);
-
 	if( SPI_MASTER_STATUS_SUCCESS == SPI_MASTER_Transfer( &SPI_MASTER_1, tx, rx, tx_size))
 	{
 		while (SPI_MASTER_1.runtime->tx_busy || SPI_MASTER_1.runtime->rx_busy){}
 	}
+	BUS_IO_GP_set(LSM6DS0_CS_PIN);
 	if(0x6C != rx[1])
 	{
 		counter++;
 	}
-	BUS_IO_GP_set(LSM6DS0_CS_PIN);
+
+
 }
 #else
 #endif

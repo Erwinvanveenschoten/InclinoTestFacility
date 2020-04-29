@@ -50,7 +50,12 @@ static const SPI_MASTER_t * const spi_handler = &SPI_MASTER_1;
 
 void BMI085_A_init ( void )
 {
-	BUS_IO_GP_set(BMI085_CS_A_PIN);
+	// SW reset
+	BMI085_A_write(BMI085_A_RESET_REG,BMI085_A_RESET_CMD);
+	delay(10000); // 10 ms
+
+	// Dummy write to turn on the accelero part of the sensor
+	BMI085_A_write(0xFF, 0xFF);
 
 	delay(1000);	//Wait 1 mSec
 
@@ -64,6 +69,7 @@ void BMI085_A_read ( void )
 {
 	while (SPI_MASTER_1.runtime->tx_busy || SPI_MASTER_1.runtime->rx_busy){}
 	BUS_IO_GP_reset(BMI085_CS_A_PIN);
+	delay(1);
 	if( SPI_MASTER_STATUS_SUCCESS == SPI_MASTER_Transfer( spi_handler, tx_buf, rx_buf, BMI085_A_BUF_SIZE )){}
 	return;
 }

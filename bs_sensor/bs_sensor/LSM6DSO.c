@@ -53,7 +53,7 @@ void LSM6DSO_init (void)
 	//Software reset
 	LSM6DS0_write(CTRL3_C, SW_RESET);
 
-	delay(100);
+	delay(100000); // 100 ms
 
 	LSM6DS0_write(CTRL3_C, BDU|IF_INC);
 

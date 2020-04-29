@@ -190,6 +190,11 @@ DAVE_STATUS_t DAVE_Init(void)
   {
 	 /**  Initialization of INTERRUPT APP instance SCA103T_TIMERINTERRUPT */
 	 init_status = (DAVE_STATUS_t)INTERRUPT_Init(&SCA103T_TIMERINTERRUPT); 
+   } 
+  if (init_status == DAVE_STATUS_SUCCESS)
+  {
+	 /**  Initialization of WATCHDOG APP instance WATCHDOG_0 */
+	 init_status = (DAVE_STATUS_t)WATCHDOG_Init(&WATCHDOG_0); 
    }  
   return init_status;
 } /**  End of function DAVE_Init */
