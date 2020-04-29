@@ -127,9 +127,6 @@
     <resource xsi:type="ResourceModel:App" href="APPS/INTERRUPT/v4_0_8/INTERRUPT_3.app#/"/>
   </nodes>
   <nodes xsi:type="ApplicationModel:AppNode">
-    <resource xsi:type="ResourceModel:App" href="APPS/TIMER/v4_1_10/TIMER_1.app#/"/>
-  </nodes>
-  <nodes xsi:type="ApplicationModel:AppNode">
     <resource xsi:type="ResourceModel:App" href="APPS/TIMER/v4_1_10/TIMER_2.app#/"/>
   </nodes>
   <nodes xsi:type="ApplicationModel:AppNode">
@@ -180,6 +177,12 @@
   <nodes xsi:type="ApplicationModel:AppNode">
     <resource xsi:type="ResourceModel:App" href="APPS/INTERRUPT/v4_0_8/INTERRUPT_7.app#/"/>
   </nodes>
+  <nodes xsi:type="ApplicationModel:PeripheralNode">
+    <resource xsi:type="ResourceModel:Peripheral" href="HW_RESOURCES/wdt/wdt_0.dd#/"/>
+  </nodes>
+  <nodes xsi:type="ApplicationModel:AppNode">
+    <resource xsi:type="ResourceModel:App" href="APPS/INTERRUPT/v4_0_8/INTERRUPT_8.app#/"/>
+  </nodes>
   <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.1" target="//@nodes.2"/>
   <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.1" target="//@nodes.0"/>
   <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.3" target="//@nodes.0"/>
@@ -202,19 +205,19 @@
   <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.41" target="//@nodes.0"/>
   <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.42" target="//@nodes.35"/>
   <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.43" target="//@nodes.35"/>
-  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.44" target="//@nodes.35"/>
-  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.46" target="//@nodes.0"/>
-  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.47" target="//@nodes.2"/>
-  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.48" target="//@nodes.47"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.45" target="//@nodes.0"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.46" target="//@nodes.2"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.47" target="//@nodes.46"/>
   <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.12" target="//@nodes.0"/>
   <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.23" target="//@nodes.30"/>
-  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.51" target="//@nodes.0"/>
-  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.52" target="//@nodes.2"/>
-  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.53" target="//@nodes.52"/>
-  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.55" target="//@nodes.0"/>
-  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.56" target="//@nodes.2"/>
-  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.57" target="//@nodes.56"/>
-  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.59" target="//@nodes.0"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.50" target="//@nodes.0"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.51" target="//@nodes.2"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.52" target="//@nodes.51"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.54" target="//@nodes.0"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.55" target="//@nodes.2"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.56" target="//@nodes.55"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.58" target="//@nodes.0"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.60" target="//@nodes.0"/>
   <hwConnections href="APPS/CPU_CTRL_XMC4/v4_0_14/CPU_CTRL_XMC4_0.app#//@connections.7"/>
   <hwConnections href="APPS/CPU_CTRL_XMC4/v4_0_14/CPU_CTRL_XMC4_0.app#//@connections.8"/>
   <hwConnections href="APPS/CPU_CTRL_XMC4/v4_0_14/CPU_CTRL_XMC4_0.app#//@connections.9"/>
@@ -804,7 +807,6 @@
   <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_14/ADC_MEASUREMENT_ADV_1.app#//@connections.170"/>
   <hwConnections href="APPS/ADC_MEASUREMENT_ADV/v4_0_14/ADC_MEASUREMENT_ADV_2.app#//@connections.170"/>
   <hwConnections href="APPS/TIMER/v4_1_10/TIMER_0.app#//@connections.2"/>
-  <hwConnections href="APPS/TIMER/v4_1_10/TIMER_1.app#//@connections.0"/>
   <hwConnections href="APPS/TIMER/v4_1_10/TIMER_2.app#//@connections.0"/>
   <hwConnections href="APPS/TIMER/v4_1_10/TIMER_3.app#//@connections.0"/>
   <hwConnections href="APPS/BUS_IO/v4_0_2/BUS_IO_2.app#//@connections.0"/>
@@ -863,4 +865,5 @@
   <hwConnections href="APPS/GLOBAL_CCU4/v4_1_12/GLOBAL_CCU4_3.app#//@connections.0"/>
   <hwConnections href="APPS/TIMER/v4_1_10/TIMER_6.app#//@connections.0"/>
   <hwConnections href="APPS/TIMER/v4_1_10/TIMER_6.app#//@connections.2"/>
+  <hwConnections href="APPS/TIMER/v4_1_10/TIMER_2.app#//@connections.2"/>
 </ApplicationModel:ApplicationData>

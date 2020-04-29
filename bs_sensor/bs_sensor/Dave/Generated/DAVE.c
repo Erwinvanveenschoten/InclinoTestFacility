@@ -143,11 +143,6 @@ DAVE_STATUS_t DAVE_Init(void)
    } 
   if (init_status == DAVE_STATUS_SUCCESS)
   {
-	 /**  Initialization of TIMER APP instance ADC_TIMER */
-	 init_status = (DAVE_STATUS_t)TIMER_Init(&ADC_TIMER); 
-   } 
-  if (init_status == DAVE_STATUS_SUCCESS)
-  {
 	 /**  Initialization of TIMER APP instance TIME_MEASUREMENT */
 	 init_status = (DAVE_STATUS_t)TIMER_Init(&TIME_MEASUREMENT); 
    } 
@@ -195,6 +190,11 @@ DAVE_STATUS_t DAVE_Init(void)
   {
 	 /**  Initialization of INTERRUPT APP instance SCA103T_TIMERINTERRUPT */
 	 init_status = (DAVE_STATUS_t)INTERRUPT_Init(&SCA103T_TIMERINTERRUPT); 
+   } 
+  if (init_status == DAVE_STATUS_SUCCESS)
+  {
+	 /**  Initialization of INTERRUPT APP instance TIME_MEASUREMENT_ISR */
+	 init_status = (DAVE_STATUS_t)INTERRUPT_Init(&TIME_MEASUREMENT_ISR); 
    }  
   return init_status;
 } /**  End of function DAVE_Init */

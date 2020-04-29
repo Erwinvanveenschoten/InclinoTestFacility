@@ -176,3 +176,17 @@ const INTERRUPT_t SCA103T_TIMERINTERRUPT =
   .enable_at_init = true
 
 };
+const INTERRUPT_t TIME_MEASUREMENT_ISR =
+{
+#if(UC_SERIES == XMC14)
+ .irqctrl = (XMC_SCU_IRQCTRL_t)0U,
+#endif
+  .node = (IRQn_Type)59,
+  .priority = 63,  
+#if(UC_FAMILY == XMC4)  
+  .subpriority = 0,
+#endif  
+
+  .enable_at_init = true
+
+};

@@ -55,6 +55,7 @@ void MS5611_start_temp_conv ( void )
 
 void MS5611_read_adc( void )
 {
+	while (SPI_MASTER_1.runtime->tx_busy || SPI_MASTER_1.runtime->rx_busy){}
 	BUS_IO_GP_reset(MS5611_CS_PIN);
 	uint8_t adc_tx[] = {ADC_READ, 0xFF, 0xFF, 0xFF};
 	uint8_t adc_rx[sizeof(adc_tx)/sizeof(adc_tx[0])];
@@ -163,6 +164,7 @@ static uint16_t read_PROM( const uint8_t PROM_cmd )
 	{
 		while (SPI_MASTER_1.runtime->tx_busy || SPI_MASTER_1.runtime->rx_busy){}
 	}
+	delay(1);
 	BUS_IO_GP_set(MS5611_CS_PIN);
 
 	return (uint16_t)(PROM_rx[1] << 8) | PROM_rx[2];
@@ -176,6 +178,7 @@ static void start_conv ( uint8_t cmd )
 	{
 		return;
 	}
+	while (SPI_MASTER_1.runtime->tx_busy || SPI_MASTER_1.runtime->rx_busy){}
 	BUS_IO_GP_reset(MS5611_CS_PIN);
 
 	if( SPI_MASTER_STATUS_SUCCESS == SPI_MASTER_Transmit( spi_handler, &cmd ,sizeof(cmd)))
@@ -183,7 +186,7 @@ static void start_conv ( uint8_t cmd )
 		// block while transmitting
 		while (SPI_MASTER_1.runtime->tx_busy || SPI_MASTER_1.runtime->rx_busy){}
 	}
-	delay(2);
+	delay(1);
 
 	// start conversion timer
 	start_timer();

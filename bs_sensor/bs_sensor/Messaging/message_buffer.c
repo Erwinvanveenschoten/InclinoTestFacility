@@ -77,8 +77,8 @@ void buffer_send( void )
 	send_messages((void*)message_buffer, sizeof(MESSAGE_t)*write_index, write_index);
 	write_index = 0;
 
-	TIMER_Stop(&TIME_MEASUREMENT);
-	//printf("Time to copy data: %f uSec\n\r", ((float)TIMER_GetTime(&TIME_MEASUREMENT)/100.0));
+	//TIMER_Stop(&TIME_MEASUREMENT);
+	//float time_us=((float)TIMER_GetTime(&TIME_MEASUREMENT)/100.0);
 }
 
 #ifdef PRINTF

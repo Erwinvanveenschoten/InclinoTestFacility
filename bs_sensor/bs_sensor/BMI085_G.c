@@ -10,8 +10,10 @@
 #include "stdio.h"
 #include "message_buffer.h"
 #include "data_config.h"
+#include "delay.h"
 
 static uint8_t rx_buf[BMI085_G_BUF_SIZE];
+void BMI085_G_write(uint8_t addr, uint8_t data);
 
 static uint8_t data_id[] =
 {
@@ -33,8 +35,19 @@ static uint8_t tx_buf[BMI085_G_BUF_SIZE] =
 
 static const SPI_MASTER_t * const spi_handler = &SPI_MASTER_1;
 
+void BMI085_G_init(void)
+{
+	// SW reset
+	BMI085_G_write(BMI085_G_RST_REG, BMI085_G_RST_CMD);
+	delay(50000); // 50 ms
+
+	BMI085_G_write(REG_GYRO_BANDWIDTH, GYRO_BANDWIDTH);
+	BMI085_G_write(BMI085_GYRO_REG_RANGE,BMI085_GYRO_RANGE);
+}
+
 void BMI085_G_read(void)
 {
+	while (SPI_MASTER_1.runtime->tx_busy || SPI_MASTER_1.runtime->rx_busy){}
 	BUS_IO_GP_reset(BMI085_CS_G_PIN);
 
 	if( SPI_MASTER_STATUS_SUCCESS == SPI_MASTER_Transfer( spi_handler, tx_buf, rx_buf, BMI085_G_BUF_SIZE )){}
@@ -55,3 +68,20 @@ void BMI085_G_store_buffer(void)
 	}
 	buffer_signal_BMI085_G_complete();
 }
+
+void BMI085_G_write(uint8_t addr, uint8_t data)
+{
+	uint8_t tx[]=
+	{
+		addr,
+		data,
+	};
+	BUS_IO_GP_reset(BMI085_CS_G_PIN);
+	if(SPI_MASTER_STATUS_SUCCESS == SPI_MASTER_Transmit( &SPI_MASTER_1, tx, sizeof(tx)/sizeof(tx[0]) ))
+	{
+		while (SPI_MASTER_1.runtime->rx_busy){}
+	}
+	delay(1);
+	BUS_IO_GP_set(BMI085_CS_G_PIN);
+}
+

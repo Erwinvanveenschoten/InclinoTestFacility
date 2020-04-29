@@ -127,7 +127,7 @@ static const XMC_VADC_CHANNEL_CONFIG_t  ADC_MEASUREMENT_ADV_0_Channel_A_ch_confi
 /*Channel_A Result configuration structure*/
 static const XMC_VADC_RESULT_CONFIG_t ADC_MEASUREMENT_ADV_0_Channel_A_res_config =
 {
-  .data_reduction_control  = (uint32_t) 0,
+  .data_reduction_control  = (uint32_t) 3,
   .post_processing_mode    = (uint32_t) XMC_VADC_DMM_REDUCTION_MODE,
   .wait_for_read_mode      = (uint32_t) false,
   .part_of_fifo            = (uint32_t) false , /* No FIFO */
@@ -167,7 +167,7 @@ static const XMC_VADC_CHANNEL_CONFIG_t  ADC_MEASUREMENT_ADV_0_Channel_B_ch_confi
 /*Channel_B Result configuration structure*/
 static const XMC_VADC_RESULT_CONFIG_t ADC_MEASUREMENT_ADV_0_Channel_B_res_config =
 {
-  .data_reduction_control  = (uint32_t) 0,
+  .data_reduction_control  = (uint32_t) 3,
   .post_processing_mode    = (uint32_t) XMC_VADC_DMM_REDUCTION_MODE,
   .wait_for_read_mode      = (uint32_t) false,
   .part_of_fifo            = (uint32_t) false , /* No FIFO */
@@ -207,7 +207,7 @@ static const XMC_VADC_CHANNEL_CONFIG_t  ADC_MEASUREMENT_ADV_0_Channel_C_ch_confi
 /*Channel_C Result configuration structure*/
 static const XMC_VADC_RESULT_CONFIG_t ADC_MEASUREMENT_ADV_0_Channel_C_res_config =
 {
-  .data_reduction_control  = (uint32_t) 0,
+  .data_reduction_control  = (uint32_t) 3,
   .post_processing_mode    = (uint32_t) XMC_VADC_DMM_REDUCTION_MODE,
   .wait_for_read_mode      = (uint32_t) false,
   .part_of_fifo            = (uint32_t) false , /* No FIFO */
@@ -247,7 +247,7 @@ static const XMC_VADC_CHANNEL_CONFIG_t  ADC_MEASUREMENT_ADV_0_Channel_D_ch_confi
 /*Channel_D Result configuration structure*/
 static const XMC_VADC_RESULT_CONFIG_t ADC_MEASUREMENT_ADV_0_Channel_D_res_config =
 {
-  .data_reduction_control  = (uint32_t) 0,
+  .data_reduction_control  = (uint32_t) 3,
   .post_processing_mode    = (uint32_t) XMC_VADC_DMM_REDUCTION_MODE,
   .wait_for_read_mode      = (uint32_t) false,
   .part_of_fifo            = (uint32_t) false , /* No FIFO */
@@ -287,7 +287,7 @@ static const XMC_VADC_CHANNEL_CONFIG_t  ADC_MEASUREMENT_ADV_0_Channel_E_ch_confi
 /*Channel_E Result configuration structure*/
 static const XMC_VADC_RESULT_CONFIG_t ADC_MEASUREMENT_ADV_0_Channel_E_res_config =
 {
-  .data_reduction_control  = (uint32_t) 0,
+  .data_reduction_control  = (uint32_t) 3,
   .post_processing_mode    = (uint32_t) XMC_VADC_DMM_REDUCTION_MODE,
   .wait_for_read_mode      = (uint32_t) false,
   .part_of_fifo            = (uint32_t) false , /* No FIFO */
@@ -327,7 +327,7 @@ static const XMC_VADC_CHANNEL_CONFIG_t  ADC_MEASUREMENT_ADV_0_Channel_F_ch_confi
 /*Channel_F Result configuration structure*/
 static const XMC_VADC_RESULT_CONFIG_t ADC_MEASUREMENT_ADV_0_Channel_F_res_config =
 {
-  .data_reduction_control  = (uint32_t) 0,
+  .data_reduction_control  = (uint32_t) 3,
   .post_processing_mode    = (uint32_t) XMC_VADC_DMM_REDUCTION_MODE,
   .wait_for_read_mode      = (uint32_t) false,
   .part_of_fifo            = (uint32_t) false , /* No FIFO */
@@ -367,7 +367,7 @@ static const XMC_VADC_CHANNEL_CONFIG_t  ADC_MEASUREMENT_ADV_0_Channel_G_ch_confi
 /*Channel_G Result configuration structure*/
 static const XMC_VADC_RESULT_CONFIG_t ADC_MEASUREMENT_ADV_0_Channel_G_res_config =
 {
-  .data_reduction_control  = (uint32_t) 0,
+  .data_reduction_control  = (uint32_t) 3,
   .post_processing_mode    = (uint32_t) XMC_VADC_DMM_REDUCTION_MODE,
   .wait_for_read_mode      = (uint32_t) false,
   .part_of_fifo            = (uint32_t) false , /* No FIFO */
@@ -407,7 +407,7 @@ static const XMC_VADC_CHANNEL_CONFIG_t  ADC_MEASUREMENT_ADV_0_Channel_H_ch_confi
 /*Channel_H Result configuration structure*/
 static const XMC_VADC_RESULT_CONFIG_t ADC_MEASUREMENT_ADV_0_Channel_H_res_config =
 {
-  .data_reduction_control  = (uint32_t) 0,
+  .data_reduction_control  = (uint32_t) 3,
   .post_processing_mode    = (uint32_t) XMC_VADC_DMM_REDUCTION_MODE,
   .wait_for_read_mode      = (uint32_t) false,
   .part_of_fifo            = (uint32_t) false , /* No FIFO */
@@ -599,7 +599,7 @@ static const XMC_VADC_CHANNEL_CONFIG_t  ADC_MEASUREMENT_ADV_1_Channel_A_ch_confi
 /*Channel_A Result configuration structure*/
 static const XMC_VADC_RESULT_CONFIG_t ADC_MEASUREMENT_ADV_1_Channel_A_res_config =
 {
-  .data_reduction_control  = (uint32_t) 0,
+  .data_reduction_control  = (uint32_t) 3,
   .post_processing_mode    = (uint32_t) XMC_VADC_DMM_REDUCTION_MODE,
   .wait_for_read_mode      = (uint32_t) false,
   .part_of_fifo            = (uint32_t) false , /* No FIFO */
@@ -639,7 +639,7 @@ static const XMC_VADC_CHANNEL_CONFIG_t  ADC_MEASUREMENT_ADV_1_Channel_B_ch_confi
 /*Channel_B Result configuration structure*/
 static const XMC_VADC_RESULT_CONFIG_t ADC_MEASUREMENT_ADV_1_Channel_B_res_config =
 {
-  .data_reduction_control  = (uint32_t) 0,
+  .data_reduction_control  = (uint32_t) 3,
   .post_processing_mode    = (uint32_t) XMC_VADC_DMM_REDUCTION_MODE,
   .wait_for_read_mode      = (uint32_t) false,
   .part_of_fifo            = (uint32_t) false , /* No FIFO */
@@ -679,7 +679,7 @@ static const XMC_VADC_CHANNEL_CONFIG_t  ADC_MEASUREMENT_ADV_1_Channel_C_ch_confi
 /*Channel_C Result configuration structure*/
 static const XMC_VADC_RESULT_CONFIG_t ADC_MEASUREMENT_ADV_1_Channel_C_res_config =
 {
-  .data_reduction_control  = (uint32_t) 0,
+  .data_reduction_control  = (uint32_t) 3,
   .post_processing_mode    = (uint32_t) XMC_VADC_DMM_REDUCTION_MODE,
   .wait_for_read_mode      = (uint32_t) false,
   .part_of_fifo            = (uint32_t) false , /* No FIFO */
@@ -719,7 +719,7 @@ static const XMC_VADC_CHANNEL_CONFIG_t  ADC_MEASUREMENT_ADV_1_Channel_D_ch_confi
 /*Channel_D Result configuration structure*/
 static const XMC_VADC_RESULT_CONFIG_t ADC_MEASUREMENT_ADV_1_Channel_D_res_config =
 {
-  .data_reduction_control  = (uint32_t) 0,
+  .data_reduction_control  = (uint32_t) 3,
   .post_processing_mode    = (uint32_t) XMC_VADC_DMM_REDUCTION_MODE,
   .wait_for_read_mode      = (uint32_t) false,
   .part_of_fifo            = (uint32_t) false , /* No FIFO */
@@ -759,7 +759,7 @@ static const XMC_VADC_CHANNEL_CONFIG_t  ADC_MEASUREMENT_ADV_1_Channel_E_ch_confi
 /*Channel_E Result configuration structure*/
 static const XMC_VADC_RESULT_CONFIG_t ADC_MEASUREMENT_ADV_1_Channel_E_res_config =
 {
-  .data_reduction_control  = (uint32_t) 0,
+  .data_reduction_control  = (uint32_t) 3,
   .post_processing_mode    = (uint32_t) XMC_VADC_DMM_REDUCTION_MODE,
   .wait_for_read_mode      = (uint32_t) false,
   .part_of_fifo            = (uint32_t) false , /* No FIFO */
@@ -799,7 +799,7 @@ static const XMC_VADC_CHANNEL_CONFIG_t  ADC_MEASUREMENT_ADV_1_Channel_F_ch_confi
 /*Channel_F Result configuration structure*/
 static const XMC_VADC_RESULT_CONFIG_t ADC_MEASUREMENT_ADV_1_Channel_F_res_config =
 {
-  .data_reduction_control  = (uint32_t) 0,
+  .data_reduction_control  = (uint32_t) 3,
   .post_processing_mode    = (uint32_t) XMC_VADC_DMM_REDUCTION_MODE,
   .wait_for_read_mode      = (uint32_t) false,
   .part_of_fifo            = (uint32_t) false , /* No FIFO */
@@ -839,7 +839,7 @@ static const XMC_VADC_CHANNEL_CONFIG_t  ADC_MEASUREMENT_ADV_1_Channel_G_ch_confi
 /*Channel_G Result configuration structure*/
 static const XMC_VADC_RESULT_CONFIG_t ADC_MEASUREMENT_ADV_1_Channel_G_res_config =
 {
-  .data_reduction_control  = (uint32_t) 0,
+  .data_reduction_control  = (uint32_t) 3,
   .post_processing_mode    = (uint32_t) XMC_VADC_DMM_REDUCTION_MODE,
   .wait_for_read_mode      = (uint32_t) false,
   .part_of_fifo            = (uint32_t) false , /* No FIFO */
@@ -879,7 +879,7 @@ static const XMC_VADC_CHANNEL_CONFIG_t  ADC_MEASUREMENT_ADV_1_Channel_H_ch_confi
 /*Channel_H Result configuration structure*/
 static const XMC_VADC_RESULT_CONFIG_t ADC_MEASUREMENT_ADV_1_Channel_H_res_config =
 {
-  .data_reduction_control  = (uint32_t) 0,
+  .data_reduction_control  = (uint32_t) 3,
   .post_processing_mode    = (uint32_t) XMC_VADC_DMM_REDUCTION_MODE,
   .wait_for_read_mode      = (uint32_t) false,
   .part_of_fifo            = (uint32_t) false , /* No FIFO */
@@ -1071,7 +1071,7 @@ static const XMC_VADC_CHANNEL_CONFIG_t  ADC_MEASUREMENT_ADV_2_Channel_A_ch_confi
 /*Channel_A Result configuration structure*/
 static const XMC_VADC_RESULT_CONFIG_t ADC_MEASUREMENT_ADV_2_Channel_A_res_config =
 {
-  .data_reduction_control  = (uint32_t) 0,
+  .data_reduction_control  = (uint32_t) 3,
   .post_processing_mode    = (uint32_t) XMC_VADC_DMM_REDUCTION_MODE,
   .wait_for_read_mode      = (uint32_t) false,
   .part_of_fifo            = (uint32_t) false , /* No FIFO */
@@ -1111,7 +1111,7 @@ static const XMC_VADC_CHANNEL_CONFIG_t  ADC_MEASUREMENT_ADV_2_Channel_B_ch_confi
 /*Channel_B Result configuration structure*/
 static const XMC_VADC_RESULT_CONFIG_t ADC_MEASUREMENT_ADV_2_Channel_B_res_config =
 {
-  .data_reduction_control  = (uint32_t) 0,
+  .data_reduction_control  = (uint32_t) 3,
   .post_processing_mode    = (uint32_t) XMC_VADC_DMM_REDUCTION_MODE,
   .wait_for_read_mode      = (uint32_t) false,
   .part_of_fifo            = (uint32_t) false , /* No FIFO */
@@ -1151,7 +1151,7 @@ static const XMC_VADC_CHANNEL_CONFIG_t  ADC_MEASUREMENT_ADV_2_Channel_C_ch_confi
 /*Channel_C Result configuration structure*/
 static const XMC_VADC_RESULT_CONFIG_t ADC_MEASUREMENT_ADV_2_Channel_C_res_config =
 {
-  .data_reduction_control  = (uint32_t) 0,
+  .data_reduction_control  = (uint32_t) 3,
   .post_processing_mode    = (uint32_t) XMC_VADC_DMM_REDUCTION_MODE,
   .wait_for_read_mode      = (uint32_t) false,
   .part_of_fifo            = (uint32_t) false , /* No FIFO */
@@ -1191,7 +1191,7 @@ static const XMC_VADC_CHANNEL_CONFIG_t  ADC_MEASUREMENT_ADV_2_Channel_D_ch_confi
 /*Channel_D Result configuration structure*/
 static const XMC_VADC_RESULT_CONFIG_t ADC_MEASUREMENT_ADV_2_Channel_D_res_config =
 {
-  .data_reduction_control  = (uint32_t) 0,
+  .data_reduction_control  = (uint32_t) 3,
   .post_processing_mode    = (uint32_t) XMC_VADC_DMM_REDUCTION_MODE,
   .wait_for_read_mode      = (uint32_t) false,
   .part_of_fifo            = (uint32_t) false , /* No FIFO */
@@ -1231,7 +1231,7 @@ static const XMC_VADC_CHANNEL_CONFIG_t  ADC_MEASUREMENT_ADV_2_Channel_E_ch_confi
 /*Channel_E Result configuration structure*/
 static const XMC_VADC_RESULT_CONFIG_t ADC_MEASUREMENT_ADV_2_Channel_E_res_config =
 {
-  .data_reduction_control  = (uint32_t) 0,
+  .data_reduction_control  = (uint32_t) 3,
   .post_processing_mode    = (uint32_t) XMC_VADC_DMM_REDUCTION_MODE,
   .wait_for_read_mode      = (uint32_t) false,
   .part_of_fifo            = (uint32_t) false , /* No FIFO */
@@ -1271,7 +1271,7 @@ static const XMC_VADC_CHANNEL_CONFIG_t  ADC_MEASUREMENT_ADV_2_Channel_F_ch_confi
 /*Channel_F Result configuration structure*/
 static const XMC_VADC_RESULT_CONFIG_t ADC_MEASUREMENT_ADV_2_Channel_F_res_config =
 {
-  .data_reduction_control  = (uint32_t) 0,
+  .data_reduction_control  = (uint32_t) 3,
   .post_processing_mode    = (uint32_t) XMC_VADC_DMM_REDUCTION_MODE,
   .wait_for_read_mode      = (uint32_t) false,
   .part_of_fifo            = (uint32_t) false , /* No FIFO */

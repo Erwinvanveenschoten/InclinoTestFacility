@@ -93,7 +93,7 @@ err_t udp_printStruct(void * po, uint32_t size)
 	uint16_t dataLeft = (size % (maxPayloadSize - 3));
 
 	struct pbuf* b;
-	err_enum_t error; //= ERR_OK;
+	err_enum_t error = ERR_OK; //= ERR_OK;
 
 	uint8_t sampleCount = packetCount + (dataLeft!=0);
 	for(int k = 0; k < packetCount; k++)

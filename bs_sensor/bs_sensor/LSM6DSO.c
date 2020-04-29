@@ -13,6 +13,8 @@
 #include "message_buffer.h"
 
 static uint8_t rx_buf[LSM6DS0_BUF_SIZE];
+void LSM6DS0_write(uint8_t addr, uint8_t data);
+
 
 static const uint8_t data_id[NROF_DATA] =
 {
@@ -48,38 +50,26 @@ static const SPI_MASTER_t * const spi_handler = &SPI_MASTER_1;
 
 void LSM6DSO_init (void)
 {
-	// activate accelero (high performance)
-	uint8_t xl_init_tx[] = {CTRL1_XL, HIGH_PERF};
-	BUS_IO_GP_reset(LSM6DS0_CS_PIN);
-	if( SPI_MASTER_STATUS_SUCCESS == SPI_MASTER_Transmit( spi_handler, xl_init_tx, sizeof(xl_init_tx)/sizeof(xl_init_tx[0])))
-	{
-		while (SPI_MASTER_1.runtime->tx_busy || SPI_MASTER_1.runtime->rx_busy){}
-	}
-	delay(1);
-	BUS_IO_GP_set(LSM6DS0_CS_PIN);
+	//Software reset
+	LSM6DS0_write(CTRL3_C, SW_RESET);
 
-	// activate gyroscope (high performance)
-	uint8_t g_init_tx[] = {CTRL2_G, HIGH_PERF};
-	BUS_IO_GP_reset(LSM6DS0_CS_PIN);
-	if( SPI_MASTER_STATUS_SUCCESS == SPI_MASTER_Transmit( spi_handler, g_init_tx, sizeof(g_init_tx)/sizeof(g_init_tx[0])))
-	{
-		while (SPI_MASTER_1.runtime->tx_busy || SPI_MASTER_1.runtime->rx_busy){}
-	}
-	delay(1);
-	BUS_IO_GP_set(LSM6DS0_CS_PIN);
+	delay(100000); // 100 ms
+
+	LSM6DS0_write(CTRL3_C, BDU|IF_INC);
+
+	// activate accelero (high performance)
+	LSM6DS0_write(CTRL1_XL, LSM6DS0_XL_BANDWIDTH|LSM6DS0_XL_RANGE);
+
+	// gyroscope 8.33Hz bandwidth and 125 degrees per second range
+	LSM6DS0_write(CTRL2_G, LSM6DSO_GYRO_BANDWIDTH|LSM6DSO_GYRO_RANGE);
 
 	// Manually disable I2C
-	uint8_t I2C_disable_init_tx[] = {CTRL4_C, DIS_I2C};
-	BUS_IO_GP_reset(LSM6DS0_CS_PIN);
-	if( SPI_MASTER_STATUS_SUCCESS == SPI_MASTER_Transmit( spi_handler, I2C_disable_init_tx, sizeof(I2C_disable_init_tx)/sizeof(I2C_disable_init_tx[0])))
-	{
-		while (SPI_MASTER_1.runtime->tx_busy || SPI_MASTER_1.runtime->rx_busy){}
-	}
-	BUS_IO_GP_set(LSM6DS0_CS_PIN);
+	LSM6DS0_write(CTRL4_C,DIS_I2C);
 }
 
 void LSM6DSO_read (void)
 {
+	while (SPI_MASTER_1.runtime->tx_busy || SPI_MASTER_1.runtime->rx_busy){}
 	BUS_IO_GP_reset(LSM6DS0_CS_PIN);
 	if( SPI_MASTER_STATUS_SUCCESS == SPI_MASTER_Transfer( spi_handler, tx_buf, rx_buf, LSM6DS0_BUF_SIZE )){}
 }
@@ -87,7 +77,7 @@ void LSM6DSO_read (void)
 void LSM6DSO_buf  (void)
 {
 
-	int i = 1;	// skip temperature sensor
+	int i = 1;
 	for ( ; i < LSM6DS0_BUF_SIZE; i = (i + 2) )
 	{
 		MESSAGE_t message =
@@ -99,4 +89,20 @@ void LSM6DSO_buf  (void)
 		buffer_add_message(message);
 	}
 	buffer_signal_LSM6DSO_complete( );
+}
+
+void LSM6DS0_write(uint8_t addr, uint8_t data)
+{
+	uint8_t tx[]=
+	{
+		addr,
+		data,
+	};
+	BUS_IO_GP_reset(LSM6DS0_CS_PIN);
+	if( SPI_MASTER_STATUS_SUCCESS == SPI_MASTER_Transmit( spi_handler, tx, sizeof(tx)/sizeof(tx[0])))
+	{
+		while (SPI_MASTER_1.runtime->tx_busy || SPI_MASTER_1.runtime->rx_busy){}
+	}
+	delay(1);
+	BUS_IO_GP_set(LSM6DS0_CS_PIN);
 }

@@ -12,7 +12,6 @@
 
 #define LSM6DS0_BUF_SIZE 	15
 #define NROF_DATA			7
-#define LSM6DS0_CS_PIN		7
 #define READMASK 			0x80
 
 #define OUT_TEMP_L 	0x20
@@ -35,8 +34,15 @@
 #define HIGH_PERF	0xA0
 #define CTRL3_C		0x12
 #define IF_INC		0x04
+#define SW_RESET	0x01
+#define BDU			0x40
 #define CTRL4_C		0x13
 #define DIS_I2C		0x04
+#define CTRL2_G 	0x11
+#define LSM6DSO_GYRO_BANDWIDTH 	0x80
+#define LSM6DSO_GYRO_RANGE		0X02
+#define LSM6DS0_XL_BANDWIDTH 	0x80
+#define	LSM6DS0_XL_RANGE		0x00
 
 void LSM6DSO_init (void);
 void LSM6DSO_read (void);
