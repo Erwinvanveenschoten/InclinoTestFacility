@@ -193,8 +193,8 @@ DAVE_STATUS_t DAVE_Init(void)
    } 
   if (init_status == DAVE_STATUS_SUCCESS)
   {
-	 /**  Initialization of WATCHDOG APP instance WATCHDOG_0 */
-	 init_status = (DAVE_STATUS_t)WATCHDOG_Init(&WATCHDOG_0); 
+	 /**  Initialization of INTERRUPT APP instance INTERRUPT_0 */
+	 init_status = (DAVE_STATUS_t)INTERRUPT_Init(&INTERRUPT_0); 
    }  
   return init_status;
 } /**  End of function DAVE_Init */

@@ -28,6 +28,8 @@ void test(void);
 uint32_t counter = 0;
 #endif
 
+void toggle_led(void);
+
 int main(void)
 {
 
@@ -83,4 +85,8 @@ void test(void)
 #else
 #endif
 
+void toggle_led(void)
+{
+	BUS_IO_Toggle(&GP_LED_BUS);
 
+}

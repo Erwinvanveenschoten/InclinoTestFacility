@@ -72,6 +72,8 @@
 		
 #define SCA103T_update_ISR IRQ_Hdlr_49
 		
+#define toggle_led IRQ_Hdlr_59
+		
 /***********************************************************************************************************************
  * EXTERN DECLARATIONS
 ***********************************************************************************************************************/
@@ -91,6 +93,8 @@ extern const INTERRUPT_t MS5611_TIMER_ISR;
 extern const INTERRUPT_t TEMP_UPDATE_INTERRUPT; 
 	
 extern const INTERRUPT_t SCA103T_TIMERINTERRUPT; 
+	
+extern const INTERRUPT_t INTERRUPT_0; 
 	
 #endif  /* INTERRUPT_EXTERN_H */
 

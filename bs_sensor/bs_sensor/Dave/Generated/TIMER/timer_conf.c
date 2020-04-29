@@ -84,15 +84,15 @@ XMC_CCU4_SLICE_COMPARE_CONFIG_t TICK_TIMER_config =
 
 TIMER_t TICK_TIMER = 
 {
-  .ccu4_slice_ptr         = (XMC_CCU4_SLICE_t*) CCU43_CC43,
-  .ccu4_slice_number      = 3U,
+  .ccu4_slice_ptr         = (XMC_CCU4_SLICE_t*) CCU43_CC42,
+  .ccu4_slice_number      = 2U,
   .time_interval_value_us = 100000U,
   .timer_max_value_us     = 1491285300U,
   .timer_min_value_us     = 10U,
   .global_ccu4_handler    = (GLOBAL_CCU4_t*)&GLOBAL_CCU4_0, 
   .ccu4_slice_config_ptr  = (XMC_CCU4_SLICE_COMPARE_CONFIG_t*)&TICK_TIMER_config,
-  .shadow_mask            = (uint32_t)((uint32_t)XMC_CCU4_SHADOW_TRANSFER_SLICE_3 | 
-                                       (uint32_t)XMC_CCU4_SHADOW_TRANSFER_PRESCALER_SLICE_3),
+  .shadow_mask            = (uint32_t)((uint32_t)XMC_CCU4_SHADOW_TRANSFER_SLICE_2 | 
+                                       (uint32_t)XMC_CCU4_SHADOW_TRANSFER_PRESCALER_SLICE_2),
   .ccu4_period_match_node = XMC_CCU4_SLICE_SR_ID_0,
   .timer_module           = TIMER_MODULE_CCU4,
   .period_value           = 35999U,
@@ -115,7 +115,7 @@ XMC_CCU4_SLICE_COMPARE_CONFIG_t TIME_MEASUREMENT_config =
   .dither_duty_cycle   = false,
   .prescaler_mode      = XMC_CCU4_SLICE_PRESCALER_MODE_NORMAL,
   .mcm_enable          = false,
-  .prescaler_initval   = 8U,
+  .prescaler_initval   = 11U,
   .float_limit         = 0U,
   .dither_limit        = 0U,
   .passive_level       = XMC_CCU4_SLICE_OUTPUT_PASSIVE_LEVEL_LOW, 
@@ -124,20 +124,20 @@ XMC_CCU4_SLICE_COMPARE_CONFIG_t TIME_MEASUREMENT_config =
 
 TIMER_t TIME_MEASUREMENT = 
 {
-  .ccu4_slice_ptr         = (XMC_CCU4_SLICE_t*) CCU43_CC41,
-  .ccu4_slice_number      = 1U,
-  .time_interval_value_us = 10000000U,
+  .ccu4_slice_ptr         = (XMC_CCU4_SLICE_t*) CCU43_CC43,
+  .ccu4_slice_number      = 3U,
+  .time_interval_value_us = 50000000U,
   .timer_max_value_us     = 1491285300U,
   .timer_min_value_us     = 10U,
   .global_ccu4_handler    = (GLOBAL_CCU4_t*)&GLOBAL_CCU4_0, 
   .ccu4_slice_config_ptr  = (XMC_CCU4_SLICE_COMPARE_CONFIG_t*)&TIME_MEASUREMENT_config,
-  .shadow_mask            = (uint32_t)((uint32_t)XMC_CCU4_SHADOW_TRANSFER_SLICE_1 | 
-                                       (uint32_t)XMC_CCU4_SHADOW_TRANSFER_PRESCALER_SLICE_1),
-  .ccu4_period_match_node = XMC_CCU4_SLICE_SR_ID_0,
+  .shadow_mask            = (uint32_t)((uint32_t)XMC_CCU4_SHADOW_TRANSFER_SLICE_3 | 
+                                       (uint32_t)XMC_CCU4_SHADOW_TRANSFER_PRESCALER_SLICE_3),
+  .ccu4_period_match_node = XMC_CCU4_SLICE_SR_ID_3,
   .timer_module           = TIMER_MODULE_CCU4,
-  .period_value           = 56249U,
-  .start_control          = false,
-  .period_match_enable    = false,
+  .period_value           = 35155U,
+  .start_control          = true,
+  .period_match_enable    = true,
   .initialized            = false
 };
 
@@ -164,15 +164,15 @@ XMC_CCU4_SLICE_COMPARE_CONFIG_t DELAY_TIMER_config =
 
 TIMER_t DELAY_TIMER = 
 {
-  .ccu4_slice_ptr         = (XMC_CCU4_SLICE_t*) CCU43_CC42,
-  .ccu4_slice_number      = 2U,
+  .ccu4_slice_ptr         = (XMC_CCU4_SLICE_t*) CCU43_CC41,
+  .ccu4_slice_number      = 1U,
   .time_interval_value_us = 1000000000U,
   .timer_max_value_us     = 1491285300U,
   .timer_min_value_us     = 10U,
   .global_ccu4_handler    = (GLOBAL_CCU4_t*)&GLOBAL_CCU4_0, 
   .ccu4_slice_config_ptr  = (XMC_CCU4_SLICE_COMPARE_CONFIG_t*)&DELAY_TIMER_config,
-  .shadow_mask            = (uint32_t)((uint32_t)XMC_CCU4_SHADOW_TRANSFER_SLICE_2 | 
-                                       (uint32_t)XMC_CCU4_SHADOW_TRANSFER_PRESCALER_SLICE_2),
+  .shadow_mask            = (uint32_t)((uint32_t)XMC_CCU4_SHADOW_TRANSFER_SLICE_1 | 
+                                       (uint32_t)XMC_CCU4_SHADOW_TRANSFER_PRESCALER_SLICE_1),
   .ccu4_period_match_node = XMC_CCU4_SLICE_SR_ID_1,
   .timer_module           = TIMER_MODULE_CCU4,
   .period_value           = 43944U,

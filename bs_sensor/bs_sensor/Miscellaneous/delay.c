@@ -13,7 +13,6 @@ static TIMER_t *const handler = &DELAY_TIMER;
 
 void delay ( const uint32_t time_uSec )
 {
-	BUS_IO_Toggle(&GP_LED_BUS);
 	uint32_t delay_cnt = time_uSec * TIMER_SCALE;
 	TIMER_ClearEvent(handler);
 	TIMER_SetTimeInterval( handler, delay_cnt);

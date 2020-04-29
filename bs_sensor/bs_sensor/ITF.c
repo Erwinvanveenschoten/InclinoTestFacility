@@ -40,8 +40,8 @@ void ITF_init(void)
 
 void tick_timer_ISR( void )
 {
-	TIMER_Clear(&TIME_MEASUREMENT);
-	TIMER_Start(&TIME_MEASUREMENT);
+	//TIMER_Clear(&TIME_MEASUREMENT);
+	//TIMER_Start(&TIME_MEASUREMENT);
 
 	BMI055_signal_update();
 	spi_1_update();

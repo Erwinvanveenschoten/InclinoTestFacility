@@ -134,7 +134,6 @@
     <resourcesList name="gsc_enable" requiredResourceUri="http://resources/47.0.0/peripheral/scu/0/gcu_ccu4_global_enable2_gsc_enable"/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="prewarn" URI="http://resources/47.0.0/peripheral/scu/0/gcu/interrupt/prewarn">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/WATCHDOG/v4_0_14/WATCHDOG_0.app#//@hwResources.1"/>
     <resourcesList name="nmireqen_prwarn" requiredResourceUri="http://resources/47.0.0/peripheral/scu/0/nmireqen/prwarn"/>
     <resourcesList name="rawsr_int" requiredResourceUri="http://resources/47.0.0/peripheral/scu/0/srraw/prwarn"/>
     <resourcesList name="srclr_int" requiredResourceUri="http://resources/47.0.0/peripheral/scu/0/srclr/prwarn"/>
