@@ -176,7 +176,7 @@ const INTERRUPT_t SCA103T_TIMERINTERRUPT =
   .enable_at_init = true
 
 };
-const INTERRUPT_t INTERRUPT_0 =
+const INTERRUPT_t TIME_MEASUREMENT_ISR =
 {
 #if(UC_SERIES == XMC14)
  .irqctrl = (XMC_SCU_IRQCTRL_t)0U,

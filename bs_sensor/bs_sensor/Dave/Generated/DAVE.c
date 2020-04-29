@@ -193,8 +193,8 @@ DAVE_STATUS_t DAVE_Init(void)
    } 
   if (init_status == DAVE_STATUS_SUCCESS)
   {
-	 /**  Initialization of INTERRUPT APP instance INTERRUPT_0 */
-	 init_status = (DAVE_STATUS_t)INTERRUPT_Init(&INTERRUPT_0); 
+	 /**  Initialization of INTERRUPT APP instance TIME_MEASUREMENT_ISR */
+	 init_status = (DAVE_STATUS_t)INTERRUPT_Init(&TIME_MEASUREMENT_ISR); 
    }  
   return init_status;
 } /**  End of function DAVE_Init */
