@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="ASCII"?>
 <ResourceModel:App xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ResourceModel="http://www.infineon.com/Davex/Resource.ecore" name="TIMER" URI="http://resources/4.1.10/app/TIMER/4" description="Provides an accurate timer by using hardware CCU timer.&#xA; This can be used as a trigger input to other peripherals or to create an event" mode="NOTSHARABLE" version="4.1.10" minDaveVersion="4.3.2" instanceLabel="MS5611_TIMER" appLabel="" containingProxySignal="true">
   <properties provideInit="true"/>
-  <virtualSignals name="event_time_interval" URI="http://resources/4.1.10/app/TIMER/4/vs_timer_ccu4_period_match_interrupt" hwSignal="pmus_omds" hwResource="//@hwResources.0" visible="true"/>
-  <virtualSignals name="event_time_interval" URI="http://resources/4.1.10/app/TIMER/4/vs_timer_ccu8_period_match_interrupt" hwSignal="pmus_omds" hwResource="//@hwResources.1" required="false" visible="true"/>
-  <virtualSignals name="global_enable" URI="http://resources/4.1.10/app/TIMER/4/vs_timer_ccu4_global_enable" hwSignal="global_signal" hwResource="//@hwResources.0"/>
-  <virtualSignals name="global_enable" URI="http://resources/4.1.10/app/TIMER/4/vs_timer_ccu8_global_enable" hwSignal="global_signal" hwResource="//@hwResources.1" required="false"/>
-  <requiredApps URI="http://resources/4.1.10/app/TIMER/4/app_global_ccu4" requiredAppName="GLOBAL_CCU4" requiringMode="SHARABLE">
-    <downwardMapList xsi:type="ResourceModel:App" href="../../GLOBAL_CCU4/v4_1_12/GLOBAL_CCU4_1.app#/"/>
+  <virtualSignals name="event_time_interval" URI="http://resources/4.1.10/app/TIMER/4/vs_timer_ccu4_period_match_interrupt" hwSignal="pmus_omds" hwResource="//@hwResources.0" required="false" visible="true"/>
+  <virtualSignals name="event_time_interval" URI="http://resources/4.1.10/app/TIMER/4/vs_timer_ccu8_period_match_interrupt" hwSignal="pmus_omds" hwResource="//@hwResources.1" visible="true"/>
+  <virtualSignals name="global_enable" URI="http://resources/4.1.10/app/TIMER/4/vs_timer_ccu4_global_enable" hwSignal="global_signal" hwResource="//@hwResources.0" required="false"/>
+  <virtualSignals name="global_enable" URI="http://resources/4.1.10/app/TIMER/4/vs_timer_ccu8_global_enable" hwSignal="global_signal" hwResource="//@hwResources.1"/>
+  <requiredApps URI="http://resources/4.1.10/app/TIMER/4/app_global_ccu4" requiredAppName="GLOBAL_CCU4" required="false" requiringMode="SHARABLE"/>
+  <requiredApps URI="http://resources/4.1.10/app/TIMER/4/app_global_ccu8" requiredAppName="GLOBAL_CCU8" requiringMode="SHARABLE">
+    <downwardMapList xsi:type="ResourceModel:App" href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#/"/>
   </requiredApps>
-  <requiredApps URI="http://resources/4.1.10/app/TIMER/4/app_global_ccu8" requiredAppName="GLOBAL_CCU8" required="false" requiringMode="SHARABLE"/>
-  <hwResources name="CC4 Timer" URI="http://resources/4.1.10/app/TIMER/4/hwres_ccu4_cc4" resourceGroupUri="peripheral/ccu4/*/cc4/*" mResGrpUri="peripheral/ccu4/*/cc4/*">
-    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/ccu42/ccu42_2.dd#//@provided.0"/>
+  <hwResources name="CC4 Timer" URI="http://resources/4.1.10/app/TIMER/4/hwres_ccu4_cc4" resourceGroupUri="" required="false" mResGrpUri="peripheral/ccu4/*/cc4/*"/>
+  <hwResources name="CC8 Timer" URI="http://resources/4.1.10/app/TIMER/4/hwres_ccu8_cc8" resourceGroupUri="peripheral/ccu8/*/cc8/*" mResGrpUri="peripheral/ccu8/*/cc8/*">
+    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/ccu80/ccu80_0.dd#//@provided.0"/>
   </hwResources>
-  <hwResources name="CC8 Timer" URI="http://resources/4.1.10/app/TIMER/4/hwres_ccu8_cc8" resourceGroupUri="" required="false" mResGrpUri="peripheral/ccu8/*/cc8/*"/>
-  <connections URI="http://resources/4.1.10/app/TIMER/4/http://resources/4.1.10/app/TIMER/4/vs_global_ccu4_enable/http://resources/4.1.10/app/TIMER/4/vs_timer_ccu4_global_enable" systemDefined="true" sourceSignal="ccu4_global" targetSignal="global_enable" targetVirtualSignal="//@virtualSignals.2" proxySrcVirtualSignalUri="http://resources/4.1.12/app/GLOBAL_CCU4/1/vs_global_ccu4_globalsignal" containingProxySignal="true">
-    <downwardMapList xsi:type="ResourceModel:VirtualSignal" href="../../GLOBAL_CCU4/v4_1_12/GLOBAL_CCU4_1.app#//@virtualSignals.0"/>
-    <srcVirtualSignal href="../../GLOBAL_CCU4/v4_1_12/GLOBAL_CCU4_1.app#//@virtualSignals.0"/>
+  <connections URI="http://resources/4.1.10/app/TIMER/4/http://resources/4.1.10/app/TIMER/4/vs_global_ccu4_enable/http://resources/4.1.10/app/TIMER/4/vs_timer_ccu4_global_enable" systemDefined="true" sourceSignal="ccu4_global" targetSignal="global_enable" required="false" targetVirtualSignal="//@virtualSignals.2" proxySrcVirtualSignalUri="http://resources/4.1.12/app/GLOBAL_CCU4/1/vs_global_ccu4_globalsignal" containingProxySignal="true"/>
+  <connections URI="http://resources/4.1.10/app/TIMER/4/http://resources/4.1.10/app/TIMER/4/vs_global_ccu8_enable/http://resources/4.1.10/app/TIMER/4/vs_timer_ccu8_global_enable" systemDefined="true" sourceSignal="ccu8_global" targetSignal="global_enable" targetVirtualSignal="//@virtualSignals.3" proxySrcVirtualSignalUri="http://resources/4.1.12/app/GLOBAL_CCU8/0/vs_global_ccu8_globalsignal" containingProxySignal="true">
+    <downwardMapList xsi:type="ResourceModel:VirtualSignal" href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#//@virtualSignals.0"/>
+    <srcVirtualSignal href="../../GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#//@virtualSignals.0"/>
   </connections>
-  <connections URI="http://resources/4.1.10/app/TIMER/4/http://resources/4.1.10/app/TIMER/4/vs_global_ccu8_enable/http://resources/4.1.10/app/TIMER/4/vs_timer_ccu8_global_enable" systemDefined="true" targetSignal="global_enable" required="false" targetVirtualSignal="//@virtualSignals.3" containingProxySignal="true"/>
-  <connections URI="http://resources/4.1.10/app/TIMER/4/http://resources/4.1.10/app/TIMER/4/vs_timer_ccu4_period_match_interrupt/http://resources/4.0.8/app/INTERRUPT/5/vs_nvic_signal_in" sourceSignal="event_time_interval" targetSignal="sr_irq" srcVirtualSignal="//@virtualSignals.0">
+  <connections URI="http://resources/4.1.10/app/TIMER/4/http://resources/4.1.10/app/TIMER/4/vs_timer_ccu8_period_match_interrupt/http://resources/4.0.8/app/INTERRUPT/5/vs_nvic_signal_in" sourceSignal="event_time_interval" targetSignal="sr_irq" srcVirtualSignal="//@virtualSignals.1">
     <downwardMapList xsi:type="ResourceModel:VirtualSignal" href="../../INTERRUPT/v4_0_8/INTERRUPT_5.app#//@virtualSignals.0"/>
     <targetVirtualSignal href="../../INTERRUPT/v4_0_8/INTERRUPT_5.app#//@virtualSignals.0"/>
   </connections>

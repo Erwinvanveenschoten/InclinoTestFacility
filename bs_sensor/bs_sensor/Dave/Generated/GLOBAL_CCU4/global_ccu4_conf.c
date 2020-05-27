@@ -69,8 +69,8 @@ GLOBAL_CCU4_t GLOBAL_CCU4_0 =
 };
 
    
-/**< Configuration for HandleGLOBAL_CCU4_1 */
-GLOBAL_CCU4_t GLOBAL_CCU4_1 =
+/**< Configuration for HandleGLOBAL_CCU4_2 */
+GLOBAL_CCU4_t GLOBAL_CCU4_2 =
 {
   .module_frequency = 144000000U,  /**< CCU4 input clock frequency */
   .syncstart_trigger_msk = XMC_SCU_CCU_TRIGGER_CCU42, 
@@ -80,8 +80,8 @@ GLOBAL_CCU4_t GLOBAL_CCU4_1 =
 };
 
    
-/**< Configuration for HandleGLOBAL_CCU4_2 */
-GLOBAL_CCU4_t GLOBAL_CCU4_2 =
+/**< Configuration for HandleGLOBAL_CCU4_3 */
+GLOBAL_CCU4_t GLOBAL_CCU4_3 =
 {
   .module_frequency = 144000000U,  /**< CCU4 input clock frequency */
   .syncstart_trigger_msk = XMC_SCU_CCU_TRIGGER_CCU40, 
@@ -91,8 +91,8 @@ GLOBAL_CCU4_t GLOBAL_CCU4_2 =
 };
 
    
-/**< Configuration for HandleGLOBAL_CCU4_3 */
-GLOBAL_CCU4_t GLOBAL_CCU4_3 =
+/**< Configuration for HandleGLOBAL_CCU4_1 */
+GLOBAL_CCU4_t GLOBAL_CCU4_1 =
 {
   .module_frequency = 144000000U,  /**< CCU4 input clock frequency */
   .syncstart_trigger_msk = XMC_SCU_CCU_TRIGGER_CCU41, 

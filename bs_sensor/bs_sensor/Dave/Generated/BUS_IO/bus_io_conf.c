@@ -88,7 +88,7 @@ const BUS_IO_PORT_PIN_t IO_GP_pin_list[] =
        {P3_3},
        {P3_2},
        {P3_4},
-       {P3_7},
+       {P3_9},
        {P3_6},
        {P3_14}
 }; 

@@ -66,11 +66,11 @@
 
 extern GLOBAL_CCU4_t GLOBAL_CCU4_0; /**< APP handle for handle GLOBAL_CCU4_0*/
 
-extern GLOBAL_CCU4_t GLOBAL_CCU4_1; /**< APP handle for handle GLOBAL_CCU4_1*/
-
 extern GLOBAL_CCU4_t GLOBAL_CCU4_2; /**< APP handle for handle GLOBAL_CCU4_2*/
 
 extern GLOBAL_CCU4_t GLOBAL_CCU4_3; /**< APP handle for handle GLOBAL_CCU4_3*/
+
+extern GLOBAL_CCU4_t GLOBAL_CCU4_1; /**< APP handle for handle GLOBAL_CCU4_1*/
 
 #endif /* GLOBAL_CCU4_EXTERN_H */
 

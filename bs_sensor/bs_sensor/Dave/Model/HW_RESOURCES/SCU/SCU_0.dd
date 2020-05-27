@@ -119,17 +119,17 @@
     <resourcesList name="gsc_enable" requiredResourceUri="http://resources/47.0.0/peripheral/scu/0/gcu_ccu4_global_enable3_gsc_enable"/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="1" URI="http://resources/47.0.0/peripheral/scu/0/gcu/ccu4_global_enable/1">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/GLOBAL_CCU4/v4_1_12/GLOBAL_CCU4_3.app#//@hwResources.1"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/GLOBAL_CCU4/v4_1_12/GLOBAL_CCU4_4.app#//@hwResources.1"/>
     <resourcesList name="ccucon_gsc" requiredResourceUri="http://resources/47.0.0/peripheral/scu/0/ccucon/gsc41"/>
     <resourcesList name="gsc_enable" requiredResourceUri="http://resources/47.0.0/peripheral/scu/0/gcu_ccu4_global_enable1_gsc_enable"/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="0" URI="http://resources/47.0.0/peripheral/scu/0/gcu/ccu4_global_enable/0">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/GLOBAL_CCU4/v4_1_12/GLOBAL_CCU4_2.app#//@hwResources.1"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/GLOBAL_CCU4/v4_1_12/GLOBAL_CCU4_3.app#//@hwResources.1"/>
     <resourcesList name="ccucon_gsc" requiredResourceUri="http://resources/47.0.0/peripheral/scu/0/ccucon/gsc40"/>
     <resourcesList name="gsc_enable" requiredResourceUri="http://resources/47.0.0/peripheral/scu/0/gcu_ccu4_global_enable0_gsc_enable"/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="2" URI="http://resources/47.0.0/peripheral/scu/0/gcu/ccu4_global_enable/2">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/GLOBAL_CCU4/v4_1_12/GLOBAL_CCU4_1.app#//@hwResources.1"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/GLOBAL_CCU4/v4_1_12/GLOBAL_CCU4_2.app#//@hwResources.1"/>
     <resourcesList name="ccucon_gsc" requiredResourceUri="http://resources/47.0.0/peripheral/scu/0/ccucon/gsc42"/>
     <resourcesList name="gsc_enable" requiredResourceUri="http://resources/47.0.0/peripheral/scu/0/gcu_ccu4_global_enable2_gsc_enable"/>
   </provided>
@@ -176,6 +176,11 @@
   <provided xsi:type="ResourceModel:BitField" name="PRWARN" URI="http://resources/47.0.0/peripheral/scu/0/nmireqen/prwarn" value="0x00000000" toolTipHelpDescription="Promote Pre-Warning Interrupt Request to NMI Request" defaultValue="0x00000000" startPos="0" stopPos="0" accessPermission="rw" maxValue="1" minValue="0">
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0" description="Disabled"/>
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1" description="Enabled"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="0" URI="http://resources/47.0.0/peripheral/scu/0/gcu/ccu8_global_enable/0">
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#//@hwResources.1"/>
+    <resourcesList name="ccucon_gsc" requiredResourceUri="http://resources/47.0.0/peripheral/scu/0/ccucon/gsc80"/>
+    <resourcesList name="gsc_enable" requiredResourceUri="http://resources/47.0.0/peripheral/scu/0/gcu_ccu8_global_enable0_gsc_enable"/>
   </provided>
   <addressBlock offset="0x0" size="0x4000" usage="registers"/>
 </ResourceModel:Peripheral>

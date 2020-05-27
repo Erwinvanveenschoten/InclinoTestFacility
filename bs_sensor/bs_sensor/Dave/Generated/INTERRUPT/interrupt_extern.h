@@ -66,11 +66,11 @@
 		
 #define delay_timer_cb IRQ_Hdlr_57
 		
-#define MS5611_timer_ISR IRQ_Hdlr_53
+#define MS5611_timer_ISR IRQ_Hdlr_63
 		
-#define spi_1_update_temp_ISR IRQ_Hdlr_46
+#define spi_1_update_temp_ISR IRQ_Hdlr_53
 		
-#define SCA103T_update_ISR IRQ_Hdlr_49
+#define SCA103T_update_ISR IRQ_Hdlr_46
 		
 #define toggle_led IRQ_Hdlr_59
 		

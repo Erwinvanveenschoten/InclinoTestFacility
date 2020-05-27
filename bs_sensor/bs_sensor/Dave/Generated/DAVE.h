@@ -87,6 +87,12 @@
 
 #include "INTERRUPT/interrupt.h"
   
+
+#include "GLOBAL_CCU8/global_ccu8.h"
+  
+
+#include "PWM_CCU4/pwm_ccu4.h"
+  
 	
 
 /**********************************************************************************************************************
