@@ -5,9 +5,9 @@
 #include "Heating.h"
 
 static int32_t temperature_setting = TEMPERATURE_INIT;
-static int Kp = 0;
-static int Ki = 0;
-static int Kd = 0;
+static int Kp = 6;
+static int Ki = 0.48;
+static int Kd = 10;
 static int integral = 0;
 static int derivative = 0;
 static int last_error = 0;
